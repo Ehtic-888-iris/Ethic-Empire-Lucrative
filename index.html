@@ -1,78 +1,178 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EHT - SUPREME COMMAND CENTER</title>
-    <style>
-        :root { --gold: #D4AF37; --cyan: #00f3ff; --bg: #050505; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden; }
-        
-        /* พื้นหลังดวงดาวมหาอำนาจ */
-        .universe { position: fixed; width: 100vw; height: 100vh; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); z-index: -1; }
-        
-        header { text-align: center; padding: 40px 20px; border-bottom: 2px solid var(--gold); background: linear-gradient(to bottom, rgba(212,175,55,0.1), transparent); }
-        .logo { font-size: 60px; font-weight: 900; color: var(--gold); text-shadow: 0 0 30px var(--gold); letter-spacing: 10px; margin: 0; }
-        
-        .main-container { max-width: 1200px; margin: 0 auto; padding: 20px; height: 70vh; overflow-y: auto; }
-        
-        /* กระเป๋าเงินควอนตัม */
-        .wallet-hub { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px; }
-        .wallet-card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 20px; text-align: center; backdrop-filter: blur(10px); }
-        .wallet-card strong { display: block; font-size: 20px; color: var(--gold); margin-top: 8px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EHT HOLDINGS | Digital Finance</title>
 
-        /* 24 สถานีสั่งการ */
-        .node-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .node-btn { background: transparent; border: 1px solid var(--cyan); color: var(--cyan); padding: 15px 5px; border-radius: 8px; font-size: 10px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        .node-btn:active { background: var(--cyan); color: black; box-shadow: 0 0 20px var(--cyan); }
+<style>
+:root {
+    --gold:#D4AF37;
+    --dark:#0a0a0a;
+    --glass:rgba(255,255,255,0.05);
+}
 
-        /* ระบบแจ้งเตือน Security */
-        #alertBox { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.95); border: 2px solid var(--gold); padding: 40px; border-radius: 20px; text-align: center; z-index: 1000; box-shadow: 0 0 50px rgba(212,175,55,0.5); }
-    </style>
+body {
+    margin:0;
+    font-family:Segoe UI;
+    background:#000;
+    color:#fff;
+}
+
+/* NAV */
+nav {
+    display:flex;
+    justify-content:space-between;
+    padding:20px 40px;
+    border-bottom:1px solid rgba(212,175,55,0.2);
+}
+nav a {
+    color:var(--gold);
+    text-decoration:none;
+    margin-left:20px;
+}
+
+/* HERO */
+.hero {
+    text-align:center;
+    padding:100px 20px;
+    background:linear-gradient(to bottom,rgba(212,175,55,0.1),transparent);
+}
+.hero h1 {
+    font-size:50px;
+    color:var(--gold);
+}
+.hero p {
+    max-width:600px;
+    margin:auto;
+    opacity:0.8;
+}
+.btn {
+    margin-top:20px;
+    padding:15px 30px;
+    border:1px solid var(--gold);
+    background:none;
+    color:var(--gold);
+    cursor:pointer;
+}
+.btn:hover {
+    background:var(--gold);
+    color:#000;
+}
+
+/* SECTION */
+.section {
+    padding:60px 20px;
+    text-align:center;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card {
+    background:var(--glass);
+    padding:25px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+/* FORM */
+form {
+    max-width:400px;
+    margin:auto;
+}
+input, textarea {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    background:#111;
+    border:1px solid #333;
+    color:#fff;
+}
+
+/* FOOTER */
+footer {
+    text-align:center;
+    padding:20px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:12px;
+}
+</style>
 </head>
+
 <body>
-    <div class="universe"></div>
-    <header>
-        <h1 class="logo">EHT</h1>
-        <p style="letter-spacing: 3px; font-size: 14px; color: #aaa;">ETHIC HOLDINGS THAI</p>
-        <div id="time" style="color: var(--gold); font-family: monospace; font-size: 12px; margin-top: 10px;">SYSTEM LOADING...</div>
-    </header>
 
-    <div class="main-container">
-        <div class="wallet-hub">
-            <div class="wallet-card">TOTAL ASSETS<strong>฿ 3,500,000,000</strong></div>
-            <div class="wallet-card">SYSTEM STATUS<strong style="color: #0f0;">ACTIVE</strong></div>
-        </div>
-
-        <h3 style="text-align: center; color: var(--cyan); letter-spacing: 2px;">24 COMMAND NODES</h3>
-        <div class="node-grid" id="nodeGrid"></div>
+<nav>
+    <div style="color:gold;font-weight:bold;">EHT HOLDINGS</div>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Company</a>
+        <a href="#">Contact</a>
     </div>
+</nav>
 
-    <div id="alertBox">
-        <h2 style="color: var(--gold)">COMMAND EXECUTED</h2>
-        <p id="alertMsg"></p>
-        <button onclick="closeAlert()" style="background:var(--gold); border:none; padding:10px 30px; border-radius:5px; cursor:pointer; font-weight:bold;">AKNOWLEDGE</button>
+<section class="hero">
+    <h1>Secure Digital Finance Infrastructure</h1>
+    <p>Trusted OTC trading, crypto payment gateway, and high-volume financial services.</p>
+    <button class="btn" onclick="scrollToContact()">Start Now</button>
+</section>
+
+<section class="section">
+    <h2>Our Services</h2>
+    <div class="grid">
+        <div class="card">Crypto Payment Gateway</div>
+        <div class="card">OTC Trading Desk</div>
+        <div class="card">Asset Management</div>
     </div>
+</section>
 
-    <script>
-        // ระบบเวลา Real-time
-        setInterval(() => { document.getElementById('time').innerHTML = new Date().toLocaleString('th-TH'); }, 1000);
+<section class="section">
+    <h2>Why Choose Us</h2>
+    <div class="grid">
+        <div class="card">✔ Instant Settlement</div>
+        <div class="card">✔ No Chargebacks</div>
+        <div class="card">✔ High Liquidity</div>
+        <div class="card">✔ 24/7 Support</div>
+    </div>
+</section>
 
-        // สร้าง 24 สถานี
-        const grid = document.getElementById('nodeGrid');
-        for(let i=1; i<=24; i++) {
-            let btn = document.createElement('button');
-            btn.className = 'node-btn';
-            btn.innerHTML = 'NODE ' + (i<10?'0'+i:i);
-            btn.onclick = () => {
-                document.getElementById('alertBox').style.display = 'block';
-                document.getElementById('alertMsg').innerHTML = "เชื่อมต่อสถานีเครือข่ายที่ " + i + " เรียบร้อยแล้ว<br>ระดับความปลอดภัย: ขั้นสูงสุด";
-            };
-            grid.appendChild(btn);
-        }
+<section class="section">
+    <h2>Company Stats</h2>
+    <div class="grid">
+        <div class="card">$500M+ Volume</div>
+        <div class="card">1,200+ Clients</div>
+        <div class="card">35+ Countries</div>
+    </div>
+</section>
 
-        function closeAlert() { document.getElementById('alertBox').style.display = 'none'; }
-    </script>
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message"></textarea>
+        <button class="btn">Send Request</button>
+    </form>
+</section>
+
+<footer>
+© 2026 EHT HOLDINGS THAI CO., LTD.
+</footer>
+
+<script>
+function scrollToContact(){
+    document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+}
+
+function submitForm(e){
+    e.preventDefault();
+    alert("Request submitted successfully!");
+}
+</script>
+
 </body>
 </html>
-
