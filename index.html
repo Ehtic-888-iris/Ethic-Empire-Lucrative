@@ -3,91 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>EHT - SUPREME COMMAND CENTER</title>
+    <title>EHT - SUPREME DASHBOARD</title>
     <style>
-        :root { --gold: #AD4F37; --bg: #020202; --panel: rgba(20, 20, 20, 0.95); }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
+        :root { --gold: #AD4F37; --bg: #050505; --panel: rgba(20, 20, 20, 0.9); }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
         
-        header { padding: 20px; text-align: center; border-bottom: 2px solid var(--gold); background: black; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 24px; font-weight: 900; color: var(--gold); letter-spacing: 6px; text-transform: uppercase; }
+        /* แผงควบคุมหลัก (Dashboard พื้นหลัง) */
+        .main-view { 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('1000052408.png'); 
+            background-size: cover; 
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 40px;
+        }
 
-        /* Grid System: เน้นความเรียบหรูและสัดส่วนที่พอดีหน้าจอมือถือ */
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; max-width: 1200px; margin: auto; }
-        @media (min-width: 768px) { .grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+        .header-title { position: absolute; top: 30px; text-align: center; width: 100%; }
+        .logo { font-size: 28px; font-weight: 900; color: var(--gold); letter-spacing: 10px; text-transform: uppercase; }
 
-        .station-card { background: #111; border: 1px solid rgba(173, 79, 55, 0.3); border-radius: 4px; overflow: hidden; position: relative; height: 150px; cursor: pointer; transition: 0.3s; }
-        @media (min-width: 768px) { .station-card { height: 220px; } }
-        .station-card:active { transform: scale(0.98); border-color: var(--gold); }
+        /* การจัดวางไอคอนสถานีแบบตารางมหาอำนาจ (ล่างหน้าจอ) */
+        .dashboard-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 10px; 
+            width: 95%; 
+            max-width: 1000px;
+            background: rgba(0,0,0,0.7);
+            padding: 20px;
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
 
-        .station-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-        
-        .station-label { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, black); padding: 10px; box-sizing: border-box; text-align: left; }
-        .station-label strong { display: block; color: var(--gold); font-size: 0.7rem; letter-spacing: 1px; }
-        .station-label span { font-size: 0.8rem; font-weight: 500; }
+        .icon-node { 
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 1px solid rgba(173, 79, 55, 0.5);
+            padding: 15px 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .icon-node:hover { background: var(--gold); border-color: #fff; }
+        .icon-node img { width: 35px; height: 35px; margin-bottom: 8px; filter: sepia(1) saturate(5) hue-rotate(-30deg); }
+        .icon-node span { display: block; font-size: 10px; font-weight: bold; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* ระบบ Portal Overlay ฉบับมืออาชีพ (ไม่มีข้อความไร้สาระ) */
-        .portal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; display: none; padding: 20px; box-sizing: border-box; }
-        .portal-content { max-width: 600px; margin: auto; border: 1px solid var(--gold); background: #000; position: relative; animation: fadeIn 0.4s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
+        /* Portal แสดงรายละเอียด (ไม่มีข้อความที่ไม่เป็นมืออาชีพ) */
+        .portal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; z-index: 1000; align-items: center; justify-content: center; }
+        .portal-content { width: 90%; max-width: 500px; border: 2px solid var(--gold); background: #000; padding: 0; position: relative; }
         .close-portal { position: absolute; top: 10px; right: 20px; font-size: 30px; color: var(--gold); cursor: pointer; }
-        .full-view-img { width: 100%; display: block; border-bottom: 1px solid var(--gold); }
-        .description { padding: 25px; text-align: left; }
-        .description h2 { color: var(--gold); margin: 0 0 15px 0; font-size: 1.4rem; letter-spacing: 2px; }
-        .description p { color: #ccc; line-height: 1.6; margin: 0; border-left: 2px solid var(--gold); padding-left: 15px; }
+        .portal-img { width: 100%; height: 250px; object-fit: cover; border-bottom: 1px solid var(--gold); }
+        .portal-text { padding: 30px; text-align: left; }
+        .portal-text h2 { color: var(--gold); margin: 0 0 10px 0; font-size: 1.4rem; }
+        .portal-text p { color: #ccc; margin: 0; line-height: 1.6; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <header><div class="logo">EHT HOLDINGS</div></header>
-    <div class="grid" id="stationGrid"></div>
+
+    <div class="main-view">
+        <div class="header-title">
+            <div class="logo">ETHIC HOLDINGS</div>
+            <div style="color:var(--gold); font-size:10px; letter-spacing:3px;">GLOBAL COMMAND CENTER</div>
+        </div>
+
+        <div class="dashboard-grid" id="dashboard"></div>
+    </div>
 
     <div class="portal" id="portal">
         <div class="portal-content">
             <span class="close-portal" onclick="closePortal()">×</span>
-            <img id="portalImg" class="full-view-img" src="">
-            <div class="description">
-                <h2 id="portalTitle"></h2>
-                <p id="portalText"></p>
+            <img id="pImg" class="portal-img">
+            <div class="portal-text">
+                <h2 id="pTitle"></h2>
+                <p id="pDesc"></p>
+                <div style="margin-top:20px; font-size:10px; color:var(--gold);">SYSTEM STATUS: SECURED</div>
             </div>
         </div>
     </div>
 
     <script>
         const stations = [
-            { n: "R&D Lab / ศูนย์วิจัย", i: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800", d: "STRATEGIC RESEARCH AND DEVELOPMENT CENTER" },
-            { n: "EV Model / ยานยนต์", i: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800", d: "ADVANCED ELECTRIC VEHICLE INNOVATION" },
-            { n: "Logistics / ขนส่งโลก", i: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800", d: "INTEGRATED GLOBAL LOGISTICS NETWORK" },
-            { n: "Defense / ระบบป้องกัน", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800", d: "GLOBAL DEFENSE AND SECURITY SYSTEMS" },
-            { n: "Global Hospital / การแพทย์", i: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800", d: "WORLD-CLASS MEDICAL SOLUTIONS" },
-            { n: "Vessels / เรือพาณิชย์", i: "https://images.pexels.com/photos/10368143/pexels-photo-10368143.jpeg?w=800", d: "MARITIME COMMERCE AND FLEET MANAGEMENT" },
-            { n: "Global Cinema / โรงหนัง", i: "1000052729.jpg", d: "PREMIUM ENTERTAINMENT AND GLOBAL CINEMAS" },
-            { n: "MAHA AMNAT / มหาอำนาจ", i: "1000052408.png", d: "ETHIC HOLDINGS SUPREME COMMAND CENTER" }
+            { n: "R&D Lab", i: "https://cdn-icons-png.flaticon.com/512/3067/3067451.png", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800", d: "STRATEGIC RESEARCH AND DEVELOPMENT CENTER." },
+            { n: "EV Model", i: "https://cdn-icons-png.flaticon.com/512/3774/3774270.png", img: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800", d: "ADVANCED ELECTRIC VEHICLE INNOVATION HUB." },
+            { n: "Logistics", i: "https://cdn-icons-png.flaticon.com/512/2830/2830305.png", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800", d: "GLOBAL LOGISTICS AND SUPPLY CHAIN NETWORK." },
+            { n: "Defense", i: "https://cdn-icons-png.flaticon.com/512/2592/2592201.png", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800", d: "NATIONAL SECURITY AND DEFENSE TECHNOLOGY." },
+            { n: "Hospital", i: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png", img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800", d: "WORLD-CLASS MEDICAL AND HEALTHCARE SYSTEMS." },
+            { n: "Bank", i: "https://cdn-icons-png.flaticon.com/512/2830/2830284.png", img: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800", d: "UNIFIED GLOBAL FINANCIAL OPERATIONS." },
+            { n: "Cinema", i: "https://cdn-icons-png.flaticon.com/512/2503/2503508.png", img: "1000052729.jpg", d: "PREMIUM CINEMATIC ENTERTAINMENT NETWORK." },
+            { n: "Supreme", i: "https://cdn-icons-png.flaticon.com/512/2592/2592317.png", img: "1000052408.png", d: "EHT SUPREME COMMAND COMMAND CENTER." }
         ];
 
-        const grid = document.getElementById('stationGrid');
-        stations.forEach((s, idx) => {
-            const card = document.createElement('div');
-            card.className = 'station-card';
-            card.innerHTML = `
-                <img src="${s.i}" class="station-img" onerror="this.src='https://via.placeholder.com/800/000/AD4F37?text=EHT+STATION'">
-                <div class="station-label">
-                    <strong>STATION ${String(idx+1).padStart(2,'0')}</strong>
-                    <span>${s.n}</span>
-                </div>`;
-            card.onclick = () => openPortal(s);
-            grid.appendChild(card);
+        const db = document.getElementById('dashboard');
+        stations.forEach(s => {
+            const node = document.createElement('div');
+            node.className = 'icon-node';
+            node.innerHTML = `<img src="${s.i}"><span>${s.n}</span>`;
+            node.onclick = () => {
+                document.getElementById('pTitle').innerText = s.n;
+                document.getElementById('pImg').src = s.img;
+                document.getElementById('pDesc').innerText = s.d;
+                document.getElementById('portal').style.display = 'flex';
+            };
+            db.appendChild(node);
         });
 
-        function openPortal(station) {
-            document.getElementById('portalTitle').innerText = station.n;
-            document.getElementById('portalImg').src = station.i;
-            document.getElementById('portalText').innerText = station.d;
-            document.getElementById('portal').style.display = 'flex';
-        }
-
-        function closePortal() {
-            document.getElementById('portal').style.display = 'none';
-        }
+        function closePortal() { document.getElementById('portal').style.display = 'none'; }
     </script>
 </body>
 </html>
