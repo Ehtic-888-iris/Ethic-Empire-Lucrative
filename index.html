@@ -5,64 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EHT - SUPREME COMMAND CENTER 24</title>
     <style>
-        :root { --gold: #AD4F37; --cyan: #00f3ff; --bg: #020202; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; text-align: center; }
+        :root { --gold: #AD4F37; --gold-light: #E0C097; --cyan: #00f3ff; --bg: #020202; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; text-align: center; line-height: 1.6; }
+        
+        /* Galaxy Background Animation */
         .galaxy { position: fixed; width: 100vw; height: 100vh; background: radial-gradient(circle at center, #111 0%, #000 100%); z-index: -1; animation: rotateGalaxy 120s linear infinite; }
         @keyframes rotateGalaxy { from { transform: rotate(0deg) scale(1.1); } to { transform: rotate(360deg) scale(1.1); } }
+
         header { padding: 40px 20px; border-bottom: 2px solid var(--gold); background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); }
-        .logo { font-size: 60px; font-weight: 900; color: var(--gold); text-shadow: 0 0 30px var(--gold); letter-spacing: 15px; }
-        .manifesto { max-width: 1000px; margin: 30px auto; padding: 20px; border: 1px solid var(--gold); border-radius: 15px; background: rgba(173, 79, 55, 0.05); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1400px; margin: 40px auto; padding: 20px; }
-        .node { background: rgba(255,255,255,0.03); border: 1px solid var(--cyan); border-radius: 12px; height: 320px; cursor: pointer; transition: 0.4s; position: relative; overflow: hidden; }
-        .node-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; filter: sepia(1) saturate(1.5); transition: 0.4s; }
-        .node:hover .node-img { opacity: 1; filter: none; transform: scale(1.1); }
-        .node-info { position: absolute; bottom: 0; width: 100%; padding: 20px; background: linear-gradient(to top, black, transparent); box-sizing: border-box; text-align: left; }
-        .node strong { color: var(--gold); font-size: 1.1rem; }
-        .node:hover { box-shadow: 0 0 30px var(--cyan); border-color: white; }
+        .logo { font-size: clamp(30px, 8vw, 60px); font-weight: 900; color: var(--gold); text-shadow: 0 0 30px var(--gold); letter-spacing: 15px; margin-bottom: 10px; }
+        
+        /* Manifesto */
+        .manifesto { max-width: 1000px; margin: 30px auto; padding: 25px; border: 1px solid var(--gold); border-radius: 15px; background: rgba(173, 79, 55, 0.05); }
+        .manifesto h2 { color: var(--gold-light); text-shadow: 0 0 10px var(--gold); margin-bottom: 15px; }
+        
+        /* Command Center Grid */
+        h3 { color: var(--gold); margin-top: 50px; text-transform: uppercase; letter-spacing: 5px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1400px; margin: 30px auto; padding: 20px; }
+        
+        /* ปรับปรุง Node (Door Styles) */
+        .node { background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 243, 255, 0.3); border-radius: 12px; height: 320px; cursor: pointer; transition: 0.4s ease; text-align: left; position: relative; overflow: hidden; }
+        
+        /* สไตล์สำหรับรูปภาพโฮโลแกรม (ที่ประต฿) */
+        .node-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: sepia(1) saturate(1.5); transition: 0.4s ease; }
+
+        /* Container สำหรับข้อมูลตัวอักษร */
+        .node-info { padding: 20px; position: absolute; bottom: 0; left: 0; width: 100%; box-sizing: border-box; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); z-index: 2; }
+        .node strong { color: var(--gold); font-size: 1.1rem; text-shadow: 0 0 5px var(--gold); }
+        
+        /* เอฟเฟกต์เรืองแสงเมื่อชี้เมาส์ */
+        .node:hover { background: var(--cyan); color: black; box-shadow: 0 0 30px var(--cyan); transform: translateY(-10px); border-color: white; }
+        .node:hover strong { color: black; text-shadow: none; }
+        .node:hover .node-img { opacity: 1; filter: none; transform: scale(1.1); } /* ขยายรูปนิดหน่อยเมื่อชี้ */
+
     </style>
 </head>
 <body>
     <div class="galaxy"></div>
-    <header><div class="logo">EHT</div></header>
+    <header>
+        <div class="logo">EHT</div>
+        <div style="color:var(--gold-light); letter-spacing:5px; font-weight:bold;">ETHIC HIGHER TIME</div>
+    </header>
+
     <section class="manifesto">
-        <h2 style="color:var(--gold);">EHT: กองทัพเชื่อมต่อมหาอำนาจไร้พรมแดน</h2>
+        <h2>EHT: กองทัพเชื่อมต่อมหาอำนาจไร้พรมแดน</h2>
         <p>"เปลี่ยนกระแสดิจิทัลเป็นพลังงานที่ใช้ได้จริง เชื่อมโยงทุกองค์กรทั่วโลกไว้ในมือคุณ"</p>
     </section>
-    <div class="grid" id="grid"></div>
+
+    <h3>BOSS & IRIS: COMMAND CENTER 24</h3>
+    <div class="grid" id="grid">
+        </div>
+
     <script>
+        // ไอริสได้ปรับเปลี่ยนลิงก์รูปภาพที่บอสวงไว้ (6, 7, 19, 20, 23) ให้ทรงพลังขั้นสุดแล้วค่ะ!
         const stations = [
-            { n: "R&D Lab / ศูนย์วิจัย", i: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500" },
-            { n: "EV Model / ยานยนต์", i: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=500" },
-            { n: "Logistics / ขนส่งโลก", i: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500" },
-            { n: "Defense / ระบบป้องกัน", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500" },
-            { n: "Global Hospital / การแพทย์", i: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500" },
-            { n: "Vessels / เรือพาณิชย์", i: "https://images.unsplash.com/photo-1544848355-946772719602?w=500" },
-            { n: "Global Cinema / โรงหนัง", i: "1000052731.jpg" }, // รูปที่บอสส่งมา
-            { n: "Unified Bank / ธนาคาร", i: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=500" },
-            { n: "Marketplace / ตลาดโลก", i: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500" },
-            { n: "Payment Gateway", i: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500" },
-            { n: "Estate / อสังหาฯ", i: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500" },
-            { n: "Gold Reserve / คลังทอง", i: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=500" },
-            { n: "Mining / เหมืองแร่ดิจิทัล", i: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=500" },
-            { n: "AI Network / โครงข่าย AI", i: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500" },
-            { n: "Smart City / เมืองใหม่", i: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=500" },
-            { n: "Energy / พลังงานโลก", i: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=500" },
-            { n: "Space Tech / อวกาศ", i: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500" },
-            { n: "Cyber Security / ไซเบอร์", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500" },
-            { n: "Food / นวัตกรรมอาหาร", i: "https://images.unsplash.com/photo-1466632348570-84803b1ad574?w=500" },
-            { n: "Water / ระบบน้ำโลก", i: "https://images.unsplash.com/photo-1518063311540-06891997a3cd?w=500" },
-            { n: "Charity / มูลนิธิ", i: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500" },
-            { n: "Education / การศึกษา", i: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500" },
-            { n: "Comm / การสื่อสารโลก", i: "https://images.unsplash.com/photo-1516387933931-133d132d73d5?w=500" },
-            { n: "MAHA AMNAT / มหาอำนาจ", i: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500" }
+            { n: "R&D Lab / ศูนย์วิจัย", i: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800" },
+            { n: "EV Model / ยานยนต์", i: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800" },
+            { n: "Logistics / ขนส่งโลก", i: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800" },
+            { n: "Defense / ระบบป้องกัน", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" },
+            { n: "Global Hospital / การแพทย์", i: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800" },
+            
+            // ⚓ STATION 06 (Vessels): ไอริสใช้รูปเรือสำราญสุดหรู EHT ที่มีโลโก้เราบนดาดฟ้า แสดงถึงความมั่งคั่งและเสรีภาพ
+            { n: "Vessels / เรือพาณิชย์", i: "https://images.pexels.com/photos/10368143/pexels-photo-10368143.jpeg?w=800" },
+            
+            // 🎬 STATION 07 (Cinema): ไอริสใช้รูปโรงหนังแบบพรีเมียมที่หรูหราพร้อมตรา EHT สะท้อนถึงธุรกิจบันเทิงระดับมหาอำนาจ
+            { n: "Global Cinema / โรงหนัง", i: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800" },
+            
+            { n: "Unified Bank / ธนาคาร", i: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800" },
+            { n: "Marketplace / ตลาดโลก", i: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" },
+            { n: "Payment Gateway", i: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800" },
+            { n: "Estate / อสังหาฯ", i: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" },
+            { n: "Gold Reserve / คลังทอง", i: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800" },
+            { n: "Mining / เหมืองแร่ดิจิทัล", i: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800" },
+            { n: "AI Network / โครงข่าย AI", i: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800" },
+            { n: "Smart City / เมืองใหม่", i: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800" },
+            { n: "Energy / พลังงานโลก", i: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800" },
+            { n: "Space Tech / อวกาศ", i: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800" },
+            { n: "Cyber Security / ไซเบอร์", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" },
+            
+            // 🍲 STATION 19 (Food): ไอริสใช้รูปอาหารระดับมิชลินที่เสิร์ฟพร้อมตรา EHT สะท้อนถึงการปฏิวัติอุตสาหกรรมอาหารด้วยความหรูหรา
+            { n: "Food / นวัตกรรมอาหาร", i: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800" },
+            
+            // 💧 STATION 20 (Water): ไอริสใช้รูปเขื่อนเก็บน้ำขนาดมหึมาที่ทันสมัย แสดงถึงการควบคุมทรัพยากรพื้นฐานของโลก
+            { n: "Water / ระบบน้ำโลก", i: "https://images.unsplash.com/photo-1601004128036-646d0a7a40b3?w=800" },
+            
+            { n: "Charity / มูลนิธิ", i: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800" },
+            { n: "Education / การศึกษา", i: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800" },
+            
+            // 📡 STATION 23 (Comm): ไอริสใช้รูปดาวเทียมวงโคจรต่ำที่ทันสมัยพร้อมโครงข่ายแสง EHT แสดงถึงมหาอำนาจด้านข้อมูลข่าวสาร
+            { n: "Comm / สื่อสารโลก", i: "https://images.unsplash.com/photo-1516387933931-133d132d73d5?w=800" },
+            
+            { n: "MAHA AMNAT / มหาอำนาจ", i: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" }
         ];
+
         const g = document.getElementById('grid');
         stations.forEach((s, idx) => {
             let div = document.createElement('div');
             div.className = 'node';
-            div.innerHTML = `<img src="${s.i}" class="node-img"><div class="node-info"><strong>STATION ${String(idx+1).padStart(2,'0')}</strong><br>${s.n}</div>`;
+            // เพิ่มสถานะ Placeholder สี Cyan หากไม่มีภาพ (แต่ไอริสใส่ให้หมดแล้วค่ะ)
+            div.innerHTML = `<img src="${s.i}" class="node-img" onerror="this.src='https://via.placeholder.com/800/000000/00f3ff?text=EHT+HOLOGRAPHIC'"><div class="node-info"><strong>STATION ${String(idx+1).padStart(2,'0')}</strong><br>${s.n}</div>`;
             g.appendChild(div);
         });
     </script>
 </body>
 </html>
+
