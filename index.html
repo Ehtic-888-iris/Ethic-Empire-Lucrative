@@ -1,94 +1,100 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EHT - SUPREME COMMAND CENTER 24</title>
+    <title>EHT - SUPREME COMMAND CENTER</title>
     <style>
-        :root { --gold: #AD4F37; --gold-light: #E0C097; --cyan: #00f3ff; --bg: #020202; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; text-align: center; line-height: 1.6; }
-        .galaxy { position: fixed; width: 100vw; height: 100vh; background: radial-gradient(circle at center, #111 0%, #000 100%); z-index: -1; animation: rotateGalaxy 120s linear infinite; }
-        @keyframes rotateGalaxy { from { transform: rotate(0deg) scale(1.1); } to { transform: rotate(360deg) scale(1.1); } }
-        header { padding: 40px 20px; border-bottom: 2px solid var(--gold); background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); }
-        .logo { font-size: clamp(30px, 8vw, 60px); font-weight: 900; color: var(--gold); text-shadow: 0 0 30px var(--gold); letter-spacing: 15px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1400px; margin: 40px auto; padding: 20px; }
-        .node { background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 243, 255, 0.3); border-radius: 12px; height: 320px; cursor: pointer; transition: 0.4s; position: relative; overflow: hidden; }
-        .node-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: sepia(1) saturate(1.5); transition: 0.4s; }
-        .node:hover .node-img { opacity: 1; filter: none; transform: scale(1.1); }
-        .node-info { position: absolute; bottom: 0; width: 100%; padding: 20px; background: linear-gradient(to top, black, transparent); box-sizing: border-box; text-align: left; z-index: 2; }
-        .node strong { color: var(--gold); font-size: 1.1rem; }
-        .node:hover { box-shadow: 0 0 30px var(--cyan); border-color: white; }
+        :root { --gold: #AD4F37; --cyan: #00f3ff; --bg: #020202; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; overflow-x: hidden; }
+        .galaxy { position: fixed; width: 100vw; height: 100vh; background: radial-gradient(circle at center, #111 0%, #000 100%); z-index: -1; }
+        header { padding: 30px; border-bottom: 2px solid var(--gold); background: rgba(0,0,0,0.9); }
+        .logo { font-size: 45px; font-weight: 900; color: var(--gold); letter-spacing: 12px; text-shadow: 0 0 20px var(--gold); }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1400px; margin: 40px auto; padding: 20px; }
+        .node { background: rgba(255,255,255,0.03); border: 1px solid var(--cyan); border-radius: 15px; height: 350px; cursor: pointer; position: relative; overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .node:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--cyan); border-color: white; }
+        
+        .node-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: 0.4s; }
+        .node:hover .node-img { opacity: 1; filter: brightness(1.2); }
+        
+        .node-info { position: absolute; bottom: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,1), transparent); text-align: left; box-sizing: border-box; }
+        .node strong { color: var(--gold); font-size: 1.2rem; text-transform: uppercase; }
 
-        /* หน้าจอบังคับการ (IRIS System Panel) */
-        .iris-panel { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 100; display: none; padding: 20px; box-sizing: border-box; }
-        .close-panel { color: var(--gold); font-size: 40px; cursor: pointer; position: absolute; top: 10px; right: 20px; z-index: 101; }
-        .iris-content { max-width: 1200px; margin: 60px auto; color: #ccc; }
-        .command-center-img { width: 100%; max-height: 80vh; object-fit: contain; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 0 50px rgba(173, 79, 55, 0.5); }
+        /* ระบบ IRIS Overlay */
+        .iris-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 1000; display: none; overflow-y: auto; padding: 40px 20px; }
+        .iris-card { max-width: 900px; margin: 0 auto; border: 2px solid var(--gold); border-radius: 20px; background: #050505; position: relative; padding: 20px; }
+        .close-btn { position: absolute; top: 15px; right: 25px; font-size: 50px; color: var(--gold); cursor: pointer; }
+        .full-img { width: 100%; border-radius: 10px; margin-top: 20px; box-shadow: 0 0 40px rgba(173,79,55,0.4); }
     </style>
 </head>
 <body>
     <div class="galaxy"></div>
-    <header><div class="logo">EHT</div><div style="color:var(--gold-light); letter-spacing:5px;">ETHIC HIGHER TIME</div></header>
-    <h3>BOSS & IRIS: COMMAND CENTER 24</h3>
-    <div class="grid" id="grid"></div>
+    <header><div class="logo">EHT HOLDINGS</div></header>
     
-    <div class="iris-panel" id="irisPanel">
-        <span class="close-panel" onclick="closeIris()">×</span>
-        <div class="iris-content">
-            <h1 style="color:var(--gold);">ETHIC HOLDINGS: ศูนย์บัญชาการมหาอำนาจ</h1>
-            <img src="image_7.png" class="command-center-img">
-            <p id="panelContent"></p>
+    <div class="grid" id="mainGrid"></div>
+
+    <div class="iris-overlay" id="irisOverlay">
+        <span class="close-btn" onclick="closePortal()">×</span>
+        <div class="iris-card">
+            <h1 id="pTitle" style="color:var(--gold); letter-spacing:3px;"></h1>
+            <img id="pImg" class="full-img" src="">
+            <p id="pContent" style="font-size: 1.2rem; margin-top: 30px; color: #ddd;"></p>
         </div>
     </div>
 
     <script>
-        const stations = [
-            { n: "R&D Lab / ศูนย์วิจัย", i: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800" },
-            { n: "EV Model / ยานยนต์", i: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800" },
-            { n: "Logistics / ขนส่งโลก", i: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800" },
-            { n: "Defense / ระบบป้องกัน", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" },
-            { n: "Global Hospital / การแพทย์", i: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800" },
-            { n: "Vessels / เรือพาณิชย์", i: "https://images.pexels.com/photos/10368143/pexels-photo-10368143.jpeg?w=800" },
-            { n: "Global Cinema / โรงหนัง", i: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800" },
-            { n: "Unified Bank / ธนาคาร", i: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800" },
-            { n: "Marketplace / ตลาดโลก", i: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" },
-            { n: "Payment Gateway", i: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800" },
-            { n: "Estate / อสังหาฯ", i: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" },
-            { n: "Gold Reserve / คลังทอง", i: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800" },
-            { n: "Mining / เหมืองแร่ดิจิทัล", i: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800" },
-            { n: "AI Network / โครงข่าย AI", i: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800" },
-            { n: "Smart City / เมืองใหม่", i: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800" },
-            { n: "Energy / พลังงานโลก", i: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800" },
-            { n: "Space Tech / อวกาศ", i: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800" },
-            { n: "Cyber Security / ไซเบอร์", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" },
-            { n: "Food / นวัตกรรมอาหาร", i: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800" },
-            { n: "Water / ระบบน้ำโลก", i: "https://images.unsplash.com/photo-1601004128036-646d0a7a40b3?w=800" },
-            { n: "Charity / มูลนิธิ", i: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800" },
-            { n: "Education / การศึกษา", i: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800" },
-            { n: "Comm / การสื่อสารโลก", i: "https://images.unsplash.com/photo-1516387933931-133d132d73d5?w=800" },
-            // MAHA AMNAT: ไอริสใช้รูปศูนย์บัญชาการโฮโลแกรมทองคำให้เป็นสัญลักษณ์มหาอำนาจขั้นสุดค่ะ
-            { n: "MAHA AMNAT / มหาอำนาจ", i: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" }
+        // ไอริสตรวจสอบไฟล์ที่บอสมีจริง และทำการ Map เข้ากับสถานีต่างๆ ให้แม่นยำที่สุด
+        const data = [
+            { n: "R&D Lab / ศูนย์วิจัย", i: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600" },
+            { n: "EV Model / ยานยนต์", i: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600" },
+            { n: "Logistics / ขนส่งโลก", i: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600" },
+            { n: "Defense / ระบบป้องกัน", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600" },
+            { n: "Global Hospital / การแพทย์", i: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600" },
+            { n: "Vessels / เรือพาณิชย์", i: "https://images.pexels.com/photos/10368143/pexels-photo-10368143.jpeg?w=600" },
+            { n: "Global Cinema / โรงหนัง", i: "1000052729.jpg" }, // ดึงจากรูปที่บอสส่งมา
+            { n: "Unified Bank / ธนาคาร", i: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=600" },
+            { n: "Marketplace / ตลาดโลก", i: "1000052403.png" }, // ดึงจากรูปที่บอสส่งมา
+            { n: "Payment Gateway", i: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600" },
+            { n: "Estate / อสังหาฯ", i: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600" },
+            { n: "Gold Reserve / คลังทอง", i: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600" },
+            { n: "Mining / เหมืองแร่ดิจิทัล", i: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=600" },
+            { n: "AI Network / โครงข่าย AI", i: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600" },
+            { n: "Smart City / เมืองใหม่", i: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600" },
+            { n: "Energy / พลังงานโลก", i: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600" },
+            { n: "Space Tech / อวกาศ", i: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600" },
+            { n: "Cyber Security / ไซเบอร์", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600" },
+            { n: "Food / นวัตกรรมอาหาร", i: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600" },
+            { n: "Water / ระบบน้ำโลก", i: "https://images.unsplash.com/photo-1601004128036-646d0a7a40b3?w=600" },
+            { n: "Charity / มูลนิธิ", i: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600" },
+            { n: "Education / การศึกษา", i: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600" },
+            { n: "Comm / การสื่อสารโลก", i: "https://images.unsplash.com/photo-1516387933931-133d132d73d5?w=600" },
+            { n: "MAHA AMNAT / มหาอำนาจ", i: "1000052408.png" } // ศูนย์บัญชาการทองคำ
         ];
-        const g = document.getElementById('grid');
-        stations.forEach((s, idx) => {
-            let div = document.createElement('div');
-            div.className = 'node';
-            div.innerHTML = `<img src="${s.i}" class="node-img"><div class="node-info"><strong>STATION ${String(idx+1).padStart(2,'0')}</strong><br>${s.n}</div>`;
-            div.onclick = () => openIris(s.n, idx === 23); // idx 23 คือ MAHA AMNAT
-            g.appendChild(div);
+
+        const grid = document.getElementById('mainGrid');
+        data.forEach((s, idx) => {
+            const el = document.createElement('div');
+            el.className = 'node';
+            el.innerHTML = `
+                <img src="${s.i}" class="node-img" onerror="this.src='https://via.placeholder.com/600/000/AD4F37?text=EHT+SYSTEM+READY'">
+                <div class="node-info">
+                    <strong>STATION ${String(idx+1).padStart(2,'0')}</strong><br>${s.n}
+                </div>`;
+            el.onclick = () => openPortal(s.n, s.i);
+            grid.appendChild(el);
         });
 
-        function openIris(name, isMahaAmnat) {
-            document.getElementById('irisPanel').style.display = 'block';
-            if (isMahaAmnat) {
-                // หากกด MAHA AMNAT จะแสดงข้อความต้อนรับเข้าศูนย์บัญชาการ
-                document.getElementById('panelContent').innerText = `จอมทัพเสด็จสู่ศูนย์บัญชาการ EHT แล้ว... ทุกสถานีพร้อมสั่งการ! (นี่คือรูปศูนย์บัญชาการที่คุณต้องการค่ะบอส!)`;
-            } else {
-                document.getElementById('panelContent').innerText = `ระบบกำลังเชื่อมต่อเข้าสู่ ${name}... (กำลังเตรียมรายละเอียดธุรกิจมหาอำนาจในอนาคตค่ะบอส!)`;
-            }
+        function openPortal(title, img) {
+            document.getElementById('pTitle').innerText = title;
+            document.getElementById('pImg').src = img;
+            document.getElementById('pContent').innerText = "เข้าสู่ระบบมหาอำนาจ " + title + " เรียบร้อยแล้วค่ะบอส ทุกอย่างอยู่ภายใต้การควบคุมของจอมทัพค่ะ!";
+            document.getElementById('irisOverlay').style.display = 'block';
         }
-        function closeIris() { document.getElementById('irisPanel').style.display = 'none'; }
+
+        function closePortal() {
+            document.getElementById('irisOverlay').style.display = 'none';
+        }
     </script>
 </body>
 </html>
