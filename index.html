@@ -1,3 +1,17 @@
+<audio id="teacherSong" loop>
+    <source src="ชื่อไฟล์เพลงของบอส.mp3" type="audio/mpeg">
+</audio>
+<div id="play-btn" onclick="playMusic()" style="position:fixed; bottom:20px; right:20px; background:var(--gold); color:black; padding:15px; border-radius:50%; cursor:pointer; z-index:10001; box-shadow:0 0 20px var(--gold); font-weight:bold;">🎵</div>
+
+<script>
+function playMusic() {
+    var song = document.getElementById("teacherSong");
+    if (song.paused) { song.play(); document.getElementById('play-btn').innerHTML = "⏸"; }
+    else { song.pause(); document.getElementById('play-btn').innerHTML = "🎵"; }
+}
+</script>
+
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
