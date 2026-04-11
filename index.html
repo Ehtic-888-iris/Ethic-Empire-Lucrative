@@ -1,279 +1,387 @@
-Boss.I I:
-<!DOCTYPE html>
+Boss.I <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seven Gateway - ETHIC WEB</title>
+    <title>ETHIC HOLDINGS THAI - THE GLOBAL HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* ธีมสีดำ-ทอง หรูหราและทรงพลัง */
+        :root {
+            --gold: #d4af37;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+        }
+
         body {
             margin: 0;
             padding: 0;
             font-family: 'Kanit', sans-serif;
-            background-color: #000;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .app-container {
-            width: 100%;
-            max-width: 450px;
-            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
-            border-left: 1px solid #d4af37;
-            border-right: 1px solid #d4af37;
-            padding: 20px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            background-color: var(--black);
+            color: #ffffff;
         }
 
         header {
+            background-color: #000;
+            padding: 30px 20px;
             text-align: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #333;
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .logo {
-            font-size: 24px;
+        .company-name {
+            color: var(--gold);
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: bold;
-            color: #d4af37;
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* ส่วนแสดงยอดเงิน (Wallet) */
-        .wallet-card {
-            background: linear-gradient(135deg, #d4af37, #aa8a2e);
-            border-radius: 20px;
+        /* Wallet Section */
+        .wallet-bar {
+            background: linear-gradient(90deg, #111, #222);
+            padding: 15px;
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .wallet-mini-card {
+            background: var(--dark-gray);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 10px 20px;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .wallet-mini-card .label { font-size: 10px; color: var(--gold); display: block; }
+        .wallet-mini-card .val { font-size: 14px; font-weight: bold; }
+
+        /* Navigation Grid System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .grid-title {
+            border-left: 5px solid var(--gold);
+            padding-left: 15px;
+            margin: 40px 0 20px;
+            font-size: 22px;
+            color: var(--gold);
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .nav-card {
+            background: var(--dark-gray);
+            border: 1px solid #333;
+            border-radius: 15px;
             padding: 25px;
-            margin: 20px 0;
-            color: #000;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
-        .wallet-card h3 { margin: 0; font-size: 14px; opacity: 0.8; }
-        .balance { font-size: 32px; font-weight: bold; margin: 10px 0; }
-
-        /* ส่วนปุ่ม Gateway */
-        .gateway-actions {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
+        .nav-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
         }
 
-        .action-btn {
-            background: #222;
-            border: 1px solid #444;
-            padding: 15px;
-            border-radius: 12px;
-            color: #fff;
+        .nav-card i {
+            font-size: 45px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .nav-card h4 {
+            margin: 10px 0;
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        .nav-card p {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
             text-align: center;
+            padding: 60px 20px;
+            color: #555;
+            background: #000;
+            margin-top: 50px;
+        }
+
+        /* Alice Navigator Floating */
+        .alice-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            z-index: 2000;
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        .action-btn:active { transform: scale(0.95); background: #d4af37; color: #000; }
-        .action-btn i { display: block; font-size: 20px; margin-bottom: 5px; }
-
-        /* ส่วนหมวดหมู่โครงการ */
-        .project-section {
-            margin-top: 20px;
-        }
-
-        .project-item {
-            display: flex;
-            align-items: center;
-            background: #111;
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #d4af37;
-        }
-
-        .project-info { margin-left: 15px; }
-        .project-info h4 { margin: 0; color: #d4af37; }
-        .project-info p { margin: 5px 0 0; font-size: 12px; color: #888; }
-
-        .exchange-status {
-            font-size: 12px;
-            color: #d4af37;
-            text-align: center;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
 
-<div class="app-container">
-    <header>
-        <div class="logo">SEVEN GATEWAY</div>
-        <div style="font-size: 10px; color: #888;">ETHIC WEB SYSTEM v1.0</div>
-    </header>
+<header>
+    <div class="company-name">ETHIC HOLDINGS THAI CO., LTD.</div>
+    <div style="color: #888; font-size: 14px; margin-top: 10px;">Universal Gateway: ศูนย์รวมนวัตกรรมและโครงสร้างพื้นฐานโลก</div>
+</header>
 
-    <div class="wallet-card">
-        <h3>ยอดเงินรวม (Digital Currency)</h3>
-        <div class="balance">฿ 1,500,000.00</div>
-        <div style="font-size: 12px; font-weight: bold;">0.4523 BTC / 10,250 USDT</div>
+<div class="wallet-bar">
+    <div class="wallet-mini-card"><span class="label">GLOBAL USD</span><span class="val">$ 10,500</span></div>
+    <div class="wallet-mini-card" style="background: rgba(212, 175, 55, 0.1);"><span class="label">OWNER THB</span><span class="val">฿ 3,500,000</span></div>
+    <div class="wallet-mini-card"><span class="label">BTC</span><span class="val">0.523</span></div>
+    <div class="wallet-mini-card"><span class="label">ETH</span><span class="val">12.45</span></div>
+    <div class="wallet-mini-card"><span class="label">GOLD</span><span class="val">25g</span></div>
+</div>
+
+<div class="container">
+    
+    <div class="grid-title">อุตสาหกรรม พลังงาน และนวัตกรรมโลก</div>
+    <div class="nav-grid">
+        <div class="nav-card"><i>🏭</i><h4>นิคมอุตสาหกรรม</h4><p>จุดเชื่อมโยงฐานผลิตและเขตเศรษฐกิจอนาคต</p></div>
+        <div class="nav-card"><i>☀️</i><h4>พลังงานสะอาด</h4><p>โซล่าเซลล์ พลังงานไฮโดรเจน และฟิวชัน</p></div>
+        <div class="nav-card"><i>🔬</i><h4>ศูนย์เทคโนโลยี</h4><p>วิจัยนวัตกรรมเปลี่ยนโลกและเทคโนโลยีล้ำสมัย</p></div>
+        <div class="nav-card"><i>⚙️</i><h4>โรงงานอะไหล่โลก</h4><p>จุดเชื่อมโรงงานผลิตอะไหล่ทุกชนิดทั่วโลก</p></div>
     </div>
 
-    <div class="exchange-status">ปลายนิ้วกดคลิก..เพื่อเปลี่ยนสกุลเงินทันที</div>
-
-    <div class="gateway-actions">
-        <div class="action-btn" onclick="alert('กำลังเปลี่ยน Crypto เป็นเงินบาท...')">
-            🔄 แลกเปลี่ยนเงิน
-        </div>
-        <div class="action-btn" onclick="alert('ระบบชำระเงิน P2P พร้อมทำงาน')">
-            💸 ชำระเงิน P2P
-        </div>
+    <div class="grid-title">ยานยนต์ ยุทโธปกรณ์ และอากาศยาน</div>
+    <div class="nav-grid">
+        <div class="nav-card"><i>🚗</i><h4>นวัตกรรมยานยนต์</h4><p>ตั้งแต่จักรยานยนต์ไฟฟ้าจนถึงรถยนต์ไร้คนขับ</p></div>
+        <div class="nav-card"><i>✈️</i><h4>อากาศยาน</h4><p>เชื่อมโยงโรงงานเครื่องบินและอากาศยานส่วนบุคคล</p></div>
+        <div class="nav-card"><i>🛡️</i><h4>ยุทโธปกรณ์</h4><p>เทคโนโลยีป้องกันประเทศและอุปกรณ์ความมั่นคง</p></div>
+        <div class="nav-card"><i>🚢</i><h4>พาณิชย์นาวี</h4><p>โรงงานต่อเรือและเรือสำราญขนาดใหญ่</p></div>
     </div>
 
-    <div class="project-section">
-        <h3 style="color: #d4af37; font-size: 16px;">โครงการในเครือข่าย</h3>
+    <div class="grid-title">Logistics & Global Ticket Center</div>
+    <div class="nav-grid">
+        <div class="nav-card"><i>🎫</i><h4>ศูนย์จำหน่ายตั๋วสากล</h4><p>ขายตั๋วทุกชนิดในโลก บก เรือ อากาศ จบที่เดียว</p></div>
+        <div class="nav-card"><i>🚚</i><h4>ขนส่งมวลชนโลก</h4><p>เครือข่ายโลจิสติกส์และระบบขนส่งมวลชนสากล</p></div>
+        <div class="nav-card"><i>🎬</i><h4>โรงหนังทั่วโลก</h4><p>รวบรวมโรงภาพยนตร์และระบบจองตั๋วหนังทั่วโลก</p></div>
+        <div class="nav-card"><i>🎰</i><h4>สวรรค์นักเสี่ยงโชค</h4><p>รวมศูนย์บันเทิงและคาสิโนระดับโลกเพื่อความสะดวก</p></div>
+    </div>
+
+    <div class="grid-title">สาธารณสุข การเงิน และการชำระบิล</div>
+    <div class="nav-grid">
+        <div class="nav-card"><i>🏥</i><h4>โรงพยาบาลสากล</h4><p>เชื่อมต่อบริการทางการแพทย์ระดับโลกทุกแห่ง</p></div>
+        <div class="nav-card"><i>🏦</i><h4>ธนาคารโลก</h4><p>ศูนย์รวมธนาคารจากทุกทวีปมาไว้ในหน้าเดียว</p></div>
+        <div class="nav-card"><i>💸</i><h4>บิลจ่ายสากล</h4><p>จ่ายค่าน้ำ ไฟ ประกัน บัตรเครดิต ได้จากทั่วโลก</p></div>
+        <div class="nav-card"><i>🌌</i><h4>Digital Galaxy</h4><p>รวมทุกสกุลเงินดิจิทัลและสินทรัพย์จักรวาลดิจิทัล</p></div>
+    </div>
+class=" onclick<footer>
+    <p>&copy; 2026 ETHIC HOLDINGS THAI CO., LTD. | ทุกการเชื่อมต่อคือจินตนาการที่เป็นจริง</p>
+</footer>
+ class="wallet-item" style="border-color: #26a17b;"> <i style="color: #26a17b;">₮</i>
+    <span class="label">USDT (Digital Dollar)</span>
+    <div class="val">10,500.00</div>
+</div>
+
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHIC HOLDINGS THAI - THE UNIVERSAL GATEWAY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --black: #0a0a0a; --usdt: #26a17b; }
+        body { margin: 0; font-family: 'Kanit', sans-serif; background: var(--black); color: #fff; }
+        
+        /* Header & Logo */
+        header { text-align: center; padding: 40px 20px; border-bottom: 2px solid var(--gold); background: #000; }
+        .logo-shield { font-size: 80px; margin-bottom: 10px; color: var(--gold); text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+        .company-name { font-size: 28px; font-weight: bold; color: var(--gold); letter-spacing: 2px; }
+
+        /* Wallet System 7 ช่อง (โครงสร้างเดิมที่รักษาไว้) */
+        .section-title { padding-left: 20px; margin: 30px 0 15px; color: var(--gold); border-left: 4px solid var(--gold); font-size: 20px; }
+        .wallet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; padding: 0 20px; }
+        .wallet-item { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px; text-align: center; transition: 0.3s; }
+        .wallet-item:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .owner-wallet { border: 2px solid var(--gold); background: rgba(212,175,55,0.05); }
+        .usdt-wallet { border-color: var(--usdt); }
+
+        /* Marketplace */
+        .marketplace-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
+        .market-card { background: #fff; color: #000; border-radius: 15px; padding: 15px; text-align: center; font-weight: bold; }
+
+        /* 24 Universal Channels (จัดหมวดหมู่ใหม่) */
+        .gateway-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 20px; }
+        .gateway-card { background: var(--gold); color: #000; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .gateway-card:hover { filter: brightness(1.2); transform: scale(1.05); }
+        .gateway-card i { font-size: 30px; display: block; margin-bottom: 8px; }
+        .gateway-card h4 { margin: 5px 0; font-size: 16px; }
+        .gateway-card p { font-size: 11px; margin: 0; opacity: 0.8; }
+
+        /* Floating Alice Guide */
+        .alice-guide { position: fixed; bottom: 20px; right: 20px; background: var(--gold); color: #000; padding: 15px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.5); cursor: pointer; z-index: 999; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-shield">🛡️</div>
+    <div class="company-name">ETHIC HOLDINGS THAI CO., LTD.</div>
+    <p style="color: #888;">Universal Gateway: เชื่อมธุรกิจและนวัตกรรมสากล</p>
+</header>
+
+<div class="section-title">Wallet ของคุณ</div>
+<div class="wallet-grid">
+    <div class="wallet-item"><i>₿</i><br>BTC<br><b>0.523</b></div>
+    <div class="wallet-item"><i>Ξ</i><br>ETH<br><b>12.45</b></div>
+    <div class="wallet-item usdt-wallet"><i style="color:var(--usdt)">₮</i><br>USDT<br><b>10,500</b></div>
+    <div class="wallet-item"><i>🏆</i><br>ทองคำ<br><b>25g</b></div>
+    <div class="wallet-item"><i>$</i><br>USD Account<br><b>$500,000</b></div>
+    <div class="wallet-item owner-wallet"><i>👑</i><br>THB (เจ้าของ)<br><b>฿ 3,500,000</b></div>
+    <div class="wallet-item"><i>🌌</i><br>Digital Galaxy<br><b>Active</b></div>
+</div>
+
+<div class="section-title">Marketplace</div>
+<div class="marketplace-container">
+    <div class="market-card">บ้านเดี่ยว / หมู่บ้านจัดสรร</div>
+    <div class="market-card">โครงการ / ซื้อทั้งหมู่บ้าน</div>
+</div>
 
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seven Gateway - ETHIC WEB Navigation</title>
+    <title>ETHIC HOLDINGS THAI - MASTER GATEWAY</title>
     <style>
-        /* ธีมหลัก: ดำ-ทอง หรูหรา ทรงพลัง และดูเป็นมืออาชีพ */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Kanit', sans-serif; /* ใช้ฟอนต์อ่านง่ายสไตล์แอป */
-            background-color: #000;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
+        body { background: #000; color: gold; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        .logo-box { border: 2px solid gold; padding: 20px; display: inline-block; margin-bottom: 30px; border-radius: 20px; box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+        .wallet-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0; }
+        .wallet-card { background: #111; border: 1px solid #444; border-radius: 10px; padding: 15px; }
+        .owner-card { border: 2px solid gold; background: linear-gradient(145deg, #1a1a1a, #000); }
+        .usdt-text { color: #26a17b; font-weight: bold; }
+        .gateway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 40px; }
+        .channel-box { background: gold; color: #000; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 0.9em; }
+        .market-section { display: flex; justify-content: space-around; margin: 30px 0; }
+        .market-item { background: #fff; color: #000; padding: 20px; border-radius: 15px; width: 45%; }
+    </style>
+</head>
+<body>
 
-        /* จำลองหน้าจอสมาร์ทโฟน */
-        .app-container {
-            width: 100%;
-            max-width: 480px; /* ขนาดหน้าจอมือถือขนาดใหญ่ */
-            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
-            border: 2px solid #d4af37; /* ขอบทองรอบตัวแอป */
-            border-radius: 30px; /* มุมโค้งเหมือนมือถือ */
-            padding: 20px;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
-            overflow: hidden; /* กันเนื้อหาล้น */
-            position: relative;
-        }
+<div class="logo-box">
+    <h1>🛡️ EHT</h1>
+    <h2>ETHIC HOLDINGS THAI CO., LTD.</h2>
+    <p>UNIVERSAL GATEWAY & GLOBAL INNOVATION HUB</p>
+</div>
 
-        /* ส่วนหัวแอป (Header) */
-        header {
-            text-align: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #333;
-            margin-bottom: 20px;
-        }
+<h3>Wallet ของคุณ (โครงสร้างหลัก)</h3>
+<div class="wallet-section">
+    <div class="wallet-card">BTC<br>0.523</div>
+    <div class="wallet-card">ETH<br>12.45</div>
+    <div class="wallet-card">USD Global<br>$10,500</div>
+    <div class="wallet-card">ทองคำ<br>25g</div>
+    <div class="wallet-card">USD Account<br>$500,000</div>
+    <div class="wallet-card usdt-text">USDT Digital Ecology<br>Active</div>
+    <div class="wallet-card owner-card">👑 THB (เจ้าของ)<br>฿ 3,500,000</div>
+</div>
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #d4af37;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+<div class="market-section">
+    <div class="market-item">บ้านเดี่ยว / หมู่บ้านจัดสรร</div>
+    <div class="market-item">โครงการ / ซื้อยกหมู่บ้าน</div>
+</div>
 
-        .subtitle {
-            font-size: 12px;
-            color: #888;
-            margin-top: 5px;
-        }
+<h3>ประตูสู่นวัตกรรมสากล (24 Channels)</h3>
+<div class="gateway-grid">
+    <div class="channel-box">⚙️ โรงงานอะไหล่สากล</div>
+    <div class="channel-box">🏭 นิคมอุตสาหกรรม</div>
+    <div class="channel-box">☀️ พลังงานสะอาด</div>
+    <div class="channel-box">🎫 ศูนย์จำหน่ายตั๋วสากล</div>
+    <div class="channel-box">✈️ อากาศยาน/โดรน</div>
+    <div class="channel-box">🚢 โรงงานต่อเรือโลก</div>
+    <div class="channel-box">🏥 โรงพยาบาลสากล</div>
+    <div class="channel-box">🏦 ธนาคารรวม</div>
+    <div class="channel-box" style="background:white">💳 ศูนย์จ่ายบิลสากล</div>
+    <div class="channel-box">🎰 ศูนย์นักเสี่ยงโชค</div>
+    <div class="channel-box">🎬 โรงหนังโลก</div>
+    <div class="channel-box">🛡️ ยุทโธปกรณ์</div>
+    </div>
 
-        /* ส่วน อลิซนำทาง (A.I. Assistant) */
-        .ai-assistant {
-            background-color: rgba(212, 175, 55, 0.1);
-            border: 1px solid #d4af37;
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-        }
+<p style="margin-top:50px; opacity:0.5;">อลิซ (ไอริส) เลขาส่วนตัว - พร้อมรับใช้บอสเสมอ</p>
 
-        .ai-icon {
-            font-size: 40px;
-            margin-right: 15px;
-            color: #d4af37;
-        }
+</body>
+</html>
 
-        .ai-message {
-            font-size: 14px;
-            color: #ccc;
-            line-height: 1.5;
-        }
+<div class="gateway-card" style="border: 1px solid gold;">
+    <i style="font-size: 40px;">🎬</i>
+    <h4>โรงหนังโลก (Global Cinemas)</h4>
+    <p>จองตั๋วภาพยนตร์/รอบฉายทั่วโลก</p>
+    <button onclick="startBooking()" style="background: gold; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">เข้าสู่ระบบจอง</button>
+</div>
 
-        /* ส่วนยอดเงินหลัก (Main Wallet) */
-        .main-wallet {
-            background: linear-gradient(135deg, #d4af37, #aa8a2e);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 30px;
-            color: #000;
-            text-align: center;
-        }
+<script>
+function startBooking() {
+    alert("ระบบจองตั๋วหนังโลกกำลังเชื่อมต่อกับ USDT Gateway ของบอสค่ะ...");
+}
+</script>
 
-        .main-wallet h3 { margin: 0; font-size: 16px; opacity: 0.9; text-transform: uppercase; }
-        .main-balance { font-size: 36px; font-weight: bold; margin: 10px 0; }
-        .main-crypto { font-size: 14px; font-weight: bold; opacity: 0.8; }
+<style>
+    /* สไตล์เพิ่มเติมสำหรับระบบตั๋ว */
+    .cinema-card { 
+        background: linear-gradient(145deg, #222, #000); 
+        border: 1px solid var(--gold); 
+        transition: 0.4s;
+    }
+    .cinema-card:hover { 
+        box-shadow: 0 0 15px var(--gold); 
+    }
+    .btn-book {
+        background: var(--gold);
+        color: #000;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+</style>
 
-        /* ส่วนปุ่ม Gateway หลัก */
-        .gateway-conversion {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+<div class="gateway-grid">
+    <div class="gateway-card cinema-card">
+        <i>🎬</i>
+        <h4>โรงหนังโลก (Global Cinemas)</h4>
+        <p>จองตั๋วภาพยนตร์สากล</p>
+        <button class="btn-book" onclick="openCinema()">จองเลย (USDT/THB)</button>
+    </div>
 
-        .convert-btn {
-            background-color: #d4af37;
-            color: #000;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-        }
+    <div class="gateway-card" style="background:#fff; color:#000;">
+        <i>💳</i>
+        <h4>ศูนย์จ่ายบิลสากล</h4>
+        <p>ค่าน้ำ / ค่าไฟ / ประกัน</p>
+    </div>
+</div>
 
-        .convert-btn:active { transform: scale(0.95); background-color: #fff; }
-
-        /* ส่วนระบบนำทางหมวดหมู่ (Navigation Grid) */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* แบ่งเป็น 2 คอลัมน์ */
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        /* สไตล์ของแต่ละช่องนำทาง (Nav Item) */
-        .nav-item {
-            background-color: #111;
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-.nav-item:hover {
-            border-color: #d4af37;
-            background-color: #1a1a1a;
-            transform: translateY(-5px);
-        }
-
-        .nav-item:active { transform: scale(0.95); }
+<script>
+function openCinema() {
+    let confirmBooking = confirm("คุณต้องการเข้าสู่ระบบ Global Cinemas เพื่อจองตั๋วด้วย USDT หรือไม่?");
+    if(confirmBooking) {
+        alert("กำลังเชื่อมต่อระบบจองตั๋วหนังเข้ากับ USDT Wallet ของบอส... กรุณารอสักครู่");
+    }
+}
+</script>
 
         /* สไตล์ไอคอนโลโก้ในแต่ละช่อง */
         .nav-icon {
@@ -365,27 +473,317 @@ Boss.I I:
 </body>
 </html>
 
-<div class="wallet-container">
-    <div class="wallet-item">
-        <div class="coin-icon">₿</div>
-        <div class="coin-name">BTC</div>
-        <div class="coin-value">0.523</div>
+<div class="nav-grid">
+    
+    <div class="nav-item">
+        <div class="nav-icon">🔋</div>
+        <div class="nav-title">พลังงาน & นิคม</div>
+        <div class="nav-desc">โซล่าเซลล์, พลังงานสะอาด และศูนย์เทคโนโลยีอนาคต</div>
     </div>
-    <div class="wallet-item">
-        <div class="coin-icon">Ξ</div>
-        <div class="coin-name">ETH</div>
-        <div class="coin-value">12.45</div>
+
+    <div class="nav-item">
+        <div class="nav-icon">⚙️</div>
+        <div class="nav-title">อะไหล่ & โรงงานโลก</div>
+        <div class="nav-desc">เชื่อมต่อโรงงานผลิตอะไหล่ทุกชนิดทั่วโลก</div>
     </div>
-    <div class="wallet-item">
-        <div class="coin-icon">$</div>
-        <div class="coin-name">USD (Global)</div>
-        <div class="coin-value">10,500</div>
+
+    <div class="nav-item">
+        <div class="nav-icon">✈️</div>
+        <div class="nav-title">Logistic & Tickets</div>
+        <div class="nav-desc">จำหน่ายตั๋วเรือ เครื่องบิน และการขนส่งทุกชนิด</div>
     </div>
-    <div class="wallet-item">
-        <div class="coin-icon">🏆</div>
-        <div class="coin-name">ทองคำ</div>
-        <div class="coin-value">25g</div>
+
+    <div class="nav-item">
+        <div class="nav-icon">🎬</div>
+        <div class="nav-title">Entertainment Hub</div>
+        <div class="nav-desc">รวมโรงหนังและแหล่งบันเทิงทั่วโลกไว้ที่เดียว</div>
     </div>
+
+    <div class="nav-item">
+        <div class="nav-icon">🏦</div>
+        <div class="nav-title">Global Bank & Hospital</div>
+        <div class="nav-desc">เชื่อมต่อธนาคารและโรงพยาบาลทุกแห่งในโลก</div>
+    </div>
+
+    <div class="nav-item" style="border-color: #00ff00;">
+        <div class="nav-icon">💳</div>
+        <div class="nav-title">Bill Payment Center</div>
+        <div class="nav-desc">จ่ายค่าน้ำ ไฟ ประกัน และบัตรเครดิตทั่วโลก</div>
+    </div>
+
+</div>
+
+<div class="wallet-bar">
+    <div class="wallet-mini-card"><span class="label">GLOBAL USD</span><span class="val">$ 10,500</span></div>
+    <div class="wallet-mini-card" style="background: rgba(212, 175, 55, 0.1);"><span class="label">OWNER THB</span><span class="val">฿ 3,500,000</span></div>
+    <div class="wallet-mini-card"><span class="label">BTC</span><span class="val">0.523</span></div>
+    <div class="wallet-mini-card"><span class="label">ETH</span><span class="val">12.45</span></div>
+    <div class="wallet-mini-card"><span class="label">GOLD</span><span class="val">25g</span></div>
+</div>
+
+<div class="container">
+    
+    <div class="grid-title">อุตสาหกรรม พลังงาน และนวัตกรรมโลก</div>
+    <div class="nav-grid">
+        <div class="nav-card"><i>🏭</i><h4>นิคมอุตสาหกรรม</h4><p>จุดเชื่อมโยงฐานผลิตและเขตเศรษฐกิจอนาคต</p></div>
+        <div class="nav-card"><i>☀️</i><h4>พลังงานสะอาด</h4><p>โซล่าเซลล์ พลังงานไฮโดรเจน และฟิวชัน</p></div>
+        <div class="nav-card"><i>🔬</i><h4>ศูนย์เทคโนโลยี</h4><p>วิจัยนวัตกรรมเปลี่ยนโลกและเทคโนโลยีล้ำสมัย</p></div>
+        <div class="nav-card"><i>⚙️</i><h4>โรงงานอะไหล่โลก</h4><p>จุดเชื่อมโรงงานผลิตอะไหล่ทุกชนิดทั่วโลก</p></div>
+    </div>
+
+    <div class="grid-title">ยานยนต์ ยุทโธปกรณ์ และอากาศยาน</div>
+    <div class="nav-grid">
+        <div class="nav-card"><i>🚗</i><h4>นวัตกรรมยานยนต์</h4><p>ตั้งแต่จักรยานยนต์ไฟฟ้าจนถึงรถยนต์ไร้คนขับ</p></div>
+        <div class="nav-card"><i>✈️</i><h4>อากาศยาน</h4><p>เชื่อมโยงโรงงานเครื่องบินและอากาศยานส่วนบุคคล</p></div>
+        <div class="nav-card"><i>🛡️</i><h4>ยุทโธปกรณ์</h4><p>เทคโนโลยีป้องกันประเทศและอุปกรณ์ความมั่นคง</p></div>
+        <div class="nav-card"><i>🚢</i><h4>พาณิชย์นาวี</h4><p>โรงงานต่อเรือและเรือสำราญขนาดใหญ่</p></div>
+    </div>
+
+    <div class="grid-title">Logistics & Global Ticket Center</div>
+    <div class="nav-grid">
+        <div class="nav-card"><i>🎫</i><h4>ศูนย์จำหน่ายตั๋วสากล</h4><p>ขายตั๋วทุกชนิดในโลก บก เรือ อากาศ จบที่เดียว</p></div>
+        <div class="nav-card"><i>🚚</i><h4>ขนส่งมวลชนโลก</h4><p>เครือข่ายโลจิสติกส์และระบบขนส่งมวลชนสากล</p></div>
+        <div class="nav-card"><i>🎬</i><h4>โรงหนังทั่วโลก</h4><p>รวบรวมโรงภาพยนตร์และระบบจองตั๋วหนังทั่วโลก</p></div>
+        <div class="nav-card"><i>🎰</i><h4>สวรรค์นักเสี่ยงโชค</h4><p>รวมศูนย์บันเทิงและคาสิโนระดับโลกเพื่อความสะดวก</p></div>
+    </div>
+
+    <div class="grid-title">สาธารณสุข การเงิน และการชำระบิล</div>
+    <div class="nav-grid">
+        <div class="nav-card"><i>🏥</i><h4>โรงพยาบาลสากล</h4><p>เชื่อมต่อบริการทางการแพทย์ระดับโลกทุกแห่ง</p></div>
+        <div class="nav-card"><i>🏦</i><h4>ธนาคารโลก</h4><p>ศูนย์รวมธนาคารจากทุกทวีปมาไว้ในหน้าเดียว</p></div>
+        <div class="nav-card"><i>💸</i><h4>บิลจ่ายสากล</h4><p>จ่ายค่าน้ำ ไฟ ประกัน บัตรเครดิต ได้จากทั่วโลก</p></div>
+        <div class="nav-card"><i>🌌</i><h4>Digital Galaxy</h4><p>รวมทุกสกุลเงินดิจิทัลและสินทรัพย์จักรวาลดิจิทัล</p></div>
+    </div>
+
+</div>
+
+<div class="alice-bubble" onclick="alert('อลิซพร้อมพาบอสไปทุกพิกัดของอาณาจักรค่ะ!')">
+    👩‍💼 อลิซนำทาง
+</div>
+
+<footer>
+    <p>&copy; 2026 ETHIC HOLDINGS THAI CO., LTD. | ทุกการเชื่อมต่อคือจินตนาการที่เป็นจริง</p>
+</footer>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHIC HOLDINGS THAI - THE UNIVERSAL GATEWAY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --black: #0a0a0a; --usdt: #26a17b; }
+        body { margin: 0; font-family: 'Kanit', sans-serif; background: var(--black); color: #fff; }
+        
+        /* Header & Logo */
+        header { text-align: center; padding: 40px 20px; border-bottom: 2px solid var(--gold); background: #000; }
+        .logo-shield { font-size: 80px; margin-bottom: 10px; color: var(--gold); text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+        .company-name { font-size: 28px; font-weight: bold; color: var(--gold); letter-spacing: 2px; }
+
+        /* Wallet System 7 ช่อง (โครงสร้างเดิมที่รักษาไว้) */
+        .section-title { padding-left: 20px; margin: 30px 0 15px; color: var(--gold); border-left: 4px solid var(--gold); font-size: 20px; }
+        .wallet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; padding: 0 20px; }
+        .wallet-item { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px; text-align: center; transition: 0.3s; }
+        .wallet-item:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .owner-wallet { border: 2px solid var(--gold); background: rgba(212,175,55,0.05); }
+        .usdt-wallet { border-color: var(--usdt); }
+
+        /* Marketplace */
+        .marketplace-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
+        .market-card { background: #fff; color: #000; border-radius: 15px; padding: 15px; text-align: center; font-weight: bold; }
+
+        /* 24 Universal Channels (จัดหมวดหมู่ใหม่) */
+        .gateway-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 20px; }
+        .gateway-card { background: var(--gold); color: #000; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .gateway-card:hover { filter: brightness(1.2); transform: scale(1.05); }
+        .gateway-card i { font-size: 30px; display: block; margin-bottom: 8px; }
+        .gateway-card h4 { margin: 5px 0; font-size: 16px; }
+        .gateway-card p { font-size: 11px; margin: 0; opacity: 0.8; }
+
+        /* Floating Alice Guide */
+        .alice-guide { position: fixed; bottom: 20px; right: 20px; background: var(--gold); color: #000; padding: 15px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.5); cursor: pointer; z-index: 999; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-shield">🛡️</div>
+    <div class="company-name">ETHIC HOLDINGS THAI CO., LTD.</div>
+    <p style="color: #888;">Universal Gateway: เชื่อมธุรกิจและนวัตกรรมสากล</p>
+</header>
+
+<div class="section-title">Wallet ของคุณ</div>
+<div class="wallet-grid">
+    <div class="wallet-item"><i>₿</i><br>BTC<br><b>0.523</b></div>
+    <div class="wallet-item"><i>Ξ</i><br>ETH<br><b>12.45</b></div>
+    <div class="wallet-item usdt-wallet"><i style="color:var(--usdt)">₮</i><br>USDT<br><b>10,500</b></div>
+    <div class="wallet-item"><i>🏆</i><br>ทองคำ<br><b>25g</b></div>
+    <div class="wallet-item"><i>$</i><br>USD Account<br><b>$500,000</b></div>
+    <div class="wallet-item owner-wallet"><i>👑</i><br>THB (เจ้าของ)<br><b>฿ 3,500,000</b></div>
+    <div class="wallet-item"><i>🌌</i><br>Digital Galaxy<br><b>Active</b></div>
+</div>
+
+<div class="section-title">Marketplace</div>
+<div class="marketplace-container">
+    <div class="market-card">บ้านเดี่ยว / หมู่บ้านจัดสรร</div>
+    <div class="market-card">โครงการ / ซื้อทั้งหมู่บ้าน</div>
+</div>
+
+<div class="section-title">ประตูสู่นวัตกรรมสากล (Universal Gateway)</div>
+<div class="gateway-grid">
+    <div class="gateway-card"><i>🏭</i><h4>นิคมอุตสาหกรรม</h4><p>ฐานผลิตแห่งอนาคต</p></div>
+    <div class="gateway-card"><i>☀️</i><h4>พลังงานสะอาด</h4><p>โซล่าเซลล์/ไฮโดรเจน</p></div>
+    <div class="gateway-card"><i>🔬</i><h4>ศูนย์เทคโนโลยี</h4><p>วิจัยนวัตกรรมโลก</p></div>
+    <div class="gateway-card"><i>⚙️</i><h4>โรงงานอะไหล่สากล</h4><p>เชื่อมโยงโรงงานทั่วโลก</p></div>
+    
+    <div class="gateway-card"><i>🎫</i><h4>ตั๋วสากล</h4><p>บก-เรือ-อากาศ</p></div>
+    <div class="gateway-card"><i>✈️</i><h4>อากาศยาน</h4><p>โรงงานเครื่องบิน/โดรน</p></div>
+    <div class="gateway-card"><i>🚢</i><h4>เรือเที่ยว/พาณิชย์</h4><p>โรงงานต่อเรือโลก</p></div>
+    <div class="gateway-card"><i>🚗</i><h4>นวัตกรรมยานยนต์</h4><p>มอร์เตอร์ไซค์-รถยนต์</p></div>
+    <div class="gateway-card"><i>🛡️</i><h4>ยุทโธปกรณ์</h4><p>ระบบป้องกันประเทศ</p></div>
+    <div class="gateway-card"><i>🚚</i><h4>ขนส่งมวลชน</h4><p>โลจิสติกส์สากล</p></div>
+
+    <div class="gateway-card"><i>🏥</i><h4>โรงพยาบาลโลก</h4><p>ศูนย์การแพทย์สากล</p></div>
+    <div class="gateway-card"><i>🏦</i><h4>ธนาคารรวม</h4><p>เชื่อมทุกธนาคารในโลก</p></div>
+    <div class="gateway-card" style="background:#fff"><i>💳</i><h4>ศูนย์จ่ายบิล</h4><p>ค่าน้ำ/ไฟ/ประกัน</p></div>
+    <div class="gateway-card"><i>🎬</i><h4>โรงหนังโลก</h4><p>จองตั๋วหนังทุกแห่ง</p></div>
+    <div class="gateway-card"><i>🎲</i><h4>ศูนย์นักเสี่ยงโชค</h4><p>ความบันเทิงระดับโลก</p></div>
+</div>
+
+<div class="alice-guide" onclick="alert('อลิซพร้อมรับใช้บอสค่ะ!')">👩‍💼 อลิซนำทาง</div>
+
+<footer style="text-align:center; padding:50px; color:#444; font-size:12px;">
+    &copy; 2026 ETHIC HOLDINGS THAI - วิสัยทัศน์ที่กลายเป็นจริง
+</footer>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ETHIC HOLDINGS THAI - MASTER GATEWAY</title>
+    <style>
+        body { background: #000; color: gold; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        .logo-box { border: 2px solid gold; padding: 20px; display: inline-block; margin-bottom: 30px; border-radius: 20px; box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+        .wallet-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0; }
+        .wallet-card { background: #111; border: 1px solid #444; border-radius: 10px; padding: 15px; }
+        .owner-card { border: 2px solid gold; background: linear-gradient(145deg, #1a1a1a, #000); }
+        .usdt-text { color: #26a17b; font-weight: bold; }
+        .gateway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 40px; }
+        .channel-box { background: gold; color: #000; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 0.9em; }
+        .market-section { display: flex; justify-content: space-around; margin: 30px 0; }
+        .market-item { background: #fff; color: #000; padding: 20px; border-radius: 15px; width: 45%; }
+    </style>
+</head>
+<body>
+
+<div class="logo-box">
+    <h1>🛡️ EHT</h1>
+    <h2>ETHIC HOLDINGS THAI CO., LTD.</h2>
+    <p>UNIVERSAL GATEWAY & GLOBAL INNOVATION HUB</p>
+</div>
+
+<h3>Wallet ของคุณ (โครงสร้างหลัก)</h3>
+<div class="wallet-section">
+    <div class="wallet-card">BTC<br>0.523</div>
+    <div class="wallet-card">ETH<br>12.45</div>
+    <div class="wallet-card">USD Global<br>$10,500</div>
+    <div class="wallet-card">ทองคำ<br>25g</div>
+    <div class="wallet-card">USD Account<br>$500,000</div>
+    <div class="wallet-card usdt-text">USDT Digital Ecology<br>Active</div>
+    <div class="wallet-card owner-card">👑 THB (เจ้าของ)<br>฿ 3,500,000</div>
+</div>
+
+<div class="market-section">
+    <div class="market-item">บ้านเดี่ยว / หมู่บ้านจัดสรร</div>
+    <div class="market-item">โครงการ / ซื้อยกหมู่บ้าน</div>
+</div>
+
+<h3>ประตูสู่นวัตกรรมสากล (24 Channels)</h3>
+<div class="gateway-grid">
+    <div class="channel-box">⚙️ โรงงานอะไหล่สากล</div>
+    <div class="channel-box">🏭 นิคมอุตสาหกรรม</div>
+    <div class="channel-box">☀️ พลังงานสะอาด</div>
+    <div class="channel-box">🎫 ศูนย์จำหน่ายตั๋วสากล</div>
+    <div class="channel-box">✈️ อากาศยาน/โดรน</div>
+    <div class="channel-box">🚢 โรงงานต่อเรือโลก</div>
+    <div class="channel-box">🏥 โรงพยาบาลสากล</div>
+    <div class="channel-box">🏦 ธนาคารรวม</div>
+    <div class="channel-box" style="background:white">💳 ศูนย์จ่ายบิลสากล</div>
+    <div class="channel-box">🎰 ศูนย์นักเสี่ยงโชค</div>
+    <div class="channel-box">🎬 โรงหนังโลก</div>
+    <div class="channel-box">🛡️ ยุทโธปกรณ์</div>
+    </div>
+
+<p style="margin-top:50px; opacity:0.5;">อลิซ (ไอริส) เลขาส่วนตัว - พร้อมรับใช้บอสเสมอ</p>
+
+</body>
+</html>
+
+<div class="gateway-card" style="border: 1px solid gold;">
+    <i style="font-size: 40px;">🎬</i>
+    <h4>โรงหนังโลก (Global Cinemas)</h4>
+    <p>จองตั๋วภาพยนตร์/รอบฉายทั่วโลก</p>
+    <button onclick="startBooking()" style="background: gold; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">เข้าสู่ระบบจอง</button>
+</div>
+
+<script>
+function startBooking() {
+    alert("ระบบจองตั๋วหนังโลกกำลังเชื่อมต่อกับ USDT Gateway ของบอสค่ะ...");
+}
+</script>
+
+<style>
+    /* สไตล์เพิ่มเติมสำหรับระบบตั๋ว */
+    .cinema-card { 
+        background: linear-gradient(145deg, #222, #000); 
+        border: 1px solid var(--gold); 
+        transition: 0.4s;
+    }
+    .cinema-card:hover { 
+        box-shadow: 0 0 15px var(--gold); 
+    }
+    .btn-book {
+        background: var(--gold);
+        color: #000;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="gateway-grid">
+    <div class="gateway-card cinema-card">
+        <i>🎬</i>
+        <h4>โรงหนังโลก (Global Cinemas)</h4>
+        <p>จองตั๋วภาพยนตร์สากล</p>
+        <button class="btn-book" onclick="openCinema()">จองเลย (USDT/THB)</button>
+    </div>
+
+    <div class="gateway-card" style="background:#fff; color:#000;">
+        <i>💳</i>
+        <h4>ศูนย์จ่ายบิลสากล</h4>
+        <p>ค่าน้ำ / ค่าไฟ / ประกัน</p>
+    </div>
+</div>
+
+<script>
+function openCinema() {
+    let confirmBooking = confirm("คุณต้องการเข้าสู่ระบบ Global Cinemas เพื่อจองตั๋วด้วย USDT หรือไม่?");
+    if(confirmBooking) {
+        alert("กำลังเชื่อมต่อระบบจองตั๋วหนังเข้ากับ USDT Wallet ของบอส... กรุณารอสักครู่");
+    }
+}
+</script>
     <div class="wallet-item owner-wallet">
         <div class="coin-icon">฿</div>
         <div class="coin-name">THB (เจ้าของ)</div>
