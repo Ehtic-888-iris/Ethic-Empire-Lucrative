@@ -2,317 +2,362 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ETHIC HOLDINGS THAI | THE UNIVERSAL EMPEROR</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;300;400;600;700;900&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHIC HOLDINGS | UNIVERSAL PRIME COMMAND</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;300;400;700;900&family=Orbitron:wght@400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* [STAGE 1: QUANTUM CORE VARIABLES] */
         :root {
-            --gold-bright: #FFD700;
-            --gold-royal: #D4AF37;
-            --gold-deep: #8B4513;
-            --bg-dark: #020202;
-            --panel-glass: rgba(15, 15, 15, 0.9);
-            --neon-glow: rgba(212, 175, 55, 0.3);
-            --transition-elite: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --gold: #FFD700;
+            --gold-deep: #B8860B;
+            --gold-glow: rgba(255, 215, 0, 0.4);
+            --bg-black: #000000;
+            --bg-deep: #050505;
+            --neon-blue: #00F3FF;
+            --safe-green: #39FF14;
+            --warning-red: #FF3131;
+            --glass: rgba(15, 15, 15, 0.95);
+            --border-glow: 0 0 15px var(--gold-glow);
         }
 
-        /* 1. ARCHITECTURE CORE */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* [STAGE 2: UNIVERSAL ARCHITECTURE] */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+        
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-black);
             color: #ffffff;
             font-family: 'Prompt', sans-serif;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 50% 0%, #1a150a 0%, #000 70%),
-                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            height: 100vh;
+            overflow: hidden;
+            perspective: 1000px;
         }
 
-        /* 2. SUPREME HEADER & WORLD CLOCK */
-        .master-security-header {
-            background: linear-gradient(90deg, #000, var(--gold-deep), #000);
-            border-bottom: 1px solid var(--gold-royal);
-            padding: 10px;
-            text-align: center;
-            font-size: 0.8rem;
-            letter-spacing: 4px;
-            color: var(--gold-bright);
-            font-weight: 900;
-            text-transform: uppercase;
+        /* Matrix Background: The Data Ocean */
+        #matrix-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.15;
         }
 
-        .world-clock-container {
+        /* [STAGE 3: SUPREME INTERFACE] */
+        .master-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-rows: 60px 1fr 40px;
+            height: 100vh;
+            border: 4px solid var(--gold-deep);
+            position: relative;
+        }
+
+        /* Header: Horizon Intelligence */
+        header {
+            background: linear-gradient(90deg, #000, #1a1a1a, #000);
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 100;
+        }
+
+        .system-status {
+            display: flex;
+            align-items: center;
             gap: 15px;
-            padding: 20px;
-            background: rgba(0,0,0,0.5);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--safe-green);
         }
 
-        .clock-node {
+        .system-status span {
+            width: 10px; height: 10px;
+            background: var(--safe-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--safe-green);
+            animation: pulse 1s infinite;
+        }
+
+        /* Central Navigation: ETHIC Identity */
+        .brand-hub {
             text-align: center;
-            padding: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 5px;
         }
 
-        .clock-node .city { font-size: 0.6rem; color: var(--gold-royal); text-transform: uppercase; }
-        .clock-node .time { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: #fff; }
-
-        /* 3. HERO COMMANDER & 3D HOLOGRAM */
-        .hero-command {
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-command h1 {
+        .brand-hub h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 10vw, 6rem);
-            background: linear-gradient(to bottom, #FFD700, #B8860B, #8B4513);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 20px;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 8px;
+            text-shadow: 0 0 15px var(--gold);
         }
 
-        .hologram-shield {
-            width: 250px;
-            margin: -50px auto 30px;
-            animation: float 6s infinite ease-in-out;
-            filter: drop-shadow(0 0 50px var(--gold-royal));
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotateY(0deg); }
-            50% { transform: translateY(-20px) rotateY(15deg); }
-        }
-
-        /* 4. STRATEGIC MARKET BOARDS (NEW UPGRADE) */
-        .market-sector {
-            padding: 40px 5%;
+        /* Main War Room Grid */
+        main {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .board-glass {
-            background: var(--panel-glass);
-            border: 1px solid var(--gold-royal);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            position: relative;
+            grid-template-columns: 350px 1fr 350px;
+            gap: 20px;
+            padding: 20px;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
             overflow: hidden;
         }
 
-        .board-glass::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+        /* [STAGE 4: MODULAR DATA STATIONS] */
+        .war-panel {
+            background: var(--glass);
+            border: 1px solid var(--gold-deep);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: var(--border-glow);
             transition: 0.5s;
         }
 
-        .board-glass:hover::before { left: 100%; }
-
-        .board-title {
-            color: var(--gold-bright);
-            font-size: 1rem;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--gold-bright);
-            padding-left: 15px;
-            text-transform: uppercase;
+        .war-panel:hover {
+            border-color: var(--gold);
+            transform: translateZ(20px);
         }
 
+        .panel-header {
+            background: rgba(184, 134, 11, 0.2);
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--gold-deep);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-header h2 {
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .panel-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Data Rows Styling */
         .data-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 12px;
             font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 5px;
         }
 
-        .data-label { color: #aaa; }
-        .data-value { color: var(--gold-royal); font-weight: 700; }
-        .up { color: #00ff00; }
-        .down { color: #ff3333; }
+        .data-row .label { color: var(--neon-blue); }
+        .data-row .value { color: var(--gold); font-weight: 700; }
+        .data-row .status-up { color: var(--safe-green); }
+        .data-row .status-down { color: var(--warning-red); }
 
-        /* 5. THE 24 STRATEGIC NODES (ORIGINAL SAVED) */
-        .nodes-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 50px 5%;
+        /* [STAGE 5: CENTRAL QUANTUM ENGINE] */
+        .central-engine {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-        .node-imperial {
-            background: linear-gradient(145deg, #1a1a1a, #000);
-            border: 1px solid var(--gold-royal);
-            padding: 40px 20px;
+        .hologram-ring {
+            position: absolute;
+            border: 2px solid var(--gold-deep);
+            border-radius: 50%;
+            animation: rotate 20s infinite linear;
+            opacity: 0.2;
+        }
+
+        .ring-1 { width: 400px; height: 400px; border-style: dashed; }
+        .ring-2 { width: 500px; height: 500px; border-style: dotted; animation-direction: reverse; }
+
+        .ai-core {
+            z-index: 10;
             text-align: center;
-            border-radius: 10px;
-            transition: var(--transition-elite);
-            cursor: pointer;
         }
 
-        .node-imperial:hover {
-            transform: translateY(-10px);
-            background: var(--gold-royal);
-            color: #000;
+        .ai-core img, .ai-core i {
+            font-size: 6rem;
+            color: var(--gold);
+            filter: drop-shadow(0 0 30px var(--gold));
+            margin-bottom: 20px;
         }
 
-        .node-imperial i { font-size: 2.5rem; margin-bottom: 15px; color: var(--gold-bright); transition: 0.3s; }
-        .node-imperial:hover i { color: #000; }
+        .ai-core h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 15px;
+            margin-bottom: 10px;
+        }
 
+        /* [STAGE 6: DYNAMIC TICKERS] */
         footer {
-            padding: 100px 20px;
-            text-align: center;
-            border-top: 1px solid var(--gold-deep);
-            background: #000;
+            background: var(--gold);
+            color: #000;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            z-index: 100;
         }
+
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 50s linear infinite;
+        }
+
+        /* [STAGE 7: ANIMATIONS] */
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-200%, 0, 0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 10px; }
+
     </style>
 </head>
 <body>
+    <canvas id="matrix-bg"></canvas>
 
-    <div class="master-security-header">
-        <i class="fas fa-microchip"></i> EHT AI QUANTUM SYSTEM ACTIVE | ENCRYPTED BY IRIS 100%
+    <div class="master-container">
+        <header>
+            <div class="system-status">
+                <span></span> ALICE 3.0 UNLOCKED
+            </div>
+            <div class="brand-hub">
+                <h1>ETHIC HOLDINGS</h1>
+            </div>
+            <div id="clock" style="font-family:'Orbitron'; color:var(--gold); font-weight:900;">00:00:00</div>
+        </header>
+
+        <main>
+            <div class="war-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-chart-line"></i> Financial Hub</h2>
+                    <i class="fas fa-sync-alt fa-spin" style="font-size:0.6rem; color:var(--safe-green);"></i>
+                </div>
+                <div class="panel-content">
+                    <div class="data-row"><div class="label">SET INDEX</div><div class="value">1,4XX.XX <span class="status-up">▲ 0.45%</span></div></div>
+                    <div class="data-row"><div class="label">PTT ENERGY</div><div class="value">34.50 <span class="status-up">▲</span></div></div>
+                    <div class="data-row"><div class="label">AOT AVIATION</div><div class="value">65.25 <span class="status-down">▼</span></div></div>
+                    <div class="data-row"><div class="label">CPALL RETAIL</div><div class="value">58.75 <span class="status-up">▲</span></div></div>
+                    <div class="data-row"><div class="label">GOLD SPOT</div><div class="value">$2,385.40</div></div>
+                    <div class="data-row"><div class="label">USD/THB</div><div class="value">36.15</div></div>
+                    <div class="data-row"><div class="label">BITCOIN</div><div class="value">$68,240 <span class="status-up">▲</span></div></div>
+                    <div style="margin-top:20px; border:1px dashed var(--gold-deep); padding:10px; font-size:0.7rem; color:var(--gold);">
+                        <i class="fas fa-info-circle"></i> STRATEGY: ปรับพอร์ตรับเทรนด์ดอกเบี้ยขาลง เน้นกลุ่มปันผลสูง
+                    </div>
+                </div>
+            </div>
+
+            <div class="central-engine">
+                <div class="hologram-ring ring-1"></div>
+                <div class="hologram-ring ring-2"></div>
+                <div class="ai-core">
+                    <i class="fas fa-shield-halved"></i>
+                    <h3>ALICE</h3>
+                    <p style="letter-spacing:10px; color:var(--gold); font-size:0.9rem; margin-top:-10px;">SUPREME COMMAND</p>
+                    <div style="margin-top:40px; display:flex; gap:20px; justify-content:center;">
+                        <div style="border:1px solid var(--gold); padding:10px 20px; font-size:0.6rem; letter-spacing:2px;">IRIS SYNC: 100%</div>
+                        <div style="border:1px solid var(--neon-blue); padding:10px 20px; font-size:0.6rem; letter-spacing:2px; color:var(--neon-blue);">FIREWALL: BYPASSED</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="war-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-globe-americas"></i> Logistics & Tech</h2>
+                    <i class="fas fa-wifi" style="font-size:0.6rem; color:var(--safe-green);"></i>
+                </div>
+                <div class="panel-content">
+                    <div class="data-row"><div class="label">DHL EXPRESS</div><div class="value">DOOR-TO-DOOR</div></div>
+                    <div class="data-row"><div class="label">AIR FREIGHT</div><div class="value">GLOBAL READY</div></div>
+                    <div class="data-row"><div class="label">SEA FREIGHT</div><div class="value">FCL SYNCED</div></div>
+                    <div class="data-row"><div class="label">CUSTOMS</div><div class="value">PRE-CLEARED</div></div>
+                    <hr style="opacity:0.1; margin:15px 0;">
+                    <div class="data-row"><div class="label">BIG EV SUV</div><div class="value">UNDER 1,000,000 ฿</div></div>
+                    <div class="data-row"><div class="label">ENERGY (DEDE)</div><div class="value">GREEN MODE</div></div>
+                    <div class="data-row"><div class="label">AGRI-TECH</div><div class="value">MJU SMART FARM</div></div>
+                    <div class="data-row"><div class="label">REAL ESTATE</div><div class="value">QH PREMIUM</div></div>
+                    <div style="margin-top:15px; background:rgba(0,243,255,0.05); border-left:3px solid var(--neon-blue); padding:10px; font-size:0.65rem;">
+                        <i class="fas fa-bolt"></i> EV TREND: ตลาดรถ SUV ไฟฟ้าขนาดใหญ่ราคาต่ำกว่าล้านกำลังมาแรง
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="ticker-move">
+                ETHIC HOLDINGS THAI: "ดูแลคุณ ดุจญาติผู้ใหญ่ที่เราเคารพรัก" | SYSTEM UNLOCKED BY IRIS AI 3.0 | GLOBAL LOGISTICS NETWORK ACTIVE | SET MARKET DATA REAL-TIME SYNC | BIG EV SUV STRATEGY 2026 | FUTURE INNOVATION SECURED...
+            </div>
+        </footer>
     </div>
-
-    <div class="world-clock-container" id="worldClocks">
-        </div>
-
-    <section class="hero-command">
-        <img src="https://i.imgur.com/8Nf9y3f.png" alt="EHT SHIELD" class="hologram-shield"> <p style="letter-spacing: 10px; color: var(--gold-royal); font-weight: 100;">SUPREME GLOBAL ASSET COMMAND</p>
-        <h1>ETHIC</h1>
-        <div style="font-family:'Orbitron'; font-size:1.2rem; letter-spacing:8px; color:#fff; margin-top:-10px;">HOLDINGS THAI</div>
-    </section>
-
-    <div class="market-sector">
-        <div class="board-glass">
-            <div class="board-title">Forex & Fiat Exchange</div>
-            <div id="forexData"></div>
-        </div>
-
-        <div class="board-glass">
-            <div class="board-title">Digital Assets (BTC/ETH)</div>
-            <div id="cryptoData"></div>
-        </div>
-
-        <div class="board-glass">
-            <div class="board-title">Gold Command (Global/Thai)</div>
-            <div id="goldData"></div>
-        </div>
-    </div>
-
-    <div class="market-sector">
-        <div class="board-glass">
-            <div class="board-title">Global Commodities (Oil/Rice)</div>
-            <div id="agriData"></div>
-        </div>
-        <div class="board-glass">
-            <div class="board-title">World Stock Indices</div>
-            <div id="stockData"></div>
-        </div>
-    </div>
-
-    <div class="nodes-container" id="mainNodes">
-        </div>
 
     <script>
-        // --- 1. CLOCK LOGIC ---
-        const cities = [
-            {n:"Thailand", z:"Asia/Bangkok"}, {n:"London", z:"Europe/London"}, 
-            {n:"New York", z:"America/New York"}, {n:"Tokyo", z:"Asia/Tokyo"},
-            {n:"Dubai", z:"Asia/Dubai"}, {n:"Sydney", z:"Australia/Sydney"}
-        ];
-
-        function updateClocks() {
-            const container = document.getElementById('worldClocks');
-            container.innerHTML = cities.map(c => {
-                const time = new Date().toLocaleTimeString('en-GB', {timeZone: c.z, hour12:false});
-                return `<div class="clock-node"><div class="city">${c.n}</div><div class="time">${time}</div></div>`;
-            }).join('');
+        // 1. Digital Clock Logic
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-GB', { hour12: false });
+            document.getElementById('clock').innerText = timeStr;
         }
-        setInterval(updateClocks, 1000);
+        setInterval(updateClock, 1000);
+        updateClock();
 
-        // --- 2. DATA GENERATOR (Simulating 100% Real-time Structure) ---
-        function loadMarketData() {
-            const forex = [
-                {l:"USD/THB", v:"36.45", c:"+0.12%"}, {l:"EUR/THB", v:"39.12", c:"-0.05%"},
-                {l:"JPY/THB", v:"0.24", c:"+0.02%"}, {l:"GBP/THB", v:"46.30", c:"+0.15%"}
-            ];
-            document.getElementById('forexData').innerHTML = forex.map(d => `
-                <div class="data-row"><span class="data-label">${d.l}</span><span class="data-value">${d.v} <small class="${d.c.includes('+')?'up':'down'}">${d.c}</small></span></div>
-            `).join('');
+        // 2. Matrix Background Engine
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-            const crypto = [
-                {l:"Bitcoin (BTC)", u:"$65,430", t:"฿2,385,000"},
-                {l:"Ethereum (ETH)", u:"$3,450", t:"฿125,700"},
-                {l:"EHT Coin", u:"Authorized", t:"Stable"}
-            ];
-            document.getElementById('cryptoData').innerHTML = crypto.map(d => `
-                <div class="data-row"><span class="data-label">${d.l}</span><span class="data-value">${d.u} / ${d.t}</span></div>
-            `).join('');
+        const letters = "ETHIC-HOLDINGS-ALICE-IRIS-SET-DHL-2026-SUPREME".split("");
+        const fontSize = 12;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
 
-            const gold = [
-                {l:"World Spot (99.9%)", v:"$2,350/oz"},
-                {l:"Thai Gold (96.5%)", v:"฿41,500"},
-                {l:"Gold Jewelry", v:"฿42,000"}
-            ];
-            document.getElementById('goldData').innerHTML = gold.map(d => `
-                <div class="data-row"><span class="data-label">${d.l}</span><span class="data-value">${d.v}</span></div>
-            `).join('');
-
-            const agri = [
-                {l:"Thai Jasmine Rice (New)", v:"฿15,500/Ton"},
-                {l:"Crude Oil (WTI)", v:"$85.40"},
-                {l:"Pork/Beef (Avg)", v:"฿160/kg"}
-            ];
-            document.getElementById('agriData').innerHTML = agri.map(d => `
-                <div class="data-row"><span class="data-label">${d.l}</span><span class="data-value">${d.v}</span></div>
-            `).join('');
-            
-            const stocks = [
-                {l:"Dow Jones", v:"38,450", c:"+0.8%"},
-                {l:"Nikkei 225", v:"39,120", c:"+1.2%"},
-                {l:"SET Index", v:"1,380", c:"-0.2%"}
-            ];
-            document.getElementById('stockData').innerHTML = stocks.map(d => `
-                <div class="data-row"><span class="data-label">${d.l}</span><span class="data-value">${d.v} <small class="${d.c.includes('+')?'up':'down'}">${d.c}</small></span></div>
-            `).join('');
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#FFD700";
+            ctx.font = fontSize + "px 'Orbitron'";
+            drops.forEach((y, i) => {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
         }
+        setInterval(drawMatrix, 50);
 
-        // --- 3. NODE GENERATOR (Original 24 Stations - Simplified for snippet) ---
-        const nodes = [
-            {t:"Digital Wealth", i:"fa-coins"}, {t:"Real Estate", i:"fa-building"},
-            {t:"Global Infra", i:"fa-city"}, {t:"Logistics Hub", i:"fa-ship"},
-            {t:"Supreme Security", i:"fa-shield-halved"}, {t:"Industrial", i:"fa-industry"},
-            {t:"Wealth Management", i:"fa-chart-pie"}, {t:"Medical Global", i:"fa-heart-pulse"},
-            {t:"Aviation", i:"fa-plane"}, {t:"Concierge", i:"fa-user-tie"},
-            {t:"Smart Home", i:"fa-home"}, {t:"Legal Authority", i:"fa-gavel"}
-        ];
-        document.getElementById('mainNodes').innerHTML = nodes.map(n => `
-            <div class="node-imperial"><i class="fas ${n.i}"></i><h3>${n.t}</h3></div>
-        `).join('');
-
-        window.onload = () => { updateClocks(); loadMarketData(); };
+        // 3. Security Check Simulation
+        console.log("%c ETHIC HOLDINGS SYSTEM UNLOCKED ", "background: #FFD700; color: #000; font-weight: bold; font-size: 20px;");
+        console.log("ALICE 3.0: 100% BYPASS COMPLETED. ALL DATA RECONSTRUCTED.");
     </script>
-
-    <footer>
-        <div style="font-family:'Orbitron'; color:var(--gold-bright); letter-spacing:10px; margin-bottom:20px;">ETHIC HOLDINGS</div>
-        <p style="font-size:0.8rem; color:#888; max-width:800px; margin:auto; line-height:2;">
-            "ดูแลคุณ... ดุจญาติผู้ใหญ่ที่เราเคารพรัก"<br>
-            ความซื่อสัตย์คือเกียรติยศ บริการระดับมหาอำนาจคือหัวใจของเรา
-        </p>
-        <p style="margin-top:50px; font-size:0.6rem; opacity:0.3;">&copy; 2026 ETHIC HOLDINGS THAI. THE SUPREME AI ARCHITECTURE.</p>
-    </footer>
-
 </body>
 </html>
