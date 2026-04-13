@@ -10,170 +10,23 @@
     
     <style>
         :root {
-            --gold: #AD4F37; /* สีมหาอำนาจที่บอสเลือก */
-            --bg-deep: #050a14;
-            --bg-panel: rgba(13, 27, 42, 0.95);
-            --accent-green: #00e676;
-            --text-light: #f4f5f7;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { font-family: 'Prompt', sans-serif; background: var(--bg-deep); color: var(--text-light); overflow-x: hidden; }
-
-        /* Security Bar: แถบความปลอดภัยระดับกองกำลังทหาร */
-        .security-bar {
-            background: linear-gradient(90deg, #000, var(--gold));
-            padding: 10px; text-align: center; border-bottom: 1px solid var(--gold);
-            font-size: 0.8rem; letter-spacing: 2px; position: sticky; top: 0; z-index: 1100;
-        }
-
-        /* Hero Header: หน้าต่างแห่งโลกใหม่ของ EHT */
-        header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('1000052408.png');
-            background-size: cover; background-position: center;
-            padding: 120px 20px; text-align: center; border-bottom: 5px solid var(--gold);
-        }
-        header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 5vw, 3.5rem); color: var(--gold); letter-spacing: 8px; text-transform: uppercase; text-shadow: 0 0 20px rgba(173,79,55,0.5); }
-        header p { font-size: 1rem; opacity: 0.8; letter-spacing: 2px; margin-top: 10px; }
-                /* Dashboard Grid: โครงสร้างสถานีมหาอำนาจ 24 แห่ง */
-        .dashboard-container { padding: 60px 5%; max-width: 1400px; margin: auto; }
-        .grid-24 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        @media (min-width: 768px) { .grid-24 { grid-template-columns: repeat(4, 1fr); gap: 25px; } }
-
-        .station-node {
-            background: var(--bg-panel); border: 1px solid rgba(173, 79, 55, 0.2);
-            border-radius: 15px; padding: 30px 15px; text-align: center; cursor: pointer;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-        .station-node:hover { transform: translateY(-12px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(173, 79, 55, 0.3); }
-        .station-node i { font-size: 2.8rem; color: var(--gold); margin-bottom: 18px; display: block; }
-        .station-node h3 { font-size: 0.85rem; letter-spacing: 1.5px; color: #fff; text-transform: uppercase; font-weight: 600; }
-
-        /* Portal Modal: ประตูบานที่สวยงามที่สุดสำหรับนักลงทุน */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(20px); }
-        .modal-content { background: #000; border: 2px solid var(--gold); padding: 45px; width: 90%; max-width: 650px; border-radius: 5px; text-align: left; position: relative; animation: zoomIn 0.3s ease; }
-        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        
-        .close { position: absolute; top: 15px; right: 25px; font-size: 35px; color: var(--gold); cursor: pointer; }
-        .close:hover { color: #fff; }
-        
-        .m-header { color: var(--gold); font-size: 1.6rem; margin-bottom: 20px; border-left: 5px solid var(--gold); padding-left: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .m-desc { line-height: 1.8; color: #ccc; margin-bottom: 30px; font-size: 1rem; }
-                /* Gateway Interface: พื้นที่รองรับธุรกรรมมหาอำนาจ */
-        .gateway-box { background: rgba(173, 79, 55, 0.1); padding: 25px; border: 1px dashed var(--gold); border-radius: 10px; margin-bottom: 25px; }
-        .gateway-box p { font-size: 0.85rem; color: var(--gold); margin-bottom: 10px; }
-        .pay-icons { display: flex; gap: 20px; font-size: 1.5rem; color: #fff; opacity: 0.7; }
-
-        /* Button: ปุ่มเปิดประตูสู่ความสุขเพียงปลายนิ้วเดียว */
-        .btn-gateway { background: var(--gold); color: #fff; border: none; padding: 22px; width: 100%; font-weight: 700; cursor: pointer; letter-spacing: 3px; font-size: 1rem; transition: 0.3s; border-radius: 5px; }
-        .btn-gateway:hover { background: #fff; color: var(--gold); box-shadow: 0 0 20px #fff; }
-
-        /* Footer: การประกาศศักยภาพและความซื่อสัตย์ */
-        footer { padding: 60px 20px; text-align: center; background: #000; border-top: 1px solid var(--gold); }
-        footer p { color: var(--gold); letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 10px; }
-    </style>
-</head>
-<body>
-
-<div class="security-bar">
-    <i class="fas fa-user-shield"></i> EHT MILITARY-GRADE SECURITY ACTIVE | UNIVERSAL PAYMENT GATEWAY READY
-</div>
-
-<header>
-    <h1>ETHIC HOLDINGS</h1>
-    <p>THE GLOBAL COMMAND CENTER & SUPREME GATEWAY</p>
-</header>
-<div class="dashboard-container">
-    <h2 style="text-align:center; color:var(--gold); margin-bottom:50px; letter-spacing:6px; font-weight:300;">THE 24 STRATEGIC NODES</h2>
-    <div class="grid-24" id="stationGrid"></div>
-</div>
-
-<div id="pModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeM()">&times;</span>
-        <div id="mHeader" class="m-header"></div>
-        <p id="mDesc" class="m-desc"></p>
-        <div class="gateway-box">
-            <p><i class="fas fa-shield-check"></i> SECURE TRANSACTION INTERFACE</p>
-            <div class="pay-icons">
-                <i class="fab fa-bitcoin" title="Bitcoin"></i>
-                <i class="fab fa-ethereum" title="Ethereum"></i>
-                <i class="fas fa-coins" title="Digital Currency"></i>
-                <i class="fas fa-university" title="Bank Transfer"></i>
-            </div>
-        </div>
-        <button class="btn-gateway" onclick="alert('CONNECTING TO EHT UNIVERSAL PAYMENT GATEWAY...')">OPEN THE DOOR TO HAPPINESS</button>
-    </div>
-</div>
-
-<script>
-    // ฐานข้อมูลสถานียุทธศาสตร์ (บอสสามารถเพิ่มให้ครบ 24 ได้ที่นี่)
-    const stations = [
-        { n: "Digital Currency Exchange", icon: "fa-exchange-alt", d: "ศูนย์กลางการแลกเปลี่ยน Crypto และ Digital Currency ทุกสกุลทั่วโลก รองรับทั้งการซื้อ ขาย และถอนเงินสดผ่าน Payment Gateway ที่ปลอดภัยที่สุด" },
-        { n: "Real Estate Acquisition", icon: "fa-building", d: "จัดหาและบริหารโครงการอสังหาริมทรัพย์ระดับพรีเมียม คอนโด บ้าน หรือที่ดินยุทธศาสตร์ ภูเขา-ทะเล รองรับการลงทุนด้วยสินทรัพย์ดิจิทัล" },
-        { n: "Global Infrastructure", icon: "fa-city", d: "การลงทุนและพัฒนาโครงสร้างพื้นฐานขนาดใหญ่ สนามบิน ระบบราง รถไฟฟ้า นิคมอุตสาหกรรม และโครงการ Mega Project ระดับมหาอำนาจ" },
-        { n: "Emergency Response", icon: "fa-ambulance", d: "หน่วยช่วยเหลือฉุกเฉิน 24 ชม. จัดหาโรงพยาบาลด่วน รถแอมบูแลนซ์ รถยก และประสานงานประกันภัยทันทีดุจญาติมิตร" },
-        { n: "Wealth Management", icon: "fa-chart-line", d: "แผนบริหารความมั่งคั่ง การออมเงิน ทอง หุ้น และตราสารหนี้ เพื่อสร้างกำไรระยะสั้นและรากฐานที่มั่นคงให้ครอบครัวและบุตรหลาน" },
-        { n: "Global Logistics", icon: "fa-ship", d: "ระบบขนส่งสินค้าครบวงจร บก-น้ำ-อากาศ และ Shipping สากล บริการจัดส่งสินค้าทุกขนาดจากโรงงานทั่วโลกถึงมือคุณอย่างปลอดภัย" },
-        { n: "Supreme Defense", icon: "fa-shield-military", d: "หน่วยอารักขาส่วนบุคคล (Bodyguard) ทีมทนายความมืออาชีพ และระบบป้องกัน Cyber Attack ที่ป้องกันการเจาะข้อมูลทุกรูปแบบ" },
-        { n: "Industrial Sourcing", icon: "fa-industry", d: "จัดหาเครื่องจักรหนัก หุ่นยนต์อุตสาหกรรม และระบบโรงงานอุตสาหกรรมที่ได้มาตรฐานสากลในราคาโรงงาน" }
-    ];
-
-    const grid = document.getElementById('stationGrid');
-    stations.forEach(s => {
-        const div = document.createElement('div');
-        div.className = 'station-node';
-        div.innerHTML = `<i class="fas ${s.icon}"></i><h3>${s.n}</h3>`;
-        div.onclick = () => {
-            document.getElementById('mHeader').innerText = s.n;
-            document.getElementById('mDesc').innerText = s.d;
-            document.getElementById('pModal').style.display = 'flex';
-        };
-        grid.appendChild(div);
-    });
-
-    function closeM() { document.getElementById('pModal').style.display = 'none'; }
-    window.onclick = function(e) { if(e.target == document.getElementById('pModal')) closeM(); }
-<<footer>
-    <p>ETHIC HOLDINGS THAI CO., LTD.</p>
-    <div style="font-size:0.7rem; color:#555; letter-spacing:1px; line-height:2;">
-        INFRASTRUCTURE | INNOVATION | UNIVERSAL GATEWAY | SECURITY<br>
-        ความซื่อสัตย์และบริการระดับมืออาชีพ คือหัวใจมหาอำนาจของเรา<br>
-        <span style="color:var(--gold); opacity:0.8;">"ดูแลคุณ... ดุจญาติผู้ใหญ่ที่เราเคารพรัก"</span>
-    </div>
-    <div style="margin-top:20px; font-size:0.65rem; opacity:0.4; color:#fff;">
-        &copy; 2026 Ethic Holdings Thai. All Rights Reserved. Secure Multi-Currency Payment Integrated.
-        <!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ETHIC HOLDINGS THAI | Global Infrastructure & Universal Gateway</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :root {
             --gold: #AD4F37; 
             --bg-deep: #050a14;
             --bg-panel: rgba(13, 27, 42, 0.95);
-            --accent-green: #00e676;
             --text-light: #f4f5f7;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
         body { font-family: 'Prompt', sans-serif; background: var(--bg-deep); color: var(--text-light); overflow-x: hidden; }
 
-        /* Navigation & Security Status */
+        /* Security Status Bar */
         .security-bar {
             background: linear-gradient(90deg, #000, var(--gold));
             padding: 10px; text-align: center; border-bottom: 1px solid var(--gold);
             font-size: 0.8rem; letter-spacing: 2px; position: sticky; top: 0; z-index: 1100;
         }
 
-        /* Hero Header - The Face of Power */
+        /* Header & Hero Section */
         header {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80');
             background-size: cover; background-position: center;
@@ -182,7 +35,7 @@
         header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 6vw, 4rem); color: var(--gold); letter-spacing: 10px; text-transform: uppercase; text-shadow: 0 0 30px rgba(173,79,55,0.6); }
         header p { font-size: 1.1rem; opacity: 0.9; letter-spacing: 3px; margin-top: 15px; font-weight: 300; }
 
-        /* Dashboard Grid Layout */
+        /* Dashboard & 24 Nodes System */
         .dashboard-container { padding: 80px 5%; max-width: 1400px; margin: auto; }
         .grid-24 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         @media (min-width: 992px) { .grid-24 { grid-template-columns: repeat(4, 1fr); gap: 30px; } }
@@ -198,7 +51,7 @@
         .station-node:hover i { transform: scale(1.1); text-shadow: 0 0 15px var(--gold); }
         .station-node h3 { font-size: 0.9rem; letter-spacing: 2px; color: #fff; text-transform: uppercase; font-weight: 600; }
 
-        /* Portal Modal - The Door to Happiness */
+        /* Modal Portal & Gateway UI */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(25px); }
         .modal-content { background: #000; border: 2px solid var(--gold); padding: 50px; width: 90%; max-width: 700px; border-radius: 10px; text-align: left; position: relative; animation: slideUp 0.4s ease-out; }
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -255,63 +108,20 @@
 </div>
 
 <script>
+    // ฐานข้อมูลสถานียุทธศาสตร์ (รวบรวมข้อมูลครบทุกมิติ)
     const stations = [
-<script>
-    const stations = [
-        { n: "Digital Currency Exchange", icon: "fa-exchange-alt", d: "ระบบแลกเปลี่ยน Crypto และสกุลเงินดิจิทัลอัจฉริยะ" },
-        { n: "Real Estate Acquisition", icon: "fa-building", d: "จัดหาและบริหารอสังหาริมทรัพย์ระดับ World Class" },
-        { n: "Global Infrastructure", icon: "fa-city", d: "โครงการพื้นฐานขนาดใหญ่ สนามบิน รถไฟฟ้า และ Mega Project" },
-        { n: "Emergency Response", icon: "fa-ambulance", d: "หน่วยช่วยเหลือฉุกเฉิน 24 ชม. ดุจญาติมิตร" },
-        { n: "Wealth Management", icon: "fa-chart-line", d: "วางแผนการออมเงิน ทอง หุ้น และกองทุน เพื่อผลกำไรสูงสุด" },
-        { n: "Global Logistics", icon: "fa-ship", d: "ขนส่งสินค้า บก-น้ำ-อากาศ เชื่อมโยงโรงงานทั่วโลก" },
-        { n: "Supreme Security", icon: "fa-shield-military", d: "ทีมอารักขาส่วนบุคคล และระบบป้องกัน Cyber Attack" },
-        { n: "Industrial Sourcing", icon: "fa-industry", d: "จัดหาเครื่องจักรหนัก หุ่นยนต์อุตสาหกรรม และโรงงานผลิต" },
-        { n: "Smart Home & Life", icon: "fa-laptop-house", d: "นวัตกรรมเทคโนโลยีเพื่อยกระดับการอยู่อาศัย" },
-        { n: "Insurance Concierge", icon: "fa-file-signature", d: "คัดสรรประกันภัยที่ให้ผลประโยชน์สูงสุด" },
-        { n: "Global Travel Hub", icon: "fa-plane", d: "บริการจองโรงแรม ตั๋วเครื่องบิน ระดับ VIP ทั่วโลก" },
-        { n: "Professional Service", icon: "fa-handshake", d: "ที่ปรึกษาด้วยความซื่อสัตย์ดุจญาติผู้ใหญ่" }
-    ];
-
-    const grid = document.getElementById('stationGrid');
-    stations.forEach(s => {
-        const div = document.createElement('div');
-        div.className = 'station-node';
-        div.innerHTML = `<i class="fas ${s.icon}"></i><h3>${s.n}</h3>`;
-        div.onclick = () => {
-            document.getElementById('mHeader').innerText = s.n;
-            document.getElementById('mDesc').innerText = s.d;
-            document.getElementById('pModal').style.display = 'flex';
-        };
-        grid.appendChild(div);
-    });
-
-    function closeM() { document.getElementById('pModal').style.display = 'none'; }
-    window.onclick = function(e) { if(e.target == document.getElementById('pModal')) closeM(); }
-</script>
-
-<footer>
-    <p>ETHIC HOLDINGS THAI CO., LTD.</p>
-    <div style="font-size:0.8rem; color:#666; letter-spacing:2px; line-height:2.5;">
-        INFRASTRUCTURE | INNOVATION | UNIVERSAL GATEWAY | SUPREME SECURITY<br>
-        ความซื่อสัตย์คือเกียรติยศ บริการระดับมืออาชีพคือหัวใจของเรา<br>
-        <span style="color:var(--gold); font-weight:600;">"ดูแลคุณ... ดุจญาติผู้ใหญ่ที่เราเคารพรัก"</span>
-    </div>
-</footer>
-
-</body>
-</html>
-        { n: "Digital Currency Exchange", icon: "fa-exchange-alt", d: "ระบบแลกเปลี่ยน Crypto และสกุลเงินดิจิทัลอัจฉริยะ รองรับธุรกรรมทั่วโลก พร้อมระบบถอนเงินเข้าบัญชีโดยตรงด้วยความปลอดภัยสูงสุด" },
-        { n: "Real Estate Acquisition", icon: "fa-building", d: "จัดหาและบริหารอสังหาริมทรัพย์ระดับ World Class คอนโด บ้านหรู และที่ดินยุทธศาสตร์ รองรับการลงทุนด้วยสินทรัพย์ดิจิทัลแบบครบวงจร" },
-        { n: "Global Infrastructure", icon: "fa-city", d: "โครงการพื้นฐานขนาดใหญ่ สนามบิน รถไฟฟ้า และ Mega Project ระดับมหาอำนาจ เพื่อการก้าวกระโดดของเศรษฐกิจ" },
-        { n: "Emergency Response", icon: "fa-ambulance", d: "หน่วยช่วยเหลือฉุกเฉิน 24 ชม. จัดหาโรงพยาบาลด่วน รถแอมบูแลนซ์ รถยก และประสานงานประกันภัยทันทีดุจญาติมิตร" },
-        { n: "Wealth Management", icon: "fa-chart-line", d: "วางแผนการออมเงิน ทอง หุ้น และกองทุน เพื่อผลกำไรสูงสุดและรากฐานที่มั่นคงให้ครอบครัวและบุตรหลานในอนาคต" },
-        { n: "Global Logistics", icon: "fa-ship", d: "ขนส่งสินค้า บก-น้ำ-อากาศ และ Shipping สากล เชื่อมโยงโรงงานทั่วโลก ส่งตรงถึงมือคุณอย่างปลอดภัยทุกระยะทาง" },
-        { n: "Supreme Security", icon: "fa-shield-military", d: "ทีมอารักขาส่วนบุคคล ทนายความมืออาชีพ และระบบป้องกัน Cyber Attack ระดับกองกำลัง เพื่อปกป้องผลประโยชน์ของคุณ 100%" },
-        { n: "Industrial Sourcing", icon: "fa-industry", d: "จัดหาเครื่องจักรหนัก หุ่นยนต์อุตสาหกรรม และโรงงานผลิตมาตรฐานสากลในราคาที่คุ้มค่าที่สุดจากทั่วโลก" },
-        { n: "Smart Home & Life", icon: "fa-laptop-house", d: "จัดหานวัตกรรมเครื่องใช้ไฟฟ้า เฟอร์นิเจอร์ และเทคโนโลยีอำนวยความสะดวกภายในบ้าน เพื่อยกระดับการอยู่อาศัย" },
-        { n: "Insurance Concierge", icon: "fa-file-signature", d: "คัดสรรประกันภัยที่ให้ผลประโยชน์สูงสุด ทั้งสุขภาพ อุบัติเหตุ และอัคคีภัย เพื่อความสบายใจในการใช้ชีวิต" },
-        { n: "Global Travel Hub", icon: "fa-plane", d: "บริการจองโรงแรม ตั๋วเครื่องบิน และการจัดการการเดินทางระดับ VIP ทั่วโลก ผ่านระบบชำระเงินของเรา" },
-        { n: "Professional Service", icon: "fa-handshake", d: "การเป็นที่ปรึกษาและประสานงานทุกภาคส่วนด้วยความซื่อสัตย์ ตรงไปตรงมา และให้เกียรติลูกค้าดุจญาติผู้ใหญ่" }
+        { n: "Digital Currency Exchange", icon: "fa-exchange-alt", d: "ศูนย์กลางแลกเปลี่ยน Crypto และ Digital Currency ทั่วโลก รองรับการเบิกถอนรวดเร็วผ่าน Gateway มาตรฐานสูงสุด" },
+        { n: "Real Estate Acquisition", icon: "fa-building", d: "จัดหาและบริหารโครงการอสังหาริมทรัพย์พรีเมียม คอนโด ที่ดิน และการลงทุนอาคารพาณิชย์เพื่อความมั่งคั่ง" },
+        { n: "Global Infrastructure", icon: "fa-city", d: "โครงการพื้นฐานมหาอำนาจ สนามบิน นิคมอุตสาหกรรม และ Mega Project ระดับสากลเพื่ออนาคตที่ยั่งยืน" },
+        { n: "Emergency Response", icon: "fa-ambulance", d: "หน่วยช่วยเหลือฉุกเฉิน 24 ชม. จัดหาโรงพยาบาล รถพยาบาล และระบบประกันภัยที่รวดเร็วประทับใจดุจญาติมิตร" },
+        { n: "Wealth Management", icon: "fa-chart-line", d: "การบริหารพอร์ตการลงทุน ทองคำ หุ้น และตราสารการเงิน เพื่อสร้างผลกำไรสูงสุดและรากฐานที่มั่นคงให้ครอบครัว" },
+        { n: "Global Logistics", icon: "fa-ship", d: "ระบบขนส่งสินค้า บก-น้ำ-อากาศ และ Shipping ครบวงจร เชื่อมต่อคลังสินค้าทั่วโลกถึงมือคุณอย่างแม่นยำ" },
+        { n: "Supreme Defense & Security", icon: "fa-shield-military", d: "หน่วยอารักขาส่วนบุคคล ทนายความ และระบบความปลอดภัย Cyber ระดับกองกำลัง ปกป้องผลประโยชน์ของคุณ 100%" },
+        { n: "Industrial Sourcing", icon: "fa-industry", d: "จัดหาเครื่องจักรหนัก หุ่นยนต์อุตสาหกรรม และนวัตกรรมจากโรงงานชั้นนำทั่วโลกในราคายุติธรรม" },
+        { n: "Smart Home & Life", icon: "fa-laptop-house", d: "เทคโนโลยี AI และ IoT เพื่อบ้านอัจฉริยะ ยกระดับความสะดวกสบายและความปลอดภัยในการใช้ชีวิตยุคใหม่" },
+        { n: "Insurance & Risk Mgmt", icon: "fa-file-signature", d: "ที่ปรึกษาด้านการประกันภัยและบริหารความเสี่ยงครบทุกมิติ คัดสรรเงื่อนไขที่ดีที่สุดเพื่อคุณและคนที่คุณรัก" },
+        { n: "Global Travel & VIP Hub", icon: "fa-plane", d: "บริการจองโรงแรม ตั๋วเครื่องบิน และ Private Jet จัดการการเดินทางระดับ VIP ทั่วโลกอย่างไร้รอยต่อ" },
+        { n: "Professional Concierge", icon: "fa-handshake", d: "การประสานงานและบริการส่วนบุคคลระดับมืออาชีพ ด้วยความซื่อสัตย์และให้เกียรติดุจญาติผู้ใหญ่คนสำคัญ" }
     ];
 
     const grid = document.getElementById('stationGrid');
@@ -345,4 +155,3 @@
 
 </body>
 </html>
-
