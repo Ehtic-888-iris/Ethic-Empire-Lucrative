@@ -2,462 +2,239 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ETHIC HOLDINGS THAI | Global Infrastructure & Universal Gateway</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHIC HOLDINGS | THE UNIVERSAL GEOMETRY</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;400;700&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* -----------------------------------------------------------
-           GLOBAL SETTINGS
-           ----------------------------------------------------------- */
         :root {
-            --gold: #AD4F37; 
-            --bg-deep: #050a14;
-            --bg-panel: rgba(13, 27, 42, 0.95);
-            --accent-green: #00e676;
-            --text-light: #f4f5f7;
-            --transition-speed: 0.5s;
+            --gold-glow: #AD4F37;
+            --deep-space: #02050a;
+            --hex-bg: rgba(173, 79, 55, 0.05);
+            --neon-border: rgba(173, 79, 55, 0.4);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
+            background-color: var(--deep-space);
+            color: #fff;
             font-family: 'Prompt', sans-serif;
-            background: var(--bg-deep);
-            color: var(--text-light);
             overflow-x: hidden;
-            line-height: 1.6;
+            /* พื้นหลังลายเรขาคณิตสุดล้ำ */
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(173, 79, 55, 0.1) 0%, transparent 80%),
+                linear-gradient(var(--neon-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--neon-border) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
         }
 
-        /* -----------------------------------------------------------
-           SECURITY STATUS BAR
-           ----------------------------------------------------------- */
-        .security-bar {
-            background: linear-gradient(90deg, #000, var(--gold));
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid var(--gold);
-            font-size: 0.85rem;
-            letter-spacing: 2.5px;
-            position: sticky;
-            top: 0;
-            z-index: 1100;
-            font-weight: 600;
+        /* เอฟเฟกต์แสงเหนือ (Aura Glow) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, var(--gold-glow), transparent 40%);
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: 0;
         }
 
-        /* -----------------------------------------------------------
-           HERO HEADER SECTION
-           ----------------------------------------------------------- */
         header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            padding: 160px 20px;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            border-bottom: 5px solid var(--gold);
+            z-index: 10;
+            position: relative;
         }
 
         header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: var(--gold);
-            letter-spacing: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            letter-spacing: 20px;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--gold-glow);
+            filter: drop-shadow(0 0 20px var(--gold-glow));
             text-transform: uppercase;
-            text-shadow: 0 0 35px rgba(173,79,55,0.7);
-            margin-bottom: 20px;
+            animation: pulse 4s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 10px var(--gold-glow)); }
+            50% { opacity: 1; filter: drop-shadow(0 0 40px var(--gold-glow)); }
         }
 
         header p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            letter-spacing: 4px;
-            font-weight: 300;
-            max-width: 800px;
-            margin: 0 auto;
+            font-size: 1rem;
+            letter-spacing: 8px;
+            margin-top: 20px;
+            color: var(--gold-glow);
+            text-transform: uppercase;
         }
 
-        /* -----------------------------------------------------------
-           DASHBOARD & GRID SYSTEM
-           ----------------------------------------------------------- */
+        /* ระบบ Grid เรขาคณิตหกเหลี่ยม (The Hexagonal Citadel) */
         .dashboard-container {
             padding: 100px 5%;
-            max-width: 1400px;
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--gold);
-            margin-bottom: 80px;
-            letter-spacing: 10px;
-            font-weight: 300;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-        }
-
-        .grid-24 {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        @media (min-width: 768px) {
-            .grid-24 { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (min-width: 1200px) {
-            .grid-24 { grid-template-columns: repeat(4, 1fr); gap: 35px; }
-        }
-
-        /* -----------------------------------------------------------
-           STATION NODES (THE 24 NODES)
-           ----------------------------------------------------------- */
-        .station-node {
-            background: var(--bg-panel);
-            border: 1px solid rgba(173, 79, 55, 0.25);
-            border-radius: 25px;
-            padding: 50px 25px;
-            text-align: center;
-            cursor: pointer;
-            transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
             position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
+            z-index: 5;
         }
 
-        .station-node::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            transition: 0.5s;
+        .node-hex {
+            position: relative;
+            background: var(--hex-bg);
+            border: 1px solid var(--neon-border);
+            padding: 60px 30px;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
         }
 
-        .station-node:hover::before {
-            left: 100%;
+        .node-hex:hover {
+            background: rgba(173, 79, 55, 0.2);
+            transform: scale(1.1) rotate(5deg);
+            border-color: #fff;
+            box-shadow: 0 0 50px var(--gold-glow);
         }
 
-        .station-node:hover {
-            transform: translateY(-20px);
-            border-color: var(--gold);
-            box-shadow: 0 25px 60px rgba(173, 79, 55, 0.45);
-        }
-
-        .station-node i {
+        .node-hex i {
             font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 25px;
+            color: var(--gold-glow);
+            margin-bottom: 20px;
             display: block;
-            transition: 0.4s;
         }
 
-        .station-node:hover i {
-            transform: scale(1.2) rotate(5deg);
-            text-shadow: 0 0 20px var(--gold);
-        }
-
-        .station-node h3 {
-            font-size: 1rem;
-            letter-spacing: 2.5px;
+        .node-hex h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
             color: #fff;
-            text-transform: uppercase;
-            font-weight: 700;
         }
 
-        /* -----------------------------------------------------------
-           MODAL PORTAL SYSTEM
-           ----------------------------------------------------------- */
+        /* หน้าต่างประตูมิติ (Modal Gateway) */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.98);
-            z-index: 2000;
-            align-items: center;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
             justify-content: center;
-            backdrop-filter: blur(30px);
+            align-items: center;
         }
 
         .modal-content {
-            background: #000;
-            border: 2px solid var(--gold);
-            padding: 60px;
-            width: 90%;
+            width: 80%;
             max-width: 800px;
-            border-radius: 15px;
+            background: #000;
+            border: 1px solid var(--gold-glow);
+            padding: 60px;
             text-align: left;
             position: relative;
-            animation: slideUp 0.5s ease-out;
-            box-shadow: 0 0 100px rgba(173,79,55,0.2);
+            box-shadow: 0 0 100px rgba(173, 79, 55, 0.3);
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(80px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .close {
+        .close-btn {
             position: absolute;
-            top: 25px;
-            right: 35px;
-            font-size: 45px;
-            color: var(--gold);
+            top: 20px; right: 30px;
+            font-size: 2rem;
+            color: var(--gold-glow);
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        .close:hover {
-            color: #fff;
-            transform: rotate(90deg);
-        }
-        
-        .m-header {
-            color: var(--gold);
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            border-left: 8px solid var(--gold);
-            padding-left: 30px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: 700;
-        }
-
-        .m-desc {
-            line-height: 2.2;
-            color: #ddd;
-            margin-bottom: 45px;
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-        
-        /* -----------------------------------------------------------
-           PAYMENT GATEWAY UI
-           ----------------------------------------------------------- */
-        .gateway-box {
-            background: rgba(173, 79, 55, 0.1);
-            padding: 40px;
-            border: 1px dashed var(--gold);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .gateway-box p {
-            font-size: 1rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .pay-icons {
-            display: flex;
-            gap: 35px;
-            font-size: 2.5rem;
-            color: #fff;
-            opacity: 0.9;
-            justify-content: center;
-        }
-
-        .pay-icons i:hover {
-            color: var(--gold);
-            transform: translateY(-5px);
-            transition: 0.3s;
-        }
-
-        .btn-gateway {
-            background: var(--gold);
-            color: #fff;
-            border: none;
-            padding: 28px;
+        .gate-btn {
+            margin-top: 40px;
             width: 100%;
-            font-weight: 700;
+            padding: 25px;
+            background: transparent;
+            border: 1px solid var(--gold-glow);
+            color: var(--gold-glow);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            letter-spacing: 5px;
             cursor: pointer;
-            letter-spacing: 5px;
-            font-size: 1.2rem;
-            transition: 0.5s;
-            border-radius: 10px;
-            text-transform: uppercase;
+            transition: 0.4s;
         }
 
-        .btn-gateway:hover {
-            background: #fff;
-            color: var(--gold);
-            box-shadow: 0 0 40px rgba(255,255,255,0.5);
-            transform: scale(1.02);
-        }
-
-        /* -----------------------------------------------------------
-           FOOTER SECTION
-           ----------------------------------------------------------- */
-        footer {
-            padding: 100px 20px;
-            text-align: center;
-            background: #000;
-            border-top: 1px solid var(--gold);
-        }
-
-        footer p {
-            color: var(--gold);
-            letter-spacing: 5px;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .footer-info {
-            font-size: 0.9rem;
-            color: #777;
-            letter-spacing: 2.5px;
-            line-height: 2.8;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .footer-motto {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 1rem;
-            margin-top: 20px;
-            display: block;
-        }
-
-        .copyright {
-            margin-top: 50px;
-            font-size: 0.75rem;
-            opacity: 0.4;
+        .gate-btn:hover {
+            background: var(--gold-glow);
             color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            box-shadow: 0 0 30px var(--gold-glow);
+        }
+
+        footer {
+            padding: 100px;
+            text-align: center;
+            border-top: 1px solid var(--neon-border);
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--gold-glow);
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="security-bar">
-        <i class="fas fa-user-shield"></i> EHT MILITARY-GRADE SECURITY ACTIVE | UNIVERSAL GATEWAY CONNECTED
-    </div>
-
     <header>
-        <h1>ETHIC HOLDINGS</h1>
-        <p>THE SUPREME COMMAND CENTER & GLOBAL INFRASTRUCTURE GATEWAY</p>
+        <p>REDEFINING HUMANITY THROUGH INNOVATION</p>
+        <h1>ETHIC</h1>
+        <p>HOLDINGS THAI</p>
     </header>
 
-    <div class="dashboard-container">
-        <h2 class="section-title">The 24 Strategic Nodes</h2>
-        <div class="grid-24" id="stationGrid">
-            </div>
-    </div>
+    <div class="dashboard-container" id="grid"></div>
 
-    <div id="pModal" class="modal">
+    <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeM()">&times;</span>
-            <div id="mHeader" class="m-header"></div>
-            <p id="mDesc" class="m-desc"></p>
-            
-            <div class="gateway-box">
-                <p><i class="fas fa-shield-check"></i> Secure Payment Interface</p>
-                <div class="pay-icons">
-                    <i class="fab fa-bitcoin" title="Bitcoin"></i>
-                    <i class="fab fa-ethereum" title="Ethereum"></i>
-                    <i class="fas fa-coins" title="Digital Assets"></i>
-                    <i class="fas fa-university" title="Bank Transfer"></i>
-                </div>
-            </div>
-            
-            <button class="btn-gateway" onclick="connectGateway()">
-                Open The Door To Happiness
-            </button>
+            <span class="close-btn" onclick="closePortal()">&times;</span>
+            <h2 id="mTitle" style="font-family:'Orbitron'; color:var(--gold-glow); margin-bottom:20px; letter-spacing:5px;"></h2>
+            <p id="mContent" style="line-height:2; color:#ccc; font-size:1.1rem;"></p>
+            <button class="gate-btn" onclick="alert('GATEWAY AUTHORIZED: PROCEEDING TO DESTINY...')">OPEN THE GATEWAY</button>
         </div>
     </div>
 
     <script>
-        // ข้อมูลสถานียุทธศาสตร์แบบจัดเต็ม
-        const stations = [
-            { n: "Digital Currency", icon: "fa-exchange-alt", d: "ระบบแลกเปลี่ยนสินทรัพย์ดิจิทัลระดับโลก รองรับธุรกรรมมหาอำนาจทุกรูปแบบด้วยความปลอดภัยสูงสุด" },
-            { n: "Real Estate", icon: "fa-building", d: "การครอบครองและบริหารอสังหาริมทรัพย์ระดับพรีเมียม ทั้งโครงการยุทธศาสตร์และที่อยู่อาศัยเหนือระดับ" },
-            { n: "Infrastructure", icon: "fa-city", d: "การพัฒนาโครงสร้างพื้นฐานขนาดใหญ่ ระบบราง สนามบิน และ Mega Projects เพื่อการก้าวกระโดดของเศรษฐกิจ" },
-            { n: "Emergency Response", icon: "fa-ambulance", d: "หน่วยกู้ชีพและประสานงานฉุกเฉิน 24 ชั่วโมง พร้อมดูแลคุณและคนที่คุณรักดุจญาติมิตรในทุกสถานการณ์" },
-            { n: "Wealth Management", icon: "fa-chart-line", d: "การวางแผนบริหารความมั่งคั่ง การออมทอง หุ้น และสินทรัพย์ดิจิทัล เพื่อความมั่นคงที่ยั่งยืนของครอบครัว" },
-            { n: "Global Logistics", icon: "fa-ship", d: "ระบบขนส่งและโลจิสติกส์ข้ามพรมแดน บก น้ำ อากาศ เชื่อมโยงห่วงโซ่อุปทานโลกสู่มือคุณอย่างแม่นยำ" },
-            { n: "Supreme Security", icon: "fa-shield-military", d: "การอารักขาระดับสูง ทีมกฎหมายมืออาชีพ และระบบป้องกันความปลอดภัยทางไซเบอร์ที่เจาะไม่เข้า" },
-            { n: "Industrial Sourcing", icon: "fa-industry", d: "การจัดหาเครื่องจักรหนักและเทคโนโลยีอุตสาหกรรมจากผู้ผลิตชั้นนำทั่วโลก เพื่อขับเคลื่อนการผลิตของคุณ" },
-            { n: "Smart Living", icon: "fa-laptop-house", d: "นวัตกรรมบ้านอัจฉริยะและเทคโนโลยีอำนวยความสะดวก เพื่อยกระดับคุณภาพชีวิตในทุกวัน" },
-            { n: "Health & Care", icon: "fa-heartbeat", d: "การเข้าถึงการรักษาพยาบาลระดับพรีเมียมและการดูแลสุขภาพแบบครบวงจร เพื่อร่างกายที่แข็งแรงสมบูรณ์" },
-            { n: "Aviation Hub", icon: "fa-plane-departure", d: "บริการจองเครื่องบินส่วนตัวและตั๋วเครื่องบินชั้นเลิศทั่วโลก พร้อมระบบจัดการการเดินทางระดับ VIP" },
-            { n: "Golden Services", icon: "fa-handshake", d: "การเป็นที่ปรึกษาและประสานงานทุกภาคส่วนด้วยความซื่อสัตย์ ให้เกียรติ และจริงใจดุจญาติผู้ใหญ่" }
+        const nodes = [
+            { t: "DIGITAL WEALTH", i: "fa-cube", d: "ระบบการเงินจำลองเสมือนจริงที่คำนวณกำไรในมิติเวลาอนาคต" },
+            { t: "SACRED INFRA", i: "fa-draw-polygon", d: "โครงสร้างพื้นฐานที่ใช้เรขาคณิตศักดิ์สิทธิ์ในการสร้างพลังงานสะอาด" },
+            { t: "AI GUARDIAN", i: "fa-microchip", d: "ระบบรักษาความปลอดภัยอัจฉริยะที่ใช้ปัญญาประดิษฐ์จากตระกูล AI ขั้นสูง" },
+            { t: "NEO LOGISTICS", i: "fa-rocket", d: "การขนส่งข้ามมิติที่เชื่อมโลกและอวกาศเข้าด้วยกัน" },
+            { t: "QUANTUM HEALTH", i: "fa-dna", d: "นวัตกรรมรักษาเซลล์ในระดับควอนตัมเพื่อความเป็นอมตะ" },
+            { t: "SUPREME LAW", i: "fa-gavel", d: "ความยุติธรรมที่โปร่งใสบนระบบ Blockchain มหาอำนาจ" }
         ];
 
-        // กลไกการสร้างสถานีในหน้าเว็บ
-        const grid = document.getElementById('stationGrid');
-        
-        function initializeDashboard() {
-            stations.forEach(s => {
-                const div = document.createElement('div');
-                div.className = 'station-node';
-                div.innerHTML = `
-                    <i class="fas ${s.icon}"></i>
-                    <h3>${s.n}</h3>
-                `;
-                div.onclick = () => openPortal(s.n, s.d);
-                grid.appendChild(div);
-            });
+        const container = document.getElementById('grid');
+        nodes.forEach(n => {
+            const div = document.createElement('div');
+            div.className = 'node-hex';
+            div.innerHTML = `<i class="fas ${n.i}"></i><h3>${n.t}</h3>`;
+            div.onclick = () => openPortal(n.t, n.d);
+            container.appendChild(div);
+        });
+
+        function openPortal(t, d) {
+            document.getElementById('mTitle').innerText = t;
+            document.getElementById('mContent').innerText = d;
+            document.getElementById('modal').style.display = 'flex';
         }
 
-        function openPortal(name, desc) {
-            document.getElementById('mHeader').innerText = name;
-            document.getElementById('mDesc').innerText = desc;
-            document.getElementById('pModal').style.display = 'flex';
+        function closePortal() {
+            document.getElementById('modal').style.display = 'none';
         }
-
-        function closeM() {
-            document.getElementById('pModal').style.display = 'none';
-        }
-
-        function connectGateway() {
-            alert('SYSTEM: Connecting to EHT Universal Secure Gateway...');
-        }
-
-        // ปิด Modal เมื่อคลิกนอกกรอบ
-        window.onclick = function(event) {
-            const modal = document.getElementById('pModal');
-            if (event.target == modal) {
-                closeM();
-            }
-        }
-
-        // เริ่มการทำงานระบบ
-        initializeDashboard();
     </script>
 
     <footer>
-        <p>ETHIC HOLDINGS THAI CO., LTD.</p>
-        <div class="footer-info">
-            INFRASTRUCTURE | INNOVATION | UNIVERSAL GATEWAY | SUPREME SECURITY<br>
-            ความซื่อสัตย์คือเกียรติยศ บริการระดับมืออาชีพคือหัวใจมหาอำนาจของเรา<br>
-            <span class="footer-motto">"ดูแลคุณ... ดุจญาติผู้ใหญ่ที่เราเคารพรัก"</span>
-        </div>
-        <div class="copyright">
-            &copy; 2026 ETHIC HOLDINGS THAI. ALL RIGHTS RESERVED. SECURE MULTI-CURRENCY PAYMENT INTEGRATED.
-        </div>
+        <div class="footer-logo">E H T</div>
+        <p style="font-size:0.7rem; color:#666; letter-spacing:5px;">&copy; 2026 THE ONLY ONE IN THE WORLD. ALL RIGHTS RESERVED BY ALICE & IRIS PROCESSED.</p>
     </footer>
 
 </body>
