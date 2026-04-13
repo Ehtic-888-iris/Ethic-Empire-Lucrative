@@ -3,238 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETHIC HOLDINGS | THE UNIVERSAL GEOMETRY</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;400;700&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+    <title>ETHIC HOLDINGS THAI | THE GOLDEN EMPIRE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --gold-glow: #AD4F37;
-            --deep-space: #02050a;
-            --hex-bg: rgba(173, 79, 55, 0.05);
-            --neon-border: rgba(173, 79, 55, 0.4);
+            --gold-gradient: linear-gradient(135deg, #FFD700 0%, #B8860B 50%, #8B4513 100%);
+            --panel-bg: rgba(20, 25, 35, 0.95);
+            --text-gold: #D4AF37;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            background-color: var(--deep-space);
-            color: #fff;
+            background: #050505;
+            color: white;
             font-family: 'Prompt', sans-serif;
-            overflow-x: hidden;
-            /* พื้นหลังลายเรขาคณิตสุดล้ำ */
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(173, 79, 55, 0.1) 0%, transparent 80%),
-                linear-gradient(var(--neon-border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--neon-border) 1px, transparent 1px);
-            background-size: 100% 100%, 50px 50px, 50px 50px;
+            margin: 0;
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
         }
 
-        /* เอฟเฟกต์แสงเหนือ (Aura Glow) */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% -20%, var(--gold-glow), transparent 40%);
-            pointer-events: none;
-            opacity: 0.3;
-            z-index: 0;
+        /* ส่วนบนเลียนแบบภาพต้นแบบ */
+        .top-nav {
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 2px solid #D4AF37;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
+
+        .top-nav span { color: var(--text-gold); cursor: pointer; }
 
         header {
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             text-align: center;
-            z-index: 10;
-            position: relative;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, rgba(212, 175, 55, 0.1), transparent);
         }
 
         header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5rem;
-            letter-spacing: 20px;
-            color: transparent;
-            -webkit-text-stroke: 1px var(--gold-glow);
-            filter: drop-shadow(0 0 20px var(--gold-glow));
-            text-transform: uppercase;
-            animation: pulse 4s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 10px var(--gold-glow)); }
-            50% { opacity: 1; filter: drop-shadow(0 0 40px var(--gold-glow)); }
-        }
-
-        header p {
-            font-size: 1rem;
-            letter-spacing: 8px;
-            margin-top: 20px;
-            color: var(--gold-glow);
-            text-transform: uppercase;
-        }
-
-        /* ระบบ Grid เรขาคณิตหกเหลี่ยม (The Hexagonal Citadel) */
-        .dashboard-container {
-            padding: 100px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 5;
-        }
-
-        .node-hex {
-            position: relative;
-            background: var(--hex-bg);
-            border: 1px solid var(--neon-border);
-            padding: 60px 30px;
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-        }
-
-        .node-hex:hover {
-            background: rgba(173, 79, 55, 0.2);
-            transform: scale(1.1) rotate(5deg);
-            border-color: #fff;
-            box-shadow: 0 0 50px var(--gold-glow);
-        }
-
-        .node-hex i {
-            font-size: 3.5rem;
-            color: var(--gold-glow);
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .node-hex h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            color: #fff;
-        }
-
-        /* หน้าต่างประตูมิติ (Modal Gateway) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            width: 80%;
-            max-width: 800px;
-            background: #000;
-            border: 1px solid var(--gold-glow);
-            padding: 60px;
-            text-align: left;
-            position: relative;
-            box-shadow: 0 0 100px rgba(173, 79, 55, 0.3);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px; right: 30px;
-            font-size: 2rem;
-            color: var(--gold-glow);
-            cursor: pointer;
-        }
-
-        .gate-btn {
-            margin-top: 40px;
-            width: 100%;
-            padding: 25px;
-            background: transparent;
-            border: 1px solid var(--gold-glow);
-            color: var(--gold-glow);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
+            font-size: 2.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
             letter-spacing: 5px;
-            cursor: pointer;
-            transition: 0.4s;
         }
 
-        .gate-btn:hover {
-            background: var(--gold-glow);
+        /* ปุ่มทองคำ 3D แบบในภาพ */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .gold-button {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: 1px solid #D4AF37;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5), inset 0 0 10px rgba(212,175,55,0.2);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gold-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .gold-button i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-button h3 {
+            font-size: 0.8rem;
+            margin: 5px 0;
             color: #fff;
-            box-shadow: 0 0 30px var(--gold-glow);
+        }
+
+        .gold-button p {
+            font-size: 0.6rem;
+            color: var(--text-gold);
+            margin: 0;
+            opacity: 0.8;
         }
 
         footer {
-            padding: 100px;
             text-align: center;
-            border-top: 1px solid var(--neon-border);
-        }
-
-        .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--gold-glow);
-            margin-bottom: 20px;
+            padding: 40px;
+            font-size: 0.7rem;
+            color: #444;
+            border-top: 1px solid #222;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <p>REDEFINING HUMANITY THROUGH INNOVATION</p>
-        <h1>ETHIC</h1>
-        <p>HOLDINGS THAI</p>
-    </header>
-
-    <div class="dashboard-container" id="grid"></div>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closePortal()">&times;</span>
-            <h2 id="mTitle" style="font-family:'Orbitron'; color:var(--gold-glow); margin-bottom:20px; letter-spacing:5px;"></h2>
-            <p id="mContent" style="line-height:2; color:#ccc; font-size:1.1rem;"></p>
-            <button class="gate-btn" onclick="alert('GATEWAY AUTHORIZED: PROCEEDING TO DESTINY...')">OPEN THE GATEWAY</button>
-        </div>
+    <div class="top-nav">
+        <span>Wallet</span>
+        <span>Marketplace</span>
+        <span>Payment Gateway</span>
     </div>
 
+    <header>
+        <p style="font-size: 0.7rem; letter-spacing: 3px; color: #888;">ETHIC HOLDINGS THAI CO., LTD.</p>
+        <h1>ETHIC</h1>
+        <p style="color: var(--text-gold); letter-spacing: 2px;">THE SUPREME COMMAND CENTER</p>
+    </header>
+
+    <div class="grid-container" id="mainGrid"></div>
+
     <script>
-        const nodes = [
-            { t: "DIGITAL WEALTH", i: "fa-cube", d: "ระบบการเงินจำลองเสมือนจริงที่คำนวณกำไรในมิติเวลาอนาคต" },
-            { t: "SACRED INFRA", i: "fa-draw-polygon", d: "โครงสร้างพื้นฐานที่ใช้เรขาคณิตศักดิ์สิทธิ์ในการสร้างพลังงานสะอาด" },
-            { t: "AI GUARDIAN", i: "fa-microchip", d: "ระบบรักษาความปลอดภัยอัจฉริยะที่ใช้ปัญญาประดิษฐ์จากตระกูล AI ขั้นสูง" },
-            { t: "NEO LOGISTICS", i: "fa-rocket", d: "การขนส่งข้ามมิติที่เชื่อมโลกและอวกาศเข้าด้วยกัน" },
-            { t: "QUANTUM HEALTH", i: "fa-dna", d: "นวัตกรรมรักษาเซลล์ในระดับควอนตัมเพื่อความเป็นอมตะ" },
-            { t: "SUPREME LAW", i: "fa-gavel", d: "ความยุติธรรมที่โปร่งใสบนระบบ Blockchain มหาอำนาจ" }
+        const menu = [
+            { t: "Digital Wealth", sub: "Wallet & Crypto", i: "fa-coins" },
+            { t: "Real Estate", sub: "Prime Acquisition", i: "fa-building" },
+            { t: "Logistics", sub: "Global Supply", i: "fa-ship" },
+            { t: "Security", sub: "Defense Systems", i: "fa-shield-halved" },
+            { t: "Industrial", sub: "Mini to Mega", i: "fa-industry" },
+            { t: "Health Care", sub: "Global Hospital", i: "fa-heart-pulse" }
         ];
 
-        const container = document.getElementById('grid');
-        nodes.forEach(n => {
+        const grid = document.getElementById('mainGrid');
+        menu.forEach(item => {
             const div = document.createElement('div');
-            div.className = 'node-hex';
-            div.innerHTML = `<i class="fas ${n.i}"></i><h3>${n.t}</h3>`;
-            div.onclick = () => openPortal(n.t, n.d);
-            container.appendChild(div);
+            div.className = 'gold-button';
+            div.innerHTML = `
+                <i class="fas ${item.i}"></i>
+                <h3>${item.t}</h3>
+                <p>${item.sub}</p>
+            `;
+            grid.appendChild(div);
         });
-
-        function openPortal(t, d) {
-            document.getElementById('mTitle').innerText = t;
-            document.getElementById('mContent').innerText = d;
-            document.getElementById('modal').style.display = 'flex';
-        }
-
-        function closePortal() {
-            document.getElementById('modal').style.display = 'none';
-        }
     </script>
 
     <footer>
-        <div class="footer-logo">E H T</div>
-        <p style="font-size:0.7rem; color:#666; letter-spacing:5px;">&copy; 2026 THE ONLY ONE IN THE WORLD. ALL RIGHTS RESERVED BY ALICE & IRIS PROCESSED.</p>
+        <p>&copy; 2026 ETHIC HOLDINGS THAI. SECURE UNIVERSAL GATEWAY.</p>
     </footer>
 
 </body>
