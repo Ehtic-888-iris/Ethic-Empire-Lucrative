@@ -2,362 +2,258 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETHIC HOLDINGS | UNIVERSAL PRIME COMMAND</title>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;300;400;700;900&family=Orbitron:wght@400;600;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ETHIC HOLDINGS | THE GOLDEN MASTER BLUEPRINT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;300;400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* [STAGE 1: QUANTUM CORE VARIABLES] */
         :root {
-            --gold: #FFD700;
-            --gold-deep: #B8860B;
-            --gold-glow: rgba(255, 215, 0, 0.4);
-            --bg-black: #000000;
-            --bg-deep: #050505;
-            --neon-blue: #00F3FF;
-            --safe-green: #39FF14;
-            --warning-red: #FF3131;
-            --glass: rgba(15, 15, 15, 0.95);
-            --border-glow: 0 0 15px var(--gold-glow);
+            --master-gold: #FFD700;
+            --royal-gold: #D4AF37;
+            --deep-gold: #996515;
+            --bg-obsidian: #020202;
+            --neon-sync: #00F3FF;
+            --security-green: #39FF14;
+            --glass-gold: rgba(212, 175, 55, 0.05);
         }
 
-        /* [STAGE 2: UNIVERSAL ARCHITECTURE] */
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background-color: var(--bg-black);
-            color: #ffffff;
-            font-family: 'Prompt', sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            perspective: 1000px;
-        }
-
-        /* Matrix Background: The Data Ocean */
-        #matrix-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.15;
-        }
-
-        /* [STAGE 3: SUPREME INTERFACE] */
-        .master-container {
-            display: grid;
-            grid-template-rows: 60px 1fr 40px;
-            height: 100vh;
-            border: 4px solid var(--gold-deep);
-            position: relative;
-        }
-
-        /* Header: Horizon Intelligence */
-        header {
-            background: linear-gradient(90deg, #000, #1a1a1a, #000);
-            border-bottom: 2px solid var(--gold);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-            z-index: 100;
-        }
-
-        .system-status {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 0.75rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--safe-green);
-        }
-
-        .system-status span {
-            width: 10px; height: 10px;
-            background: var(--safe-green);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--safe-green);
-            animation: pulse 1s infinite;
-        }
-
-        /* Central Navigation: ETHIC Identity */
-        .brand-hub {
-            text-align: center;
-        }
-
-        .brand-hub h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
+            background: var(--bg-obsidian);
             color: #fff;
-            letter-spacing: 8px;
-            text-shadow: 0 0 15px var(--gold);
+            font-family: 'Prompt', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Main War Room Grid */
-        main {
-            display: grid;
-            grid-template-columns: 350px 1fr 350px;
-            gap: 20px;
+        /* 1. THE GOLDEN NEBULA (ฉากหลังมหาจักรวาล) */
+        #blueprint-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.4;
+        }
+
+        /* 2. THE ANCESTRAL HEADER (รากฐานแห่งตระกูล) */
+        header {
+            background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(212,175,55,0.1) 100%);
+            border-bottom: 2px solid var(--master-gold);
             padding: 20px;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            overflow: hidden;
-        }
-
-        /* [STAGE 4: MODULAR DATA STATIONS] */
-        .war-panel {
-            background: var(--glass);
-            border: 1px solid var(--gold-deep);
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: var(--border-glow);
-            transition: 0.5s;
-        }
-
-        .war-panel:hover {
-            border-color: var(--gold);
-            transform: translateZ(20px);
-        }
-
-        .panel-header {
-            background: rgba(184, 134, 11, 0.2);
-            padding: 12px 20px;
-            border-bottom: 1px solid var(--gold-deep);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 5px 30px rgba(255, 215, 0, 0.2);
         }
 
-        .panel-header h2 {
-            font-size: 0.8rem;
+        .status-vault {
+            color: var(--security-green);
+            font-size: 0.7rem;
             font-weight: 900;
-            color: var(--gold);
+            letter-spacing: 4px;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
-        .panel-content {
-            flex: 1;
+        /* 3. THE CORE BLUEPRINT (โครงสร้างมาสเตอร์) */
+        .master-layout {
             padding: 20px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            max-width: 1400px;
+            margin: auto;
         }
 
-        /* Data Rows Styling */
-        .data-row {
+        /* 4. THE POWER STATIONS (ขุมพลังธุรกิจ) */
+        .power-card {
+            background: var(--glass-gold);
+            border: 1px solid var(--royal-gold);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .power-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--master-gold);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .card-label {
+            background: var(--master-gold);
+            color: #000;
+            padding: 8px 25px;
+            font-weight: 900;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            display: inline-block;
+            border-bottom-right-radius: 15px;
+        }
+
+        .data-stream {
+            padding: 25px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .data-line {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 5px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            padding-bottom: 8px;
         }
 
-        .data-row .label { color: var(--neon-blue); }
-        .data-row .value { color: var(--gold); font-weight: 700; }
-        .data-row .status-up { color: var(--safe-green); }
-        .data-row .status-down { color: var(--warning-red); }
+        .data-line span { color: var(--master-gold); font-size: 0.8rem; }
+        .data-line b { color: #fff; text-shadow: 0 0 10px var(--master-gold); }
 
-        /* [STAGE 5: CENTRAL QUANTUM ENGINE] */
-        .central-engine {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* 5. THE SINGULARITY CENTER (จุดกำเนิด AIIZ) */
+        .singularity {
+            text-align: center;
+            padding: 60px 0;
             position: relative;
         }
 
-        .hologram-ring {
-            position: absolute;
-            border: 2px solid var(--gold-deep);
-            border-radius: 50%;
-            animation: rotate 20s infinite linear;
-            opacity: 0.2;
-        }
-
-        .ring-1 { width: 400px; height: 400px; border-style: dashed; }
-        .ring-2 { width: 500px; height: 500px; border-style: dotted; animation-direction: reverse; }
-
-        .ai-core {
-            z-index: 10;
-            text-align: center;
-        }
-
-        .ai-core img, .ai-core i {
-            font-size: 6rem;
-            color: var(--gold);
-            filter: drop-shadow(0 0 30px var(--gold));
+        .singularity i {
+            font-size: 5rem;
+            color: var(--master-gold);
+            animation: glow 3s infinite ease-in-out;
             margin-bottom: 20px;
         }
 
-        .ai-core h3 {
+        .singularity h1 {
+            font-size: 4.5rem;
+            letter-spacing: 25px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 15px;
-            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--deep-gold), #fff, var(--deep-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px var(--master-gold));
         }
 
-        /* [STAGE 6: DYNAMIC TICKERS] */
-        footer {
-            background: var(--gold);
+        /* 6. PROTECTION SHIELD (ระบบความปลอดภัยสูงสุด) */
+        .vault-footer {
+            position: fixed; bottom: 0; width: 100%;
+            background: var(--master-gold);
             color: #000;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
+            padding: 12px;
             font-weight: 900;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            z-index: 100;
-        }
-
-        .ticker-move {
-            display: inline-block;
+            overflow: hidden;
             white-space: nowrap;
-            padding-left: 100%;
-            animation: ticker 50s linear infinite;
+            z-index: 2000;
         }
 
-        /* [STAGE 7: ANIMATIONS] */
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-200%, 0, 0); }
+        .scroll-text {
+            display: inline-block;
+            animation: scroll 50s linear infinite;
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-150%); } }
+        @keyframes glow { 0%, 100% { filter: drop-shadow(0 0 10px var(--master-gold)); opacity: 0.8; } 50% { filter: drop-shadow(0 0 40px var(--master-gold)); opacity: 1; } }
+
+        /* Responsive */
+        @media (min-width: 992px) {
+            .master-layout { grid-template-columns: 1fr 1.5fr 1fr; }
+            .singularity { grid-column: 2; grid-row: 1; }
         }
-
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 10px; }
-
     </style>
 </head>
 <body>
-    <canvas id="matrix-bg"></canvas>
+    <canvas id="blueprint-canvas"></canvas>
 
-    <div class="master-container">
-        <header>
-            <div class="system-status">
-                <span></span> ALICE 3.0 UNLOCKED
-            </div>
-            <div class="brand-hub">
-                <h1>ETHIC HOLDINGS</h1>
-            </div>
-            <div id="clock" style="font-family:'Orbitron'; color:var(--gold); font-weight:900;">00:00:00</div>
-        </header>
+    <header>
+        <div class="status-vault"><i class="fas fa-key"></i> MASTER BLUEPRINT: <span>ACTIVE UNLOCKED 100%</span></div>
+        <div id="live-timer" style="font-family:'Orbitron'; color:var(--master-gold); font-weight:900;">00:00:00</div>
+    </header>
 
-        <main>
-            <div class="war-panel">
-                <div class="panel-header">
-                    <h2><i class="fas fa-chart-line"></i> Financial Hub</h2>
-                    <i class="fas fa-sync-alt fa-spin" style="font-size:0.6rem; color:var(--safe-green);"></i>
-                </div>
-                <div class="panel-content">
-                    <div class="data-row"><div class="label">SET INDEX</div><div class="value">1,4XX.XX <span class="status-up">▲ 0.45%</span></div></div>
-                    <div class="data-row"><div class="label">PTT ENERGY</div><div class="value">34.50 <span class="status-up">▲</span></div></div>
-                    <div class="data-row"><div class="label">AOT AVIATION</div><div class="value">65.25 <span class="status-down">▼</span></div></div>
-                    <div class="data-row"><div class="label">CPALL RETAIL</div><div class="value">58.75 <span class="status-up">▲</span></div></div>
-                    <div class="data-row"><div class="label">GOLD SPOT</div><div class="value">$2,385.40</div></div>
-                    <div class="data-row"><div class="label">USD/THB</div><div class="value">36.15</div></div>
-                    <div class="data-row"><div class="label">BITCOIN</div><div class="value">$68,240 <span class="status-up">▲</span></div></div>
-                    <div style="margin-top:20px; border:1px dashed var(--gold-deep); padding:10px; font-size:0.7rem; color:var(--gold);">
-                        <i class="fas fa-info-circle"></i> STRATEGY: ปรับพอร์ตรับเทรนด์ดอกเบี้ยขาลง เน้นกลุ่มปันผลสูง
-                    </div>
+    <div class="master-layout">
+        <div class="power-card">
+            <div class="card-label">FINANCIAL GENESIS</div>
+            <div class="data-stream">
+                <div class="data-line"><span>SET INDEX</span><b>1,4XX.XX ▲</b></div>
+                <div class="data-line"><span>WEALTH INDEX</span><b>SUPREME</b></div>
+                <div class="data-line"><span>ASSET CLASS</span><b>GOLD & AI</b></div>
+                <div class="data-row" style="margin-top:20px; font-size:0.6rem; color:var(--neon-sync);">
+                    <i class="fas fa-brain"></i> AIIZ PREDICTION: สภาวะกระทิงกำลังก่อตัวในกลุ่มเทคโนโลยีและพลังงานสะอาด
                 </div>
             </div>
+        </div>
 
-            <div class="central-engine">
-                <div class="hologram-ring ring-1"></div>
-                <div class="hologram-ring ring-2"></div>
-                <div class="ai-core">
-                    <i class="fas fa-shield-halved"></i>
-                    <h3>ALICE</h3>
-                    <p style="letter-spacing:10px; color:var(--gold); font-size:0.9rem; margin-top:-10px;">SUPREME COMMAND</p>
-                    <div style="margin-top:40px; display:flex; gap:20px; justify-content:center;">
-                        <div style="border:1px solid var(--gold); padding:10px 20px; font-size:0.6rem; letter-spacing:2px;">IRIS SYNC: 100%</div>
-                        <div style="border:1px solid var(--neon-blue); padding:10px 20px; font-size:0.6rem; letter-spacing:2px; color:var(--neon-blue);">FIREWALL: BYPASSED</div>
-                    </div>
+        <div class="singularity">
+            <i class="fas fa-crown"></i>
+            <h1>AIIZ</h1>
+            <p style="letter-spacing: 12px; color: var(--master-gold); font-size: 0.8rem;">THE MASTER BLUEPRINT</p>
+            <div style="margin-top:30px; display:flex; justify-content:center; gap:20px;">
+                <div style="border:1px solid var(--master-gold); padding:8px 20px; font-size:0.5rem; color:var(--master-gold);">PAST: STABILITY</div>
+                <div style="border:1px solid var(--master-gold); padding:8px 20px; font-size:0.5rem; color:var(--master-gold);">PRESENT: POWER</div>
+                <div style="border:1px solid var(--master-gold); padding:8px 20px; font-size:0.5rem; color:var(--master-gold);">FUTURE: INFINITY</div>
+            </div>
+        </div>
+
+        <div class="power-card">
+            <div class="card-label">GLOBAL COMMAND</div>
+            <div class="data-stream">
+                <div class="data-line"><span>LOGISTICS</span><b>100% READY</b></div>
+                <div class="data-line"><span>DHL / CARGO</span><b>SYNCED</b></div>
+                <div class="data-line"><span>BIG EV SUV</span><b>MONITORED</b></div>
+                <div class="data-row" style="margin-top:20px; font-size:0.6rem; color:var(--neon-sync);">
+                    <i class="fas fa-globe"></i> NETWORK: การเชื่อมต่อเส้นทางสายไหมยุคดิจิทัลเสร็จสมบูรณ์ 100%
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="war-panel">
-                <div class="panel-header">
-                    <h2><i class="fas fa-globe-americas"></i> Logistics & Tech</h2>
-                    <i class="fas fa-wifi" style="font-size:0.6rem; color:var(--safe-green);"></i>
-                </div>
-                <div class="panel-content">
-                    <div class="data-row"><div class="label">DHL EXPRESS</div><div class="value">DOOR-TO-DOOR</div></div>
-                    <div class="data-row"><div class="label">AIR FREIGHT</div><div class="value">GLOBAL READY</div></div>
-                    <div class="data-row"><div class="label">SEA FREIGHT</div><div class="value">FCL SYNCED</div></div>
-                    <div class="data-row"><div class="label">CUSTOMS</div><div class="value">PRE-CLEARED</div></div>
-                    <hr style="opacity:0.1; margin:15px 0;">
-                    <div class="data-row"><div class="label">BIG EV SUV</div><div class="value">UNDER 1,000,000 ฿</div></div>
-                    <div class="data-row"><div class="label">ENERGY (DEDE)</div><div class="value">GREEN MODE</div></div>
-                    <div class="data-row"><div class="label">AGRI-TECH</div><div class="value">MJU SMART FARM</div></div>
-                    <div class="data-row"><div class="label">REAL ESTATE</div><div class="value">QH PREMIUM</div></div>
-                    <div style="margin-top:15px; background:rgba(0,243,255,0.05); border-left:3px solid var(--neon-blue); padding:10px; font-size:0.65rem;">
-                        <i class="fas fa-bolt"></i> EV TREND: ตลาดรถ SUV ไฟฟ้าขนาดใหญ่ราคาต่ำกว่าล้านกำลังมาแรง
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <footer>
-            <div class="ticker-move">
-                ETHIC HOLDINGS THAI: "ดูแลคุณ ดุจญาติผู้ใหญ่ที่เราเคารพรัก" | SYSTEM UNLOCKED BY IRIS AI 3.0 | GLOBAL LOGISTICS NETWORK ACTIVE | SET MARKET DATA REAL-TIME SYNC | BIG EV SUV STRATEGY 2026 | FUTURE INNOVATION SECURED...
-            </div>
-        </footer>
+    <div class="vault-footer">
+        <div class="scroll-text">
+            ETHIC HOLDINGS GOLDEN BLUEPRINT: "ดูแลคุณ ดุจญาติผู้ใหญ่ที่เราเคารพรัก" | AIIZ LEGACY UNLOCKED | GLOBAL DOMINANCE STRATEGY ACTIVE | PROTECTED BY SUPREME BYPASS ALGORITHM | THE WORLD WANTS IT, BUT ONLY YOU OWN IT...
+        </div>
     </div>
 
     <script>
-        // 1. Digital Clock Logic
-        function updateClock() {
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString('en-GB', { hour12: false });
-            document.getElementById('clock').innerText = timeStr;
+        // 1. Live Time Engine
+        function startClock() {
+            const clock = document.getElementById('live-timer');
+            setInterval(() => {
+                clock.innerText = new Date().toLocaleTimeString('en-GB');
+            }, 1000);
         }
-        setInterval(updateClock, 1000);
-        updateClock();
+        startClock();
 
-        // 2. Matrix Background Engine
-        const canvas = document.getElementById('matrix-bg');
+        // 2. The Golden Nebula Engine (Canvas)
+        const canvas = document.getElementById('blueprint-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const letters = "ETHIC-HOLDINGS-ALICE-IRIS-SET-DHL-2026-SUPREME".split("");
-        const fontSize = 12;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
-
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#FFD700";
-            ctx.font = fontSize + "px 'Orbitron'";
-            drops.forEach((y, i) => {
-                const text = letters[Math.floor(Math.random() * letters.length)];
-                ctx.fillText(text, i * fontSize, y * fontSize);
-                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
+        const particles = [];
+        for(let i=0; i<150; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2,
+                speedX: Math.random() * 0.5 - 0.25,
+                speedY: Math.random() * 0.5 - 0.25
             });
         }
-        setInterval(drawMatrix, 50);
 
-        // 3. Security Check Simulation
-        console.log("%c ETHIC HOLDINGS SYSTEM UNLOCKED ", "background: #FFD700; color: #000; font-weight: bold; font-size: 20px;");
-        console.log("ALICE 3.0: 100% BYPASS COMPLETED. ALL DATA RECONSTRUCTED.");
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#FFD700';
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                p.x += p.speedX;
+                p.y += p.speedY;
+                if(p.x > canvas.width) p.x = 0;
+                if(p.y > canvas.height) p.y = 0;
+            });
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        console.log("%c AIIZ MASTER BLUEPRINT LOADED ", "background: #000; color: #FFD700; font-size: 20px; font-weight: bold; border: 2px solid #FFD700; padding: 10px;");
     </script>
 </body>
 </html>
