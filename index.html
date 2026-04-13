@@ -256,6 +256,50 @@
 
 <script>
     const stations = [
+<script>
+    const stations = [
+        { n: "Digital Currency Exchange", icon: "fa-exchange-alt", d: "ระบบแลกเปลี่ยน Crypto และสกุลเงินดิจิทัลอัจฉริยะ" },
+        { n: "Real Estate Acquisition", icon: "fa-building", d: "จัดหาและบริหารอสังหาริมทรัพย์ระดับ World Class" },
+        { n: "Global Infrastructure", icon: "fa-city", d: "โครงการพื้นฐานขนาดใหญ่ สนามบิน รถไฟฟ้า และ Mega Project" },
+        { n: "Emergency Response", icon: "fa-ambulance", d: "หน่วยช่วยเหลือฉุกเฉิน 24 ชม. ดุจญาติมิตร" },
+        { n: "Wealth Management", icon: "fa-chart-line", d: "วางแผนการออมเงิน ทอง หุ้น และกองทุน เพื่อผลกำไรสูงสุด" },
+        { n: "Global Logistics", icon: "fa-ship", d: "ขนส่งสินค้า บก-น้ำ-อากาศ เชื่อมโยงโรงงานทั่วโลก" },
+        { n: "Supreme Security", icon: "fa-shield-military", d: "ทีมอารักขาส่วนบุคคล และระบบป้องกัน Cyber Attack" },
+        { n: "Industrial Sourcing", icon: "fa-industry", d: "จัดหาเครื่องจักรหนัก หุ่นยนต์อุตสาหกรรม และโรงงานผลิต" },
+        { n: "Smart Home & Life", icon: "fa-laptop-house", d: "นวัตกรรมเทคโนโลยีเพื่อยกระดับการอยู่อาศัย" },
+        { n: "Insurance Concierge", icon: "fa-file-signature", d: "คัดสรรประกันภัยที่ให้ผลประโยชน์สูงสุด" },
+        { n: "Global Travel Hub", icon: "fa-plane", d: "บริการจองโรงแรม ตั๋วเครื่องบิน ระดับ VIP ทั่วโลก" },
+        { n: "Professional Service", icon: "fa-handshake", d: "ที่ปรึกษาด้วยความซื่อสัตย์ดุจญาติผู้ใหญ่" }
+    ];
+
+    const grid = document.getElementById('stationGrid');
+    stations.forEach(s => {
+        const div = document.createElement('div');
+        div.className = 'station-node';
+        div.innerHTML = `<i class="fas ${s.icon}"></i><h3>${s.n}</h3>`;
+        div.onclick = () => {
+            document.getElementById('mHeader').innerText = s.n;
+            document.getElementById('mDesc').innerText = s.d;
+            document.getElementById('pModal').style.display = 'flex';
+        };
+        grid.appendChild(div);
+    });
+
+    function closeM() { document.getElementById('pModal').style.display = 'none'; }
+    window.onclick = function(e) { if(e.target == document.getElementById('pModal')) closeM(); }
+</script>
+
+<footer>
+    <p>ETHIC HOLDINGS THAI CO., LTD.</p>
+    <div style="font-size:0.8rem; color:#666; letter-spacing:2px; line-height:2.5;">
+        INFRASTRUCTURE | INNOVATION | UNIVERSAL GATEWAY | SUPREME SECURITY<br>
+        ความซื่อสัตย์คือเกียรติยศ บริการระดับมืออาชีพคือหัวใจของเรา<br>
+        <span style="color:var(--gold); font-weight:600;">"ดูแลคุณ... ดุจญาติผู้ใหญ่ที่เราเคารพรัก"</span>
+    </div>
+</footer>
+
+</body>
+</html>
         { n: "Digital Currency Exchange", icon: "fa-exchange-alt", d: "ระบบแลกเปลี่ยน Crypto และสกุลเงินดิจิทัลอัจฉริยะ รองรับธุรกรรมทั่วโลก พร้อมระบบถอนเงินเข้าบัญชีโดยตรงด้วยความปลอดภัยสูงสุด" },
         { n: "Real Estate Acquisition", icon: "fa-building", d: "จัดหาและบริหารอสังหาริมทรัพย์ระดับ World Class คอนโด บ้านหรู และที่ดินยุทธศาสตร์ รองรับการลงทุนด้วยสินทรัพย์ดิจิทัลแบบครบวงจร" },
         { n: "Global Infrastructure", icon: "fa-city", d: "โครงการพื้นฐานขนาดใหญ่ สนามบิน รถไฟฟ้า และ Mega Project ระดับมหาอำนาจ เพื่อการก้าวกระโดดของเศรษฐกิจ" },
