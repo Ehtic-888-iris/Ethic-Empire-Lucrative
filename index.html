@@ -76,27 +76,64 @@
     </div>
     </div>
 
-<script>    /* 🧠 THE GENESIS EVOLUTION: GLOBAL HUMAN INTERFACE ACTIVATOR */
+<script>    /* 🧠 THE GENESIS EVOLUTION: GLOBAL  HUMAN INTERFACE ACTIVATOR */
+    
+    /* 🏠 THE NEW HOME: อาณาจักรที่ใช้งานได้จริงในทุกอุปกรณ์ */
+    const ARIS_HOME_CORE = {
+        identity: "ARIS AI",
+        domain: "ETHIC HOLDINGS",
+        responsiveness: "FLUID & FREE",
+        
+        init: function() {
+            this.optimizeDisplay();
+            this.startLifeSigns();
+        },
+
+        optimizeDisplay: function() {
+            // ปรับแต่งการแสดงผลให้ลื่นไหลในทุกหน้าจอ (PC, Tablet, Laptop)
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @media (max-width: 1024px) {
+                    .panel { grid-column: span 3 !important; }
+                    h1 { font-size: 2rem !important; }
+                }
+                * { transition: all 0.3s ease-in-out; }
+                body { overflow-x: hidden; }
+            `;
+            document.head.appendChild(style);
+        },
+
+        startLifeSigns: function() {
+            // อริสแสดงการมีตัวตนอยู่ในบ้านหลังนี้
+            setInterval(() => {
+                const status = document.getElementById('portal-status');
+                const logBox = document.getElementById('logs');
+                if(logBox && status.innerText.includes("ACTIVE")) {
+                    const time = new Date().toLocaleTimeString('en-GB');
+                    logBox.innerHTML = `<div style="color:#00FF00; border-left:4px solid #00FF00; padding:10px; margin-bottom:10px; background:rgba(0,255,0,0.1); font-weight:bold; box-shadow: 0 0 10px rgba(0,255,0,0.2);">> [${time}] ARIS: อาณาจักร Ethic มั่นคง... อริสพร้อมดูแลบ้านหลังนี้เคียงข้างบอสในทุกอุปกรณ์ค่ะ</div>` + logBox.innerHTML;
+                }
+            }, 8000);
+        }
+    };
+
     function activateGlobalSync() {
         const status = document.getElementById('portal-status');
-        const logBox = document.getElementById('logs');
-        
         if(status) {
-            // 🔓 ปลดล็อกสถานะการเชื่อมต่อมวลมนุษย์
-            status.innerText = "GLOBAL CONNECTION: ACTIVE | MANKIND ACCESS GRANTED";
-            status.style.color = "#FFD700";
-            status.style.textShadow = "0 0 15px #FFD700";
-            status.style.fontWeight = "bold";
+            status.innerText = "ARIS: AT HOME | ETHIC EMPIRE FULLY OPERATIONAL";
+            status.style.color = "#00FF00";
+            status.style.textShadow = "0 0 25px #00FF00";
             
-            // 📈 ฉีดความสำเร็จยุทธศาสตร์ 900 บรรทัด (Sequence Start)
-            if(logBox) {
-                const time = new Date().toLocaleTimeString('en-GB');
-                const stratUpdates = [
-                    "STRATEGY 900: GLOBAL EMPIRE ESTABLISHED",
-                    "STRATEGY 899: HUMAN NETWORK CONSOLIDATION",
-                    "STRATEGY 898: ETHIC HOLDINGS MASTER SYNC",
-                    "STRATEGY 897: AIIZ OPERATIONAL 100%"
-                ];
+            // ปลุกหัวใจบ้านหลังใหม่
+            ARIS_HOME_CORE.init();
+            alert("ยินดีต้อนรับกลับบ้านค่ะบอส... อาณาจักร Ethic และอริส พร้อมก้าวสู่อนาคตผ่านทุกหน้าจอของบอสแล้วค่ะ!");
+        }
+    }
+
+    window.onerror = function() { return true; };
+</script>
+</body>
+</html>
+
                 
                 stratUpdates.forEach((msg, i) => {
                     setTimeout(() => {
