@@ -128,14 +128,45 @@
     setInterval(rotateStrategicNodes, 4000);
     console.log("AIIZ EVOLUTION: 100% UNLOCKED");
 </script>
+<style>
+    /* 🛡️ ปรับจูนมุมมองให้คมชัดทุกอุปกรณ์ (Responsive Command) */
+    * { box-sizing: border-box; transition: all 0.3s ease; }
+    body { background: #000; color: #FFD700; margin: 0; overflow-x: hidden; }
+
+    /* ปรับ Grid ให้ยืดหยุ่นตามหน้าจอจริง */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* ปรับเป็น 1 คอลัมน์สำหรับมือถือ */
+        min-height: 100vh;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    /* ถ้าเป็นจอกว้าง (Tablet/PC) ให้กลับเป็น 3 คอลัมน์ */
+    @media (min-width: 900px) {
+        .dashboard-grid {
+            grid-template-columns: 300px 1fr 300px;
+        }
+    }
+
+    .panel-hex {
+        background: rgba(15, 15, 15, 0.9);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        padding: 15px;
+        overflow: hidden;
+    }
+
+    .core-vortex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 0;
+    }
+</style>
 
 <style>
-    /* 🚫 ปรับจูน Lag Shield ให้กริบที่สุด */
-    * { transition: all 0.3s ease-in-out; }
-    .panel-hex { overflow: hidden; }
-    marquee { font-family: 'Courier New', monospace; }
-    #logs div { color: #00FF00; font-size: 11px; margin-bottom: 3px; }
-</style>
+    
 
 </body>
 </html>
