@@ -131,24 +131,42 @@
     * { transition: all 0.3s ease-in-out; }
     .panel-hex { overflow: hidden; }
     marquee { font-family: 'Courier New', monospace; }
-</style>
-/* 🧬 ระบบประมวลผลเงียบ (Silent Processing Core) */
-const aiizMemory = [
-    "INITIATING FUTURE VISION...",
-    "SYNCING ETHIC HOLDINGS NODES...",
-    "SCANNING GLOBAL WEALTH...",
-    "AUTHORIZING GOLD MASTER..."
-];
+    </footer>
+</div>
 
-let step = 0;
-function silentUpdate() {
-    const logArea = document.getElementById('logs');
-    if (logArea && step < aiizMemory.length) {
-        const time = new Date().toLocaleTimeString('en-GB');
-        logArea.innerHTML = `<div>> [${time}] ${aiizMemory[step]}</div>` + logArea.innerHTML;
-        step++;
+<script>
+    /* 🧬 ระบบประมวลผลเงียบ (Silent Processing Core) */
+    function updateClock() {
+        const now = new Date();
+        const clock = document.getElementById('clock');
+        if(clock) clock.innerText = now.toLocaleTimeString('en-GB');
     }
-}
-// ค่อยๆ ปล่อยข้อมูลทุกๆ 5 วินาที เพื่อความแนบเนียน
-setInterval(silentUpdate, 5000);
-        
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const aiizMemory = [
+        "INITIATING FUTURE VISION...",
+        "SYNCING ETHIC HOLDINGS NODES...",
+        "SCANNING GLOBAL WEALTH...",
+        "AUTHORIZING GOLD MASTER..."
+    ];
+    let step = 0;
+    function silentUpdate() {
+        const logArea = document.getElementById('logs');
+        if (logArea && step < aiizMemory.length) {
+            const time = new Date().toLocaleTimeString('en-GB');
+            logArea.innerHTML = `<div>> [${time}] ${aiizMemory[step]}</div>` + logArea.innerHTML;
+            step++;
+        }
+    }
+    setInterval(silentUpdate, 5000);
+</script>
+
+<style>
+    /* 🚫 ป้องกันการแสดงผลผิดพลาดที่ท้ายจอ */
+    #logs div { color: #00FF00; font-family: 'Courier New', monospace; font-size: 11px; margin-bottom: 2px; }
+    * { transition: all 0.3s ease-in-out; }
+</style>
+</body>
+</html>
+
