@@ -3,138 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STATION GATEWAYS | ETHIC HOLDINGS</title>
+    <title>STATION GATEWAYS | ETHIC PRESTIGE</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Noto+Sans+Thai:wght@300;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;600&display=swap');
         
-        body { background: #0a0a0a; color: #fff; font-family: 'Noto Sans Thai', sans-serif; margin: 0; }
-        
-        .gateway-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 5px; padding: 5px;
+        :root { 
+            --gold: #D4AF37; --dark-bg: #000; --panel-bg: #0a0a0a;
+            --neon-blue: rgba(0, 229, 255, 0.5); --shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        /* 🚪 Gateway Card Design */
-        .gateway-box {
-            position: relative; height: 450px; overflow: hidden;
-            cursor: pointer; border: 1px solid #222;
-        }
-        .gateway-img {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(40%) brightness(0.7); transition: 0.6s;
-        }
-        .gateway-box:hover .gateway-img {
-            filter: grayscale(0%) brightness(1); transform: scale(1.1);
+        body { 
+            background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%);
+            color: #fff; font-family: 'Noto Sans Thai', sans-serif; margin: 0; padding: 0;
         }
 
-        /* 🏷️ Label Overlay */
-        .gateway-label {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            padding: 40px 20px 20px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-            border-bottom: 4px solid #D4AF37;
+        /* 👑 Header Command Bar */
+        .header-prestige {
+            background: rgba(0,0,0,0.8); border-bottom: 2px solid var(--gold);
+            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
         }
-        .st-num { font-family: 'Orbitron'; color: #D4AF37; font-size: 1.2rem; letter-spacing: 2px; }
-        .st-name { font-size: 1.5rem; font-weight: bold; margin-top: 5px; color: #fff; }
-        .st-loc { font-size: 0.8rem; color: #aaa; margin-top: 5px; text-transform: uppercase; }
+        .header-prestige h1 { font-family: 'Orbitron'; color: var(--gold); margin: 0; font-size: 1.6rem; letter-spacing: 3px; }
+        .boss-title { font-size: 0.9rem; font-weight: bold; color: var(--gold); border-left: 2px solid var(--gold); padding-left: 15px; }
 
-        /* 🛰️ Entrance Aura */
-        .gateway-box::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            border: 0px solid #D4AF37; transition: 0.3s; z-index: 10;
+        /* 📱 Interface Container */
+        .gateway-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; padding: 40px; max-width: 1600px; margin: 0 auto;
         }
-        .gateway-box:hover::before { border: 4px solid #D4AF37; }
+
+        /* 🕹️ 3D Golden Station Button (หัวใจความสวยงาม) */
+        .station-btn {
+            background: linear-gradient(145deg, #1e1e1e, #111);
+            border: 1px solid rgba(212,175,55,0.3); border-radius: 15px;
+            padding: 30px; text-align: center; cursor: pointer; transition: 0.4s;
+            box-shadow: 5px 5px 15px #000, -2px -2px 10px rgba(212,175,55,0.1);
+            position: relative; overflow: hidden;
+            border-bottom: 4px solid transparent;
+        }
+
+        /* แสง Neon Glow เมื่อ Hover */
+        .station-btn:hover {
+            transform: translateY(-5px);
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 0 30px var(--neon-blue), 5px 5px 15px #000;
+        }
+
+        /* Golden Icon */
+        .station-icon { font-size: 3rem; color: var(--gold); margin-bottom: 15px; display: block; filter: drop-shadow(0 0 10px var(--gold)); }
+
+        /* Label Styling */
+        .station-label { font-family: 'Orbitron'; color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+        .station-name { font-size: 1.3rem; font-weight: bold; margin-top: 5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .station-loc { font-size: 0.8rem; color: #aaa; margin-top: 5px; opacity: 0.7; }
+
+        /* Zinn Hub Style Badge */
+        .verified-badge {
+            position: absolute; top: 15px; right: 15px;
+            background: var(--gold); color: #000; padding: 3px 10px;
+            border-radius: 20px; font-size: 0.65rem; font-weight: bold; font-family: 'Orbitron';
+        }
+
     </style>
 </head>
 <body>
 
-    <header style="padding: 40px; text-align: center; border-bottom: 1px solid #333;">
-        <h1 style="font-family: 'Orbitron'; color: #D4AF37; margin: 0;">24 STATIONS GATEWAY</h1>
-        <p style="opacity: 0.6; font-size: 0.9rem;">แม่จัน - เชียงราย | ฐานบัญชาการแห่งรากฐาน</p>
+    <header class="header-prestige">
+        <div class="brand">
+            <h1>AIIZ PRESTIGE</h1>
+            <div class="boss-title">บอส: สุวิจักขณ์ คชส์นารายม์ | จมด</div>
+        </div>
+        <div style="font-family:'Orbitron'; color:var(--gold);">[ INTEGRATED SYSTEM ]</div>
     </header>
 
-    <div class="gateway-container"><div class="gateway-container">
-    
-    <div class="gateway-box" onclick="location.href='#station01'">
-        <div class="zinn-badge">HQ VERIFIED</div>
-        <div class="gateway-visual" style="background-image: url('ภาพที่ตั้ง_888_เชียงราย.jpg');"></div>
-        <div class="gateway-label">
-            <div class="st-num">STATION 01</div>
-            <div class="st-name">แม่จัน กองบัญชาการหลัก</div>
-            <div class="st-loc">888 ม.3 ต.ท่าข้าวเปลือก จ.เชียงราย</div>
-        </div>
+    <div style="padding: 40px 40px 0; text-align: center;">
+        <h2 style="font-family:'Orbitron'; color:#fff; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 10px;">24 STATIONS GATEWAY</h2>
     </div>
 
-    <div class="gateway-box" onclick="location.href='#station02'">
-        <div class="zinn-badge">LOGISTICS</div>
-        <div class="gateway-visual" style="background-image: url('ภาพงานก่อสร้าง_โครงสร้างพื้นฐาน.jpg');"></div>
-        <div class="gateway-label">
-            <div class="st-num">STATION 02</div>
-            <div class="st-name">ยุทธศาสตร์วัสดุก่อสร้าง</div>
-            <div class="st-loc">NETWORK & INFRASTRUCTURE</div>
-        </div>
-    </div>
-
-    <div class="gateway-box" onclick="location.href='https://zinnhub.com/categories/'">
-        <div class="zinn-badge">979+ CATEGORIES</div>
-        <div class="gateway-visual" style="background-image: url('ภาพระบบดิจิทัล_AI.jpg');"></div>
-        <div class="gateway-label">
-            <div class="st-num">STATION 03</div>
-            <div class="st-name">Digital Service Hub</div>
-            <div class="st-loc">GLOBAL MARKETPLACE CONNECT</div>
-        </div>
-    </div>
-
-</div>
-
-<style>
-    /* สไตล์เพิ่มเติมเพื่อให้ภาพจากบอสดูหรูหราเหมือนในทีวี */
-    .gateway-visual {
-        width: 100%; height: 100%;
-        background-size: cover;
-        background-position: center;
-        filter: brightness(0.6) contrast(1.2); /* ปรับให้ภาพดูคมเข้มขลัง */
-        transition: 0.5s;
-    }
-    .gateway-box:hover .gateway-visual {
-        filter: brightness(1); /* เมื่อบอสเอาเมาส์วาง ภาพจะสว่างชัดเจน */
-        transform: scale(1.05);
-    }
-</style>
+    <div class="gateway-grid">
         
+        <div class="station-btn active" onclick="alert('Entering Station 01: Mae Chan HQ')">
+            <div class="verified-badge">VERIFIED HQ</div>
+            <span class="station-icon">🏛️</span>
+            <div class="station-label">STATION 01</div>
+            <div class="station-name">ศูนย์บัญชาการแม่จัน</div>
+            <div class="station-loc">888 ม.3 ต.ท่าข้าวเปลือก จ.เชียงราย</div>
+        </div>
+
+        <div class="station-btn">
+            <span class="station-icon">🏗️</span>
+            <div class="station-label">STATION 02</div>
+            <div class="station-name">โครงสร้าง & โลจิสติกส์</div>
+            <div class="station-loc">NETWORK INFRASTRUCTURE</div>
+        </div>
+
+        <div class="station-btn">
+            <div class="verified-badge" style="background:#00FF00;">ACTIVE</div>
+            <span class="station-icon">🔗</span>
+            <div class="station-label">STATION 03</div>
+            <div class="station-name">Digital Service Hub</div>
+            <div class="station-loc">GLOBAL MARKETPLACE</div>
+        </div>
         
-        <div class="gateway-box" onclick="alert('Entering Station 01: Mae Chan HQ')">
-            <img src="https://via.placeholder.com/800x1200/1a1a1a/D4AF37?text=BASE+888" class="gateway-img">
-            <div class="gateway-label">
-                <div class="st-num">STATION 01</div>
-                <div class="st-name">แม่จัน กองบัญชาการหลัก</div>
-                <div class="st-loc">888 ม.3 ต.ท่าข้าวเปลือก จ.เชียงราย</div>
-            </div>
         </div>
 
-        <div class="gateway-box">
-            <img src="https://via.placeholder.com/800x1200/222/D4AF37?text=INFRASTRUCTURE" class="gateway-img">
-            <div class="gateway-label">
-                <div class="st-num">STATION 02</div>
-                <div class="st-name">ยุทธศาสตร์โครงสร้างพื้นฐาน</div>
-                <div class="st-loc">CONSTRUCTION & LOGISTICS</div>
-            </div>
-        </div>
-
-        <div class="gateway-box">
-            <img src="https://via.placeholder.com/800x1200/111/D4AF37?text=DIGITAL+CORE" class="gateway-img">
-            <div class="gateway-label">
-                <div class="st-num">STATION 03</div>
-                <div class="st-name">ศูนย์รวมระบบดิจิทัล</div>
-                <div class="st-loc">AI & SMART MANAGEMENT</div>
-            </div>
-        </div>
-
-    </div>
-
-    <footer style="padding: 60px; text-align: center; opacity: 0.3; font-size: 0.7rem;">
-        ETHIC HOLDINGS GROUP | INTEGRATED 24 STATIONS SYSTEM
+    <footer style="text-align:center; padding:50px; color:#444; font-size:0.75rem; font-family:'Orbitron'; border-top:1px solid #222;">
+        &copy; 2026 ETHIC HOLDINGS THAI | SOVEREIGN GENESIS V.PRESTIGE
     </footer>
 
 </body>
