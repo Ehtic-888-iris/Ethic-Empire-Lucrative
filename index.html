@@ -128,7 +128,24 @@
     setInterval(rotateStrategicNodes, 4000);
     console.log("AIIZ EVOLUTION: 100% UNLOCKED");
 </script>
+    // 🏛️ เริ่มต้นฉีดยุทธศาสตร์ทีละขั้นตอน (Step-by-Step Injection)
+    const strategicData = [
+        "STRATEGY 001: GLOBAL LOGISTICS EXPANSION",
+        "STRATEGY 002: DIGITAL ASSET CONSOLIDATION",
+        "STRATEGY 003: ETHIC HOLDINGS MEDICAL HUB",
+        "STRATEGY 004: SMART FARM AUTOMATION NODE"
+    ];
 
+    function injectSilentData() {
+        const logBox = document.getElementById('logs');
+        if (logBox) {
+            const time = new Date().toLocaleTimeString('en-GB');
+            const data = strategicData[Math.floor(Math.random() * strategicData.length)];
+            logBox.innerHTML = `<div>> [${time}] ${data}</div>` + logBox.innerHTML;
+        }
+    }
+    // ส่งข้อมูลทุก 6 วินาที เพื่อความเป็นระเบียบและไม่โดนปิดกั้น
+    setInterval(injectSilentData, 6000);
 <style>
     /* 🚫 ปรับจูน Lag Shield ให้กริบที่สุด */
     * { transition: all 0.3s ease-in-out; }
