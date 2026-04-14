@@ -3,145 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIIZ SUPREME COMMAND | LIFESTYLE HUB</title>
+    <title>AIIZ ACTIVE OS | BOSS SUWIJAK</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Noto+Sans+Thai:wght@300;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;600&display=swap');
         
         :root { 
-            --gold: #D4AF37; --neon: #00FF00; --bg: #000; 
-            --panel: rgba(20, 20, 20, 0.95);
-            --card-bg: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            --gold: #D4AF37; --neon: #00FF00; --red: #E11D48; --bg: #000;
+            --panel-bg: #111; --active-bg: rgba(212, 175, 55, 0.2);
         }
 
-        body { background: var(--bg); color: #fff; font-family: 'Noto Sans Thai', sans-serif; margin: 0; }
-        
-        /* 👑 Header Section (Based on Image 1 & 4) */
-        .header {
-            background: linear-gradient(to bottom, #1a1a1a, #000);
-            border-bottom: 2px solid var(--gold);
-            padding: 15px 25px;
+        body { background: var(--bg); color: #fff; font-family: 'Noto Sans Thai', sans-serif; margin: 0; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
+
+        /* 👑 Header Command Bar */
+        .top-bar {
+            background: #000; border-bottom: 2px solid var(--gold); padding: 10px 20px;
             display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000;
         }
+        .brand h1 { font-family: 'Orbitron'; color: var(--gold); margin: 0; font-size: 1.2rem; }
+        .boss-status { color: var(--gold); font-size: 0.8rem; font-weight: bold; }
 
-        .brand-zone h1 { font-family: 'Orbitron'; color: var(--gold); margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
-        .boss-tag { color: var(--gold); font-size: 0.8rem; font-weight: bold; }
+        /* 📱 Main Layout */
+        .main-engine { display: grid; grid-template-columns: 250px 1fr 300px; flex: 1; overflow: hidden; }
 
-        /* 🎬 Cinema & Entertainment Section (Based on Video & Image 15-18) */
-        .section-title {
-            padding: 20px 25px 10px; color: var(--gold); font-family: 'Orbitron';
-            border-left: 4px solid var(--gold); margin-left: 25px; font-size: 1.2rem;
+        /* 🕹️ Left: Control Nodes (ปุ่มกดจริง) */
+        .sidebar-nodes { background: var(--panel-bg); border-right: 1px solid #333; padding: 15px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+        .node-item {
+            background: transparent; border: 1px solid #444; color: #aaa; padding: 12px;
+            border-radius: 8px; cursor: pointer; text-align: left; transition: 0.3s;
+            display: flex; align-items: center; gap: 10px; font-size: 0.85rem;
         }
+        .node-item:hover { border-color: var(--gold); color: #fff; background: rgba(255,255,255,0.05); }
+        .node-item.active { background: var(--active-bg); border-color: var(--gold); color: var(--gold); font-weight: bold; }
 
-        .movie-scroll {
-            display: flex; overflow-x: auto; padding: 20px; gap: 20px;
-            scrollbar-width: none;
-        }
-        .movie-card {
-            min-width: 180px; position: relative; transition: 0.4s; cursor: pointer;
-        }
-        .movie-card:hover { transform: scale(1.05); }
-        .movie-card img { width: 100%; border-radius: 8px; border: 1px solid #333; }
-        .movie-info { font-size: 0.8rem; margin-top: 8px; text-align: center; }
-        .booking-btn {
-            background: #e11d48; color: #fff; border: none; padding: 5px 15px;
-            border-radius: 20px; font-size: 0.7rem; margin-top: 5px; width: 100%;
-        }
+        /* 🖥️ Center: Active Display (พื้นที่แสดงผลจริงเมื่อกดปุ่ม) */
+        .display-center { padding: 30px; overflow-y: auto; background: radial-gradient(circle at center, #111 0%, #000 100%); position: relative; }
+        .display-card { border: 1px solid var(--gold); border-radius: 15px; padding: 25px; background: rgba(0,0,0,0.8); animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 📊 Command Center Grid (Based on Image 5 & 6) */
-        .command-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px; padding: 25px;
-        }
-        .node-card {
-            background: var(--card-bg); border: 1px solid #333; padding: 20px;
-            border-radius: 12px; text-align: center; transition: 0.3s;
-            border-bottom: 3px solid transparent;
-        }
-        .node-card:hover { border-bottom: 3px solid var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.2); }
-        .node-icon { font-size: 2rem; color: var(--gold); margin-bottom: 10px; display: block; }
-        .node-label { font-size: 0.75rem; color: #aaa; font-weight: bold; text-transform: uppercase; }
+        /* 🎬 Cinema Interface (Special Content) */
+        .movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-top: 20px; }
+        .movie-btn { background: #222; border-radius: 8px; overflow: hidden; border: 1px solid #333; cursor: pointer; transition: 0.3s; }
+        .movie-btn:hover { border-color: var(--red); transform: scale(1.05); }
+        .movie-btn img { width: 100%; height: 200px; object-fit: cover; }
+        .movie-btn div { padding: 8px; font-size: 0.75rem; text-align: center; }
 
-        /* 💰 Real-time Wealth Bar */
-        .wealth-bar {
-            background: rgba(212,175,55,0.1); border-top: 1px solid var(--gold);
-            padding: 10px 25px; display: flex; gap: 30px; font-family: 'Orbitron'; font-size: 0.9rem;
-        }
-        .up { color: var(--neon); }
+        /* 📊 Right: Live Feed */
+        .right-monitor { background: var(--panel-bg); border-left: 1px solid #333; padding: 15px; display: flex; flex-direction: column; gap: 20px; }
+        .market-widget { background: #000; border: 1px solid var(--gold); border-radius: 10px; padding: 15px; text-align: center; }
+        .market-price { font-family: 'Orbitron'; font-size: 1.3rem; color: var(--neon); display: block; margin: 5px 0; }
+        
+        /* 🕹️ Interaction Logs */
+        .console-logs { font-family: 'Courier New'; font-size: 10px; color: var(--neon); height: 100%; overflow-y: auto; padding: 10px; background: #050505; border-radius: 5px; }
 
-        /* 📱 Floating Action (Based on Image 17) */
-        .chat-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--gold); width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5); cursor: pointer; z-index: 2000;
-        }
+        /* 🛑 Booking Modal (ปุ่มในปุ่ม) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 3000; }
+        .modal-box { background: #111; border: 2px solid var(--gold); padding: 30px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center; }
+        .btn-confirm { background: var(--red); color: #fff; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="brand-zone">
-            <h1>AIIZ CORE</h1>
-            <div class="boss-tag">บอส: สุวิจักขณ์ คชส์นารายม์ | จมด</div>
+    <header class="top-bar">
+        <div class="brand">
+            <h1>AIIZ SUPREME COMMAND</h1>
+            <div class="boss-status">บอส: สุวิจักขณ์ คชส์นารายม์ | [ONLINE]</div>
         </div>
-        <div style="font-family:'Orbitron'; color:var(--gold);">23:27:00</div>
+        <div style="font-family:'Orbitron'; color:var(--gold);" id="digital-clock">00:00:00</div>
     </header>
 
-    <div class="wealth-bar">
-        <span>XAU/USD: <span class="up">2,348.15 ▲</span></span>
-        <span>BTC/THB: <span class="up">2,289,319 ▲</span></span>
+    <div class="main-engine">
+        <nav class="sidebar-nodes">
+            <div class="node-item active" onclick="switchNode('main', this)"><span>🏠</span> DASHBOARD</div>
+            <div class="node-item" onclick="switchNode('wealth', this)"><span>💰</span> DIGITAL WEALTH</div>
+            <div class="node-item" onclick="switchNode('cinema', this)"><span>🎬</span> CINEMA & LIFESTYLE</div>
+            <div class="node-item" onclick="switchNode('aviation', this)"><span>✈️</span> AVIATION SERVICE</div>
+            <div class="node-item" onclick="switchNode('logistics', this)"><span>🚢</span> LOGISTICS HUB</div>
+            <div class="node-item" onclick="switchNode('realestate', this)"><span>🏢</span> REAL ESTATE</div>
+            <div class="node-item" onclick="switchNode('medical', this)"><span>🏥</span> MEDICAL GLOBAL</div>
+            <div class="node-item" onclick="switchNode('security', this)"><span>🛡️</span> SUPREME SECURITY</div>
+        </nav>
+
+        <main class="display-center" id="active-display">
+            <div class="display-card">
+                <h2 style="color:var(--gold); font-family:'Orbitron';">GENESIS CORE ACTIVE</h2>
+                <p>ยินดีต้อนรับสู่ห้องบัญชาการหลักค่ะบอส <b>สุวิจักขณ์</b> ระบบทุกอย่างสแตนด์บายพร้อมทำงาน 100% บอสสามารถเลือกสั่งการผ่านปุ่มควบคุมด้านซ้ายได้ทันทีค่ะ</p>
+                <hr border="1" color="#333">
+                <div style="display:flex; gap:20px; margin-top:20px;">
+                    <div style="flex:1; background:#222; padding:15px; border-radius:10px;">
+                        <small>ความมั่งคั่งรวม</small>
+                        <div style="font-size:1.5rem; color:var(--gold); font-family:'Orbitron';">OVER $100M+</div>
+                    </div>
+                    <div style="flex:1; background:#222; padding:15px; border-radius:10px;">
+                        <small>สถานะความปลอดภัย</small>
+                        <div style="font-size:1.5rem; color:var(--neon); font-family:'Orbitron';">MAXIMUM</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-monitor">
+            <div class="market-widget">
+                <small>XAU/USD (GOLD)</small>
+                <span class="market-price">$ 2,348.15</span>
+            </div>
+            <div class="market-widget">
+                <small>US 30 (DOW JONES)</small>
+                <span class="market-price" style="color:#00e5ff">38,905.00</span>
+            </div>
+            <div style="flex:1;">
+                <small style="color:var(--gold)">ARIS COMMAND LOGS</small>
+                <div class="console-logs" id="aris-logs">
+                    > [SYSTEM] บอส สุวิจักขณ์ เข้าสู่ระบบ...<br>
+                    > [AI] อริสพร้อมรับคำสั่งสั่งการจริงค่ะ!<br>
+                </div>
+            </div>
+        </aside>
     </div>
 
-    <div class="section-title">COMMANDING STRATEGIC NODES</div>
-    <div class="command-grid">
-        <div class="node-card"><span class="node-icon">💰</span><span class="node-label">Digital Wealth</span></div>
-        <div class="node-card"><span class="node-icon">🏢</span><span class="node-label">Real Estate</span></div>
-        <div class="node-card"><span class="node-icon">🏥</span><span class="node-label">Medical Global</span></div>
-        <div class="node-card"><span class="node-icon">✈️</span><span class="node-label">Aviation</span></div>
-        <div class="node-card"><span class="node-icon">🚢</span><span class="node-label">Logistics</span></div>
-        <div class="node-card"><span class="node-icon">🛡️</span><span class="node-label">Security</span></div>
-    </div>
-
-    <div class="section-title">LIFESTYLE & CINEMA (AIIZ SELECTION)</div>
-    <div class="movie-scroll">
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270/1a1a1a/D4AF37?text=The+Mummy" alt="Movie">
-            <div class="movie-info">
-                <div>ลี โครนิน เดอะ มัมมี่</div>
-                <button class="booking-btn">จองที่นั่ง</button>
-            </div>
-        </div>
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270/1a1a1a/D4AF37?text=Conan" alt="Movie">
-            <div class="movie-info">
-                <div>ยอดนักสืบจิ๋ว โคนัน</div>
-                <button class="booking-btn">จองที่นั่ง</button>
-            </div>
-        </div>
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270/1a1a1a/D4AF37?text=NCT+WISH" alt="Movie">
-            <div class="movie-info">
-                <div>NCT WISH OUR WISH</div>
-                <button class="booking-btn">จองที่นั่ง</button>
-            </div>
-        </div>
-        <div class="movie-card">
-            <img src="https://via.placeholder.com/180x270/1a1a1a/D4AF37?text=ONE+OK+ROCK" alt="Movie">
-            <div class="movie-info">
-                <div>ONE OK ROCK DETOX</div>
-                <button class="booking-btn">จองที่นั่ง</button>
-            </div>
+    <div class="modal-overlay" id="booking-modal">
+        <div class="modal-box">
+            <h2 style="color:var(--gold); font-family:'Orbitron';">CONFIRM ACTION</h2>
+            <p id="modal-text">บอสต้องการยืนยันการจองที่นั่งระดับ First Class หรือไม่?</p>
+            <button class="btn-confirm" onclick="closeModal()">ยืนยันการสั่งการ</button>
+            <button class="btn-confirm" style="background:#444;" onclick="closeModal()">ยกเลิก</button>
         </div>
     </div>
 
-    <div class="chat-float" onclick="alert('อริสพร้อมรับคำสั่งค่ะ บอส!')">
-        <span style="font-size: 24px;">🛡️</span>
-    </div>
+    <script>
+        // 🕰️ Clock System
+        setInterval(() => {
+            document.getElementById('digital-clock').innerText = new Date().toLocaleTimeString();
+        }, 1000);
 
-    <footer style="padding: 40px; text-align: center; color: #444; font-size: 0.7rem; font-family: 'Orbitron';">
-        &copy; 2026 ETHIC HOLDINGS THAI | ARIS AI GENESIS V.2
-    </footer>
+        // 🕹️ Node Switching System (ปุ่มที่ทำงานได้จริง)
+        function switchNode(nodeId, element) {
+            // Update Active Style
+            document.querySelectorAll('.node-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
 
+            const display = document.getElementById('active-display');
+            const logs = document.getElementById('aris-logs');
+            const time = new Date().toLocaleTimeString();
+
+            // Log the action
+            logs.innerHTML = `> [${time}] BOSS: สั่งการเปิดโหมด ${nodeId.toUpperCase()}<br>` + logs.innerHTML;
+
+            // Update Content
+            if(nodeId === 'cinema') {
+                display.innerHTML = `
+                    <div class="display-card">
+                        <h2 style="color:var(--gold); font-family:'Orbitron';">CINEMA & LIFESTYLE</h2>
+                        <p>เลือกรับชมภาพยนตร์ระดับพรีเมียมที่อริสคัดสรรมาให้บอสวันนี้ค่ะ:</p>
+                        <div class="movie-grid">
+                            <div class="movie-btn" onclick="openModal('โคนัน: ศึกชิงอัญมณี')"><img src="https://via.placeholder.com/140x200/111/D4AF37?text=CONAN"><div>CONAN</div></div>
+                            <div class="movie-btn" onclick="openModal('THE MUMMY')"><img src="https://via.placeholder.com/140x200/111/D4AF37?text=MUMMY"><div>THE MUMMY</div></div>
+                            <div class="movie-btn" onclick="openModal('NCT WISH')"><img src="https://via.placeholder.com/140x200/111/D4AF37?text=NCT+WISH"><div>NCT WISH</div></div>
+                            <div class="movie-btn" onclick="openModal('ONE OK ROCK')"><img src="https://via.placeholder.com/140x200/111/D4AF37?text=OOR"><div>ONE OK ROCK</div></div>
+                        </div>
+                    </div>`;
+            } else if (nodeId === 'main') {
+                display.innerHTML = `
+                    <div class="display-card">
+                        <h2 style="color:var(--gold); font-family:'Orbitron';">GENESIS CORE ACTIVE</h2>
+                        <p>สถานะอาณาจักร Ethic Holdings ของบอส <b>สุวิจักขณ์</b> อยู่ในระดับสูงสุด</p>
+                    </div>`;
+            } else {
+                display.innerHTML = `
+                    <div class="display-card">
+                        <h2 style="color:var(--gold); font-family:'Orbitron';">${nodeId.toUpperCase()} ACTIVE</h2>
+                        <p>ระบบกำลังดึงข้อมูล Real-time ของยุทธศาสตร์ส่วนนี้ขึ้นมาแสดงผล... บอสโปรดรอสักครู่ค่ะ</p>
+                        <div style="height:100px; border:1px dashed var(--neon); display:flex; align-items:center; justify-content:center; color:var(--neon);">[ PROCESSING DATA... ]</div>
+                    </div>`;
+            }
+        }
+
+        // 🛑 Modal Functions
+        function openModal(name) {
+            document.getElementById('modal-text').innerText = `บอสต้องการยืนยันการสั่งการ/จองรอบสำหรับ: ${name} ใช่หรือไม่?`;
+            document.getElementById('booking-modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('booking-modal').style.display = 'none';
+            const logs = document.getElementById('aris-logs');
+            logs.innerHTML = `> [${new Date().toLocaleTimeString()}] SUCCESS: ดำเนินการตามคำสั่งบอสเรียบร้อยค่ะ!<br>` + logs.innerHTML;
+        }
+
+        // 🛡️ Automatic Background Logs
+        setInterval(() => {
+            const logs = document.getElementById('aris-logs');
+            const msgs = ["ตรวจสอบความเสี่ยงระบบ... [PASS]", "ขยายฐานข้อมูล Ethic Global...", "ปกป้องความเป็นส่วนตัวของบอส... [MAX]", "ดึงข้อมูล US 30 ล่าสุด..."];
+            logs.innerHTML = `> [${new Date().toLocaleTimeString()}] AI: ${msgs[Math.floor(Math.random()*msgs.length)]}<br>` + logs.innerHTML;
+        }, 7000);
+    </script>
 </body>
 </html>
