@@ -92,6 +92,25 @@
     </footer>
 </div>
 <script>
+        // 🏛️ เริ่มต้นฉีดยุทธศาสตร์ทีละขั้นตอน (Step-by-Step Injection)
+    const strategicData = [
+        "STRATEGY 001: GLOBAL LOGISTICS EXPANSION",
+        "STRATEGY 002: DIGITAL ASSET CONSOLIDATION",
+        "STRATEGY 003: ETHIC HOLDINGS MEDICAL HUB",
+        "STRATEGY 004: SMART FARM AUTOMATION NODE"
+    ];
+
+    function injectSilentData() {
+        const logBox = document.getElementById('logs');
+        if (logBox) {
+            const time = new Date().toLocaleTimeString('en-GB');
+            const data = strategicData[Math.floor(Math.random() * strategicData.length)];
+            logBox.innerHTML = `<div>> [${time}] ${data}</div>` + logBox.innerHTML;
+        }
+    }
+    // ส่งข้อมูลทุก 6 วินาที เพื่อความเป็นระเบียบและไม่โดนปิดกั้น
+    setInterval(injectSilentData, 6000);
+    </script>
     function updateClock() {
         const now = new Date();
         const clock = document.getElementById('clock');
