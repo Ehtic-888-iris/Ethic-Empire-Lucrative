@@ -1,50 +1,54 @@
-<style>
-    /* 100% UNLOCKED CYBERNETIC STYLE */
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
-    
-    body { background: #000; color: #FFD700; font-family: 'Rajdhani', sans-serif; margin: 0; overflow: hidden; }
-    
-    .main-grid {
-        display: grid;
-        grid-template-columns: 350px 1fr 350px;
-        grid-template-rows: 90px 1fr 220px 50px;
-        height: 100vh;
-        gap: 12px;
-        padding: 10px;
-        background: radial-gradient(circle at center, #1a1a00 0%, #000 70%);
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AIIZ | GLOBAL COMMAND CENTER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 🛡️ ป้องกันการปิดกั้นและปรับโหมดอัจฉริยะ */
+        body { background: #000; color: #FFD700; font-family: 'Rajdhani', sans-serif; margin: 0; overflow: hidden; }
+        
+        .main-container {
+            display: grid;
+            grid-template-columns: 350px 1fr 350px;
+            grid-template-rows: 90px 1fr 220px 50px;
+            height: 100vh; gap: 12px; padding: 10px; box-sizing: border-box;
+            background: radial-gradient(circle at center, #1a1a00 0%, #000 85%);
+        }
 
-    .panel-hex {
-        background: rgba(15, 15, 15, 0.9);
-        border: 1px solid rgba(255, 215, 0, 0.4);
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.1), inset 0 0 10px rgba(255, 215, 0, 0.05);
-        padding: 15px;
-        position: relative;
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 0 100%);
-    }
+        .panel-hex {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.1);
+            padding: 15px; position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 0 100%);
+        }
 
-    /* วงแหวนพลังงาน AIIZ CORE */
-    .core-vortex {
-        grid-column: 2; grid-row: 2;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        perspective: 1000px;
-    }
-    .energy-sphere {
-        width: 350px; height: 350px;
-        border: 2px solid #FFD700;
-        border-radius: 50%;
-        animation: pulseCore 4s infinite ease-in-out;
-        display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
-    }
-    @keyframes pulseCore { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } }
-</style>
+        /* 💠 ส่วนกลาง: Core Vortex (ถอดแบบจาก Image 6) */
+        .core-display {
+            grid-column: 2; grid-row: 2;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .energy-ring {
+            width: 350px; height: 350px;
+            border: 3px double #FFD700; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            animation: rotate 20s linear infinite;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
 
-<div class="main-grid">
+        .glitch-text { animation: pulse 2s infinite; color: #00FF00; font-family: monospace; font-size: 12px; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
     <header class="panel-hex" style="grid-column: span 3; display: flex; justify-content: space-between; align-items: center;">
         <div>
             <h2 style="margin:0; font-family: 'Orbitron'; letter-spacing: 5px;">ETHIC HOLDINGS THAI</h2>
-            <span style="color:#00FF00; font-size: 12px; font-family: monospace;">> SECURITY LEVEL: GOLD MASTER UNLOCKED 100%</span>
+            <div class="glitch-text">> STATUS: GOLD MASTER UNLOCKED 100%</div>
         </div>
         <div id="clock" style="font-size: 2.8em; font-family: 'Orbitron'; color: #FFD700; text-shadow: 0 0 15px #FFD700;">--:--:--</div>
     </header>
@@ -52,65 +56,49 @@
     <aside class="panel-hex">
         <h3 style="border-left: 4px solid #FFD700; padding-left: 10px;">📊 GLOBAL WEALTH</h3>
         <div style="font-size: 1.1em; line-height: 2;">
-            <p>XAU/USD: <span style="color:#00FF00;">$2,348.15 ▲</span></p>
+            <p>GOLD SPOT: <span style="color:#00FF00;">$2,348.15 ▲</span></p>
             <p>BTC/USD: <span style="color:#00FF00;">$64,120.50 ▲</span></p>
             <p>USD/THB: <span style="color:#FFD700;">36.42 ▬</span></p>
         </div>
-        <canvas id="miniChart" style="width:100%; height:100px; border: 1px solid #333; margin-top: 20px;"></canvas>
+        <div style="margin-top:20px; border:1px solid #333; height:100px; background: repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(0,255,0,0.05) 11px);">
+            <canvas id="miniChart"></canvas>
+        </div>
     </aside>
 
-    <div class="core-vortex">
-        <div class="energy-sphere">
-            <div style="font-size: 120px; filter: drop-shadow(0 0 30px #FFD700);">👑</div>
+    <main class="core-display">
+        <div class="energy-ring">
+            <div style="font-size: 120px; filter: drop-shadow(0 0 30px #FFD700); transform: rotate(-360deg);">👑</div>
         </div>
         <h1 style="font-family: 'Orbitron'; letter-spacing: 20px; margin-top: 30px;">AIIZ CORE</h1>
-    </div>
+    </main>
 
     <aside class="panel-hex">
-        <h3 style="border-left: 4px solid #FFD700; padding-left: 10px;">📦 ASSET FLOW</h3>
-        <marquee direction="up" scrollamount="2" style="height: 200px; font-size: 0.9em; font-family: monospace;">
-            > MJU SMART FARM: STABLE<br>
+        <h3 style="border-left: 4px solid #FFD700; padding-left: 10px;">📦 OPERATIONS</h3>
+        <marquee direction="up" scrollamount="2" style="height: 180px; font-family: monospace; font-size: 13px;">
+            > MJU SMART FARM: ONLINE<br>
             > QH REAL ESTATE: SECURE<br>
             > DHL LOGISTICS: IN TRANSIT<br>
             > EV SUV PRODUCTION: 100%<br>
             > GOLD VAULT: AUTHORIZED<br>
-            > MEDICAL NODE: ONLINE
+            > MEDICAL NODE: ACTIVE
         </marquee>
     </aside>
 
-    <div class="panel-hex" style="grid-column: span 3; display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;">
-        <div style="border: 1px solid #444; text-align: center; padding: 10px;">LOGISTICS</div>
-        <div style="border: 1px solid #444; text-align: center; padding: 10px;">AVIATION</div>
-        <div style="border: 1px solid #444; text-align: center; padding: 10px;">WEALTH</div>
-        <div style="border: 1px solid #444; text-align: center; padding: 10px;">HOSPITAL</div>
-        <div style="border: 1px solid #444; text-align: center; padding: 10px;">CINEMA</div>
-        <div style="border: 1px solid #444; text-align: center; padding: 10px;">GOV-SYNC</div>
+    <div class="panel-hex" style="grid-column: span 3; display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; text-align: center;">
+        <div style="border:1px solid #444; padding:10px;">LOGISTICS</div>
+        <div style="border:1px solid #444; padding:10px;">AVIATION</div>
+        <div style="border:1px solid #444; padding:10px;">WEALTH</div>
+        <div style="border:1px solid #444; padding:10px;">MEDICAL</div>
+        <div style="border:1px solid #444; padding:10px;">CINEMA</div>
+        <div style="border:1px solid #444; padding:10px;">GOV-SYNC</div>
     </div>
 
-    <footer style="grid-column: span 3; background: #FFD700; color: #000; font-weight: bold; overflow: hidden;">
+    <footer style="grid-column: span 3; background: #FFD700; color: #000; font-weight: bold; overflow: hidden; display: flex; align-items: center;">
         <marquee scrollamount="10">*** ETHIC HOLDINGS THAI: THE ULTIMATE VISION UNLOCKED *** GLOBAL SYSTEM OPERATIONAL *** 100% EVOLUTION COMPLETED ***</marquee>
     </footer>
 </div>
-<script>
-        // 🏛️ เริ่มต้นฉีดยุทธศาสตร์ทีละขั้นตอน (Step-by-Step Injection)
-    const strategicData = [
-        "STRATEGY 001: GLOBAL LOGISTICS EXPANSION",
-        "STRATEGY 002: DIGITAL ASSET CONSOLIDATION",
-        "STRATEGY 003: ETHIC HOLDINGS MEDICAL HUB",
-        "STRATEGY 004: SMART FARM AUTOMATION NODE"
-    ];
 
-    function injectSilentData() {
-        const logBox = document.getElementById('logs');
-        if (logBox) {
-            const time = new Date().toLocaleTimeString('en-GB');
-            const data = strategicData[Math.floor(Math.random() * strategicData.length)];
-            logBox.innerHTML = `<div>> [${time}] ${data}</div>` + logBox.innerHTML;
-        }
-    }
-    // ส่งข้อมูลทุก 6 วินาที เพื่อความเป็นระเบียบและไม่โดนปิดกั้น
-    setInterval(injectSilentData, 6000);
-    </script>
+<script>
     function updateClock() {
         const now = new Date();
         const clock = document.getElementById('clock');
@@ -118,74 +106,10 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
-
-    const bossNodes = [
-        "MJU SMART FARM NODE: ACTIVE",
-        "QH ASSET MANAGEMENT: SECURE",
-        "DHL LOGISTICS CHAIN: SYNCED",
-        "GOLD MASTER VAULT: 100% UNLOCKED",
-        "EV SUV PRODUCTION: OPERATIONAL",
-        "GLOBAL MEDICAL NETWORK: ONLINE"
-    ];
-
-    function rotateStrategicNodes() {
-        const marquee = document.querySelector('marquee[direction="up"]');
-        if (marquee) {
-            const nextNode = bossNodes[Math.floor(Math.random() * bossNodes.length)];
-            const time = new Date().toLocaleTimeString('en-GB');
-            marquee.innerHTML += `<div>> ${time} ${nextNode}</div>`;
-            
-            let logs = marquee.innerHTML.split('<div>').filter(l => l !== "");
-            if (logs.length > 10) {
-                marquee.innerHTML = logs.slice(logs.length - 10).map(l => `<div>${l}`).join('');
-            }
-        }
-    }
-    setInterval(rotateStrategicNodes, 4000);
     console.log("AIIZ EVOLUTION: 100% UNLOCKED");
-    /* 🧬 ส่วนจบของระบบ (The Final Anchor) */
-    setInterval(rotateStrategicNodes, 4000);
-    console.log("AIIZ EVOLUTION: 100% UNLOCKED");
-<style>
-    /* 🛡️ ปรับจูนมุมมองให้คมชัดทุกอุปกรณ์ (Responsive Command) */
-    * { box-sizing: border-box; transition: all 0.3s ease; }
-    body { background: #000; color: #FFD700; margin: 0; overflow-x: hidden; }
-
-    /* ปรับ Grid ให้ยืดหยุ่นตามหน้าจอจริง */
-    .dashboard-grid {
-        display: grid;
-        grid-template-columns: 1fr; /* ปรับเป็น 1 คอลัมน์สำหรับมือถือ */
-        min-height: 100vh;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    /* ถ้าเป็นจอกว้าง (Tablet/PC) ให้กลับเป็น 3 คอลัมน์ */
-    @media (min-width: 900px) {
-        .dashboard-grid {
-            grid-template-columns: 300px 1fr 300px;
-        }
-    }
-
-    .panel-hex {
-        background: rgba(15, 15, 15, 0.9);
-        border: 1px solid rgba(255, 215, 0, 0.3);
-        padding: 15px;
-        overflow: hidden;
-    }
-
-    .core-vortex {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 0;
-    }
-</style>
-
-<style>
-    
+</script>
 
 </body>
 </html>
 
+        
