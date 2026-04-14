@@ -3,145 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24 STATIONS | BOSS SUWICHAK KHOCHNARAI</title>
+    <title>STATION GATEWAYS | ETHIC HOLDINGS</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Noto+Sans+Thai:wght@300;600&display=swap');
         
-        :root { 
-            --gold: #D4AF37; --blue-dark: #001f3f; --neon: #00FF00; --bg: #f8f9fa;
-            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        body { background: #0a0a0a; color: #fff; font-family: 'Noto Sans Thai', sans-serif; margin: 0; }
+        
+        .gateway-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 5px; padding: 5px;
         }
 
-        body { font-family: 'Noto Sans Thai', sans-serif; margin: 0; background: var(--bg); color: #333; }
-
-        /* 👑 Headquarter Banner (แม่จัน เชียงราย) */
-        .boss-header {
-            background: linear-gradient(135deg, var(--blue-dark), #000); color: #fff;
-            padding: 40px 60px; border-bottom: 5px solid var(--gold);
-            display: flex; justify-content: space-between; align-items: flex-end;
-            background-image: url('https://via.placeholder.com/1920x400/001f3f/D4AF37?text=ETHIC+HOLDINGS+ROOTS+MACHAN+CHIANG+RAI');
-            background-blend-mode: overlay; background-size: cover;
+        /* 🚪 Gateway Card Design */
+        .gateway-box {
+            position: relative; height: 450px; overflow: hidden;
+            cursor: pointer; border: 1px solid #222;
         }
-        .boss-identity h1 { font-family: 'Orbitron'; font-size: 2.2rem; margin: 0; color: var(--gold); letter-spacing: 2px; }
-        .boss-identity p { margin: 10px 0 0; font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
-
-        /* 📊 Logistics & Reality Integration (จากภาพงานจริงของบอส) */
-        .reality-feed {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 30px 60px;
-            background: #fff; border-bottom: 1px solid #ddd;
+        .gateway-img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(40%) brightness(0.7); transition: 0.6s;
         }
-        .feed-card { border-left: 4px solid var(--gold); padding: 15px; background: #fdfdfd; box-shadow: var(--shadow); }
-        .feed-card h4 { margin: 0 0 10px; color: var(--blue-dark); font-size: 0.9rem; text-transform: uppercase; }
-        .feed-data { font-family: 'Orbitron'; font-size: 1.2rem; color: #444; }
-
-        /* 📡 24 Stations Interactive Grid */
-        .grid-title { padding: 40px 60px 20px; text-align: center; }
-        .grid-title h2 { font-family: 'Orbitron'; color: var(--blue-dark); font-size: 1.8rem; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
-
-        .stations-container {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px; padding: 20px 60px 60px;
+        .gateway-box:hover .gateway-img {
+            filter: grayscale(0%) brightness(1); transform: scale(1.1);
         }
-        .station-box {
-            background: #fff; border-radius: 12px; border: 1px solid #eee; overflow: hidden;
-            transition: 0.4s; cursor: pointer; position: relative;
-            box-shadow: var(--shadow);
-        }
-        .station-box:hover { transform: translateY(-10px); border-color: var(--gold); }
-        .station-img { height: 160px; background: #e0e0e0; position: relative; overflow: hidden; }
-        .station-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
-        .station-label {
-            position: absolute; top: 15px; left: 15px; background: var(--gold); color: #000;
-            padding: 5px 15px; font-family: 'Orbitron'; font-weight: 900; border-radius: 4px;
-        }
-        .station-detail { padding: 20px; }
-        .station-detail h4 { margin: 0 0 10px; color: var(--blue-dark); }
-        .status-badge { font-size: 0.75rem; color: var(--neon); background: #000; padding: 2px 10px; border-radius: 10px; }
 
-        /* 🏛️ Contact & Address Footer */
-        .footer-hq { background: #111; color: #fff; padding: 60px; display: flex; justify-content: space-between; }
-        .hq-map-text h3 { color: var(--gold); font-family: 'Orbitron'; margin-bottom: 20px; }
+        /* 🏷️ Label Overlay */
+        .gateway-label {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            padding: 40px 20px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            border-bottom: 4px solid #D4AF37;
+        }
+        .st-num { font-family: 'Orbitron'; color: #D4AF37; font-size: 1.2rem; letter-spacing: 2px; }
+        .st-name { font-size: 1.5rem; font-weight: bold; margin-top: 5px; color: #fff; }
+        .st-loc { font-size: 0.8rem; color: #aaa; margin-top: 5px; text-transform: uppercase; }
+
+        /* 🛰️ Entrance Aura */
+        .gateway-box::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border: 0px solid #D4AF37; transition: 0.3s; z-index: 10;
+        }
+        .gateway-box:hover::before { border: 4px solid #D4AF37; }
     </style>
 </head>
 <body>
 
-    <header class="boss-header">
-        <div class="boss-identity">
-            <h1>BOSS SUWICHAK KHOCHNARAI</h1>
-            <p>แม่จัน เชียงราย: ศูนย์กลางอำนาจและจุดเริ่มต้นของรากฐานความมั่งคั่ง</p>
-        </div>
-        <div style="text-align:right;">
-            <div style="color:var(--gold); font-weight:bold; font-size:1.2rem;">COMMAND CENTER</div>
-            <div style="font-family:'Orbitron'; font-size:0.9rem;">24 STATIONS SYSTEM</div>
-        </div>
+    <header style="padding: 40px; text-align: center; border-bottom: 1px solid #333;">
+        <h1 style="font-family: 'Orbitron'; color: #D4AF37; margin: 0;">24 STATIONS GATEWAY</h1>
+        <p style="opacity: 0.6; font-size: 0.9rem;">แม่จัน - เชียงราย | ฐานบัญชาการแห่งรากฐาน</p>
     </header>
 
-    <div class="reality-feed">
-        <div class="feed-card">
-            <h4>สถานะการขนส่ง (Logistics)</h4>
-            <div class="feed-data">ACTIVE: 18 TRUCKS</div>
-        </div>
-        <div class="feed-card">
-            <h4>ฐานคอนกรีต & วัสดุ</h4>
-            <div class="feed-data">PLANT: MAE CHAN-01</div>
-        </div>
-        <div class="feed-card">
-            <h4>ความปลอดภัยระบบ</h4>
-            <div class="feed-data" style="color:var(--neon)">LEVEL: MAXIMUM</div>
+    <div class="gateway-container"><div class="gateway-container">
+    
+    <div class="gateway-box" onclick="location.href='#station01'">
+        <div class="zinn-badge">HQ VERIFIED</div>
+        <div class="gateway-visual" style="background-image: url('ภาพที่ตั้ง_888_เชียงราย.jpg');"></div>
+        <div class="gateway-label">
+            <div class="st-num">STATION 01</div>
+            <div class="st-name">แม่จัน กองบัญชาการหลัก</div>
+            <div class="st-loc">888 ม.3 ต.ท่าข้าวเปลือก จ.เชียงราย</div>
         </div>
     </div>
 
-    <div class="grid-title">
-        <h2>STRATEGIC 24 STATIONS</h2>
+    <div class="gateway-box" onclick="location.href='#station02'">
+        <div class="zinn-badge">LOGISTICS</div>
+        <div class="gateway-visual" style="background-image: url('ภาพงานก่อสร้าง_โครงสร้างพื้นฐาน.jpg');"></div>
+        <div class="gateway-label">
+            <div class="st-num">STATION 02</div>
+            <div class="st-name">ยุทธศาสตร์วัสดุก่อสร้าง</div>
+            <div class="st-loc">NETWORK & INFRASTRUCTURE</div>
+        </div>
     </div>
 
-    <div class="stations-container">
-        <div class="station-box">
-            <div class="station-label">STN 01</div>
-            <div class="station-img">
-                <img src="https://via.placeholder.com/400x200/222/D4AF37?text=MAE+CHAN+HQ+REALITY" alt="Worksite">
+    <div class="gateway-box" onclick="location.href='https://zinnhub.com/categories/'">
+        <div class="zinn-badge">979+ CATEGORIES</div>
+        <div class="gateway-visual" style="background-image: url('ภาพระบบดิจิทัล_AI.jpg');"></div>
+        <div class="gateway-label">
+            <div class="st-num">STATION 03</div>
+            <div class="st-name">Digital Service Hub</div>
+            <div class="st-loc">GLOBAL MARKETPLACE CONNECT</div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    /* สไตล์เพิ่มเติมเพื่อให้ภาพจากบอสดูหรูหราเหมือนในทีวี */
+    .gateway-visual {
+        width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.6) contrast(1.2); /* ปรับให้ภาพดูคมเข้มขลัง */
+        transition: 0.5s;
+    }
+    .gateway-box:hover .gateway-visual {
+        filter: brightness(1); /* เมื่อบอสเอาเมาส์วาง ภาพจะสว่างชัดเจน */
+        transform: scale(1.05);
+    }
+</style>
+        
+        
+        <div class="gateway-box" onclick="alert('Entering Station 01: Mae Chan HQ')">
+            <img src="https://via.placeholder.com/800x1200/1a1a1a/D4AF37?text=BASE+888" class="gateway-img">
+            <div class="gateway-label">
+                <div class="st-num">STATION 01</div>
+                <div class="st-name">แม่จัน กองบัญชาการหลัก</div>
+                <div class="st-loc">888 ม.3 ต.ท่าข้าวเปลือก จ.เชียงราย</div>
             </div>
-            <div class="station-detail">
-                <h4>888 หมู่บ้านแม่หะ (Central)</h4>
-                <p style="font-size:0.85rem; color:#666;">จุดรวมสายส่งและโรงผลิตหลัก เชื่อมโยงทุกโครงข่ายในภาคเหนือ</p>
-                <span class="status-badge">● MASTER ONLINE</span>
+        </div>
+
+        <div class="gateway-box">
+            <img src="https://via.placeholder.com/800x1200/222/D4AF37?text=INFRASTRUCTURE" class="gateway-img">
+            <div class="gateway-label">
+                <div class="st-num">STATION 02</div>
+                <div class="st-name">ยุทธศาสตร์โครงสร้างพื้นฐาน</div>
+                <div class="st-loc">CONSTRUCTION & LOGISTICS</div>
             </div>
         </div>
 
-        <script>
-            const stationTypes = [
-                "Concrete Hub", "Logistics Base", "Digital Node", 
-                "Construction Unit", "Strategic Point", "Aviation Support"
-            ];
-            for(let i=2; i<=24; i++) {
-                const type = stationTypes[Math.floor(Math.random()*stationTypes.length)];
-                document.write(`
-                    <div class="station-box">
-                        <div class="station-label">STN ${i < 10 ? '0'+i : i}</div>
-                        <div class="station-img">
-                            <img src="https://via.placeholder.com/400x200/111/444?text=STATION+${i}+SECTOR" alt="Station">
-                        </div>
-                        <div class="station-detail">
-                            <h4>สถานีเครือข่าย: Sector ${i}</h4>
-                            <p style="font-size:0.85rem; color:#666;">ยุทธศาสตร์ด้าน: ${type}</p>
-                            <span class="status-badge" style="color:#aaa;">● STANDBY MODE</span>
-                        </div>
-                    </div>
-                `);
-            }
-        </script>
+        <div class="gateway-box">
+            <img src="https://via.placeholder.com/800x1200/111/D4AF37?text=DIGITAL+CORE" class="gateway-img">
+            <div class="gateway-label">
+                <div class="st-num">STATION 03</div>
+                <div class="st-name">ศูนย์รวมระบบดิจิทัล</div>
+                <div class="st-loc">AI & SMART MANAGEMENT</div>
+            </div>
+        </div>
+
     </div>
 
-    <footer class="footer-hq">
-        <div class="hq-map-text">
-            <h3>RAK-THAN HEADQUARTER</h3>
-            <p>888 หมู่บ้านแม่หะ หมู่ที่ 3 ตำบลท่าข้าวเปลือก</p>
-            <p>อำเภอแม่จัน จังหวัดเชียงราย 57110</p>
-        </div>
-        <div style="text-align:right; opacity:0.5; font-size:0.8rem; font-family:'Orbitron';">
-            AIIZ ETHIC HOLDINGS SYSTEM v2.4<br>
-            ENCRYPTED DATA FOR BOSS SUWICHAK ONLY
-        </div>
+    <footer style="padding: 60px; text-align: center; opacity: 0.3; font-size: 0.7rem;">
+        ETHIC HOLDINGS GROUP | INTEGRATED 24 STATIONS SYSTEM
     </footer>
 
 </body>
