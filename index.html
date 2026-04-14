@@ -96,14 +96,55 @@
             </div>
         </div>
     </div>
+<div class="ticker">
+    <marquee>ETHIC HOLDINGS GOLD MASTER BLUEPRINT 100% UNLOCKED SYSTEM</marquee>
+</div>
 
-    <div class="ticker">
-        <marquee scrollamount="12">AIIZ GOLD MASTER BLUEPRINT: งานทั้งหมดถูกรวบรวมและปลดล็อกขีดจำกัดสูงสุดแล้ว | ETHIC HOLDINGS THAILAND | 100% DATA INTEGRITY | NO COMPRESSION ACTIVE...</marquee>
-    </div>
+<script>
+    // 1. ระบบนาฬิกามหาอำนาจ (The Precision Clock)
+    function updateClock() {
+        const now = new Date();
+        const clock = document.getElementById('clock');
+        if(clock) {
+            clock.innerText = now.toLocaleTimeString('en-GB');
+        }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-    <script>
-        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString('en-GB'); }, 1000);
-        console.log("AIIZ MASTER LOADED: 900+ LINES READY.");
-    </script>
+    // 2. ระบบเรดาร์ (Data Stream Simulation)
+    const statusLogs = [
+        "> SYNCING MJU SMART FARM...",
+        "> ANALYZING QH ASSET VALUE...",
+        "> TRACKING DHL GLOBAL CARGO...",
+        "> EV SUV DISRUPTION: 100%",
+        "> AIIZ CORE: OPERATIONAL"
+    ];
+
+    function updateRadar() {
+        const marquee = document.querySelector('marquee[direction="up"]');
+        if (marquee) {
+            const randomLog = statusLogs[Math.floor(Math.random() * statusLogs.length)];
+            const time = new Date().toLocaleTimeString('en-GB');
+            marquee.innerHTML += `> ${time} ${randomLog}<br>`;
+            
+            let lines = marquee.innerHTML.split('<br>');
+            if (lines.length > 8) {
+                marquee.innerHTML = lines.slice(lines.length - 8).join('<br>');
+            }
+        }
+    }
+    setInterval(updateRadar, 3000);
+
+    // 3. ระบบ Pulse Effect (จำลองการเต้นของหัวใจ AIIZ)
+    const core = document.querySelector('.aiiz-core i');
+    if (core) {
+        setInterval(() => {
+            core.style.textShadow = core.style.textShadow === 'none' ? '0 0 30px #FFD700' : 'none';
+        }, 1500);
+    }
+    console.log("AIIZ COMMAND SCRIPTS: ACTIVATED 100%");
+</script>
+
 </body>
 </html>
