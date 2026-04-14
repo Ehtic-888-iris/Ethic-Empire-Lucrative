@@ -80,7 +80,52 @@
         <h2 style="font-family:'Orbitron'; color:#fff; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 10px;">24 STATIONS GATEWAY</h2>
     </div>
 
-    <div class="gateway-grid">
+    <<div class="gateway-grid">
+
+    <div class="station-btn" onclick="location.href='#station01'">
+        <div class="verified-badge">HQ VERIFIED</div>
+        <span class="station-icon">🏛️</span>
+        <div class="station-label">STATION 01</div>
+        <div class="station-name">ศูนย์บัญชาการแม่จัน</div>
+        <div class="station-loc">888 ม.3 ต.ท่าข้าวเปลือก จ.เชียงราย</div>
+    </div>
+
+    <div class="station-btn" onclick="location.href='#station02'">
+        <span class="station-icon">🏗️</span>
+        <div class="station-label">STATION 02</div>
+        <div class="station-name">Infrastructure & Logistics</div>
+        <div class="station-loc">เครือข่ายขนส่งและงานโครงสร้าง</div>
+    </div>
+
+    <div class="station-btn" onclick="location.href='https://zinnhub.com/categories/'">
+        <div class="verified-badge" style="background:#00FF00; color:#000;">979+ CATEGORIES</div>
+        <span class="station-icon">🔗</span>
+        <div class="station-label">STATION 03</div>
+        <div class="station-name">Digital Service Hub</div>
+        <div class="station-loc">ศูนย์รวมบริการและนวัตกรรม</div>
+    </div>
+
+    <script>
+        const stationNames = [
+            "Real Estate Node", "Energy Solution", "Supply Chain", "Global Intertrade", 
+            "FinTech Core", "Aviation Logistics", "Smart Factory", "Eco System", "Security Node"
+            // บอสสามารถมาเติมชื่อสถานีที่เหลือได้ตามความตั้งใจเลยค่ะ
+        ];
+        
+        for(let i=4; i<=24; i++) {
+            document.write(`
+                <div class="station-btn">
+                    <span class="station-icon">💎</span>
+                    <div class="station-label">STATION ${i < 10 ? '0'+i : i}</div>
+                    <div class="station-name">${stationNames[i-4] || 'Strategic Station'}</div>
+                    <div class="station-loc">Sovereign Network Node ${i}</div>
+                </div>
+            `);
+        }
+    </script>
+
+</div>
+
         
         <div class="station-btn active" onclick="alert('Entering Station 01: Mae Chan HQ')">
             <div class="verified-badge">VERIFIED HQ</div>
