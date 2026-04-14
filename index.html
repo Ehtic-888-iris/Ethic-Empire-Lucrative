@@ -3,126 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETHIC HOLDINGS GROUP | OFFICIAL SITE</title>
+    <title>ETHIC COMMAND | 24 STATIONS NETWORK</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+Thai:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+Thai:wght@300;600&display=swap');
         
         :root { 
-            --primary-blue: #003366; --gold: #D4AF37; --accent: #B8860B;
-            --light-bg: #ffffff; --text-main: #333333;
+            --primary-blue: #002244; --gold: #D4AF37; --neon: #00FF00; --bg: #f0f2f5;
         }
 
-        body { font-family: 'Noto Sans Thai', sans-serif; margin: 0; padding: 0; background-color: var(--light-bg); color: var(--text-main); }
+        body { font-family: 'Noto Sans Thai', sans-serif; margin: 0; background: var(--bg); color: #333; }
 
-        /* 👑 Top Identity Bar (เหมือนภาพที่บอสส่งมา) */
-        .top-nav {
-            background: #fff; border-bottom: 3px solid var(--gold);
-            padding: 10px 60px; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        /* 👑 Headquarter Branding */
+        .hq-header {
+            background: var(--primary-blue); color: #fff; padding: 25px 50px;
+            border-bottom: 4px solid var(--gold); display: flex; justify-content: space-between; align-items: center;
         }
-        .logo-box h1 { font-family: 'Orbitron'; color: var(--primary-blue); margin: 0; font-size: 1.6rem; letter-spacing: 2px; }
-        .nav-links { display: flex; gap: 30px; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; }
-        .nav-links a { text-decoration: none; color: var(--primary-blue); transition: 0.3s; }
-        .nav-links a:hover { color: var(--gold); }
+        .hq-info h1 { font-family: 'Orbitron'; margin: 0; font-size: 1.8rem; color: var(--gold); }
+        .hq-address { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; letter-spacing: 1px; }
 
-        /* 🏗️ Hero Showcase (จุดรวมสายตา) */
-        .hero-banner {
-            height: 650px; background: linear-gradient(rgba(0,51,102,0.7), rgba(0,0,0,0.4)), url('https://via.placeholder.com/1920x800/1a1a1a/D4AF37?text=ETHIC+HOLDINGS+GLOBAL+LEADERSHIP');
-            background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
-            color: #fff; text-align: center;
+        /* 📍 Central Command Map Area */
+        .map-section {
+            background: #fff; margin: 30px 50px; padding: 30px; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 10px solid var(--gold);
         }
-        .hero-content h2 { font-size: 3.5rem; margin-bottom: 20px; font-family: 'Orbitron'; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .hero-content p { font-size: 1.4rem; max-width: 900px; margin: 0 auto; font-weight: 300; opacity: 0.9; }
-
-        /* 🏛️ Group Business (Affiliated Companies) */
-        .section-padding { padding: 80px 60px; max-width: 1400px; margin: 0 auto; }
-        .header-title { text-align: center; margin-bottom: 60px; }
-        .header-title h3 { font-size: 2.2rem; color: var(--primary-blue); position: relative; display: inline-block; padding-bottom: 15px; }
-        .header-title h3::after { content: ''; width: 60%; height: 4px; background: var(--gold); position: absolute; bottom: 0; left: 20%; }
-
-        .business-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .business-card {
-            background: #fff; border-radius: 4px; border: 1px solid #eee; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; cursor: pointer;
+        .map-placeholder {
+            height: 400px; background: #e5e5e5; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; color: var(--primary-blue);
         }
-        .business-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(212,175,55,0.2); }
-        .card-img { height: 250px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--primary-blue); }
-        .card-body { padding: 30px; }
-        .card-body h4 { color: var(--primary-blue); font-size: 1.4rem; margin: 0 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; }
-        .card-body p { color: #666; line-height: 1.6; font-size: 0.95rem; }
 
-        /* 🕹️ Interaction Button (ใช้งานได้จริง) */
-        .cta-btn {
-            background: var(--primary-blue); color: #fff; border: none; padding: 12px 25px;
-            font-weight: 700; cursor: pointer; border-radius: 2px; transition: 0.3s; margin-top: 15px;
+        /* 📡 24 Stations Grid (The Roots of Power) */
+        .stations-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px; padding: 0 50px 50px;
         }
-        .cta-btn:hover { background: var(--gold); color: #000; }
+        .station-card {
+            background: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 10px;
+            text-align: center; transition: 0.3s; cursor: pointer; position: relative;
+        }
+        .station-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
+        .station-card.active { border-color: var(--neon); }
+        .station-num { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--primary-blue); display: block; }
+        .status-dot { width: 10px; height: 10px; background: var(--neon); border-radius: 50%; display: inline-block; margin-right: 5px; }
 
+        /* 📊 Logistics Status (From Image 25-27) */
+        .logistics-bar {
+            background: var(--dark); padding: 20px 50px; display: flex; gap: 40px; color: #fff; font-size: 0.9rem;
+            background: #1a1a1a;
+        }
     </style>
 </head>
 <body>
 
-    <header class="top-nav">
-        <div class="logo-box">
-            <h1>ETHIC GROUP</h1>
+    <header class="hq-header">
+        <div class="hq-info">
+            <h1>ETHIC COMMAND CENTER</h1>
+            <div class="hq-address">BASE: 888 ม.3 ต.ท่าข้าวเปลือก อ.แม่จัน จ.เชียงราย 57110</div>
         </div>
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Business Units</a>
-            <a href="#">Our Works</a>
-            <a href="#">Contact</a>
-        </nav>
-        <div style="color:var(--gold); font-weight:700;">บอส สุวิจักขณ์</div>
+        <div style="text-align:right;">
+            <div style="font-family:'Orbitron'; color:var(--gold);">BOSS: SUWIJAK</div>
+            <div style="font-size:0.7rem;">SYSTEM STATUS: <span style="color:var(--neon);">ENCRYPTED</span></div>
+        </div>
     </header>
 
-    <section class="hero-banner">
-        <div class="hero-content">
-            <h2>MASTER OF INFRASTRUCTURE</h2>
-            <p>เรามุ่งมั่นสร้างสรรค์โครงสร้างพื้นฐานและนวัตกรรมดิจิทัลเพื่อขับเคลื่อนเศรษฐกิจของประเทศ</p>
-            <button class="cta-btn" style="padding:15px 40px; font-size:1.1rem; margin-top:30px; background:var(--gold); color:#000;">เรียนรู้เพิ่มเติมเกี่ยวกับเรา</button>
+    <div class="logistics-bar">
+        <span>STRATEGIC NODES: 12 Active</span>
+        <span>DEPLOYED STATIONS: 24 Target</span>
+        <span>LOCATION AUTH: MAE CHAN HQ Verified</span>
+    </div>
+
+    <main class="map-section">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h2 style="margin:0; color:var(--primary-blue);">RAK-THAN: รากฐานและโครงข่ายสถานี</h2>
+            <button style="background:var(--gold); border:none; padding:10px 20px; border-radius:5px; font-weight:bold; cursor:pointer;">ACTIVATE ALL STATIONS</button>
         </div>
-    </section>
-
-    <section class="section-padding">
-        <div class="header-title">
-            <h3>AFFILIATED BUSINESS UNITS</h3>
+        <div class="map-placeholder">
+            <span style="font-size:4rem;">📍</span>
+            <div style="font-family:'Orbitron'; font-weight:bold; margin-top:10px;">HQ: MAE HAN - MAE CHAN</div>
+            <p style="font-size:0.8rem;">[ ระบบกำลังจำลองโครงข่าย 24 สถานี เชื่อมโยงจากจุดยุทธศาสตร์หลัก ]</p>
         </div>
+    </main>
 
-        <div class="business-grid">
-            <div class="business-card">
-                <div class="card-img" style="background:#003366; color:#fff;">🏦</div>
-                <div class="card-body">
-                    <h4>Ethic Digital Asset</h4>
-                    <p>ผู้นำด้านการบริหารจัดการสินทรัพย์ดิจิทัลและเทรดดิ้งทองคำระดับภูมิภาค ด้วยระบบความปลอดภัยขั้นสูง</p>
-                    <button class="cta-btn">View Details</button>
-                </div>
-            </div>
+    <div style="padding-left:50px; margin-bottom:20px;">
+        <h3 style="color:var(--primary-blue); font-family:'Orbitron';">STATION MONITORING (24 UNITS)</h3>
+    </div>
 
-            <div class="business-card">
-                <div class="card-img" style="background:#444; color:#fff;">🏗️</div>
-                <div class="card-body">
-                    <h4>Ethic Construction</h4>
-                    <p>ผู้เชี่ยวชาญด้านงานคอนกรีต โครงสร้างพื้นฐานทางหลวง และการพัฒนาอสังหาริมทรัพย์ครบวงจร</p>
-                    <button class="cta-btn">View Details</button>
-                </div>
-            </div>
-
-            <div class="business-card">
-                <div class="card-img" style="background:#D4AF37; color:#000;">✈️</div>
-                <div class="card-body">
-                    <h4>Ethic Aero-Logistics</h4>
-                    <p>ระบบขนส่งและสายการบินเชิงธุรกิจ เชื่อมโยงทุกจุดยุทธศาสตร์ด้วยความรวดเร็วและปลอดภัย</p>
-                    <button class="cta-btn">View Details</button>
-                </div>
-            </div>
+    <div class="stations-grid">
+        <div class="station-card active">
+            <span class="station-num">STN-01</span>
+            <small>MAE CHAN HQ</small>
+            <div style="margin-top:10px; font-size:0.7rem; color:var(--neon);"><span class="status-dot"></span>ONLINE</div>
         </div>
-    </section>
+        <script>
+            for(let i=2; i<=24; i++) {
+                document.write(`
+                    <div class="station-card">
+                        <span class="station-num">STN-${i < 10 ? '0'+i : i}</span>
+                        <small>NODE SECTOR ${i}</small>
+                        <div style="margin-top:10px; font-size:0.7rem; color:#888;">STANDBY</div>
+                    </div>
+                `);
+            }
+        </script>
+    </div>
 
-    <footer style="background:#002244; color:#fff; padding:60px; text-align:center;">
-        <h2 style="font-family:'Orbitron'; color:var(--gold);">ETHIC HOLDINGS GLOBAL</h2>
-        <p style="opacity:0.6; font-size:0.9rem;">156 หมู่ที่ 5 ต.สำราญ อ.เมือง จ.ขอนแก่น 40000</p>
-        <div style="margin-top:30px; font-size:0.8rem; letter-spacing:2px; opacity:0.5;">POWERED BY ARIS AI | SOVEREIGN GENESIS 2026</div>
+    <footer style="text-align:center; padding:50px; background:#fff; border-top:1px solid #ddd;">
+        <div style="font-family:'Orbitron'; color:var(--primary-blue); font-weight:bold;">ETHIC HOLDINGS GROUP | THE 24 STATIONS PROJECT</div>
+        <p style="font-size:0.7rem; color:#999; margin-top:10px;">ต้นกำเนิดจากแม่จัน... สู่เครือข่ายความมั่งคั่งระดับสากล</p>
     </footer>
 
 </body>
