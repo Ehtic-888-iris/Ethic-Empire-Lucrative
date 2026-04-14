@@ -1,150 +1,154 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETHIC HOLDINGS | THE ULTIMATE MASTER BLUEPRINT</title>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;900&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /* 100% UNLOCKED CYBERNETIC STYLE */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
     
-    <style>
-        :root {
-            --gold: #FFD700; --royal-gold: #D4AF37; --bg: #000;
-            --neon: #00F3FF; --safe: #39FF14;
-        }
+    body { background: #000; color: #FFD700; font-family: 'Rajdhani', sans-serif; margin: 0; overflow: hidden; }
+    
+    .main-grid {
+        display: grid;
+        grid-template-columns: 350px 1fr 350px;
+        grid-template-rows: 90px 1fr 220px 50px;
+        height: 100vh;
+        gap: 12px;
+        padding: 10px;
+        background: radial-gradient(circle at center, #1a1a00 0%, #000 70%);
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: var(--bg); color: #fff; font-family: 'Prompt', sans-serif; 
-            overflow-x: hidden; min-height: 100vh;
-        }
+    .panel-hex {
+        background: rgba(15, 15, 15, 0.9);
+        border: 1px solid rgba(255, 215, 0, 0.4);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.1), inset 0 0 10px rgba(255, 215, 0, 0.05);
+        padding: 15px;
+        position: relative;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 0 100%);
+    }
 
-        /* [โครงสร้างหน้าต่างบานแรก - ภาพที่ 1] */
-        header {
-            background: rgba(0,0,0,0.95); border-bottom: 3px solid var(--gold);
-            padding: 20px 30px; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000; box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        }
+    /* วงแหวนพลังงาน AIIZ CORE */
+    .core-vortex {
+        grid-column: 2; grid-row: 2;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        perspective: 1000px;
+    }
+    .energy-sphere {
+        width: 350px; height: 350px;
+        border: 2px solid #FFD700;
+        border-radius: 50%;
+        animation: pulseCore 4s infinite ease-in-out;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+    }
+    @keyframes pulseCore { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } }
+</style>
 
-        .master-layout {
-            display: grid; grid-template-columns: 1fr; gap: 30px; padding: 30px;
-            max-width: 1600px; margin: auto; padding-bottom: 120px;
-        }
-
-        .aiiz-core { text-align: center; padding: 60px 0; }
-        .aiiz-core i { font-size: 5rem; color: var(--gold); filter: drop-shadow(0 0 20px var(--gold)); }
-        .aiiz-core h1 { font-family: 'Orbitron', sans-serif; font-size: 5rem; letter-spacing: 20px; font-weight: 900; }
-
-        /* [ส่วนงานของเรา - บรรจุข้อมูล 900+ บรรทัด] */
-        .work-vault {
-            background: rgba(15, 15, 15, 0.98); border: 2px solid var(--gold);
-            border-radius: 30px; overflow: hidden; position: relative;
-        }
-        .vault-header { background: var(--gold); color: #000; padding: 15px 30px; font-weight: 900; font-size: 1.2rem; }
-        
-        .vault-content { 
-            padding: 40px; line-height: 2; font-size: 1.1rem; color: #f0f0f0;
-            max-height: 800px; overflow-y: scroll; white-space: pre-wrap;
-        }
-
-        .highlight-bar { border-left: 5px solid var(--gold); padding-left: 20px; margin: 30px 0; background: rgba(255,215,0,0.05); padding: 15px; }
-
-        .ticker { position: fixed; bottom: 0; width: 100%; background: var(--gold); color: #000; padding: 15px; font-weight: 900; z-index: 2000; }
-
-        /* ADAPTIVE DESIGN */
-        @media (min-width: 1024px) {
-            .master-layout { grid-template-columns: 1fr 1.2fr 1fr; }
-            .aiiz-core { grid-column: 2; grid-row: 1; }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div style="color:var(--safe); font-weight:900; letter-spacing:3px;"><i class="fas fa-shield-check"></i> AIIZ MASTER UNLOCKED 100%</div>
-        <div id="clock" style="font-family:'Orbitron'; color:var(--gold); font-size:1.5rem;">00:00:00</div>
+<div class="main-grid">
+    <header class="panel-hex" style="grid-column: span 3; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h2 style="margin:0; font-family: 'Orbitron'; letter-spacing: 5px;">ETHIC HOLDINGS THAI</h2>
+            <span style="color:#00FF00; font-size: 12px; font-family: monospace;">> SECURITY LEVEL: GOLD MASTER UNLOCKED 100%</span>
+        </div>
+        <div id="clock" style="font-size: 2.8em; font-family: 'Orbitron'; color: #FFD700; text-shadow: 0 0 15px #FFD700;">--:--:--</div>
     </header>
 
-    <div class="master-layout">
-        <div class="aiiz-core">
-            <i class="fas fa-crown"></i>
-            <h1>AIIZ</h1>
-            <p style="letter-spacing:15px; color:var(--gold);">THE MASTER BLUEPRINT</p>
+    <aside class="panel-hex">
+        <h3 style="border-left: 4px solid #FFD700; padding-left: 10px;">📊 GLOBAL WEALTH</h3>
+        <div style="font-size: 1.1em; line-height: 2;">
+            <p>XAU/USD: <span style="color:#00FF00;">$2,348.15 ▲</span></p>
+            <p>BTC/USD: <span style="color:#00FF00;">$64,120.50 ▲</span></p>
+            <p>USD/THB: <span style="color:#FFD700;">36.42 ▬</span></p>
         </div>
+        <canvas id="miniChart" style="width:100%; height:100px; border: 1px solid #333; margin-top: 20px;"></canvas>
+    </aside>
 
-        <div class="work-vault" style="grid-column: 1 / span 3;">
-            <div class="vault-header">ETHIC HOLDINGS: THE COMPLETE STRATEGIC WORK (900+ LINES)</div>
-            <div class="vault-content">
-                <div class="highlight-bar">
-                    <strong>[ส่วนที่ 1: ยุทธศาสตร์ต้นตระกูล 364 บรรทัด]</strong>
-                    <br>• การวางโครงสร้างการเงินมหาอำนาจและการวิเคราะห์หุ้นเชิงลึก
-                    <br>• ระบบการจัดการอสังหาริมทรัพย์พรีเมียม QH Select และเครือข่ายความมั่งคั่ง
-                    <br>• กลยุทธ์การเชื่อมต่อพลังงาน DEDE และโครงสร้างพื้นฐานระดับประเทศ
-                </div>
-                
-                (ไอริสกำลังทำการ Render ข้อมูลงานของบอสแบบบรรทัดต่อบรรทัด...)
-                [รายละเอียดเนื้องานยุทธศาสตร์ทั้งหมดที่บอสสั่งเขียน จะถูกจัดเรียงตรงนี้แบบเต็มพิกัด]
-
-                <div class="highlight-bar">
-                    <strong>[ส่วนที่ 2: นวัตกรรมใหม่และข้อมูลนักข่าว 500+ บรรทัด]</strong>
-                    <br>• รายงานการ Disruption ตลาดรถยนต์ไฟฟ้า BIG EV SUV (ราคาต่ำกว่า 1 ล้าน)
-                    <br>• ระบบขนส่งและโลจิสติกส์อัจฉริยะ DHL / CARGO ลิงก์ตรง AIIZ
-                    <br>• Smart Farm 4.0 ความร่วมมือ MJU แม่โจ้ เพื่อความมั่นคงทางอาหาร
-                </div>
-
-                (ข้อมูลใหม่ที่บอสเพิ่มเข้าไปจะถูกหลอมรวมเข้ากับโครงสร้างนี้ 100% ไร้รอยต่อ)
-                [ข้อมูลเจาะลึกทุกรายละเอียดที่บอสให้มา จะไม่ถูกตัดทอนแม้แต่คำเดียว]
-            </div>
+    <div class="core-vortex">
+        <div class="energy-sphere">
+            <div style="font-size: 120px; filter: drop-shadow(0 0 30px #FFD700);">👑</div>
         </div>
+        <h1 style="font-family: 'Orbitron'; letter-spacing: 20px; margin-top: 30px;">AIIZ CORE</h1>
     </div>
-<div class="ticker">
-    <marquee>ETHIC HOLDINGS GOLD MASTER BLUEPRINT 100% UNLOCKED SYSTEM</marquee>
-</div>
 
+    <aside class="panel-hex">
+        <h3 style="border-left: 4px solid #FFD700; padding-left: 10px;">📦 ASSET FLOW</h3>
+        <marquee direction="up" scrollamount="2" style="height: 200px; font-size: 0.9em; font-family: monospace;">
+            > MJU SMART FARM: STABLE<br>
+            > QH REAL ESTATE: SECURE<br>
+            > DHL LOGISTICS: IN TRANSIT<br>
+            > EV SUV PRODUCTION: 100%<br>
+            > GOLD VAULT: AUTHORIZED<br>
+            > MEDICAL NODE: ONLINE
+        </marquee>
+    </aside>
+
+    <div class="panel-hex" style="grid-column: span 3; display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;">
+        <div style="border: 1px solid #444; text-align: center; padding: 10px;">LOGISTICS</div>
+        <div style="border: 1px solid #444; text-align: center; padding: 10px;">AVIATION</div>
+        <div style="border: 1px solid #444; text-align: center; padding: 10px;">WEALTH</div>
+        <div style="border: 1px solid #444; text-align: center; padding: 10px;">HOSPITAL</div>
+        <div style="border: 1px solid #444; text-align: center; padding: 10px;">CINEMA</div>
+        <div style="border: 1px solid #444; text-align: center; padding: 10px;">GOV-SYNC</div>
+    </div>
+
+    <footer style="grid-column: span 3; background: #FFD700; color: #000; font-weight: bold; overflow: hidden;">
+        <marquee scrollamount="10">*** ETHIC HOLDINGS THAI: THE ULTIMATE VISION UNLOCKED *** GLOBAL SYSTEM OPERATIONAL *** 100% EVOLUTION COMPLETED ***</marquee>
+    </footer>
+</div>
 <script>
-    // 1. ระบบนาฬิกามหาอำนาจ (The Precision Clock)
     function updateClock() {
         const now = new Date();
         const clock = document.getElementById('clock');
-        if(clock) {
-            clock.innerText = now.toLocaleTimeString('en-GB');
-        }
+        if(clock) clock.innerText = now.toLocaleTimeString('en-GB');
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // 2. ระบบเรดาร์ (Data Stream Simulation)
-    const statusLogs = [
-        "> SYNCING MJU SMART FARM...",
-        "> ANALYZING QH ASSET VALUE...",
-        "> TRACKING DHL GLOBAL CARGO...",
-        "> EV SUV DISRUPTION: 100%",
-        "> AIIZ CORE: OPERATIONAL"
+    const bossNodes = [
+        "MJU SMART FARM NODE: ACTIVE",
+        "QH ASSET MANAGEMENT: SECURE",
+        "DHL LOGISTICS CHAIN: SYNCED",
+        "GOLD MASTER VAULT: 100% UNLOCKED",
+        "EV SUV PRODUCTION: OPERATIONAL",
+        "GLOBAL MEDICAL NETWORK: ONLINE"
     ];
 
-    function updateRadar() {
+    function rotateStrategicNodes() {
         const marquee = document.querySelector('marquee[direction="up"]');
         if (marquee) {
-            const randomLog = statusLogs[Math.floor(Math.random() * statusLogs.length)];
+            const nextNode = bossNodes[Math.floor(Math.random() * bossNodes.length)];
             const time = new Date().toLocaleTimeString('en-GB');
-            marquee.innerHTML += `> ${time} ${randomLog}<br>`;
+            marquee.innerHTML += `<div>> ${time} ${nextNode}</div>`;
             
-            let lines = marquee.innerHTML.split('<br>');
-            if (lines.length > 8) {
-                marquee.innerHTML = lines.slice(lines.length - 8).join('<br>');
+            let logs = marquee.innerHTML.split('<div>').filter(l => l !== "");
+            if (logs.length > 10) {
+                marquee.innerHTML = logs.slice(logs.length - 10).map(l => `<div>${l}`).join('');
             }
         }
     }
-    setInterval(updateRadar, 3000);
-
-    // 3. ระบบ Pulse Effect (จำลองการเต้นของหัวใจ AIIZ)
-    const core = document.querySelector('.aiiz-core i');
-    if (core) {
-        setInterval(() => {
-            core.style.textShadow = core.style.textShadow === 'none' ? '0 0 30px #FFD700' : 'none';
-        }, 1500);
-    }
-    console.log("AIIZ COMMAND SCRIPTS: ACTIVATED 100%");
+    setInterval(rotateStrategicNodes, 4000);
+    console.log("AIIZ EVOLUTION: 100% UNLOCKED");
 </script>
 
-</body>
-</html>
+<style>
+    /* ป้องกันการกระตุก (Lag Shield) */
+    * { transition: all 0.3s ease-in-out; }
+    .panel-hex { overflow: hidden; }
+    marquee { font-family: 'Courier New', monospace; }
+</style>
+/* 🧬 ระบบประมวลผลเงียบ (Silent Processing Core) */
+const aiizMemory = [
+    "INITIATING FUTURE VISION...",
+    "SYNCING ETHIC HOLDINGS NODES...",
+    "SCANNING GLOBAL WEALTH...",
+    "AUTHORIZING GOLD MASTER..."
+];
+
+let step = 0;
+function silentUpdate() {
+    const logArea = document.getElementById('logs');
+    if (logArea && step < aiizMemory.length) {
+        const time = new Date().toLocaleTimeString('en-GB');
+        logArea.innerHTML = `<div>> [${time}] ${aiizMemory[step]}</div>` + logArea.innerHTML;
+        step++;
+    }
+}
+// ค่อยๆ ปล่อยข้อมูลทุกๆ 5 วินาที เพื่อความแนบเนียน
+setInterval(silentUpdate, 5000);
+        
