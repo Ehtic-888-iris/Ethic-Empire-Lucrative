@@ -7,129 +7,125 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;600;700&display=swap');
         
-        :root { --gold: #D4AF37; --gold-dark: #8C6D1F; --neon: #00FF00; }
-        
-        body { 
-            background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%); 
-            color: #fff; font-family: 'Noto Sans Thai', sans-serif; 
-            margin: 0; padding-bottom: 50px;
-        }
+        :root { --gold: #D4AF37; --neon: #00FF00; }
+        body { background: #000; color: #fff; font-family: 'Noto Sans Thai', sans-serif; margin: 0; padding-bottom: 50px; }
 
-        /* 🏛️ หัวใจหลัก: THE GOLDEN PAYMENT GATEWAY BAR */
-        .gateway-nav {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(10,10,10,0.9));
-            border-bottom: 2px solid var(--gold);
+        /* 🏛️ หัวใจหลัก: THE GLOBAL PAYMENT GATEWAY BAR */
+        .header-bar {
+            background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--gold);
             padding: 20px 30px; position: sticky; top: 0; z-index: 1000;
-            backdrop-filter: blur(15px); display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+            display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px);
         }
-        .logo-text { font-family: 'Orbitron'; font-size: 1.4rem; color: var(--gold); letter-spacing: 5px; font-weight: 900; text-shadow: 0 0 10px var(--gold); }
-        .gateway-status { font-family: 'Orbitron'; color: var(--neon); font-size: 0.7rem; border: 1px solid var(--neon); padding: 5px 10px; border-radius: 4px; }
+        .logo { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--gold); letter-spacing: 5px; font-weight: 900; }
+        .status { font-family: 'Orbitron'; color: var(--neon); font-size: 0.7rem; text-shadow: 0 0 10px var(--neon); }
 
-        /* 📦 Grid System สำหรับ 24 สถานี */
-        .station-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px; padding: 30px; max-width: 1800px; margin: 0 auto;
-        }
+        /* 📦 24 Stations Grid */
+        .station-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; padding: 25px; }
 
-        /* 🕹️ Sovereign Station Button (Glassmorphism Gold) */
-        .station-card {
-            background: rgba(20, 20, 20, 0.6);
+        /* 🕹️ Sovereign Node Styling */
+        .node-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
             border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px;
-            padding: 25px; cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden; min-height: 250px;
-            display: flex; flex-direction: column;
+            padding: 25px; cursor: pointer; transition: 0.4s; position: relative;
+            display: flex; flex-direction: column; min-height: 280px;
         }
-        .station-card:hover {
-            background: rgba(30, 30, 30, 0.8);
-            border-color: var(--gold); box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-            transform: translateY(-8px);
-        }
-        .station-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--gold);
-        }
+        .node-card:hover { border-color: var(--gold); transform: translateY(-8px); box-shadow: 0 10px 30px rgba(212,175,55,0.2); }
+        .node-card::before { content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: var(--gold); }
 
-        /* รายละเอียดภายใน */
-        .st-id { font-family: 'Orbitron'; color: var(--gold); font-size: 0.8rem; margin-bottom: 12px; font-weight: 700; }
-        .st-header { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.1); padding-bottom: 10px; }
-        .st-body { font-size: 0.9rem; color: #ccc; line-height: 1.6; flex-grow: 1; font-weight: 300; }
+        .st-num { font-family: 'Orbitron'; color: var(--gold); font-size: 0.8rem; margin-bottom: 15px; font-weight: bold; }
+        .st-name { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .st-detail { font-size: 0.9rem; color: #ccc; line-height: 1.6; flex-grow: 1; }
         
-        /* Action Button */
-        .st-action { 
-            margin-top: 20px; font-size: 0.75rem; color: #000; background: var(--gold);
-            padding: 8px 15px; border-radius: 4px; font-family: 'Orbitron'; font-weight: 900;
-            text-align: center; text-transform: uppercase;
+        /* 💳 Payment Gateway Button ในทุกสถานี */
+        .st-pay {
+            margin-top: 20px; background: var(--gold); color: #000;
+            text-align: center; padding: 10px; border-radius: 5px;
+            font-family: 'Orbitron'; font-weight: 900; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-
     </style>
 </head>
 <body>
 
-    <header class="gateway-nav">
-        <div class="logo-text">ETHIC SYSTEM</div>
-        <div class="gateway-status">● UNIVERSAL PAYMENT GATEWAY READY</div>
+    <header class="header-bar">
+        <div class="logo">ETHIC COMMAND</div>
+        <div class="status">● PAYMENT GATEWAY: CRYPTO & CURRENCY ACTIVE</div>
     </header>
 
-    <div style="padding: 50px 20px; text-align: center;">
-        <h2 style="font-family:'Orbitron'; color:#fff; letter-spacing: 2px; margin-bottom: 10px;">GLOBAL MIDDLEMAN NETWORK</h2>
-        <div style="width: 100px; height: 3px; background: var(--gold); margin: 0 auto;"></div>
-        <p style="margin-top: 20px; opacity: 0.8; font-weight: 300;">"เราคือจุดเชื่อมต่อความต้องการของโลก โดยผ่านหัวใจหลักคือระบบการชำระเงินที่ไร้พรมแดน"</p>
+    <div style="padding: 40px 20px; text-align: center;">
+        <h2 style="font-family:'Orbitron'; color:var(--gold); margin:0;">24 UNIVERSAL SERVICES</h2>
+        <p style="opacity:0.8; font-weight: 300;">"เราคือตัวกลางเชื่อมโยงทุกสิ่งบนโลก โดยผ่านระบบการชำระเงินหนึ่งเดียว"</p>
     </div>
 
     <div class="station-grid">
-        
-        <div class="station-card">
-            <div class="st-id">STATION 01</div>
-            <div class="st-header">FINTECH & GATEWAY</div>
-            <div class="st-body">
-                ศูนย์กลางการแลกเปลี่ยน Crypto, Digital Currency และทุกสกุลเงินในโลก พร้อมบริการกู้เงิน และระบบจัดการการใช้เงินอัจฉริยะ
-            </div>
-            <div class="st-action">Enter Gateway</div>
+        <div class="node-card">
+            <div class="st-num">STATION 01</div>
+            <div class="st-name">FINTECH & GATEWAY</div>
+            <div class="st-detail">แลกเปลี่ยน Crypto, Digital Currency, ทุกสกุลเงิน, กู้เงิน, วางแผนการเงิน และจุดใช้จ่ายเงินทุกรูปแบบ</div>
+            <div class="st-pay">PROCEED PAYMENT</div>
         </div>
 
-        <div class="station-card">
-            <div class="st-id">STATION 02</div>
-            <div class="st-header">HEAVY ASSETS</div>
-            <div class="st-body">
-                ตัวกลางซื้อ-ขาย เครื่องบิน, เรือ, รถยนต์ทุกขนาด, เครื่องจักรอุตสาหกรรม และอะไหล่เทคโนโลยีชั้นสูง
-            </div>
-            <div class="st-action">Asset Exchange</div>
+        <div class="node-card">
+            <div class="st-num">STATION 02</div>
+            <div class="st-name">HEAVY ASSETS</div>
+            <div class="st-detail">ซื้อ-ขายเครื่องบิน, เรือ, รถยนต์ทุกขนาด, เครื่องจักรอุตสาหกรรม, นิคมอุตสาหกรรม และอะไหล่เครื่องบิน</div>
+            <div class="st-pay">ASSET EXCHANGE</div>
         </div>
 
-        <div class="station-card">
-            <div class="st-id">STATION 03</div>
-            <div class="st-header">REAL ESTATE & LAND</div>
-            <div class="st-body">
-                จัดหาบ้าน คอนโด ที่ดินติดทะเล/ภูเขา นิคมอุตสาหกรรม บริการจำนำและขายฝากอสังหาริมทรัพย์เพื่อธุรกิจ
-            </div>
-            <div class="st-action">Property Portal</div>
+        <div class="node-card">
+            <div class="st-num">STATION 03</div>
+            <div class="st-name">REAL ESTATE & LAND</div>
+            <div class="st-detail">บ้าน, คอนโด, หมู่บ้าน, ที่ดินติดทะเล/ภูเขา, ที่ดินธุรกิจ, ขายฝาก และจำนำอสังหาริมทรัพย์</div>
+            <div class="st-pay">PROPERTY PORTAL</div>
         </div>
 
-        <div class="station-card">
-            <div class="st-id">STATION 04</div>
-            <div class="st-header">GLOBAL LOGISTICS</div>
-            <div class="st-body">
-                เชื่อมโยงการขนส่งทางเรือ บก อากาศ และ Shipping นำเข้าสินค้าพร้อมบริการ Delivery ถึงมือผู้รับทั่วโลก
-            </div>
-            <div class="st-action">Track & Ship</div>
+        <div class="node-card">
+            <div class="st-num">STATION 04</div>
+            <div class="st-name">LOGISTICS & SHIPPING</div>
+            <div class="st-detail">ส่งของทางเครื่องบิน, เรือ, บก, Shipping นำเข้าเทคโนโลยี และบริการ Delivery ทุกชนิด</div>
+            <div class="st-pay">LOGISTICS HUB</div>
         </div>
 
-        <div class="station-card">
-            <div class="st-id">STATION 05</div>
-            <div class="st-header">AGRI & COMMODITIES</div>
-            <div class="st-body">
-                ซื้อ-ขายข้าวหอมมะลิ ข้าวเหนียว ข้าวสาร ข้าวเปลือก ปุ๋ย ผลไม้ และแร่ธาตุทุกชนิดที่มีมูลค่า (ทองแดง และแร่อื่นๆ)
-            </div>
-            <div class="st-action">Order Goods</div>
+        <div class="node-card">
+            <div class="st-num">STATION 05</div>
+            <div class="st-name">AGRI & COMMODITIES</div>
+            <div class="st-detail">ข้าวหอมมะลิ (เก่า/ใหม่), ข้าวเหนียวเขี้ยวงู, ข้าวสาร, ข้าวเปลือก, ปุ๋ย, ผลไม้ และแร่ธาตุทุกชนิดที่มีมูลค่า</div>
+            <div class="st-pay">ORDER GOODS</div>
+        </div>
+
+        <div class="node-card">
+            <div class="st-num">STATION 06</div>
+            <div class="st-name">TRAVEL & LIFESTYLE</div>
+            <div class="st-detail">ตั๋วหนัง, ตั๋วรถ-เรือ-เครื่องบิน, จองโรงแรม, รีสอร์ท, ตั๋วโรงละคร และทัวร์เรือกรองทิพย์</div>
+            <div class="st-pay">BOOK NOW</div>
+        </div>
+
+        <div class="node-card">
+            <div class="st-num">STATION 07</div>
+            <div class="st-name">HEALTH & SECURITY</div>
+            <div class="st-detail">ศูนย์พยาบาล, โรงพยาบาลใกล้ที่สุด, บริการบอดี้การ์ด, หน่วยรักษาความปลอดภัย และประกันทุกชนิด</div>
+            <div class="st-pay">GET PROTECTION</div>
+        </div>
+
+        <div class="node-card">
+            <div class="st-num">STATION 08</div>
+            <div class="st-name">BUSINESS ADVISORY</div>
+            <div class="st-detail">ที่ปรึกษาการเงิน, กฎหมาย, ไอที, นำเสนอไอเดียบริษัทใหญ่ และหางานสำหรับผู้ว่างงาน</div>
+            <div class="st-pay">CONSULT NOW</div>
+        </div>
+
+        <div class="node-card">
+            <div class="st-num">STATION 09</div>
+            <div class="st-name">SPECIALIZED SERVICES</div>
+            <div class="st-detail">แลกเปลี่ยนแว่นตา, ซื้อขายคอนเทนต์เฉพาะกลุ่ม, ลอตเตอรี่, และความช่วยเหลือทุกชนิดบนโลก</div>
+            <div class="st-pay">SERVICE ACCESS</div>
         </div>
 
         </div>
 
-    <footer style="text-align:center; padding: 60px; opacity: 0.4; font-size: 0.7rem; font-family:'Orbitron'; letter-spacing: 2px;">
-        ETHIC HOLDINGS | INTEGRATED SOVEREIGN MIDDLEMAN SYSTEM
+    <footer style="text-align:center; padding: 50px; opacity: 0.4; font-size: 0.7rem; font-family:'Orbitron';">
+        &copy; 2026 ETHIC HOLDINGS | THE UNIVERSAL MIDDLEMAN SYSTEM
     </footer>
 
 </body>
 </html>
-
-
