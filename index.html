@@ -3,157 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STATION GATEWAYS | ETHIC PRESTIGE</title>
+    <title>ETHIC | THE UNIVERSAL CONNECTOR</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;400;700&display=swap');
         
         :root { 
-            --gold: #D4AF37; --dark-bg: #000; --panel-bg: #0a0a0a;
-            --neon-blue: rgba(0, 229, 255, 0.5); --shadow: 0 10px 30px rgba(0,0,0,0.8);
+            --gold: #D4AF37; --gold-glow: rgba(212, 175, 55, 0.5);
+            --dark: #000; --panel: #0a0a0a; --neon-blue: #00d2ff;
         }
 
         body { 
-            background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%);
-            color: #fff; font-family: 'Noto Sans Thai', sans-serif; margin: 0; padding: 0;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            color: #fff; font-family: 'Noto Sans Thai', sans-serif; margin: 0; padding-bottom: 50px;
         }
 
-        /* 👑 Header Command Bar */
-        .header-prestige {
-            background: rgba(0,0,0,0.8); border-bottom: 2px solid var(--gold);
-            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
-            backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
+        /* 💳 Payment Gateway Header (หัวใจหลัก) */
+        .gateway-header {
+            background: rgba(0, 0, 0, 0.9); border-bottom: 2px solid var(--gold);
+            padding: 20px 40px; position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(15px);
         }
-        .header-prestige h1 { font-family: 'Orbitron'; color: var(--gold); margin: 0; font-size: 1.6rem; letter-spacing: 3px; }
-        .boss-title { font-size: 0.9rem; font-weight: bold; color: var(--gold); border-left: 2px solid var(--gold); padding-left: 15px; }
+        .logo-box h1 { font-family: 'Orbitron'; color: var(--gold); margin: 0; font-size: 1.5rem; letter-spacing: 4px; }
+        .payment-status { font-family: 'Orbitron'; font-size: 0.8rem; color: #00FF00; text-shadow: 0 0 10px #00FF00; }
 
-        /* 📱 Interface Container */
-        .gateway-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px; padding: 40px; max-width: 1600px; margin: 0 auto;
-        }
-
-        /* 🕹️ 3D Golden Station Button (หัวใจความสวยงาม) */
-        .station-btn {
-            background: linear-gradient(145deg, #1e1e1e, #111);
-            border: 1px solid rgba(212,175,55,0.3); border-radius: 15px;
-            padding: 30px; text-align: center; cursor: pointer; transition: 0.4s;
-            box-shadow: 5px 5px 15px #000, -2px -2px 10px rgba(212,175,55,0.1);
-            position: relative; overflow: hidden;
-            border-bottom: 4px solid transparent;
+        /* 🌍 The Grid of World's Needs */
+        .station-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px; padding: 40px; max-width: 1800px; margin: 0 auto;
         }
 
-        /* แสง Neon Glow เมื่อ Hover */
-        .station-btn:hover {
-            transform: translateY(-5px);
-            border-bottom: 4px solid var(--gold);
-            box-shadow: 0 0 30px var(--neon-blue), 5px 5px 15px #000;
+        /* 🕹️ Sovereign Node Styling */
+        .node {
+            background: linear-gradient(145deg, #151515, #050505);
+            border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px;
+            padding: 25px; position: relative; transition: 0.4s; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .node:hover {
+            transform: translateY(-10px); border-color: var(--gold);
+            box-shadow: 0 0 30px var(--gold-glow);
+        }
+        .node::before {
+            content: 'PAYMENT ACTIVE'; position: absolute; top: 10px; right: -30px;
+            background: var(--gold); color: #000; font-size: 0.6rem; font-weight: 900;
+            padding: 3px 40px; transform: rotate(45deg); font-family: 'Orbitron';
         }
 
-        /* Golden Icon */
-        .station-icon { font-size: 3rem; color: var(--gold); margin-bottom: 15px; display: block; filter: drop-shadow(0 0 10px var(--gold)); }
+        .node-icon { font-size: 2.5rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px var(--gold)); }
+        .node-st { font-family: 'Orbitron'; color: var(--gold); font-size: 0.7rem; letter-spacing: 2px; }
+        .node-title { font-size: 1.25rem; font-weight: 700; margin: 10px 0; color: #fff; }
+        .node-desc { font-size: 0.85rem; color: #aaa; line-height: 1.5; margin-bottom: 20px; }
 
-        /* Label Styling */
-        .station-label { font-family: 'Orbitron'; color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
-        .station-name { font-size: 1.3rem; font-weight: bold; margin-top: 5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .station-loc { font-size: 0.8rem; color: #aaa; margin-top: 5px; opacity: 0.7; }
-
-        /* Zinn Hub Style Badge */
-        .verified-badge {
-            position: absolute; top: 15px; right: 15px;
-            background: var(--gold); color: #000; padding: 3px 10px;
-            border-radius: 20px; font-size: 0.65rem; font-weight: bold; font-family: 'Orbitron';
+        /* 💳 Crypto/Cash Action Button */
+        .pay-btn {
+            background: transparent; border: 1px solid var(--gold); color: var(--gold);
+            padding: 10px; border-radius: 5px; cursor: pointer; font-family: 'Orbitron';
+            font-size: 0.8rem; transition: 0.3s; width: 100%;
         }
+        .pay-btn:hover { background: var(--gold); color: #000; font-weight: bold; }
 
     </style>
 </head>
 <body>
 
-    <header class="header-prestige">
-        <div class="brand">
-            <h1>AIIZ PRESTIGE</h1>
-            <div class="boss-title">บอส: สุวิจักขณ์ คชส์นารายม์ | จมด</div>
+    <header class="gateway-header">
+        <div class="logo-box">
+            <h1>ETHIC COMMAND</h1>
         </div>
-        <div style="font-family:'Orbitron'; color:var(--gold);">[ INTEGRATED SYSTEM ]</div>
+        <div style="text-align: right;">
+            <div class="payment-status">● GATEWAY: CRYPTO-DIGITAL-CASH CONNECTED</div>
+            <div style="font-size: 0.7rem; opacity: 0.6;">HQ: 888 MAE CHAN, CHIANG RAI</div>
+        </div>
     </header>
 
-    <div style="padding: 40px 40px 0; text-align: center;">
-        <h2 style="font-family:'Orbitron'; color:#fff; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 10px;">24 STATIONS GATEWAY</h2>
+    <div style="text-align:center; padding: 40px 20px;">
+        <h2 style="font-family:'Orbitron'; font-size: 2rem; color: var(--gold); margin: 0;">24 GLOBAL SERVICE NODES</h2>
+        <p style="opacity: 0.7;">"เราคือผู้ยืนอยู่ระหว่างกลางของทุกความต้องการและเชื่อมโยงทุกคนบนโลกใบนี้"</p>
     </div>
 
-    <<div class="gateway-grid">
-
-    <div class="station-btn" onclick="location.href='#station01'">
-        <div class="verified-badge">HQ VERIFIED</div>
-        <span class="station-icon">🏛️</span>
-        <div class="station-label">STATION 01</div>
-        <div class="station-name">ศูนย์บัญชาการแม่จัน</div>
-        <div class="station-loc">888 ม.3 ต.ท่าข้าวเปลือก จ.เชียงราย</div>
-    </div>
-
-    <div class="station-btn" onclick="location.href='#station02'">
-        <span class="station-icon">🏗️</span>
-        <div class="station-label">STATION 02</div>
-        <div class="station-name">Infrastructure & Logistics</div>
-        <div class="station-loc">เครือข่ายขนส่งและงานโครงสร้าง</div>
-    </div>
-
-    <div class="station-btn" onclick="location.href='https://zinnhub.com/categories/'">
-        <div class="verified-badge" style="background:#00FF00; color:#000;">979+ CATEGORIES</div>
-        <span class="station-icon">🔗</span>
-        <div class="station-label">STATION 03</div>
-        <div class="station-name">Digital Service Hub</div>
-        <div class="station-loc">ศูนย์รวมบริการและนวัตกรรม</div>
-    </div>
-
-    <script>
-        const stationNames = [
-            "Real Estate Node", "Energy Solution", "Supply Chain", "Global Intertrade", 
-            "FinTech Core", "Aviation Logistics", "Smart Factory", "Eco System", "Security Node"
-            // บอสสามารถมาเติมชื่อสถานีที่เหลือได้ตามความตั้งใจเลยค่ะ
-        ];
+    <div class="station-grid">
         
-        for(let i=4; i<=24; i++) {
-            document.write(`
-                <div class="station-btn">
-                    <span class="station-icon">💎</span>
-                    <div class="station-label">STATION ${i < 10 ? '0'+i : i}</div>
-                    <div class="station-name">${stationNames[i-4] || 'Strategic Station'}</div>
-                    <div class="station-loc">Sovereign Network Node ${i}</div>
-                </div>
-            `);
-        }
-    </script>
-
-</div>
-
-        
-        <div class="station-btn active" onclick="alert('Entering Station 01: Mae Chan HQ')">
-            <div class="verified-badge">VERIFIED HQ</div>
-            <span class="station-icon">🏛️</span>
-            <div class="station-label">STATION 01</div>
-            <div class="station-name">ศูนย์บัญชาการแม่จัน</div>
-            <div class="station-loc">888 ม.3 ต.ท่าข้าวเปลือก จ.เชียงราย</div>
+        <div class="node">
+            <div>
+                <span class="node-st">STATION 01</span>
+                <div class="node-icon">💳</div>
+                <h3 class="node-title">FinTech & Payment Hub</h3>
+                <p class="node-desc">แปลง Crypto, Digital Currency แลกเงินทุกสกุลเงิน, บริการกู้เงิน และวางแผนการใช้เงิน</p>
+            </div>
+            <button class="pay-btn">EXCHANGE / LOAN</button>
         </div>
 
-        <div class="station-btn">
-            <span class="station-icon">🏗️</span>
-            <div class="station-label">STATION 02</div>
-            <div class="station-name">โครงสร้าง & โลจิสติกส์</div>
-            <div class="station-loc">NETWORK INFRASTRUCTURE</div>
+        <div class="node">
+            <div>
+                <span class="node-st">STATION 02</span>
+                <div class="node-icon">✈️</div>
+                <h3 class="node-title">Heavy Assets & Industry</h3>
+                <p class="node-desc">ซื้อ-ขายเครื่องบิน, เรือ, รถยนต์ทุกขนาด, เครื่องจักรอุตสาหกรรม และอะไหล่ทุกชนิด</p>
+            </div>
+            <button class="pay-btn">PURCHASE ASSETS</button>
         </div>
 
-        <div class="station-btn">
-            <div class="verified-badge" style="background:#00FF00;">ACTIVE</div>
-            <span class="station-icon">🔗</span>
-            <div class="station-label">STATION 03</div>
-            <div class="station-name">Digital Service Hub</div>
-            <div class="station-loc">GLOBAL MARKETPLACE</div>
-        </div>
-        
+        <div class="node">
+            <div>
+                <span class="node-st">STATION 03</span>
+                <div class="node-icon">🏔️</div>
+                <h3 class="node-title">Sovereign Real Estate</h3>
+                <p class="node-desc">ซื้อบ้าน, คอนโด, ที่ดินติดทะเล/ภูเขา, นิคมอุตสาหกรรม, จำนำ และขายฝากที่ดินธุรกิจ</p>
+            </div>
+            <button class="pay-btn">LAND & PROPERTY</button>
         </div>
 
-    <footer style="text-align:center; padding:50px; color:#444; font-size:0.75rem; font-family:'Orbitron'; border-top:1px solid #222;">
-        &copy; 2026 ETHIC HOLDINGS THAI | SOVEREIGN GENESIS V.PRESTIGE
+        <div class="node">
+            <div>
+                <span class="node-st">STATION 04</span>
+                <div class="node-icon">🏗️</div>
+                <h3 class="node-title">Master Construction</h3>
+                <p class="node-desc">สร้างบ้าน, ตึก, คอนโด, อู่ต่อเรือ และโรงงานขนาดเล็กถึงใหญ่ (S/M/L)</p>
+            </div>
+            <button class="pay-btn">START PROJECT</button>
+        </div>
+
+        <div class="node">
+            <div>
+                <span class="node-st">STATION 05</span>
+                <div class="node-icon">🚢</div>
+                <h3 class="node-title">Global Logistics & Shipping</h3>
+                <p class="node-desc">ส่งสินค้าทางบก, เรือ, เครื่องบิน และบริการ Shipping นำเข้าเทคโนโลยี</p>
+            </div>
+            <button class="pay-btn">SHIP NOW</button>
+        </div>
+
+        <div class="node">
+            <div>
+                <span class="node-st">STATION 06</span>
+                <div class="node-icon">🎟️</div>
+                <h3 class="node-title">Universal Booking Hub</h3>
+                <p class="node-desc">ตั๋วหนัง, ตั๋วรถ-เรือ-เครื่องบิน, จองโรงแรม, รีสอร์ท และทัวร์เรือกรองทิพย์</p>
+            </div>
+            <button class="pay-btn">BOOK TICKETS</button>
+        </div>
+
+        <div class="node">
+            <div>
+                <span class="node-st">STATION 07</span>
+                <div class="node-icon">🌾</div>
+                <h3 class="node-title">Agri-Business Center</h3>
+                <p class="node-desc">ซื้อ-ขายข้าวหอมมะลิ (เก่า/ใหม่), ข้าวเหนียว, ข้าวสาร, ข้าวเปลือก, ปุ๋ย และผลไม้</p>
+            </div>
+            <button class="pay-btn">ORDER AGRI</button>
+        </div>
+
+        <div class="node">
+            <div>
+                <span class="node-st">STATION 08</span>
+                <div class="node-icon">💎</div>
+                <h3 class="node-title">Mineral & Ore Exchange</h3>
+                <p class="node-desc">แลกเงินแร่ทุกชนิด, แร่ทองแดง, และแร่ที่มีมูลค่าสูงเพื่อการลงทุน</p>
+            </div>
+            <button class="pay-btn">TRADE MINERALS</button>
+        </div>
+
+        </div>
+
+    <footer style="text-align:center; padding: 40px; opacity: 0.5; font-family:'Orbitron'; font-size: 0.7rem;">
+        ETHIC HOLDINGS GROUP | THE SOVEREIGN MIDDLEMAN SYSTEM 2026
     </footer>
 
 </body>
