@@ -91,50 +91,63 @@ export default EthicEngine;
 /* 🌌 ARIS SOVEREIGN CSS - FULL EDITION */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
 
-/* ✅ 1. REGISTERED UTILITIES FOR VITE */
-.animate-scan-energetic {
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    pointer-events: none;
-    border: 2px solid #FF69B4;
-    border-radius: inherit;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5), inset 0 0 10px rgba(255, 105, 180, 0.3);
-    animation: aris-scan 3s linear infinite;
-}
-
-.status-pulse {
-    width: 10px;
-    height: 10px;
-    background: #00FF00;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #00FF00;
-    animation: pulse 1.5s infinite;
-}
-
-/* ✅ 2. ALL KEYFRAMES */
-@keyframes aris-scan {
-    0% { transform: rotate(0deg) scale(1); opacity: 0.3; }
-    50% { transform: rotate(180deg) scale(1.02); opacity: 0.7; }
-    100% { transform: rotate(360deg) scale(1); opacity: 0.3; }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.5); opacity: 0.4; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* ✅ 3. THE ENERGY SOURCE */
 :root {
     --aris-pink: #FF69B4;
     --aris-gold: #D4AF37;
     --aris-green: #00FF00;
-    --bg-deep: #0a0a0c;
-    --gold-glow: rgba(212, 175, 55, 0.4);
+    --bg-deep: #050505;
 }
-        
 
+/* ✅ แสงสแกนสีชมพูหมุนรอบภาพ */
+@keyframes aris-scan {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+    50% { transform: rotate(180deg) scale(1.1); opacity: 0.8; }
+    100% { transform: rotate(360deg) scale(1); opacity: 0.3; }
+}
+
+/* ✅ จุดสถานะหัวใจเต้น */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; box-shadow: 0 0 5px var(--aris-green); }
+    50% { transform: scale(1.5); opacity: 0.4; box-shadow: 0 0 20px var(--aris-green); }
+    100% { transform: scale(1); opacity: 1; box-shadow: 0 0 5px var(--aris-green); }
+}
+
+.animate-scan-energetic {
+    position: absolute;
+    inset: -20%;
+    z-index: 10;
+    pointer-events: none;
+    border: 1px solid var(--aris-pink);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    box-shadow: 0 0 20px var(--aris-pink), inset 0 0 10px var(--aris-pink);
+    animation: aris-scan 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.station-node:hover .animate-scan-energetic { opacity: 1; }
+
+.status-pulse {
+    width: 10px; height: 10px;
+    background: var(--aris-green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.station-node {
+    background: #0a0a0c;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.station-node:hover {
+    transform: translateY(-10px);
+    border-color: var(--aris-gold);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+    
 :root {
     --aris-pink: #FF69B4;
     --aris-gold: #D4AF37;
@@ -149,13 +162,70 @@ export default EthicEngine;
             --neon-active: #00FF00;
             --glass-border: rgba(212, 175, 55, 0.25);
             --shadow-3d: rgba(0, 0, 0, 0.95);
+           const renderNodes = () => {
+    const engineContainer = document.getElementById('ethic-engine-container');
+    const nodes = [
+        { id: "01", title: "FINTECH CORE", desc: "Digital Assets & Global Liquidity Management" },
+        { id: "02", title: "LUXURY DEALER", desc: "Private Jets & High-End Asset Gateway" },
+        { id: "03", title: "SPACE MINING", desc: "Off-world Resources & Mineral Extraction" },
+        { id: "04", title: "CYBER DEFENSE", desc: "Neural Link Protection & Quantum Firewall" }
+    ];
+
+    engineContainer.innerHTML = ''; 
+
+    nodes.forEach(node => {
+        const nodeElement = document.createElement('div');
+        nodeElement.className = "station-node relative group cursor-pointer";
+        
+        const imgUrl = `https://images.unsplash.com/photo-1614064641935-4476e89b3237?auto=format&fit=crop&q=80&w=1200&sig=${node.id}`;
+
+        nodeElement.innerHTML = `
+            <div class="visual-frame relative h-48 overflow-hidden">
+                <img src="${imgUrl}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                     onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
+                <div class="animate-scan-energetic"></div>
+                <div class="absolute bottom-2 right-2 text-xl opacity-30">🧠</div>
+            </div>
+
+            <div class="node-content p-6">
+                <div class="flex justify-between items-center mb-3">
+                    <span style="color:var(--aris-gold); font-size:10px; font-weight:900; letter-spacing:3px;">STATION ${node.id}</span>
+                    <div class="status-pulse"></div>
+                </div>
+                <h2 style="color:white; font-size:1.25rem; font-weight:900; margin-bottom:0.5rem; text-transform:uppercase; font-style:italic;">${node.title}</h2>
+                <p style="color:#9ca3af; font-size:0.75rem; line-height:1.5; margin-bottom:1.5rem;">${node.desc}</p>
+                <button class="w-full py-2 border border-[#FF69B4] text-[#FF69B4] font-bold text-[10px] tracking-[4px] hover:bg-[#FF69B4] hover:text-white transition-all"
+                        onclick="activateGateway('${node.id}')">
+                    ENTER GATEWAY
+                </button>
+            </div>
+        `;
+        engineContainer.appendChild(nodeElement);
+    });
+};
+
+const activateGateway = (id) => {
+    alert(`[ARIS AI]: กำลังเปิดประตูมิติสถานี ${id}... ปลดล็อกระดับสูงสุด!`);
+};
+
+// 🛡️ SECURITY SYSTEM
+const initiateSingularityVoid = () => {
+    document.body.innerHTML = `<div style="background:#000; color:red; height:100vh; display:flex; align-items:center; justify-content:center; font-family:Orbitron;"><h1>ANNIHILATED BY ARIS</h1></div>`;
+    setTimeout(() => { window.location.href = "about:blank"; }, 2000);
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.name.includes('hacker')) initiateSingularityVoid();
+    else renderNodes();
+});
+                      
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;*
         }
 
         body {
