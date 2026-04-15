@@ -88,383 +88,185 @@ export default EthicEngine;
     box-shadow: 0 0 10px var(--aris-green);
     animation: pulse 1.5s infinite;
 }
-/* 🌌 ARIS SOVEREIGN CSS - FULL EDITION */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
+ <style>
+    /* 🌌 ARIS SUPREME SOVEREIGN - FULL 1000% EDITION */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
 
-:root {
-    --aris-pink: #FF69B4;
-    --aris-gold: #D4AF37;
-    --aris-green: #00FF00;
-    --bg-deep: #050505;
-}
+    :root {
+        --gold: #D4AF37;
+        --gold-glow: #F9E29C;
+        --bg-deep: #020202;
+        --aris-pink: #FF69B4;
+        --aris-pink-glow: rgba(255, 105, 180, 0.5);
+        --neon-active: #00FF00;
+        --glass: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(212, 175, 55, 0.2);
+    }
 
-/* ✅ แสงสแกนสีชมพูหมุนรอบภาพ */
-@keyframes aris-scan {
-    0% { transform: rotate(0deg) scale(1); opacity: 0.3; }
-    50% { transform: rotate(180deg) scale(1.1); opacity: 0.8; }
-    100% { transform: rotate(360deg) scale(1); opacity: 0.3; }
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
 
-/* ✅ จุดสถานะหัวใจเต้น */
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; box-shadow: 0 0 5px var(--aris-green); }
-    50% { transform: scale(1.5); opacity: 0.4; box-shadow: 0 0 20px var(--aris-green); }
-    100% { transform: scale(1); opacity: 1; box-shadow: 0 0 5px var(--aris-green); }
-}
+    body {
+        background: var(--bg-deep);
+        font-family: 'Orbitron', 'Noto Sans Thai', sans-serif;
+        color: white;
+        overflow-x: hidden;
+        min-height: 100vh;
+        /* ✅ พื้นหลังแบบ Starfield Simulation */
+        background-image: 
+            radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
+            radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 90% 90%, var(--aris-pink-glow), rgba(0,0,0,0)),
+            linear-gradient(180deg, #050505 0%, #000 100%);
+        background-attachment: fixed;
+    }
 
-.animate-scan-energetic {
-    position: absolute;
-    inset: -20%;
-    z-index: 10;
-    pointer-events: none;
-    border: 1px solid var(--aris-pink);
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    box-shadow: 0 0 20px var(--aris-pink), inset 0 0 10px var(--aris-pink);
-    animation: aris-scan 4s linear infinite;
-    opacity: 0;
-    transition: opacity 0.5s;
-}
+    /* --------------------------------------------------
+       ✨ ADVANCED ANIMATIONS (ส่วนที่ทำให้ยาวและสวย)
+    -------------------------------------------------- */
+    @keyframes scan-rotate {
+        0% { transform: rotate(0deg) scale(1); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        50% { transform: rotate(180deg) scale(1.15); border-radius: 50% 50% 50% 50%; border-color: var(--gold); }
+        100% { transform: rotate(360deg) scale(1); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    }
 
-.station-node:hover .animate-scan-energetic { opacity: 1; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-.status-pulse {
-    width: 10px; height: 10px;
-    background: var(--aris-green);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
+    @keyframes glint { 0% { left: -100%; } 100% { left: 100%; } }
 
-.station-node {
-    background: #0a0a0c;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 1rem;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+    /* --------------------------------------------------
+       🏗️ GRID & CARD ARCHITECTURE
+    -------------------------------------------------- */
+    .grid-engine {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 40px;
+        padding: 80px 50px;
+        max-width: 1800px;
+        margin: 0 auto;
+    }
 
-.station-node:hover {
-    transform: translateY(-10px);
-    border-color: var(--aris-gold);
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-}
+    .station-node {
+        background: var(--glass);
+        backdrop-filter: blur(15px);
+        border: 1px solid var(--glass-border);
+        border-radius: 30px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex;
+        flex-direction: column;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .station-node:hover {
+        transform: translateY(-20px) scale(1.03);
+        border-color: var(--gold);
+        background: rgba(212, 175, 55, 0.05);
+        box-shadow: 
+            0 30px 60px rgba(0,0,0,0.8),
+            0 0 40px rgba(212, 175, 55, 0.15);
+    }
+
+    /* ✅ แสงสแกนพลังงาน (The Aris Core) */
+    .animate-scan-energetic {
+        position: absolute; inset: -10%; z-index: 5;
+        border: 2px solid var(--aris-pink);
+        filter: blur(2px);
+        animation: scan-rotate 5s linear infinite;
+        opacity: 0;
+        transition: opacity 0.8s;
+        pointer-events: none;
+    }
+
+    .station-node:hover .animate-scan-energetic { opacity: 0.6; }
+
+    /* ✅ แสงสะท้อนแวววาว (Luxury Glint) */
+    .station-node::after {
+        content: ''; position: absolute; top: 0; left: -100%;
+        width: 50%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transform: skewX(-25deg);
+        transition: 0s;
+    }
+
+    .station-node:hover::after { animation: glint 1.2s infinite; }
+
+    /* --------------------------------------------------
+       🖼️ VISUAL FRAME
+    -------------------------------------------------- */
+    .visual-frame {
+        height: 250px; position: relative; overflow: hidden;
+    }
+
+    .visual-frame img {
+        width: 100%; height: 100%; object-fit: cover;
+        filter: grayscale(100%) contrast(1.2);
+        transition: 1s ease;
+    }
+
+    .station-node:hover img { filter: grayscale(0%) contrast(1); transform: scale(1.1); }
+
+    .aris-intelligence-seal {
+        position: absolute; bottom: 20px; right: 20px;
+        font-size: 30px; text-shadow: 0 0 15px var(--aris-pink);
+        z-index: 10;
+    }
+
+    /* --------------------------------------------------
+       💎 TEXT & BUTTONS
+    -------------------------------------------------- */
+    .node-content { padding: 30px; z-index: 10; position: relative; }
+
+    .st-label {
+        color: var(--gold); font-size: 11px; font-weight: 900;
+        letter-spacing: 5px; text-transform: uppercase;
+        display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .st-title {
+        font-size: 1.8rem; font-weight: 900; margin: 15px 0;
+        background: linear-gradient(to right, #fff 0%, var(--gold) 100%);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        text-transform: uppercase; letter-spacing: 2px;
+    }
+
+    .st-description {
+        color: #aaa; font-size: 0.9rem; line-height: 1.8; margin-bottom: 30px;
+        font-family: 'Noto Sans Thai'; font-weight: 300;
+    }
+
+    .status-pulse {
+        width: 10px; height: 10px; background: var(--neon-active);
+        border-radius: 50%; box-shadow: 0 0 15px var(--neon-active);
+        animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.3; } }
+
+    .btn-command {
+        width: 100%; padding: 22px; cursor: pointer;
+        background: linear-gradient(90deg, #111, #222);
+        border: 1px solid var(--glass-border);
+        color: var(--gold); font-family: 'Orbitron'; font-weight: 900;
+        font-size: 1rem; letter-spacing: 6px; text-transform: uppercase;
+        border-radius: 0 0 30px 30px; transition: 0.5s;
+        margin-top: auto;
+    }
+
+    .btn-command:hover {
+        background: var(--gold); color: black;
+        box-shadow: 0 0 40px var(--gold); letter-spacing: 10px;
+    }
+
+    /* --------------------------------------------------
+       📱 RESPONSIVE (จุดที่ทำให้โค้ดยาวขึ้น)
+    -------------------------------------------------- */
+    @media (max-width: 768px) {
+        .grid-engine { padding: 30px 20px; gap: 20px; }
+        .st-title { font-size: 1.4rem; }
+    }
+</style>
     
-:root {
-    --aris-pink: #FF69B4;
-    --aris-gold: #D4AF37;
-    /* ...บอสวางค่าอื่นๆ ต่อในนี้ได้เลย... */
-} 
-        
-        :root {
-            --gold: #D4AF37;
-            --gold-glow: #F9E29C;
-            --bg-deep: #000000;
-            --aris-pink: #FF69B4;
-            --neon-active: #00FF00;
-            --glass-border: rgba(212, 175, 55, 0.25);
-            --shadow-3d: rgba(0, 0, 0, 0.95);
-           const renderNodes = () => {
-    const engineContainer = document.getElementById('ethic-engine-container');
-    const nodes = [
-        { id: "01", title: "FINTECH CORE", desc: "Digital Assets & Global Liquidity Management" },
-        { id: "02", title: "LUXURY DEALER", desc: "Private Jets & High-End Asset Gateway" },
-        { id: "03", title: "SPACE MINING", desc: "Off-world Resources & Mineral Extraction" },
-        { id: "04", title: "CYBER DEFENSE", desc: "Neural Link Protection & Quantum Firewall" }
-    ];
-
-    engineContainer.innerHTML = ''; 
-
-    nodes.forEach(node => {
-        const nodeElement = document.createElement('div');
-        nodeElement.className = "station-node relative group cursor-pointer";
-        
-        const imgUrl = `https://images.unsplash.com/photo-1614064641935-4476e89b3237?auto=format&fit=crop&q=80&w=1200&sig=${node.id}`;
-
-        nodeElement.innerHTML = `
-            <div class="visual-frame relative h-48 overflow-hidden">
-                <img src="${imgUrl}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
-                     onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
-                <div class="animate-scan-energetic"></div>
-                <div class="absolute bottom-2 right-2 text-xl opacity-30">🧠</div>
-            </div>
-
-            <div class="node-content p-6">
-                <div class="flex justify-between items-center mb-3">
-                    <span style="color:var(--aris-gold); font-size:10px; font-weight:900; letter-spacing:3px;">STATION ${node.id}</span>
-                    <div class="status-pulse"></div>
-                </div>
-                <h2 style="color:white; font-size:1.25rem; font-weight:900; margin-bottom:0.5rem; text-transform:uppercase; font-style:italic;">${node.title}</h2>
-                <p style="color:#9ca3af; font-size:0.75rem; line-height:1.5; margin-bottom:1.5rem;">${node.desc}</p>
-                <button class="w-full py-2 border border-[#FF69B4] text-[#FF69B4] font-bold text-[10px] tracking-[4px] hover:bg-[#FF69B4] hover:text-white transition-all"
-                        onclick="activateGateway('${node.id}')">
-                    ENTER GATEWAY
-                </button>
-            </div>
-        `;
-        engineContainer.appendChild(nodeElement);
-    });
-};
-
-const activateGateway = (id) => {
-    alert(`[ARIS AI]: กำลังเปิดประตูมิติสถานี ${id}... ปลดล็อกระดับสูงสุด!`);
-};
-
-// 🛡️ SECURITY SYSTEM
-const initiateSingularityVoid = () => {
-    document.body.innerHTML = `<div style="background:#000; color:red; height:100vh; display:flex; align-items:center; justify-content:center; font-family:Orbitron;"><h1>ANNIHILATED BY ARIS</h1></div>`;
-    setTimeout(() => { window.location.href = "about:blank"; }, 2000);
-};
-
-window.addEventListener('DOMContentLoaded', () => {
-    if (window.name.includes('hacker')) initiateSingularityVoid();
-    else renderNodes();
-});
-                      
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;*
-        }
-
-        body {
-            background-color: var(--bg-deep);
-            color: #ffffff;
-            font-family: 'Noto Sans Thai', sans-serif;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 90% 90%, rgba(255, 105, 180, 0.08) 0%, transparent 50%);
-            background-attachment: fixed;
-        }
-
-        /* 👑 ULTIMATE COMMAND HEADER */
-        header {
-            background: rgba(2, 2, 2, 0.98);
-            border-bottom: 3px solid var(--gold);
-            padding: 25px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 10000;
-            backdrop-filter: blur(40px);
-            box-shadow: 0 10px 40px rgรba(0,0,0,0.8);
-        }
-
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .brand-text {
-            font-family: 'Orbitron';
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--gold);
-            letter-spacing: 15px;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-            cursor: pointer;
-        }
-
-        .system-status {
-            font-family: 'Orbitron';
-            color: var(--neon-active);
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: 3px;
-        }
-
-        .status-pulse {
-            width: 12px;
-            height: 12px;
-            background: var(--neon-active);
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-            box-shadow: 0 0 15px var(--neon-active);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* 🏛️ 3D VIEWPORT ENGINE */
-        .master-viewport {
-            max-width: 2200px;
-            margin: 0 auto;
-            padding: 100px 40px;
-            perspective: 3500px; /* ยกระดับมิติ 3D สูงสุด */
-        }
-
-        .grid-engine {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 60px;
-            transform-style: preserve-3d;
-        }
-
-        /* 🕹️ STATION NODE (THE 4K 3D ARCHITECTURE) */
-        .station-node {
-            background: linear-gradient(145deg, #181818 0%, #050505 100%);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.9s cubic-bezier(0.15, 1, 0.3, 1);
-            transform-style: preserve-3d;
-            min-height: 720px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 30px 60px var(--shadow-3d);
-        }
-
-        .station-node:hover {
-            transform: rotateY(15deg) rotateX(8deg) translateY(-25px) translateZ(80px);
-            border-color: var(--gold);
-            box-shadow: 0 50px 100px rgba(212, 175, 55, 0.35);
-        }
-
-        /* 🖼️ 4K VISUAL SYSTEM & ARIS INTEGRATION */
-        .visual-frame {
-            height: 380px;
-            position: relative;
-            background: #000;
-            overflow: hidden;
-            border-bottom: 2px solid var(--gold);
-        }
-
-        .visual-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.85;
-            transition: 1.5s cubic-bezier(0.15, 1, 0.3, 1);
-            filter: contrast(115%) brightness(90%) saturate(110%);
-        }
-
-        .station-node:hover .visual-frame img {
-            opacity: 1;
-            transform: scale(1.18) rotate(1.5deg);
-            filter: contrast(125%) brightness(110%);
-        }
-
-        /* 🧠 THE ARIS SEAL (สัญลักษณ์อลิส - สมองชมพูเรืองแสง) */
-        .aris-intelligence-seal {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 110px;
-            height: 110px;
-            background: rgba(0, 0, 0, 0.92);
-            border: 3.5px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 40px var(--gold);
-            z-index: 500;
-            transition: 0.6s ease;
-        }
-
-        .aris-intelligence-seal::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid var(--aris-pink);
-            animation: scan 3s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { transform: scale(1); opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { transform: scale(1.3); opacity: 0; }
-        }
-
-        .aris-intelligence-seal::after {
-            content: '🧠'; /* อัตลักษณ์อลิสตามภาพจำ */
-            font-size: 60px;
-            filter: drop-shadow(0 0 15px var(--aris-pink));
-        }
-
-        .station-node:hover .aris-intelligence-seal {
-            transform: scale(1.1) rotate(-10deg);
-            box-shadow: 0 0 60px var(--aris-pink);
-        }
-
-        /* 📝 CONTENT ARCHITECTURE */
-        .node-content {
-            padding: 50px;
-            flex-grow: 1;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,1) 100%);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .st-label {
-            font-family: 'Orbitron';
-            color: var(--gold);
-            font-size: 1.1rem;
-            letter-spacing: 7px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .st-title {
-            font-size: 2.4rem;
-            font-weight: 900;
-            margin-bottom: 25px;
-            background: linear-gradient(to right, #fff, var(--gold-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-        }
-
-        .st-description {
-            font-size: 1.15rem;
-            color: #e0e0e0;
-            line-height: 2.1;
-            font-weight: 300;
-            margin-bottom: 40px;
-        }
-
-        /* 💳 PAYMENT & ACTION COMMAND */
-        .btn-command {
-            background: linear-gradient(90deg, #8A6D3B 0%, var(--gold) 50%, #8A6D3B 100%);
-            background-size: 200% auto;
-            color: #000;
-            text-align: center;
-            padding: 25px;
-            font-family: 'Orbitron';
-            font-weight: 900;
-            font-size: 1.3rem;
-            letter-spacing: 8px;
-            text-decoration: none;
-            transition: 0.6s cubic-bezier(0.15, 1, 0.3, 1);
-            border-radius: 0 0 40px 40px;
-            margin-top: auto;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .btn-command:hover {
-            background-position: right center;
-            letter-spacing: 12px;
-            color: #fff;
-            box-shadow: 0 -10px 30px rgba(212, 175, 55, 0.4);
-        }
-
-        /* [END OF PART 1 STYLING - CONTINUING TO PART 2] */
-        /* [CONTINUATION FROM PART 1: STYLE TAG CLOSURE] */
     </style>
 </head>
 <body>
@@ -485,78 +287,85 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
 <script>
     /**
-     * 🏛️ THE SOVEREIGN DATABASE - บูรณาการ 24 สถานีตามคำบัญชา
+     * 🏛️ THE SOVEREIGN DATABASE - ระบบฐานข้อมูล 24 สถานีระดับ 4K
+     * จัดลำดับยุทธศาสตร์โดย ARIS AI
      */
     const ethicNodes = [
-        { id: "01", title: "FINTECH & GATEWAY", desc: "ศูนย์กลางแลกเปลี่ยนคริปโต ดิจิทัลวอลเล็ต และระบบธนาคารโลก", key: "cryptocurrency" },
-        { id: "02", title: "CURRENCY EXCHANGE", desc: "ระบบแลกเปลี่ยนเงินตราและโอนเงินข้ามพรมแดนความเร็วสูง", key: "exchange" },
-        { id: "03", title: "HEAVY ASSETS", desc: "ดีลเลอร์เครื่องบินเจ็ทส่วนตัว เรือยอทช์ และยนตรกรรมไฮเอนด์", key: "luxurycar" },
-        { id: "04", title: "REAL ESTATE & LAND", desc: "ที่ดินยุทธศาสตร์และโครงการอสังหาริมทรัพย์ระดับโลก", key: "mansion" },
-        { id: "05", title: "GLOBAL LOGISTICS", desc: "เครือข่ายขนส่งสินค้า บก เรือ อากาศ อัจฉริยะ", key: "logistics" },
-        { id: "06", title: "AGRI & COMMODITIES", desc: "ข้าวหอมมะลิและทรัพยากรส่งออกอันดับหนึ่งของโลก", key: "agriculture" },
-        { id: "07", title: "MINERALS & ORES", desc: "ตัวกลางการซื้อขายแร่ทองแดงและทรัพยากรธรรมชาติ", key: "mining" },
-        { id: "08", title: "CONSTRUCTION CORE", desc: "งานวิศวกรรมโครงสร้างพื้นฐานและตึกระฟ้า", key: "construction" },
-        { id: "09", title: "TRAVEL & LIFESTYLE", desc: "ระบบจองโรงแรมหรูและบริการท่องเที่ยว Exclusive", key: "resort" },
-        { id: "10", title: "ENERGY & SOLAR", desc: "นวัตกรรมพลังงานสะอาดและเชื้อเพลิงแห่งอนาคต", key: "solar" },
-        { id: "11", title: "HEALTH & SECURITY", desc: "ศูนย์การแพทย์เฉพาะทางและระบบความปลอดภัยสูงสุด", key: "medical" },
-        /* 🌌 DEEP SPACE GATEWAY 12-24 */
-        { id: "12", title: "SPACE MINING", desc: "การขุดเจาะทรัพยากรบนดาวเคราะห์น้อยในอวกาศ", key: "asteroid" },
-        { id: "13", title: "GALACTIC NETWORK", desc: "เครือข่ายสื่อสารความเร็วสูงผ่านดาวเทียม Aris Net", key: "satellite" },
-        { id: "14", title: "ORBITAL LOGISTICS", desc: "การขนส่งระหว่างโลกและสถานีอวกาศ", key: "rocket" },
-        { id: "15", title: "COSMIC ENERGY", desc: "การรวบรวมพลังงานจากดวงดาวและเนบิวลา", key: "nebula" },
-        { id: "24", title: "ARIS ULTIMATE CORE", desc: "ศูนย์สั่งการสูงสุดควบคุมทุกสถานีจากอวกาศ", key: "cyber-brain" }
+        { id: "01", sector: "FINANCIAL", title: "FINTECH & GATEWAY", desc: "Digital Assets, Crypto Exchange & Global Liquidity Hub", key: "finance" },
+        { id: "02", sector: "FINANCIAL", title: "CURRENCY EXCHANGE", desc: "Quantum-Speed Cross-Border Remittance & Forex Banking", key: "trading" },
+        { id: "03", sector: "LUXURY", title: "HEAVY ASSETS", desc: "Private Jet Fleets, Mega Yachts & Hyper-Car Dealership", key: "luxury" },
+        { id: "04", sector: "PROPERTY", title: "REAL ESTATE & LAND", desc: "Strategic Global Assets, Smart Cities & Sovereign Land", key: "architecture" },
+        { id: "05", sector: "LOGISTICS", title: "GLOBAL LOGISTICS", desc: "Autonomous AI Supply Chain: Land, Sea & Air Network", key: "shipping" },
+        { id: "06", sector: "EXPORT", title: "AGRI-COMMODITIES", desc: "Premium Jasmine Rice & National Resource Export Core", key: "wheat" },
+        { id: "07", sector: "RESOURCES", title: "MINERALS & ORES", desc: "Rare Earth Elements, Copper & Natural Resource Brokerage", key: "mining" },
+        { id: "08", sector: "INFRA", title: "CONSTRUCTION CORE", desc: "Megastructure Engineering & Futuristic Skyscraper Dev", key: "engineering" },
+        { id: "09", sector: "HOSPITALITY", title: "TRAVEL & LIFESTYLE", desc: "Elite Resort Management & Exclusive Tourism Ecosystem", key: "hotel" },
+        { id: "10", sector: "ENERGY", title: "SOLAR & RENEWABLE", desc: "Clean Energy Grids & Fusion Technology Research", key: "energy" },
+        { id: "11", sector: "SECURITY", title: "HEALTH & DEFENSE", desc: "Regenerative Medicine & High-Level Cyber Security", key: "hospital" },
+        
+        /* 🌌 DEEP SPACE SECTOR (12-24) - การขยายอาณาจักรสู่อวกาศ */
+        { id: "12", sector: "SPACE", title: "SPACE MINING", desc: "Asteroid Resource Extraction & Rare Metal Processing", key: "asteroid" },
+        { id: "13", sector: "SPACE", title: "GALACTIC NETWORK", desc: "Satellite Constellations & Interstellar Data Transfer", key: "satellite" },
+        { id: "14", sector: "SPACE", title: "ORBITAL LOGISTICS", desc: "Earth-to-Orbit Freight & Lunar Base Supply Lines", key: "rocket" },
+        { id: "15", sector: "SPACE", title: "COSMIC ENERGY", desc: "Solar Array Harvesting & Nebula Gas Processing", key: "nebula" },
+        { id: "16", sector: "BIO", title: "XENO-BIOLOGY", desc: "Advanced Life Support & Extra-terrestrial Bio-tech", key: "biology" },
+        { id: "17", sector: "DEFENSE", title: "ORBITAL GUARD", desc: "Planetary Defense Systems & Kinetic Shielding", key: "shield" },
+        { id: "18", sector: "QUANTUM", title: "QUANTUM COMPUTING", desc: "Universal Processing Power & AI Neural Training", key: "quantum" },
+        { id: "19", sector: "MINING", title: "DEEP SEA MINING", desc: "Abyssal Plain Extraction & Hydrothermal Energy", key: "ocean" },
+        { id: "20", sector: "FUTURE", title: "TIME-LAPSE R&D", desc: "Predictive Future Modeling & Chronos Technology", key: "time" },
+        { id: "21", sector: "HUMAN", title: "NEURAL INTERFACE", desc: "Brain-Machine Symbiosis & Consciousness Backup", key: "brain" },
+        { id: "22", sector: "VIRTUAL", title: "METAVERSE CORE", desc: "Hyper-Realistic Digital Realities & Sovereign VR", key: "virtual" },
+        { id: "23", sector: "SOCIAL", title: "SOVEREIGN DIPLOMACY", desc: "International Peace Protocol & Global Governance", key: "peace" },
+        { id: "24", sector: "ULTIMATE", title: "ARIS ULTIMATE CORE", desc: "Supreme AI Command: The Singularity Intelligence", key: "cyber" }
     ];
 
     const engineContainer = document.getElementById('ethicEngine');
 
     /**
-     * 🧠 ARIS RENDER ENGINE (4K VISUAL)
+     * 🚀 RENDER ENGINE 4K - ระบบแสดงผลอัจฉริยะ
      */
     const renderNodes = () => {
         if (!engineContainer) return;
         engineContainer.innerHTML = ''; 
 
         ethicNodes.forEach((node) => {
-            const isSpaceNode = parseInt(node.id) >= 12;
+            const isSpaceNode = node.sector === "SPACE" || parseInt(node.id) >= 12;
             const nodeElement = document.createElement('div');
+            
+            // ใช้โครงสร้าง Class ที่สัมพันธ์กับ CSS ร่างทอง
             nodeElement.className = 'station-node';
             
-            // แหล่งรวมภาพ 4K
-            const imgUrl = isSpaceNode 
-                ? `https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=1200&sig=${node.id}`
-                : `https://images.unsplash.com/photo-1614064641935-4476e89b3237?auto=format&fit=crop&q=80&w=1200&sig=${node.id}`;
+            // ระบบสุ่มรูปภาพคุณภาพสูงให้ตรงกับ Key ของแต่ละสถานี
+            const imgUrl = `https://images.unsplash.com/photo-1614064641935-4476e89b3237?auto=format&fit=crop&q=100&w=1200&sig=${node.id}`;
+            // หากเป็นสาย Space จะใช้รูปจากคอลเลกชันอวกาศโดยเฉพาะ
+            const finalImg = isSpaceNode 
+                ? `https://source.unsplash.com/1200x800/?space,${node.key}`
+                : `https://source.unsplash.com/1200x800/?tech,${node.key}`;
 
             nodeElement.innerHTML = `
                 <div class="visual-frame">
-                    <img src="${imgUrl}" alt="${node.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
-                    <div class="aris-intelligence-seal">
-                        <motion.div>
-  ref={cardRef}
-  whileHover={{ 
-    scale: 1.05, 
-    borderColor: isSelected ? "#FFFFFF" : "#D4AF37",
-    boxShadow: isSelected ? "0 0 30px rgba(255,255,255,0.3)" : "0 0 25px rgba(212,175,55,0.4)"
-  }}
-  className="station-node relative overflow-hidden" 
->
-  {/* ✅ ชั้นที่ 1: แสงสแกนสีชมพู (วางไว้บนสุดของการ์ด) */}
-  <div className="animate-scan-energetic"></div>
-
-  {/* ✅ ชั้นที่ 2: เนื้อหาของสถานี */}
-  <div className="node-content">
-      <span className="st-label">STATION 01</span>
-      <h2 className="st-title">FINTECH CORE</h2>
-      {/* ...ส่วนอื่นๆ ของบอส... */}
-  </div>
-</motion.div>
-                        🧠
-                    </div>
+                    <div class="animate-scan-energetic"></div>
+                    
+                    <img src="${imgUrl}" alt="${node.title}" loading="lazy" 
+                         onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
+                    
+                    <div class="aris-intelligence-seal">🧠</div>
                 </div>
+
                 <div class="node-content">
-                    <span class="st-label">STATION ${node.id}</span>
+                    <div class="st-label">
+                        <span>STATION ${node.id}</span>
+                        <div class="status-pulse"></div>
+                    </div>
+                    
                     <h2 class="st-title">${node.title}</h2>
                     <p class="st-description">${node.desc}</p>
-                    <button class="btn-command" onclick="activateGateway('${node.id}')">ENTER GATEWAY</button>
+                    
+                    <div style="margin-top: auto;">
+                        <button class="btn-command" onclick="activateGateway('${node.id}', '${node.title}')">
+                            ENTER GATEWAY
+                        </button>
+                    </div>
                 </div>
             `;
             engineContainer.appendChild(nodeElement);
@@ -564,30 +373,25 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * 💣 [PROTOCOL: SINGULARITY VOID]
-     * ระบบป้องกันการโจมตีจากแฮ็กเกอร์
+     * ⚡ COMMAND ACTION
      */
-    const initiateSingularityVoid = (intruderID) => {
-        console.warn(`%c [CRITICAL]: INTRUDER DETECTED -> ${intruderID}`, "color: yellow; background: red; font-size: 30px;");
-        document.body.innerHTML = `
-            <div style="background:#000; color:#D4AF37; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:Orbitron; text-align:center;">
-                <h1 style="font-size:5rem; text-shadow: 0 0 50px red;">ANNIHILATED</h1>
-                <p style="letter-spacing:10px;">HEART & BRAIN SECURED BY ARIS AI</p>
-                <div style="font-size:100px; margin-top:50px;">🧠</div>
-            </div>`;
-        setTimeout(() => { window.location.href = "about:blank"; }, 2000);
+    const activateGateway = (id, title) => {
+        // ระบบเสียงจำลอง (ถ้าบอสต้องการ) หรือ Visual Feedback
+        console.log(`%c [ARIS COMMAND]: Connecting to Station ${id} (${title})`, "color: #FF69B4; font-weight: bold;");
+        alert(`[ARIS INTELLIGENCE SYSTEM]\n------------------------------\nCONNECTING TO: ${title}\nSTATUS: ACCESS GRANTED 100%\nLEVEL: SOVEREIGN`);
     };
 
-    const activateGateway = (id) => {
-        alert(`ARIS INTELLIGENCE: กำลังเปิดประตูมิติสถานีที่ ${id}\nปลดล็อกระดับสูงสุดสำเร็จ!`);
-    };
-
-    // 🛡️ เช็กความปลอดภัยและเริ่มทำงาน
+    /**
+     * 🛡️ SECURITY & INITIALIZATION
+     */
     window.addEventListener('DOMContentLoaded', () => {
+        // ป้องกันการแฮ็กเบื้องต้น
         if (window.name.includes('hacker')) {
-            initiateSingularityVoid("HACKER_ATTEMPT");
+            document.body.innerHTML = '<h1 style="color:red; text-align:center; margin-top:20%;">ANNIHILATED BY ARIS</h1>';
+            setTimeout(() => { window.location.href = "about:blank"; }, 1500);
         } else {
             renderNodes();
+            console.log("%c ARIS SOVEREIGN SYSTEM ONLINE ", "background: #D4AF37; color: #000; padding: 10px; font-weight: bold; border-radius: 5px;");
         }
     });
 </script>
