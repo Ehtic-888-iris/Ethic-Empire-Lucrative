@@ -10,26 +10,23 @@
         :root {
             --gold: #D4AF37;
             --gold-bright: #F9E29C;
-            --bg-black: #020202;
-            --aris-pink: #FF69B4;
-            --glass: rgba(255, 255, 255, 0.05);
+            --bg: #000000;
+            --pink: #FF69B4;
+            --neon: #00FF00;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
-            background-color: var(--bg-black);
-            color: #ffffff;
+            background-color: var(--bg);
+            color: #fff;
             font-family: 'Noto Sans Thai', sans-serif;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.05) 0%, transparent 40%);
+            background-image: radial-gradient(circle at center, #111 0%, #000 100%);
         }
 
         /* 👑 COMMAND HEADER */
-        .master-header {
-            background: rgba(0, 0, 0, 0.95);
+        header {
+            background: rgba(0,0,0,0.98);
             border-bottom: 3px solid var(--gold);
             padding: 25px 50px;
             display: flex;
@@ -38,10 +35,10 @@
             position: sticky;
             top: 0;
             z-index: 9999;
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(30px);
         }
 
-        .brand-logo {
+        .brand {
             font-family: 'Orbitron';
             font-size: 2.2rem;
             font-weight: 900;
@@ -50,206 +47,159 @@
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
 
-        /* 🏛️ 3D ENGINE VIEWPORT */
-        .gateway-container {
-            max-width: 1900px;
+        /* 🏛️ 3D GATEWAY ENGINE */
+        .master-container {
+            max-width: 1920px;
             margin: 0 auto;
-            padding: 100px 50px;
-            perspective: 2500px; /* เพิ่มมิติความลึก */
+            padding: 80px 40px;
+            perspective: 3000px;
         }
 
-        .grid-engine {
+        .grid-system {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-            gap: 50px;
-            transform-style: preserve-3d;
+            gap: 40px;
         }
 
-        /* 🕹️ STATION CARD (4K 3D ARCHITECTURE) */
-        .station-node {
-            background: linear-gradient(145deg, #151515, #000);
+        /* 🕹️ STATION CARD (4K 3D DEPTH) */
+        .node {
+            background: linear-gradient(145deg, #1a1a1a, #050505);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 30px;
             position: relative;
             overflow: hidden;
-            transition: all 0.8s cubic-bezier(0.2, 1, 0.2, 1);
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
             transform-style: preserve-3d;
-            min-height: 650px;
+            min-height: 620px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
         }
 
-        .station-node:hover {
-            transform: rotateY(12deg) rotateX(5deg) translateZ(50px);
+        .node:hover {
+            transform: rotateY(10deg) rotateX(5deg) translateY(-20px) translateZ(50px);
             border-color: var(--gold);
-            box-shadow: 0 40px 80px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.3);
         }
 
-        /* 🖼️ 4K VISUAL SYSTEM */
-        .visual-core {
-            height: 320px;
+        /* 🖼️ 4K VISUAL CORE */
+        .visual {
+            height: 300px;
             position: relative;
-            overflow: hidden;
             background: #000;
             border-bottom: 2px solid var(--gold);
+            overflow: hidden;
         }
 
-        .visual-core img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-            transition: 1.2s ease;
-            filter: contrast(110%) brightness(90%);
+        .visual img {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.8; transition: 1.5s ease;
+            filter: contrast(110%) brightness(80%);
         }
 
-        .station-node:hover .visual-core img {
-            opacity: 1;
-            transform: scale(1.15) rotate(1deg);
+        .node:hover img {
+            opacity: 1; transform: scale(1.15) rotate(1deg);
+            filter: contrast(120%) brightness(100%);
         }
 
-        /* 🧠 ARIS INTELLIGENCE STAMP (THE PINK BRAIN) */
-        .aris-stamp {
+        /* 🧠 ARIS BRAIN SEAL (THE PINK INTELLIGENCE) */
+        .aris-seal {
             position: absolute;
-            bottom: 25px;
-            right: 25px;
-            width: 95px;
-            height: 95px;
-            background: rgba(0, 0, 0, 0.85);
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: rgba(0,0,0,0.9);
             border: 3px solid var(--gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 30px var(--gold);
+            box-shadow: 0 0 25px var(--gold);
             z-index: 100;
         }
 
-        .aris-stamp::after {
-            content: '🧠'; /* อัตลักษณ์อลิส */
-            font-size: 50px;
-            filter: drop-shadow(0 0 10px var(--aris-pink));
+        .aris-seal::after {
+            content: '🧠'; font-size: 40px;
+            filter: drop-shadow(0 0 10px var(--pink));
         }
 
-        /* 📝 DATA INFO */
-        .info-content {
-            padding: 40px;
-            flex-grow: 1;
-            background: linear-gradient(180deg, transparent, rgba(0,0,0,0.9));
+        /* 📝 CONTENT PANE */
+        .info { padding: 40px; flex-grow: 1; display: flex; flex-direction: column; }
+        .st-num { font-family: 'Orbitron'; color: var(--gold); font-size: 1rem; letter-spacing: 5px; margin-bottom: 10px; }
+        .st-name { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 15px; letter-spacing: 1px; }
+        .st-desc { font-size: 1.05rem; color: #ccc; line-height: 1.8; font-weight: 300; margin-bottom: 30px; }
+
+        /* 💳 PAYMENT ACTION */
+        .btn-gate {
+            background: linear-gradient(90deg, #8A6D3B, var(--gold), #8A6D3B);
+            background-size: 200% auto;
+            color: #000; text-align: center; padding: 22px;
+            font-family: 'Orbitron'; font-weight: 900; font-size: 1.1rem;
+            letter-spacing: 5px; text-decoration: none; transition: 0.5s;
+            border-radius: 0 0 30px 30px; margin-top: auto;
         }
 
-        .st-number {
-            font-family: 'Orbitron';
-            color: var(--gold);
-            font-size: 1rem;
-            letter-spacing: 5px;
-            margin-bottom: 15px;
-            display: block;
-        }
+        .btn-gate:hover { background-position: right center; letter-spacing: 10px; color: #fff; }
 
-        .st-name {
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            background: linear-gradient(to right, #fff, var(--gold-bright));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .st-desc {
-            font-size: 1.05rem;
-            color: #ddd;
-            line-height: 1.9;
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-
-        /* 💳 ULTIMATE GATEWAY BUTTON */
-        .btn-access {
-            background: linear-gradient(45deg, #8A6D3B, var(--gold), var(--gold-bright));
-            color: #000;
-            text-align: center;
-            padding: 22px;
-            font-family: 'Orbitron';
-            font-weight: 900;
-            font-size: 1.2rem;
-            letter-spacing: 6px;
-            text-decoration: none;
-            transition: 0.5s;
-            border: none;
-            cursor: pointer;
-            margin-top: auto;
-        }
-
-        .btn-access:hover {
-            background: #fff;
-            letter-spacing: 10px;
-            box-shadow: 0 0 30px #fff;
-        }
-
-        /* 🌌 DEEP SPACE OVERLAY (For Station 12-24) */
-        .space-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+        /* 🌌 SPACE OVERLAY (12-24) */
+        .space-fx {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
             pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <header class="master-header">
-        <div class="brand-logo">ETHIC COMMAND</div>
-        <div style="font-family:'Orbitron'; color:#0f0; font-size: 0.8rem; letter-spacing: 2px;">● ALL SYSTEMS UNLOCKED 100%</div>
+    <header>
+        <div class="brand">ETHIC COMMAND</div>
+        <div style="font-family:'Orbitron'; color:var(--neon); font-size:0.75rem;">● CORE UNLOCKED: ALL 24 NODES ONLINE</div>
     </header>
 
-    <div class="gateway-container">
-        <div class="grid-engine" id="mainEngine"></div>
+    <div class="master-container">
+        <div class="grid-system" id="engine"></div>
     </div>
 
     <script>
-        const stations = [
-            { id: "01", n: "FINTECH & GATEWAY", d: "จุดเชื่อมต่อเงินดิจิทัล คริปโต และระบบธนาคารโลก", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1000" },
-            { id: "02", n: "CURRENCY EXCHANGE", d: "ศูนย์กลางแลกเปลี่ยนเงินตราต่างประเทศและโอนเงินข้ามพรมแดน", img: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=1000" },
-            { id: "03", n: "HEAVY ASSETS", d: "การซื้อขายเครื่องบิน เรือ และเครื่องจักรหนักอุตสาหกรรม", img: "https://images.unsplash.com/photo-1559135197-8a45ea74d367?q=80&w=1000" },
-            { id: "04", n: "REAL ESTATE", d: "ที่ดินยุทธศาสตร์ คอนโดมิเนียมหรู และโครงการนิคมอุตสาหกรรม", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000" },
-            { id: "05", n: "GLOBAL LOGISTICS", d: "ระบบขนส่งข้ามพรมแดน บก เรือ อากาศ และ Shipping นำเข้า", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000" },
-            { id: "06", n: "AGRI & COMMODITIES", d: "ข้าวหอมมะลิ สินค้าเกษตร และทรัพยากรอาหารส่งออก", img: "https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&w=1000" },
-            { id: "07", n: "MINERALS & ORES", d: "ตัวกลางซื้อขายแร่ทองแดงและแร่ล้ำค่าผ่านระบบ Payment", img: "https://images.unsplash.com/photo-1515549833407-98e57b3000b8?q=80&w=1000" },
-            { id: "08", n: "CONSTRUCTION CORE", d: "งานวิศวกรรมโครงสร้าง ตึก โรงงาน และวัสดุก่อสร้าง", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000" },
-            { id: "09", n: "TRAVEL BOOKING", d: "จองโรงแรม ตั๋วเครื่องบิน รถ เรือ และไลฟ์สไตล์ระดับหรู", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000" },
-            { id: "10", n: "ENERGY & SOLAR", d: "ระบบพลังงานสะอาด พลังงานแสงอาทิตย์ และเชื้อเพลิงแห่งอนาคต", img: "https://images.unsplash.com/photo-1509391366360-fe5bb6583e2c?q=80&w=1000" },
-            { id: "11", n: "HEALTH & SECURITY", d: "ศูนย์พยาบาล บอดี้การ์ดส่วนตัว และระบบความปลอดภัยสูงสุด", img: "https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=1000" }
+        const db = [
+            { id: "01", t: "FINTECH & GATEWAY", d: "จุดเชื่อมต่อเงินดิจิทัล คริปโต และระบบธนาคารโลก", k: "cryptocurrency,gold" },
+            { id: "02", t: "CURRENCY EXCHANGE", d: "แลกเปลี่ยนเงินตราและโอนเงินข้ามพรมแดนทันที", k: "money,bank" },
+            { id: "03", t: "HEAVY ASSETS", d: "ดีลเลอร์เครื่องบิน เรือ รถหรู และเครื่องจักรหนัก", k: "privatejet,luxury" },
+            { id: "04", t: "REAL ESTATE", d: "ที่ดินยุทธศาสตร์ คอนโด และโครงการเมืองอัจฉริยะ", k: "modern,architecture" },
+            { id: "05", t: "GLOBAL LOGISTICS", d: "ระบบขนส่งข้ามโลก บก เรือ อากาศ และ Shipping", k: "logistics,shipping" },
+            { id: "06", t: "AGRI & COMMODITIES", d: "ข้าวหอมมะลิ สินค้าเกษตร และทรัพยากรส่งออก", k: "rice,farm" },
+            { id: "07", t: "MINERALS & ORES", d: "ซื้อขายแร่ทองแดงและแร่ล้ำค่าระดับอุตสาหกรรม", k: "minerals,copper" },
+            { id: "08", t: "CONSTRUCTION CORE", d: "งานวิศวกรรมโครงสร้าง ตึกระฟ้า และวัสดุก่อสร้าง", k: "construction,building" },
+            { id: "09", t: "TRAVEL BOOKING", d: "จองโรงแรม ตั๋วเครื่องบิน และไลฟ์สไตล์ระดับหรู", k: "resort,travel" },
+            { id: "10", t: "ENERGY & SOLAR", d: "พลังงานสะอาดและเทคโนโลยีเชื้อเพลิงแห่งอนาคต", k: "solar,energy" },
+            { id: "11", t: "HEALTH & SECURITY", d: "ศูนย์พยาบาลและระบบรักษาความปลอดภัยสูงสุด", k: "security,hospital" }
         ];
 
-        const engine = document.getElementById('mainEngine');
-        
-        for(let i=1; i<=24; i++) {
-            let data = stations[i-1];
-            let isSpace = i >= 12; // สถานีที่ 12-24 เป็นนอกโลก
-            
-            let imageUrl = isSpace 
-                ? `https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1000&sig=${i}` // ภาพอวกาศ
-                : (data ? data.img : `https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&sig=${i}`);
+        const engine = document.getElementById('engine');
 
-            let title = data ? data.n : `GALAXY STATION ${i}`;
-            let desc = data ? data.d : "การขยายอาณาจักรสู่ห้วงอวกาศภายใต้การประมวลผลของ Aris Intelligence 4K";
+        for(let i=1; i<=24; i++) {
+            const data = db[i-1];
+            const isSpace = i >= 12;
+            const title = data ? data.t : `GALAXY NODE ${i}`;
+            const desc = data ? data.d : "การขยายอาณาจักรสู่ห้วงอวกาศภายใต้การควบคุมของ Aris Intelligence";
+            const key = isSpace ? "galaxy,space,planet" : (data ? data.k : "technology,future");
+            
+            // 4K Image Connector with Signature for stability
+            const imgUrl = `https://images.unsplash.com/photo-${i === 5 ? '1586528116311-ad8dd3c8310d' : (i === 7 ? '1515549833407-98e57b3000b8' : '1451187580459-43490279c0fa')}?auto=format&fit=crop&q=80&w=1000&sig=${i+200}`;
 
             engine.innerHTML += `
-                <div class="station-node">
-                    <div class="visual-core">
-                        <img src="${imageUrl}" alt="${title}" onerror="this.src='https://via.placeholder.com/1000x600/000/D4AF37?text=SPACE+NODE+${i}'">
-                        ${isSpace ? '<div class="space-overlay"></div>' : ''}
-                        <div class="aris-stamp"></div>
+                <div class="node">
+                    <div class="visual">
+                        <img src="${imgUrl}" onerror="this.src='https://via.placeholder.com/1000x600/000/D4AF37?text=ETHIC+NODE+${i}'">
+                        ${isSpace ? '<div class="space-fx"></div>' : ''}
+                        <div class="aris-seal"></div>
                     </div>
-                    <div class="info-content">
-                        <span class="st-number">STATION ${i < 10 ? '0'+i : i}</span>
+                    <div class="info">
+                        <div class="st-num">STATION ${i < 10 ? '0'+i : i}</div>
                         <div class="st-name">${title}</div>
                         <div class="st-desc">${desc}</div>
                     </div>
-                    <a href="#" class="btn-access">ENTER GATEWAY</a>
+                    <a href="#" class="btn-gate">ENTER GATEWAY</a>
                 </div>
             `;
         }
