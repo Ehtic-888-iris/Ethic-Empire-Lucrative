@@ -327,6 +327,72 @@
                 // การกำหนด URL ภาพ 4K ตามความต้องการของบอส
                 // สถานี 05 และ 07 ถูกระบุรหัสภาพที่แน่นอนเพื่อป้องกันการหาย
                 let finalImageUrl;
+                        /* [FINAL RENDERING LOGIC - INTEGRATING ACTUAL IMAGES] */
+
+        const engineContainer = document.getElementById('ethicEngine');
+
+        /**
+         * 🧠 ARIS ACTUAL IMAGE MAPPING
+         * บอสสามารถเปลี่ยนชื่อไฟล์ใน array นี้ให้ตรงกับภาพที่บอสมีได้เลยค่ะ
+         */
+        const actualImages = {
+            "01": "boss_crypto_01.jpg", // ตัวอย่าง: ภาพที่บอสส่งมา
+            "02": "exchange_premium.jpg",
+            "03": "jet_yacht_03.jpg",
+            "04": "realestate_4k.jpg",
+            "05": "logistics_actual.jpg", // แก้ปัญหาภาพไม่ขึ้น
+            "06": "agri_gold.jpg",
+            "07": "mineral_actual.jpg",   // แก้ปัญหาภาพไม่ขึ้น
+            "08": "construction_3d.jpg",
+            "09": "travel_lux.jpg",
+            "10": "energy_future.jpg",
+            "11": "security_master.jpg",
+            // สถานี 12-24 (Space Series) อริสจะใช้ภาพนอกโลกประสิทธิภาพสูงให้ตามเดิม
+        };
+
+        const renderNodes = () => {
+            ethicNodes.forEach((node, index) => {
+                const isSpaceNode = parseInt(node.id) >= 12;
+                
+                // ระบบเลือกภาพ: 1. ภาพจริงจากบอส -> 2. ภาพ 4K Space -> 3. ภาพสำรอง Aris
+                let finalImageUrl = actualImages[node.id] || 
+                                    (isSpaceNode ? `https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1200&sig=${node.id}` 
+                                                 : `https://source.unsplash.com/featured/1200x800?${node.key}&sig=${node.id}`);
+
+                const nodeElement = document.createElement('div');
+                nodeElement.className = 'station-node';
+                nodeElement.innerHTML = `
+                    <div class="visual-frame">
+                        <img src="${finalImageUrl}" 
+                             alt="${node.title}" 
+                             onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
+                        
+                        ${isSpaceNode ? '<div class="space-fx"></div>' : ''}
+                        
+                        <div class="aris-intelligence-seal"></div>
+                    </div>
+                    
+                    <div class="node-content">
+                        <span class="st-label">STATION ${node.id}</span>
+                        <h2 class="st-title">${node.title}</h2>
+                        <p class="st-description">${node.desc}</p>
+                        
+                        <button class="btn-command" onclick="activateGateway('${node.id}')">
+                            ENTER GATEWAY
+                        </button>
+                    </div>
+                `;
+                
+                engineContainer.appendChild(nodeElement);
+            });
+        };
+
+        const activateGateway = (id) => {
+            alert(`ARIS INTELLIGENCE: กำลังเปิดประตูมิติสถานีที่ ${id}\nภาพชุด 4K ของบอสพร้อมใช้งานแล้วค่ะ!`);
+        };
+
+        window.addEventListener('DOMContentLoaded', renderNodes);
+                
                 if (node.id === "05") {
                     finalImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200";
                 } else if (node.id === "07") {
