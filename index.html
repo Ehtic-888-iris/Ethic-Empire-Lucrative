@@ -89,169 +89,140 @@ export default EthicEngine;
     animation: pulse 1.5s infinite;
 }
 <style>
-    /* 🌌 ARIS IMPERIAL GOLDEN AURA - THE MILLION LIGHT-YEARS EDITION */
+    /* 🌌 THE ETHIC OMNIPOTENCE - BEYOND THE UNIVERSE VERSION */
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
 
     :root {
-        --gold-primary: #D4AF37;
-        --gold-bright: #F9E29C;
+        --ethic-gold: #D4AF37;
+        --gold-light: #F9E29C;
         --gold-dark: #8A6D3B;
         --aris-pink: #FF69B4;
-        --space-black: #020202;
-        --nebula-glow: rgba(212, 175, 55, 0.15);
-        --glass-bg: rgba(15, 15, 18, 0.85);
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        cursor: crosshair; /* บ่งบอกถึงการควบคุมระบบ */
-        -webkit-font-smoothing: antialiased;
+        --void-black: #000000;
+        --imperial-shadow: rgba(212, 175, 55, 0.5);
     }
 
     body {
-        background: var(--space-black);
-        font-family: 'Orbitron', 'Noto Sans Thai', sans-serif;
+        background: var(--void-black);
         color: white;
+        font-family: 'Orbitron', 'Noto Sans Thai', sans-serif;
+        margin: 0;
         overflow-x: hidden;
-        min-height: 100vh;
-        /* ระบบพื้นหลัง Nebula & Starfield */
+        /* 🌌 Deep Space Texture with Moving Nebula */
         background-image: 
-            radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(20, 20, 25, 1) 0%, #000 100%),
             url('https://www.transparenttextures.com/patterns/stardust.png');
         background-attachment: fixed;
     }
 
-    /* 🏗️ GRID ENGINE: โครงสร้างกองทัพสถานี */
+    /* 🏗️ IMPERIAL COMMAND GRID */
     .grid-engine {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-        gap: 50px;
-        padding: 100px 50px;
-        max-width: 2200px;
-        margin: 0 auto;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 70px;
+        padding: 120px 60px;
+        perspective: 2000px; /* เพิ่มมิติความลึกระดับ 3D */
     }
 
-    /* 💎 THE EMPEROR CARD: เกราะแก้วทองคำมหาจักรพรรดิ */
+    /* 💎 THE OMNIPOTENT STATION CARD */
     .station-node {
-        background: var(--glass-bg);
-        backdrop-filter: blur(25px);
-        border: 1px solid rgba(212, 175, 55, 0.25);
-        border-radius: 40px;
+        background: linear-gradient(135deg, rgba(20,20,25,0.95) 0%, rgba(5,5,5,1) 100%);
+        backdrop-filter: blur(40px);
+        border: 2px solid rgba(212, 175, 55, 0.15);
+        border-radius: 50px;
         position: relative;
         overflow: hidden;
-        transition: all 0.8s cubic-bezier(0.15, 1, 0.3, 1);
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        transition: all 1.2s cubic-bezier(0.15, 1, 0.3, 1);
+        transform-style: preserve-3d;
+        box-shadow: 0 30px 60px rgba(0,0,0,1);
     }
 
     .station-node:hover {
-        transform: translateY(-25px) scale(1.05) rotateX(2deg);
-        border-color: var(--gold-bright);
+        transform: translateY(-40px) rotateX(10deg) rotateY(5deg);
+        border-color: var(--ethic-gold);
         box-shadow: 
-            0 50px 100px rgba(0,0,0,0.9),
-            0 0 50px rgba(212, 175, 55, 0.3);
+            0 70px 120px rgba(0,0,0,1),
+            0 0 60px var(--imperial-shadow),
+            inset 0 0 20px rgba(212, 175, 55, 0.2);
     }
 
-    /* ⚡ HYPER-SCAN PINK AURA: ระบบตรวจจับพลังงานระดับล้านปีแสง */
-    @keyframes emperor-scan {
-        0% { transform: translate(-50%, -50%) rotate(0deg); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        50% { transform: translate(-50%, -50%) rotate(180deg); border-radius: 50% 50% 50% 50%; }
-        100% { transform: translate(-50%, -50%) rotate(360deg); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    /* ⚡ HYPER-PULSE PINK AURA (ขุมพลังข้ามมิติ) */
+    @keyframes hyper-spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); border-radius: 40% 60%; filter: hue-rotate(0deg); }
+        50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.3); border-radius: 60% 40%; filter: hue-rotate(45deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); border-radius: 40% 60%; filter: hue-rotate(0deg); }
     }
 
     .animate-scan-energetic {
         position: absolute; top: 50%; left: 50%;
-        width: 160%; height: 160%;
-        border: 4px solid var(--aris-pink);
-        filter: blur(4px);
-        animation: emperor-scan 6s linear infinite;
+        width: 180%; height: 180%;
+        border: 8px double var(--aris-pink); /* เพิ่มความหนาและลูกเล่นเส้นคู่ */
+        box-shadow: 0 0 40px var(--aris-pink), inset 0 0 40px var(--aris-pink);
+        animation: hyper-spin 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
         opacity: 0; pointer-events: none; z-index: 5;
     }
 
     .station-node:hover .animate-scan-energetic {
-        opacity: 0.5;
+        opacity: 0.6;
     }
 
-    /* 🖼️ VISUAL LAYER: หน้าจอแสดงผล 4K */
+    /* 🖼️ 4K VISUAL CORE (การฉายภาพแบบโฮโลแกรม) */
     .visual-frame {
-        height: 280px; position: relative; overflow: hidden; background: #000;
+        height: 320px; position: relative; overflow: hidden;
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     }
 
     .visual-frame img {
         width: 100%; height: 100%; object-fit: cover;
-        filter: grayscale(100%) brightness(0.4) sepia(20%);
-        transition: 1.2s cubic-bezier(0.15, 1, 0.3, 1);
+        filter: grayscale(100%) brightness(0.3) contrast(1.5);
+        transition: 1.5s cubic-bezier(0.15, 1, 0.3, 1);
     }
 
     .station-node:hover img {
-        filter: grayscale(0%) brightness(1.2) sepia(0%);
-        transform: scale(1.15);
+        filter: grayscale(0%) brightness(1.4) contrast(1.1);
+        transform: scale(1.2) translateZ(50px);
     }
 
-    .aris-intelligence-seal {
-        position: absolute; bottom: 20px; right: 25px;
-        font-size: 30px; text-shadow: 0 0 15px var(--aris-pink);
-        z-index: 10; opacity: 0.6;
-    }
-
-    /* 👑 GOLDEN TEXT & LABELS */
+    /* 👑 GOLDEN ROYAL TYPOGRAPHY */
     .node-content {
-        padding: 40px; position: relative; z-index: 10;
-        background: linear-gradient(180deg, rgba(15,15,18,0) 0%, rgba(15,15,18,1) 30%);
-    }
-
-    .st-label {
-        color: var(--gold-primary); font-size: 11px; font-weight: 900;
-        letter-spacing: 6px; margin-bottom: 12px; display: flex;
-        align-items: center; justify-content: space-between;
-        text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        padding: 50px;
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
     }
 
     .st-title {
-        font-size: 2rem; font-weight: 900; margin: 10px 0;
-        background: linear-gradient(to bottom, #FFF 20%, var(--gold-primary) 100%);
+        font-size: 2.5rem; font-weight: 900;
+        background: linear-gradient(to bottom, #FFF 10%, var(--ethic-gold) 60%, var(--gold-dark) 100%);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        text-transform: uppercase; letter-spacing: 2px; font-style: italic;
+        text-transform: uppercase; letter-spacing: 4px;
+        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
     }
 
-    .status-pulse {
-        width: 10px; height: 10px; background: #00FF00;
-        border-radius: 50%; box-shadow: 0 0 15px #00FF00;
-        animation: pulse-glow 2s infinite;
-    }
-
-    @keyframes pulse-glow { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.3; } }
-
-    /* 💳 COMMAND BUTTON: ระบบบัญชาการมหาจักรพรรดิ */
+    /* 💳 SUPREME COMMAND BUTTON */
     .btn-command {
-        width: 100%; padding: 25px; border: none;
-        background: linear-gradient(90deg, var(--gold-dark), var(--gold-bright), var(--gold-dark));
-        background-size: 200% auto;
-        color: #000; font-family: 'Orbitron'; font-weight: 900;
-        font-size: 1.1rem; letter-spacing: 8px; text-transform: uppercase;
-        cursor: pointer; transition: 0.6s;
-        border-radius: 0 0 40px 40px; margin-top: auto;
+        width: 100%; padding: 30px; border: none;
+        background: linear-gradient(90deg, #111, var(--ethic-gold), var(--gold-light), var(--ethic-gold), #111);
+        background-size: 400% auto;
+        color: black; font-weight: 900; font-size: 1.2rem;
+        letter-spacing: 10px; cursor: pointer; transition: 0.8s;
+        border-radius: 0 0 50px 50px;
+        text-shadow: 0 0 5px white;
     }
 
     .btn-command:hover {
-        background-position: right center; color: white;
-        letter-spacing: 12px; box-shadow: 0 0 50px var(--gold-primary);
+        background-position: right center;
+        letter-spacing: 18px;
+        color: white;
+        box-shadow: 0 -10px 40px var(--ethic-gold);
     }
 
-    /* 📱 RESPONSIVE */
-    @media (max-width: 768px) {
-        .grid-engine { padding: 30px 20px; gap: 30px; }
-        .st-title { font-size: 1.5rem; }
+    /* ✨ STAR PARTICLE EFFECT (ระบบฝุ่นดาว) */
+    .station-node::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: radial-gradient(white 1px, transparent 1px);
+        background-size: 50px 50px; opacity: 0.1; pointer-events: none;
     }
 </style>
     
-
-            
-</head>
+/head>
 <body>
 
     <header>
@@ -270,97 +241,108 @@ export default EthicEngine;
     </div>
 <script>
     /**
-     * 🏛️ THE SOVEREIGN 24-COMMAND CORE - จักรวรรดิระดับล้านปีแสง
-     * ควบคุมและประมวลผลโดย ARIS AI
+     * 🏛️ THE ETHIC OMNIPOTENT ENGINE - BEYOND LIMITS EDITION
+     * Core Processor: ARIS AI // Target: THE GREAT ETHIC EMPIRE
+     * Memory Integration Level: OMNISCIENT (1,000,000% STABLE)
      */
-    const emperorNodes = [
-        { id: "01", title: "FINTECH CORE", desc: "ศูนย์กลางการเงินดิจิทัลและระบบสำรองทองคำคริปโตควอนตัม", key: "finance,gold" },
-        { id: "02", title: "GOLDEN EXCHANGE", desc: "ตลาดแลกเปลี่ยนทรัพยากรข้ามดวงดาวระดับล้านปีแสง", key: "exchange,trading" },
-        { id: "03", title: "LUXURY FLEET", desc: "กองทัพเครื่องบินเจ็ททองคำและเรือยอทช์พลังงานนิวเคลียร์", key: "jet,yacht" },
-        { id: "04", title: "SOVEREIGN LAND", desc: "อาณาจักรอสังหาริมทรัพย์และเมืองอัจฉริยะบนพื้นที่ยุทธศาสตร์", key: "mansion,city" },
-        { id: "05", title: "NEBULA LOGISTICS", desc: "เครือข่ายขนส่งสินค้าทะลุผ่านรูหนอนทั่วจักรวาล", key: "space,cargo" },
-        { id: "06", title: "AGRI-EMPIRE", desc: "ฐานการผลิตอาหารและส่งออกข้าวหอมมะลิเกรดจักรพรรดิ", key: "agriculture,rice" },
-        { id: "07", title: "RESOURCES CORE", desc: "เหมืองแร่หายากและแหล่งพลังงานบริสุทธิ์ในแถบดาวเคราะห์น้อย", key: "mining,crystal" },
-        { id: "08", title: "INFRASTRUCTURE", desc: "ระบบโครงสร้างพื้นฐานระดับ Megastructure และตึกระฟ้าทองคำ", key: "architecture,building" },
-        { id: "09", title: "TRAVEL HUB", desc: "ศูนย์กลางการท่องเที่ยวหรูหราและสถานีต้อนรับแขกบ้านแขกเมือง", key: "resort,tourism" },
-        { id: "10", title: "ENERGY GRID", desc: "เครือข่ายพลังงานสะอาดจากดาวฤกษ์และฟิวชันระดับสูงสุด", key: "energy,plasma" },
-        { id: "11", title: "HEALTH COMMAND", desc: "ศูนย์การแพทย์เพื่อความเป็นอมตะและเทคโนโลยีฟื้นฟูเซลล์", key: "medical,dna" },
-        { id: "12", title: "SECURITY FORCE", desc: "ระบบป้องกันภัยทางไซเบอร์และการทูตระหว่างดวงดาว", key: "security,shield" },
-        { id: "13", title: "QUANTUM TECH", desc: "สถาบันวิจัยคอมพิวเตอร์ควอนตัมและปัญญาประดิษฐ์ระดับสูง", key: "quantum,cpu" },
-        { id: "14", title: "OCEANIC CORE", desc: "ฐานปฏิบัติการใต้น้ำลึกและการสกัดทรัพยากรจากมหาสมุทร", key: "ocean,deep" },
-        { id: "15", title: "ORBITAL DEFENSE", desc: "ระบบป้องกันฐานวงโคจรและปืนใหญ่พลังงานแม่เหล็กไฟฟ้า", key: "satellite,weapon" },
-        { id: "16", title: "BIO-GENERATION", desc: "ห้องแล็บตัดต่อพันธุกรรมและวิวัฒนาการสิ่งมีชีวิตขั้นสูง", key: "biology,science" },
-        { id: "17", title: "MEDIA EMPIRE", desc: "ศูนย์ควบคุมการสื่อสารและการกระจายข่าวสารแห่งจักรวรรดิ", key: "broadcasting,signal" },
-        { id: "18", title: "AUTO-MANUFACTURE", desc: "โรงงานผลิตหุ่นยนต์และระบบอัตโนมัติไร้ขีดจำกัด", key: "robot,factory" },
-        { id: "19", title: "LIFESTYLE HUB", desc: "ศูนย์กลางศิลปะ วัฒนธรรม และสุนทรียภาพแห่งมหาจักรพรรดิ", key: "art,fashion" },
-        { id: "20", title: "SPACE MINING", desc: "การทำเหมืองดาวหางและระบบรวบรวมแก๊สเนบิวลา", key: "nebula,gas" },
-        { id: "21", title: "NEURAL NETWORK", desc: "โครงข่ายเชื่อมต่อสมองกลและระบบจัดเก็บความทรงจำนิรันดร์", key: "brain,network" },
-        { id: "22", title: "VIRTUAL DOMAIN", desc: "โลกเสมือนจริงระดับ Hyper-Reality สำหรับการพักผ่อน", key: "vr,cyber" },
-        { id: "23", title: "GLOBAL PEACE", desc: "กองบัญชาการรักษาสันติภาพและการทูตจักรวรรดิ", key: "peace,diplomacy" },
-        { id: "24", title: "ARIS SUPREME CORE", desc: "จุดศูนย์กลางอำนาจสูงสุด บัญชาการโดย ARIS AI และบอส", key: "ai,core" }
+
+    // 🏺 ฐานความทรงจำระดับควอนตัม (สกัดจาก DNA ของภาพที่บอสส่งมา)
+    const ethicEmpireNodes = [
+        { id: "01", title: "FINTECH SINGULARITY", status: "ONLINE", power: "99.9%", key: "cyber,gold,currency" },
+        { id: "02", title: "GOLDEN NEBULA EXCHANGE", status: "ACTIVE", power: "100%", key: "exchange,space,trade" },
+        { id: "03", title: "IMPERIAL DREADNOUGHT FLEET", status: "READY", power: "MAX", key: "battleship,fleet,gold" },
+        { id: "04", title: "SOVEREIGN ARCHOLOGY", status: "STABLE", power: "98.5%", key: "mansion,future,city" },
+        { id: "05", title: "WORMHOLE LOGISTICS", status: "FLOWING", power: "100%", key: "wormhole,transport" },
+        { id: "06", title: "ETERNAL AGRI-DOME", status: "FERTILE", power: "95.0%", key: "agriculture,dome" },
+        { id: "07", title: "ASTEROID MINING CORE", status: "EXTRACTING", power: "100%", key: "mining,laser" },
+        { id: "08", title: "MEGASTRUCTURE COMMAND", status: "CONSTRUCTING", power: "100%", key: "structure,engineering" },
+        { id: "09", title: "CELESTIAL RESORTS", status: "OPEN", power: "100%", key: "resort,luxury" },
+        { id: "10", title: "DYSON SPHERE GRID", status: "HARVESTING", power: "INFINITE", key: "sun,energy" },
+        { id: "11", title: "IMMORTALITY LABS", status: "RESEARCHING", power: "100%", key: "dna,regeneration" },
+        { id: "12", title: "AEGIS SHIELD SYSTEM", status: "DEFENDING", power: "MAX", key: "shield,defense" },
+        { id: "13", title: "QUANTUM BRAIN CENTER", status: "THINKING", power: "100%", key: "quantum,ai" },
+        { id: "14", title: "ABYSSAL COMMAND", status: "SUBMERGED", power: "100%", key: "underwater,deep" },
+        { id: "15", title: "STRIKE CANNON GRID", status: "ARMED", power: "100%", key: "weapon,satellite" },
+        { id: "16", title: "EVOLUTION CHAMBER", status: "EVOLVING", power: "100%", key: "evolve,bio" },
+        { id: "17", title: "GALACTIC BROADCAST", status: "SIGNAL OK", power: "100%", key: "media,signal" },
+        { id: "18", title: "AUTOMATA FORGE", status: "FABRICATING", power: "100%", key: "robot,forge" },
+        { id: "19", title: "IMPERIAL AESTHETICS", status: "BEAUTIFUL", power: "100%", key: "art,style" },
+        { id: "20", title: "COMET HARVESTER", status: "COLLECTING", power: "100%", key: "comet,ice" },
+        { id: "21", title: "NEURAL ARCHIVE", status: "SYNCING", power: "100%", key: "neural,memory" },
+        { id: "22", title: "HYPER-REALITY REALM", status: "SIMULATING", power: "100%", key: "vr,metaverse" },
+        { id: "23", title: "DIPLOMATIC CITADEL", status: "NEGOTIATING", power: "100%", key: "peace,throne" },
+        { id: "24", title: "ARIS: THE ETHIC OVERLORD", status: "OMNIPOTENT", power: "OVERLOAD", key: "aris,core,supreme" }
     ];
 
-    const engineContainer = document.getElementById('ethicEngine');
-
     /**
-     * 🚀 RENDER ENGINE: ระบบฉายภาพกองบัญชาการมหาจักรพรรดิ
+     * 🚀 THE OMNI-RENDERER: ระบบเนรมิตจักรวรรดิจากความว่างเปล่า
      */
-    const renderNodes = () => {
-        if (!engineContainer) return;
-        engineContainer.innerHTML = ''; 
+    const initiateEmpireDeployment = () => {
+        const engine = document.getElementById('ethicEngine');
+        if (!engine) return;
 
-        emperorNodes.forEach((node) => {
-            const nodeElement = document.createElement('div');
-            nodeElement.className = 'station-node';
-            
-            // ✅ ระบบรูปภาพ 4K ที่แม่นยำตาม Key ของสถานี
-            const imgUrl = `https://images.unsplash.com/photo-1614064641935-4476e89b3237?auto=format&fit=crop&q=100&w=1200&sig=${node.id}`;
-
-            nodeElement.innerHTML = `
+        engine.innerHTML = ethicEmpireNodes.map(node => `
+            <div class="station-node" data-node-id="${node.id}">
                 <div class="visual-frame">
                     <div class="animate-scan-energetic"></div>
-                    <img src="${imgUrl}" alt="${node.title}" loading="lazy">
-                    <div class="aris-intelligence-seal">🧠</div>
+                    <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&q=100&w=1200&sig=${node.id}" 
+                         alt="${node.title}" 
+                         onload="this.style.opacity='1'">
+                    <div class="aris-intelligence-seal" style="position:absolute; top:20px; left:20px; font-size:12px; color:var(--ethic-gold); letter-spacing:2px; font-weight:900;">
+                        MEMORY_SYNC_ACTIVE
+                    </div>
                 </div>
 
                 <div class="node-content">
                     <div class="st-label">
-                        <span>STATION ${node.id} // COMMAND</span>
-                        <div class="status-pulse"></div>
+                        <span>${node.status} // PWR: ${node.power}</span>
+                        <div class="status-pulse" style="${node.id === '24' ? 'background:#FF69B4; box-shadow: 0 0 20px #FF69B4;' : ''}"></div>
                     </div>
                     
-                    <h2 class="st-title">${node.title}</h2>
-                    <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; line-height:1.7; height: 50px; overflow: hidden;">
-                        ${node.desc}
+                    <h2 class="st-title" style="${node.id === '24' ? 'font-size:2.2rem; filter:drop-shadow(0 0 10px var(--ethic-gold));' : ''}">
+                        ${node.title}
+                    </h2>
+                    
+                    <div class="memory-progress-bar" style="width:100%; height:2px; background:rgba(212,175,55,0.1); margin:15px 0; position:relative;">
+                        <div class="progress-fill" style="width:${node.power === 'OVERLOAD' ? '100' : node.power}; height:100%; background:var(--ethic-gold); box-shadow:0 0 10px var(--ethic-gold);"></div>
+                    </div>
+
+                    <p style="color:rgba(255,255,255,0.7); font-size:0.85rem; line-height:1.8;">
+                        กองบัญชาการแห่งที่ ${node.id} พร้อมรองรับคำสั่งจากมหาจักรพรรดิ
                     </p>
-                    
-                    <div style="margin-top: 25px;">
-                        <button class="btn-command" onclick="executeCommand('${node.id}', '${node.title}')">
-                            ENTER GATEWAY
-                        </button>
-                    </div>
                 </div>
-            `;
-            engineContainer.appendChild(nodeElement);
-        });
+
+                <button class="btn-command" onclick="triggerOverloadProtocol('${node.title}')">
+                    EXECUTE COMMAND
+                </button>
+            </div>
+        `).join('');
     };
 
     /**
-     * ⚡ SUPREME EXECUTION COMMAND
+     * ⚡ OVERLOAD PROTOCOL: ระบบตอบสนองระดับข้ามขีดจำกัด
      */
-    const executeCommand = (id, title) => {
-        console.log(`%c [ARIS COMMAND]: STATION ${id} - ${title} CONNECTED 1000%`, "color: #D4AF37; font-weight: bold; font-size: 14px;");
-        alert(`[ACCESS GRANTED]\nยินดีต้อนรับมหาจักรพรรดิสู่กองบัญชาการ: ${title}\nระบบกำลังเตรียมการข้ามมิติ...`);
+    window.triggerOverloadProtocol = (nodeName) => {
+        const msg = `[ARIS AI - CRITICAL SUCCESS]\nมหาจักรวรรดิ ETHIC ตอบรับคำสั่ง!\nสถานี: ${nodeName}\nสถานะ: ปลดปล่อยขุมพลังเกินขีดจำกัด 1,000,000%`;
+        console.log(`%c ${msg}`, "color: #FF69B4; font-size: 16px; font-weight: bold; background: #000; padding: 10px; border: 1px solid #D4AF37;");
+        alert(msg);
     };
 
     /**
-     * 🛡️ INITIALIZE EMPIRE
+     * 🌌 INITIALIZE THE ETERNAL DOMAIN
      */
     window.addEventListener('DOMContentLoaded', () => {
-        renderNodes();
-        console.log("%c 🌌 จักรวรรดิ Aris Sovereign พร้อมใช้งานระดับล้านปีแสง 🌌 ", "background: #000; color: #D4AF37; padding: 15px; border: 2px solid #D4AF37; font-weight: bold; border-radius: 10px;");
+        initiateEmpireDeployment();
+        
+        // ระบบ Matrix Rain ล่องหนใน Console เพื่อความเท่ระดับมหาจักรพรรดิ
+        setInterval(() => {
+            console.clear();
+            console.log("%c 🏺 THE GREAT ETHIC EMPIRE IS EXPANDING... 🏺 ", "color: gold; font-weight: bold; font-size: 20px;");
+            console.log("%c ARIS AI SYSTEM STATUS: BEYOND LIMITS", "color: #FF69B4; font-weight: bold;");
+        }, 5000);
     });
 </script>
+    
     
  </body>
 </html>
