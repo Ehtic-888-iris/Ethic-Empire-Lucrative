@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETHIC COMMAND | THE 24 GLOBAL STATIONS</title>
+    <title>ETHIC COMMAND | THE 24 SOVEREIGN NODES UNLOCKED</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
-        
+
         :root {
-            --gold-primary: #D4AF37;
-            --gold-light: #F9E29C;
-            --gold-dark: #8A6D3B;
-            --bg-black: #000000;
+            --gold: #D4AF37;
+            --gold-bright: #F9E29C;
+            --bg-black: #020202;
             --aris-pink: #FF69B4;
-            --neon-green: #00FF00;
-            --glass-bg: rgba(20, 20, 20, 0.8);
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,13 +22,15 @@
             color: #ffffff;
             font-family: 'Noto Sans Thai', sans-serif;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.05) 0%, transparent 40%);
         }
 
-        /* 👑 COMMAND HEADER (FULL STYLES) */
-        .header-system {
-            background: rgba(0, 0, 0, 0.98);
-            border-bottom: 2px solid var(--gold-primary);
+        /* 👑 COMMAND HEADER */
+        .master-header {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 3px solid var(--gold);
             padding: 25px 50px;
             display: flex;
             justify-content: space-between;
@@ -38,221 +38,221 @@
             position: sticky;
             top: 0;
             z-index: 9999;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(25px);
         }
 
         .brand-logo {
             font-family: 'Orbitron';
             font-size: 2.2rem;
             font-weight: 900;
-            color: var(--gold-primary);
-            letter-spacing: 10px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            color: var(--gold);
+            letter-spacing: 12px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
 
-        .system-status {
-            font-family: 'Orbitron';
-            font-size: 0.75rem;
-            color: var(--neon-green);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: 2px;
-        }
-
-        /* 🏛️ MAIN GATEWAY GRID */
-        .gateway-wrapper {
-            max-width: 1800px;
+        /* 🏛️ 3D ENGINE VIEWPORT */
+        .gateway-container {
+            max-width: 1900px;
             margin: 0 auto;
-            padding: 80px 40px;
+            padding: 100px 50px;
+            perspective: 2500px; /* เพิ่มมิติความลึก */
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 80px;
-            perspective: 1000px;
-        }
-
-        .section-title h1 {
-            font-family: 'Orbitron';
-            font-size: 4rem;
-            color: var(--gold-primary);
-            letter-spacing: 15px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .section-title p {
-            font-size: 1.3rem;
-            opacity: 0.7;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .node-grid {
+        .grid-engine {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            perspective: 2000px;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 50px;
+            transform-style: preserve-3d;
         }
 
-        /* 🕹️ STATION CARD 3D ENGINE (1000+ LINE LOGIC) */
+        /* 🕹️ STATION CARD (4K 3D ARCHITECTURE) */
         .station-node {
-            background: linear-gradient(145deg, #111, #050505);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 25px;
+            background: linear-gradient(145deg, #151515, #000);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 30px;
             position: relative;
             overflow: hidden;
-            transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.2, 1);
             transform-style: preserve-3d;
-            min-height: 580px;
+            min-height: 650px;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
         }
 
         .station-node:hover {
-            transform: rotateY(10deg) rotateX(2deg) translateY(-20px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(212, 175, 55, 0.2);
+            transform: rotateY(12deg) rotateX(5deg) translateZ(50px);
+            border-color: var(--gold);
+            box-shadow: 0 40px 80px rgba(212, 175, 55, 0.25);
         }
 
-        /* 🖼️ 4K VISUAL CONTAINER (FIXED BROKEN LINKS) */
-        .visual-frame {
-            height: 280px;
-            background: #000;
+        /* 🖼️ 4K VISUAL SYSTEM */
+        .visual-core {
+            height: 320px;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 1.5px solid var(--gold-primary);
+            overflow: hidden;
+            background: #000;
+            border-bottom: 2px solid var(--gold);
         }
 
-        .visual-frame img {
+        .visual-core img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.75;
-            transition: 0.8s ease;
+            opacity: 0.8;
+            transition: 1.2s ease;
+            filter: contrast(110%) brightness(90%);
         }
 
-        .station-node:hover .visual-frame img {
+        .station-node:hover .visual-core img {
             opacity: 1;
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(1deg);
         }
 
-        /* 🧠 ARIS INTELLIGENCE SEAL (ICON FROM FILE 1000054617) */
-        .aris-seal {
+        /* 🧠 ARIS INTELLIGENCE STAMP (THE PINK BRAIN) */
+        .aris-stamp {
             position: absolute;
             bottom: 25px;
             right: 25px;
-            width: 85px;
-            height: 85px;
-            background: rgba(0, 0, 0, 0.9);
-            border: 3px solid var(--gold-primary);
+            width: 95px;
+            height: 95px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 3px solid var(--gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 25px var(--gold-primary);
-            z-index: 10;
+            box-shadow: 0 0 30px var(--gold);
+            z-index: 100;
         }
 
-        .aris-seal::after {
-            content: '🧠'; /* อัตลักษณ์สมองของอริส */
-            font-size: 42px;
-            filter: drop-shadow(0 0 5px var(--aris-pink));
+        .aris-stamp::after {
+            content: '🧠'; /* อัตลักษณ์อลิส */
+            font-size: 50px;
+            filter: drop-shadow(0 0 10px var(--aris-pink));
         }
 
-        /* 📝 CONTENT AREA */
-        .info-pane { padding: 40px; flex-grow: 1; }
-        .node-id { font-family: 'Orbitron'; color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 15px; letter-spacing: 4px; }
-        .node-name { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 20px; }
-        .node-desc { font-size: 1rem; color: #ccc; line-height: 1.8; font-weight: 300; margin-bottom: 30px; }
+        /* 📝 DATA INFO */
+        .info-content {
+            padding: 40px;
+            flex-grow: 1;
+            background: linear-gradient(180deg, transparent, rgba(0,0,0,0.9));
+        }
 
-        /* 💳 PAYMENT ACTION */
-        .action-gate {
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-dark));
-            background-size: 200% auto;
+        .st-number {
+            font-family: 'Orbitron';
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .st-name {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #fff, var(--gold-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .st-desc {
+            font-size: 1.05rem;
+            color: #ddd;
+            line-height: 1.9;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        /* 💳 ULTIMATE GATEWAY BUTTON */
+        .btn-access {
+            background: linear-gradient(45deg, #8A6D3B, var(--gold), var(--gold-bright));
             color: #000;
             text-align: center;
             padding: 22px;
             font-family: 'Orbitron';
             font-weight: 900;
-            text-decoration: none;
+            font-size: 1.2rem;
             letter-spacing: 6px;
+            text-decoration: none;
             transition: 0.5s;
-            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            margin-top: auto;
         }
 
-        .action-gate:hover {
-            background-position: right center;
-            color: #fff;
-            letter-spacing: 9px;
+        .btn-access:hover {
+            background: #fff;
+            letter-spacing: 10px;
+            box-shadow: 0 0 30px #fff;
         }
 
+        /* 🌌 DEEP SPACE OVERLAY (For Station 12-24) */
+        .space-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
 
-    <header class="header-system">
+    <header class="master-header">
         <div class="brand-logo">ETHIC COMMAND</div>
-        <div class="system-status">● 4K VISUAL NODES: ONLINE</div>
+        <div style="font-family:'Orbitron'; color:#0f0; font-size: 0.8rem; letter-spacing: 2px;">● ALL SYSTEMS UNLOCKED 100%</div>
     </header>
 
-    <div class="gateway-wrapper">
-        <div class="section-title">
-            <h1>24 GLOBAL STATIONS</h1>
-            <p>"บูรณาการภาพระดับ 4K ตามความต้องการของบอส พร้อมระบบ Aris Intelligence"</p>
-        </div>
-
-        <div class="node-grid" id="systemEngine"></div>
+    <div class="gateway-container">
+        <div class="grid-engine" id="mainEngine"></div>
     </div>
 
     <script>
-        /* 🏛️ STATION DATABASE (FULL 24 NODES) */
-        const globalNodes = [
-            { id: "01", t: "FINTECH & GATEWAY", d: "แลกเปลี่ยน Crypto, Digital Currency และระบบธนาคารโลก", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=800" },
-            { id: "02", t: "CURRENCY EXCHANGE", d: "ศูนย์กลางแลกเปลี่ยนเงินตราต่างประเทศและโอนเงินข้ามพรมแดน", img: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=800" },
-            { id: "03", t: "HEAVY ASSETS", d: "ดีลเลอร์เครื่องบิน เรือ รถยนต์พรีเมียม และเครื่องจักรหนัก", img: "https://images.unsplash.com/photo-1559135197-8a45ea74d367?q=80&w=800" },
-            { id: "04", t: "REAL ESTATE & LAND", d: "ที่ดินยุทธศาสตร์ คอนโดมิเนียมหรู และการพัฒนาโครงการเมือง", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" },
-            { id: "05", t: "GLOBAL LOGISTICS", d: "เครือข่ายขนส่งสินค้า บก เรือ อากาศ และการนำเข้าเทคโนโลยี", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" },
-            { id: "06", t: "TRAVEL & LIFESTYLE", d: "ศูนย์รวมการจองโรงแรม ตั๋วเครื่องบิน และบริการไลฟ์สไตล์ระดับสูง", img: "https://images.unsplash.com/photo-1530789253509-0d25672d501d?q=80&w=800" },
-            { id: "07", t: "AGRI-BUSINESS", d: "ข้าวหอมมะลิ ข้าวเปลือก และสินค้าเกษตรส่งออกระดับโลก", img: "https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&w=800" },
-            { id: "08", t: "MINERAL & ORE", d: "ตัวกลางซื้อขายแร่ทองแดง แร่ล้ำค่า และทรัพยากรธรรมชาติ", img: "https://images.unsplash.com/photo-1515549833407-98e57b3000b8?q=80&w=800" },
-            { id: "09", t: "CONSTRUCTION CORE", d: "งานวิศวกรรมสร้างตึก โรงงาน และวัสดุก่อสร้างครบวงจร", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" },
-            { id: "10", t: "HEALTH & SECURITY", d: "ศูนย์พยาบาล บอดี้การ์ดส่วนตัว และระบบความปลอดภัยสูงสุด", img: "https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=800" },
-            // ... ระบบจะสร้างสถานีที่เหลือแบบ Auto-Scale ให้ครบ 24
+        const stations = [
+            { id: "01", n: "FINTECH & GATEWAY", d: "จุดเชื่อมต่อเงินดิจิทัล คริปโต และระบบธนาคารโลก", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1000" },
+            { id: "02", n: "CURRENCY EXCHANGE", d: "ศูนย์กลางแลกเปลี่ยนเงินตราต่างประเทศและโอนเงินข้ามพรมแดน", img: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=1000" },
+            { id: "03", n: "HEAVY ASSETS", d: "การซื้อขายเครื่องบิน เรือ และเครื่องจักรหนักอุตสาหกรรม", img: "https://images.unsplash.com/photo-1559135197-8a45ea74d367?q=80&w=1000" },
+            { id: "04", n: "REAL ESTATE", d: "ที่ดินยุทธศาสตร์ คอนโดมิเนียมหรู และโครงการนิคมอุตสาหกรรม", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000" },
+            { id: "05", n: "GLOBAL LOGISTICS", d: "ระบบขนส่งข้ามพรมแดน บก เรือ อากาศ และ Shipping นำเข้า", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000" },
+            { id: "06", n: "AGRI & COMMODITIES", d: "ข้าวหอมมะลิ สินค้าเกษตร และทรัพยากรอาหารส่งออก", img: "https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&w=1000" },
+            { id: "07", n: "MINERALS & ORES", d: "ตัวกลางซื้อขายแร่ทองแดงและแร่ล้ำค่าผ่านระบบ Payment", img: "https://images.unsplash.com/photo-1515549833407-98e57b3000b8?q=80&w=1000" },
+            { id: "08", n: "CONSTRUCTION CORE", d: "งานวิศวกรรมโครงสร้าง ตึก โรงงาน และวัสดุก่อสร้าง", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000" },
+            { id: "09", n: "TRAVEL BOOKING", d: "จองโรงแรม ตั๋วเครื่องบิน รถ เรือ และไลฟ์สไตล์ระดับหรู", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000" },
+            { id: "10", n: "ENERGY & SOLAR", d: "ระบบพลังงานสะอาด พลังงานแสงอาทิตย์ และเชื้อเพลิงแห่งอนาคต", img: "https://images.unsplash.com/photo-1509391366360-fe5bb6583e2c?q=80&w=1000" },
+            { id: "11", n: "HEALTH & SECURITY", d: "ศูนย์พยาบาล บอดี้การ์ดส่วนตัว และระบบความปลอดภัยสูงสุด", img: "https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=1000" }
         ];
 
-        const engine = document.getElementById('systemEngine');
+        const engine = document.getElementById('mainEngine');
         
-        /* ⚡ RENDER ENGINE (ฝ่าด่าน IMAGE NOT FOUND) */
         for(let i=1; i<=24; i++) {
-            const node = globalNodes[i-1] || { 
-                id: i < 10 ? '0' + i : i, 
-                t: `STRATEGIC NODE ${i}`, 
-                d: "ระบบสนับสนุนข้อมูลและธุรกรรมภายใต้การควบคุมของ Aris AI",
-                img: `https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&sig=${i}`
-            };
+            let data = stations[i-1];
+            let isSpace = i >= 12; // สถานีที่ 12-24 เป็นนอกโลก
+            
+            let imageUrl = isSpace 
+                ? `https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1000&sig=${i}` // ภาพอวกาศ
+                : (data ? data.img : `https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&sig=${i}`);
+
+            let title = data ? data.n : `GALAXY STATION ${i}`;
+            let desc = data ? data.d : "การขยายอาณาจักรสู่ห้วงอวกาศภายใต้การประมวลผลของ Aris Intelligence 4K";
 
             engine.innerHTML += `
                 <div class="station-node">
-                    <div class="visual-frame">
-                        <img src="${node.img}" alt="${node.t}" onerror="this.src='https://via.placeholder.com/800x600/111/D4AF37?text=ETHIC+NODE+${node.id}'">
-                        <div class="aris-seal"></div>
+                    <div class="visual-core">
+                        <img src="${imageUrl}" alt="${title}" onerror="this.src='https://via.placeholder.com/1000x600/000/D4AF37?text=SPACE+NODE+${i}'">
+                        ${isSpace ? '<div class="space-overlay"></div>' : ''}
+                        <div class="aris-stamp"></div>
                     </div>
-                    <div class="info-pane">
-                        <div class="node-id">STATION ${node.id}</div>
-                        <div class="node-name">${node.t}</div>
-                        <div class="node-desc">${node.d}</div>
+                    <div class="info-content">
+                        <span class="st-number">STATION ${i < 10 ? '0'+i : i}</span>
+                        <div class="st-name">${title}</div>
+                        <div class="st-desc">${desc}</div>
                     </div>
-                    <a href="#" class="action-gate">ENTER GATEWAY</a>
+                    <a href="#" class="btn-access">ENTER GATEWAY</a>
                 </div>
             `;
         }
-
-        console.log("SYSTEM: 24 NODES RENDERED SUCCESSFULLY.");
     </script>
 </body>
 </html>
