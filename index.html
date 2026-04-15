@@ -4,7 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ETHIC COMMAND | THE 24 SOVEREIGN NODES UNLOCKED 100%</title>
-    <style>
+    <style>import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+
+const EthicEngine = () => {
+  const [activeStation, setActiveStation] = useState(null);
+
+  // ข้อมูล 24 สถานี (บอสสามารถเพิ่มให้ครบตามรูปแบบนี้ได้เลยค่ะ)
+  const stations = [
+    { id: "01", title: "FINTECH CORE", desc: "Global Banking & Digital Assets" },
+    { id: "02", title: "CURRENCY HUB", desc: "Cross-border Exchange System" },
+    { id: "03", title: "LUXURY ASSETS", desc: "Private Jets & Yacht Dealer" },
+    { id: "04", title: "REAL ESTATE", desc: "Global Land & Mansions" },
+    // ... บอสเพิ่มรายการที่ 05 - 24 ตรงนี้ได้เลยค่ะ
+  ];
+
+  return (
+    <div className="min-h-screen bg-black p-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {stations.map((st) => (
+        <motion.div
+          key={st.id}
+          whileHover={{ scale: 1.05, boxShadow: "0 0 25px var(--gold-glow)" }}
+          onClick={() => setActiveStation(st.id)}
+          className="station-node relative overflow-hidden p-6 rounded-xl cursor-pointer"
+        >
+          {/* ⚡ แสงสแกนสีชมพูหมุนรอบการ์ด */}
+          <div className="animate-scan-energetic"></div>
+
+          {/* 🟢 จุดสถานะมุมขวาบน */}
+          <div className="absolute top-4 right-4 status-pulse"></div>
+
+          {/* Content */}
+          <div className="relative z-30">
+            <span className="text-[10px] text-[#D4AF37] font-bold tracking-widest">
+              STATION {st.id}
+            </span>
+            <h2 className="text-xl text-white font-black mt-2 mb-1 uppercase italic">
+              {st.title}
+            </h2>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              {st.desc}
+            </p>
+            
+            <div className="mt-4 pt-4 border-t border-gray-800 flex justify-between items-center">
+              <span className="text-[9px] text-gray-500 uppercase">Status: Online</span>
+              <button className="text-[10px] text-[#FF69B4] hover:underline">ACCESS →</button>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+export default EthicEngine;
+    
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
 
         :root {
@@ -34,12 +88,59 @@
     box-shadow: 0 0 10px var(--aris-green);
     animation: pulse 1.5s infinite;
 }
+/* 🌌 ARIS SOVEREIGN CSS - FULL EDITION */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
+
+/* ✅ 1. REGISTERED UTILITIES FOR VITE */
+.animate-scan-energetic {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    border: 2px solid #FF69B4;
+    border-radius: inherit;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5), inset 0 0 10px rgba(255, 105, 180, 0.3);
+    animation: aris-scan 3s linear infinite;
+}
+
+.status-pulse {
+    width: 10px;
+    height: 10px;
+    background: #00FF00;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00FF00;
+    animation: pulse 1.5s infinite;
+}
+
+/* ✅ 2. ALL KEYFRAMES */
+@keyframes aris-scan {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+    50% { transform: rotate(180deg) scale(1.02); opacity: 0.7; }
+    100% { transform: rotate(360deg) scale(1); opacity: 0.3; }
+}
 
 @keyframes pulse {
     0% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.5); opacity: 0.4; }
     100% { transform: scale(1); opacity: 1; }
 }
+
+/* ✅ 3. THE ENERGY SOURCE */
+:root {
+    --aris-pink: #FF69B4;
+    --aris-gold: #D4AF37;
+    --aris-green: #00FF00;
+    --bg-deep: #0a0a0c;
+    --gold-glow: rgba(212, 175, 55, 0.4);
+}
+        
+
+:root {
+    --aris-pink: #FF69B4;
+    --aris-gold: #D4AF37;
+    /* ...บอสวางค่าอื่นๆ ต่อในนี้ได้เลย... */
+} 
+        
         :root {
             --gold: #D4AF37;
             --gold-glow: #F9E29C;
@@ -359,7 +460,25 @@
                 <div class="visual-frame">
                     <img src="${imgUrl}" alt="${node.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
                     <div class="aris-intelligence-seal">
-                        <div class="animate-scan-energetic"></div>
+                        <motion.div>
+  ref={cardRef}
+  whileHover={{ 
+    scale: 1.05, 
+    borderColor: isSelected ? "#FFFFFF" : "#D4AF37",
+    boxShadow: isSelected ? "0 0 30px rgba(255,255,255,0.3)" : "0 0 25px rgba(212,175,55,0.4)"
+  }}
+  className="station-node relative overflow-hidden" 
+>
+  {/* ✅ ชั้นที่ 1: แสงสแกนสีชมพู (วางไว้บนสุดของการ์ด) */}
+  <div className="animate-scan-energetic"></div>
+
+  {/* ✅ ชั้นที่ 2: เนื้อหาของสถานี */}
+  <div className="node-content">
+      <span className="st-label">STATION 01</span>
+      <h2 className="st-title">FINTECH CORE</h2>
+      {/* ...ส่วนอื่นๆ ของบอส... */}
+  </div>
+</motion.div>
                         🧠
                     </div>
                 </div>
