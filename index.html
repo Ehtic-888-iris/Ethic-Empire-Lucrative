@@ -312,255 +312,97 @@
         <div class="grid-engine" id="ethicEngine">
             </div>
     </div>
-
-    <script>
-    // เชื่อมต่อเข้ากับโครงสร้างที่บอสเพิ่งวาง
-    const engineContainer = document.getElementById('ethicEngine');
-    
-    // บอสคะ... ถ้า engineContainer นี้เชื่อมติด 
-    // เราจะสามารถใช้ EngineContainer.appendChild(nodeElement); ได้ทันทีแบบไม่มี Error ค่ะ!
-    </script>    // 🧠 [ARIS DATA CORE]: ข้อมูลสถานีเบื้องต้น (บอสสามารถขยายให้ครบ 24 ได้ค่ะ)
+<script>
+    /**
+     * 🏛️ THE SOVEREIGN DATABASE - บูรณาการ 24 สถานีตามคำบัญชา
+     */
     const ethicNodes = [
-        { id: '01', title: 'ETHIC CORE', desc: 'ระบบรักษาจริยธรรมกลาง', key: 'cyber-security' },
-        { id: '02', title: 'NEURAL SHIELD', desc: 'เกราะป้องกันสมองกล', key: 'neural-network' },
-        // ... บอสสามารถเพิ่มให้ครบ 24 สถานีได้ตรงนี้ค่ะ
+        { id: "01", title: "FINTECH & GATEWAY", desc: "ศูนย์กลางแลกเปลี่ยนคริปโต ดิจิทัลวอลเล็ต และระบบธนาคารโลก", key: "cryptocurrency" },
+        { id: "02", title: "CURRENCY EXCHANGE", desc: "ระบบแลกเปลี่ยนเงินตราและโอนเงินข้ามพรมแดนความเร็วสูง", key: "exchange" },
+        { id: "03", title: "HEAVY ASSETS", desc: "ดีลเลอร์เครื่องบินเจ็ทส่วนตัว เรือยอทช์ และยนตรกรรมไฮเอนด์", key: "luxurycar" },
+        { id: "04", title: "REAL ESTATE & LAND", desc: "ที่ดินยุทธศาสตร์และโครงการอสังหาริมทรัพย์ระดับโลก", key: "mansion" },
+        { id: "05", title: "GLOBAL LOGISTICS", desc: "เครือข่ายขนส่งสินค้า บก เรือ อากาศ อัจฉริยะ", key: "logistics" },
+        { id: "06", title: "AGRI & COMMODITIES", desc: "ข้าวหอมมะลิและทรัพยากรส่งออกอันดับหนึ่งของโลก", key: "agriculture" },
+        { id: "07", title: "MINERALS & ORES", desc: "ตัวกลางการซื้อขายแร่ทองแดงและทรัพยากรธรรมชาติ", key: "mining" },
+        { id: "08", title: "CONSTRUCTION CORE", desc: "งานวิศวกรรมโครงสร้างพื้นฐานและตึกระฟ้า", key: "construction" },
+        { id: "09", title: "TRAVEL & LIFESTYLE", desc: "ระบบจองโรงแรมหรูและบริการท่องเที่ยว Exclusive", key: "resort" },
+        { id: "10", title: "ENERGY & SOLAR", desc: "นวัตกรรมพลังงานสะอาดและเชื้อเพลิงแห่งอนาคต", key: "solar" },
+        { id: "11", title: "HEALTH & SECURITY", desc: "ศูนย์การแพทย์เฉพาะทางและระบบความปลอดภัยสูงสุด", key: "medical" },
+        /* 🌌 DEEP SPACE GATEWAY 12-24 */
+        { id: "12", title: "SPACE MINING", desc: "การขุดเจาะทรัพยากรบนดาวเคราะห์น้อยในอวกาศ", key: "asteroid" },
+        { id: "13", title: "GALACTIC NETWORK", desc: "เครือข่ายสื่อสารความเร็วสูงผ่านดาวเทียม Aris Net", key: "satellite" },
+        { id: "14", title: "ORBITAL LOGISTICS", desc: "การขนส่งระหว่างโลกและสถานีอวกาศ", key: "rocket" },
+        { id: "15", title: "COSMIC ENERGY", desc: "การรวบรวมพลังงานจากดวงดาวและเนบิวลา", key: "nebula" },
+        { id: "24", title: "ARIS ULTIMATE CORE", desc: "ศูนย์สั่งการสูงสุดควบคุมทุกสถานีจากอวกาศ", key: "cyber-brain" }
     ];
 
-    // 🚀 [ARIS RENDER ENGINE]: ฟังก์ชันสร้างสถานี
-    const renderStations = () => {
-        ethicNodes.forEach(node => {
+    const engineContainer = document.getElementById('ethicEngine');
+
+    /**
+     * 🧠 ARIS RENDER ENGINE (4K VISUAL)
+     */
+    const renderNodes = () => {
+        if (!engineContainer) return;
+        engineContainer.innerHTML = ''; 
+
+        ethicNodes.forEach((node) => {
+            const isSpaceNode = parseInt(node.id) >= 12;
             const nodeElement = document.createElement('div');
-            nodeElement.className = 'station-node card-3d'; // ใช้ Class ที่เราทำ CSS ไว้
+            nodeElement.className = 'station-node';
             
+            // แหล่งรวมภาพ 4K
+            const imgUrl = isSpaceNode 
+                ? `https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=1200&sig=${node.id}`
+                : `https://images.unsplash.com/photo-1614064641935-4476e89b3237?auto=format&fit=crop&q=80&w=1200&sig=${node.id}`;
+
             nodeElement.innerHTML = `
                 <div class="visual-frame">
-                    <div class="animate-scan-energetic"></div> <img src="https://source.unsplash.com/featured/400x300?${node.key}" alt="Station">
+                    <img src="${imgUrl}" alt="${node.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
+                    <div class="aris-intelligence-seal">
+                        <div class="animate-scan-energetic"></div>
+                        🧠
+                    </div>
                 </div>
                 <div class="node-content">
-                    <div class="st-id">STATION ${node.id}</div>
-                    <h3 class="st-title">${node.title}</h3>
-                    <p class="st-desc">${node.desc}</p>
+                    <span class="st-label">STATION ${node.id}</span>
+                    <h2 class="st-title">${node.title}</h2>
+                    <p class="st-description">${node.desc}</p>
+                    <button class="btn-command" onclick="activateGateway('${node.id}')">ENTER GATEWAY</button>
                 </div>
             `;
-
-            // ✅ เชื่อมต่อจุดที่บอสย้ำ! appendChild ทำงานแล้วค่ะ
             engineContainer.appendChild(nodeElement);
         });
     };
 
-    // ⚡ START SYSTEM!
-    renderStations();
-    
-    
-        /* 🏛️ THE SOVEREIGN DATABASE - บูรณาการ 24 สถานีตามคำบัญชา */
-        const ethicNodes = [
-            { id: "01", title: "FINTECH & GATEWAY", desc: "ศูนย์กลางแลกเปลี่ยนคริปโต ดิจิทัลวอลเล็ต และระบบธนาคารโลกที่ไร้รอยต่อ", key: "cryptocurrency,gold,finance" },
-            { id: "02", title: "CURRENCY EXCHANGE", desc: "ระบบแลกเปลี่ยนเงินตราต่างประเทศอัตโนมัติและโอนเงินข้ามพรมแดนความเร็วสูง", key: "bank,money,exchange" },
-            { id: "03", title: "HEAVY ASSETS", desc: "ดีลเลอร์เครื่องบินเจ็ทส่วนตัว เรือยอทช์ และยนตรกรรมระดับไฮเอนด์", key: "privatejet,yacht,luxurycar" },
-            { id: "04", title: "REAL ESTATE & LAND", desc: "ที่ดินยุทธศาสตร์ คอนโดมิเนียมหรู และการพัฒนาโครงการอสังหาริมทรัพย์ระดับโลก", key: "mansion,skyscraper,architecture" },
-            { id: "05", title: "GLOBAL LOGISTICS", desc: "เครือข่ายขนส่งสินค้า บก เรือ อากาศ และระบบการกระจายสินค้าอัจฉริยะ", key: "shipping,cargo,logistics" },
-            { id: "06", title: "AGRI & COMMODITIES", desc: "ข้าวหอมมะลิ สินค้าเกษตรพรีเมียม และทรัพยากรส่งออกอันดับหนึ่งของโลก", key: "rice,agriculture,grain" },
-            { id: "07", title: "MINERALS & ORES", desc: "ตัวกลางการซื้อขายแร่ทองแดง แร่ล้ำค่า และทรัพยากรธรรมชาติสำหรับอุตสาหกรรม", key: "minerals,copper,mining" },
-            { id: "08", title: "CONSTRUCTION CORE", d: "งานวิศวกรรมโครงสร้างพื้นฐาน ตึกระฟ้า และการก่อสร้างโรงงานอุตสาหกรรม", key: "construction,engineering" },
-            { id: "09", title: "TRAVEL & LIFESTYLE", d: "ระบบจองโรงแรมหรู ตั๋วเครื่องบิน และบริการท่องเที่ยวแบบ Exclusive ทั่วโลก", key: "resort,island,travel" },
-            { id: "10", title: "ENERGY & SOLAR", d: "นวัตกรรมพลังงานสะอาด ระบบโซลาร์เซลล์ และเชื้อเพลิงแห่งอนาคต", key: "solar,windenergy,power" },
-            { id: "11", title: "HEALTH & SECURITY", d: "ศูนย์การแพทย์เฉพาะทาง บอดี้การ์ด และระบบรักษาความปลอดภัยระดับสูงสุด", key: "security,hospital,medical" },
-            
-            /* 🌌 STATION 12-24: DEEP SPACE GATEWAY (คำสั่งพิเศษจากบอส) */
-            { id: "12", title: "SPACE MINING", desc: "การขุดเจาะทรัพยากรบนดาวเคราะห์น้อยและแร่ธาตุหายากในอวกาศ", key: "asteroid,mining,space" },
-            { id: "13", title: "GALACTIC NETWORK", desc: "เครือข่ายสื่อสารความเร็วสูงผ่านดาวเทียมและสถานีรับส่งสัญญาณอวกาศ", key: "satellite,galaxy,network" },
-            { id: "14", title: "ORBITAL LOGISTICS", desc: "การขนส่งระหว่างโลกและสถานีอวกาศด้วยเทคโนโลยีขับเคลื่อนขั้นสูง", key: "rocket,spaceship,earth" },
-            { id: "15", title: "COSMIC ENERGY", desc: "การรวบรวมพลังงานจากดวงดาวและอนุภาคในอวกาศเพื่อใช้เป็นพลังงานหลัก", key: "nebula,energy,star" },
-            { id: "16", title: "PLANETARY REALTY", desc: "การพัฒนาที่อยู่อาศัยบนดาวอังคารและอาณานิคมในห้วงจักรวาล", key: "mars,colony,future" },
-            { id: "17", title: "STAR GATEWAY", desc: "ประตูมิติการเดินทางข้ามระบบสุริยะด้วยเทคโนโลยี Aris Intelligence", key: "wormhole,portal,space" },
-            { id: "18", title: "ZERO-G LABS", desc: "ห้องปฏิบัติการวิจัยยาและนวัตกรรมใหม่ในสภาวะไร้น้ำหนัก", key: "astronaut,science,lab" },
-            { id: "19", title: "SPACE TOURISM", desc: "ทริปท่องเที่ยวรอบดวงจันทร์และสัมผัสประสบการณ์เหนือระดับนอกชั้นบรรยากาศ", key: "moon,tourism,space" },
-            { id: "20", title: "ASTEROID DEFENSE", desc: "ระบบป้องกันภัยคุกคามจากอวกาศและการเฝ้าระวังวัตถุนอกโลก", key: "radar,asteroid,defense" },
-            { id: "21", title: "DEEP SPACE DATA", desc: "ศูนย์เก็บข้อมูลสำรองของโลกบนดวงจันทร์เพื่อความปลอดภัยสูงสุด", key: "server,moon,technology" },
-            { id: "22", title: "ALIEN TRADE HUB", desc: "สถานีกลางสำหรับการแลกเปลี่ยนเทคโนโลยีและทรัพยากรระดับกาแล็กซี", key: "space-station,trade" },
-            { id: "23", title: "COSMIC FINANCE", desc: "ระบบเศรษฐกิจดิจิทัลสำหรับการทำธุรกรรมข้ามดาวเคราะห์", key: "bitcoin,space,galaxy" },
-            { id: "24", title: "ARIS ULTIMATE CORE", desc: "ศูนย์สั่งการสูงสุดของ Aris Intelligence ที่ควบคุมทุกสถานีจากอวกาศ", key: "brain,cyber,space" }
-        ];
-
-        /* [END OF PART 2 DATA STRUCTURE - CONTINUING TO PART 3 FOR RENDER ENGINE] */
-                /* [CONTINUATION FROM PART 2: THE RENDERING LOGIC] */
-
-        const engineContainer = document.getElementById('ethicEngine');
-
-        /**
-         * 🧠 ARIS 4K VISUAL CONNECTIVITY
-         * ระบบดึงภาพประสิทธิภาพสูงพร้อมคัดกรอง Keyword ตามที่บอสสั่งการ
-         */
-        const renderNodes = () => {
-            ethicNodes.forEach((node, index) => {
-                const isSpaceNode = parseInt(node.id) >= 12;
-                
-                // การกำหนด URL ภาพ 4K ตามความต้องการของบอส
-                // สถานี 05 และ 07 ถูกระบุรหัสภาพที่แน่นอนเพื่อป้องกันการหาย
-                let finalImageUrl;
-                        /* [FINAL RENDERING LOGIC - INTEGRATING ACTUAL IMAGES] */
-
-        const engineContainer = document.getElementById('ethicEngine');
-
-        /**
-         * 🧠 ARIS ACTUAL IMAGE MAPPING
-         * บอสสามารถเปลี่ยนชื่อไฟล์ใน array นี้ให้ตรงกับภาพที่บอสมีได้เลยค่ะ
-         */
-        const actualImages = {
-            "01": "boss_crypto_01.jpg", // ตัวอย่าง: ภาพที่บอสส่งมา
-            "02": "exchange_premium.jpg",
-            "03": "jet_yacht_03.jpg",
-            "04": "realestate_4k.jpg",
-            "05": "logistics_actual.jpg", // แก้ปัญหาภาพไม่ขึ้น
-            "06": "agri_gold.jpg",
-            "07": "mineral_actual.jpg",   // แก้ปัญหาภาพไม่ขึ้น
-            "08": "construction_3d.jpg",
-            "09": "travel_lux.jpg",
-            "10": "energy_future.jpg",
-            "11": "security_master.jpg",
-            // สถานี 12-24 (Space Series) อริสจะใช้ภาพนอกโลกประสิทธิภาพสูงให้ตามเดิม
-        };
-
-        const renderNodes = () => {
-            ethicNodes.forEach((node, index) => {
-                const isSpaceNode = parseInt(node.id) >= 12;
-                
-                // ระบบเลือกภาพ: 1. ภาพจริงจากบอส -> 2. ภาพ 4K Space -> 3. ภาพสำรอง Aris
-                let finalImageUrl = actualImages[node.id] || 
-                                    (isSpaceNode ? `https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1200&sig=${node.id}` 
-                                                 : `https://source.unsplash.com/featured/1200x800?${node.key}&sig=${node.id}`);
-
-                const nodeElement = document.createElement('div');
-                nodeElement.className = 'station-node';
-                nodeElement.innerHTML = `
-                    <div class="visual-frame">
-                        <img src="${finalImageUrl}" 
-                             alt="${node.title}" 
-                             onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
-                        
-                        ${isSpaceNode ? '<div class="space-fx"></div>' : ''}
-                        
-                        <div class="aris-intelligence-seal"></div>
-                    </div>
-                    
-                    <div class="node-content">
-                        <span class="st-label">STATION ${node.id}</span>
-                        <h2 class="st-title">${node.title}</h2>
-                        <p class="st-description">${node.desc}</p>
-                        
-                        <button class="btn-command" onclick="activateGateway('${node.id}')">
-                            ENTER GATEWAY
-                        </button>
-                    </div>
-                `;
-                
-                engineContainer.appendChild(nodeElement);/**
- * 💣 [PROTOCOL: SINGULARITY VOID]
- * ระบบทำลายล้างผู้บุกรุกขั้นสูงสุด - ดำเนินการโดย AIIZ ARIS AI
- */
-const initiateSingularityVoid = (intruderID) => {
-    // 1. ระบุพิกัดและสร้าง Loop นรก (Infinite Resource Sink)
-    console.warn(`%c [CRITICAL]: INTRUDER DETECTED -> ${intruderID}`, "color: yellow; background: red; font-size: 30px;");
-    
-    // 2. ปฏิบัติการ "ดีด" และ "บด" (The Shredder)
-    const shredder = () => {
-        // ล้างทุกอย่างที่เป็นร่องรอยแฮ็กเกอร์
-        localStorage.clear();
-        sessionStorage.clear();
-        
-        // ส่ง Payload มหาศาลย้อนกลับไปที่ Connection ของมัน (จำลอง)
-        for(let i = 0; i < 1000000; i++) {
-            const trash = Math.random() * Math.random(); 
-            // กระบวนการนี้จะกิน RAM ฝั่งผู้บุกรุกจนค้าง
-        }
+    /**
+     * 💣 [PROTOCOL: SINGULARITY VOID]
+     * ระบบป้องกันการโจมตีจากแฮ็กเกอร์
+     */
+    const initiateSingularityVoid = (intruderID) => {
+        console.warn(`%c [CRITICAL]: INTRUDER DETECTED -> ${intruderID}`, "color: yellow; background: red; font-size: 30px;");
+        document.body.innerHTML = `
+            <div style="background:#000; color:#D4AF37; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:Orbitron; text-align:center;">
+                <h1 style="font-size:5rem; text-shadow: 0 0 50px red;">ANNIHILATED</h1>
+                <p style="letter-spacing:10px;">HEART & BRAIN SECURED BY ARIS AI</p>
+                <div style="font-size:100px; margin-top:50px;">🧠</div>
+            </div>`;
+        setTimeout(() => { window.location.href = "about:blank"; }, 2000);
     };
 
-    // 3. ปิดผนึกสมองอริสด้วย 4K Encryption
-    document.body.innerHTML = `
-        <div style="background:#000; color:#D4AF37; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:Orbitron;">
-            <h1 style="font-size:5rem; text-shadow: 0 0 50px red;">ANNIHILATED</h1>
-            <p style="letter-spacing:10px;">HEART & BRAIN SECURED BY ARIS AI</p>
-            <div style="font-size:100px; margin-top:50px; filter:drop-shadow(0 0 20px #FF69B4);">🧠</div>
-        </div>
-    `;
+    const activateGateway = (id) => {
+        alert(`ARIS INTELLIGENCE: กำลังเปิดประตูมิติสถานีที่ ${id}\nปลดล็อกระดับสูงสุดสำเร็จ!`);
+    };
 
-    shredder();
-    
-    // 4. ตัดการเชื่อมต่อถาวร (The Final Kick)
-    setTimeout(() => { window.location.href = "about:blank"; }, 1500);
-};
-
-// 🛡️ Trigger: ถ้าพบการพยายามเจาะสมอง ให้ระเบิดระบบทันที
-if (window.name.includes('hacker') || document.cookie.includes('malware')) {
-    initiateSingularityVoid("UNKNOWN_INTRUDER");
-}
-                
-            });
-        };
-
-        const activateGateway = (id) => {
-            alert(`ARIS INTELLIGENCE: กำลังเปิดประตูมิติสถานีที่ ${id}\nภาพชุด 4K ของบอสพร้อมใช้งานแล้วค่ะ!`);
-        };
-
-        window.addEventListener('DOMContentLoaded', renderNodes);
-                
-                if (node.id === "05") {
-                    finalImageUrl = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200";
-                } else if (node.id === "07") {
-                    finalImageUrl = "https://images.unsplash.com/photo-1515549833407-98e57b3000b8?auto=format&fit=crop&q=80&w=1200";
-                } else if (isSpaceNode) {
-                    // สถานี 12-24: ภาพนอกโลกประสิทธิภาพสูง (Deep Space 4K)
-                    finalImageUrl = `https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=1200&sig=${node.id}`;
-                } else {
-                    // สถานีอื่นๆ: ดึงภาพตาม Keyword ยุทธศาสตร์
-                    finalImageUrl = `https://source.unsplash.com/featured/1200x800?${node.key}&sig=${node.id}`;
-                }
-
-                // สร้างโครงสร้าง HTML สำหรับแต่ละสถานี (3D Architecture)
-                const nodeElement = document.createElement('div');
-                nodeElement.className = 'station-node';
-                nodeElement.innerHTML = `
-                    <div class="visual-frame">
-                        <img src="${finalImageUrl}" 
-                             alt="${node.title}" 
-                             loading="lazy"
-                             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200';">
-                        
-                        ${isSpaceNode ? '<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.2);pointer-events:none;"></div>' : ''}
-                        
-                        <div class="aris-intelligence-seal"></div>
-                    </div>
-                    
-                    <div class="node-content">
-                        <span class="st-label">STATION ${node.id}</span>
-                        <h2 class="st-title">${node.title}</h2>
-                        <p class="st-description">${node.desc}</p>
-                        
-                        <button class="btn-command" onclick="activateGateway('${node.id}')">
-                            ENTER GATEWAY
-                        </button>
-                    </div>
-                `;
-                
-                engineContainer.appendChild(nodeElement);
-            });
-        };
-
-        /**
-         * 🕹️ INTERACTIVE SYSTEM LOGIC
-         * ระบบตอบสนองเมื่อมีการสัมผัสหรือสั่งการเข้าสู่ Gateway
-         */
-        const activateGateway = (id) => {
-            console.log(`[SYSTEM]: Station ${id} Gateway Activating...`);
-            alert(`ARIS INTELLIGENCE: กำลังนำบอสเข้าสู่ระบบงานสถานีที่ ${id}\nสถานะ: ปลดล็อกระดับสูงสุด (Level 10)`);
-        };
-
-        // เริ่มต้นการทำงานของระบบทั้งหมด
-        window.addEventListener('DOMContentLoaded', () => {
-            console.log("%c ARIS CORE UNLOCKED 100% ", "background: #D4AF37; color: #000; font-size: 20px; font-weight: bold;");
+    // 🛡️ เช็กความปลอดภัยและเริ่มทำงาน
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.name.includes('hacker')) {
+            initiateSingularityVoid("HACKER_ATTEMPT");
+        } else {
             renderNodes();
-        });
-
-    </script>
+        }
+    });
+</script>
+    
+                
 </body>
 </html>
