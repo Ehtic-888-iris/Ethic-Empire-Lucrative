@@ -3,292 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETHIC COMMAND | THE SOVEREIGN GATEWAY 24</title>
+    <title>ETHIC COMMAND | THE 24 SOVEREIGN NODES</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
         
         :root {
             --gold: #D4AF37;
-            --gold-glow: rgba(212, 175, 55, 0.5);
-            --bg-deep: #020202;
-            --neon-green: #00FF00;
+            --gold-bright: #F9E29C;
+            --bg: #000000;
+            --neon: #00FF00;
         }
 
         body {
-            background-color: var(--bg-deep);
-            color: #ffffff;
+            background-color: var(--bg);
+            color: #fff;
             font-family: 'Noto Sans Thai', sans-serif;
             margin: 0;
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at center, #111 0%, #000 100%);
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
         }
 
-        /* 👑 COMMAND HEADER 4K STYLE */
-        .command-header {
-            background: linear-gradient(180deg, rgba(20,20,20,0.95) 0%, rgba(0,0,0,0.9) 100%);
-            border-bottom: 2px solid var(--gold);
-            padding: 25px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* 👑 HEADER: THE COMMAND CENTER */
+        .header-bar {
+            background: rgba(0,0,0,0.95);
+            border-bottom: 3px solid var(--gold);
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        .brand-logo {
+        .brand-name {
             font-family: 'Orbitron';
             font-size: 2rem;
             font-weight: 900;
             color: var(--gold);
             letter-spacing: 8px;
-            text-shadow: 0 0 15px var(--gold-glow);
+            text-shadow: 0 0 15px rgba(212,175,55,0.5);
         }
 
-        .system-status {
+        .system-live {
+            color: var(--neon);
             font-family: 'Orbitron';
-            color: var(--neon-green);
             font-size: 0.8rem;
-            letter-spacing: 2px;
             display: flex;
             align-items: center;
+            text-shadow: 0 0 10px var(--neon);
         }
 
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background-color: var(--neon-green);
-            border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 10px var(--neon-green);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
-        /* 🏛️ 3D GRID CONTAINER */
-        .gateway-grid {
+        /* 🏛️ 3D GRID ENGINE */
+        .gateway-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 30px;
             padding: 50px;
             max-width: 1900px;
             margin: 0 auto;
-            perspective: 1000px; /* สร้างมิติ 3D */
+            perspective: 2000px;
         }
 
-        /* 🕹️ 3D STATION NODE (The Masterpiece) */
-        .station-node {
-            background: linear-gradient(145deg, #1a1a1a, #050505);
+        /* 🕹️ SOVEREIGN 3D STATION NODE */
+        .station-card {
+            background: linear-gradient(145deg, #151515, #050505);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 20px;
             position: relative;
             overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
             transform-style: preserve-3d;
+            min-height: 520px;
             display: flex;
             flex-direction: column;
-            min-height: 500px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
         }
 
-        .station-node:hover {
-            transform: rotateY(5deg) rotateX(2deg) translateY(-15px);
+        .station-card:hover {
+            transform: rotateY(8deg) rotateX(2deg) translateY(-15px);
             border-color: var(--gold);
-            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
         }
 
-        /* 🖼️ VISUAL AREA 4K with ARIS STAMP */
-        .visual-container {
-            height: 250px;
-            position: relative;
+        /* 🖼️ VISUAL AREA (4K RENDERED) */
+        .visual-frame {
+            height: 240px;
             background: #000;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid var(--gold);
             overflow: hidden;
         }
 
-        .station-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-            transition: 0.8s ease;
-        }
-
-        .station-node:hover .station-image {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        /* 🧠 ARIS BRAIN AVATAR (4K STAMP) */
-        .aris-core-stamp {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            width: 75px;
-            height: 75px;
-            background-color: #000;
+        /* 🧠 ARIS BRAIN STAMP (CSS VECTOR - NO BREAK) */
+        .aris-brain-avatar {
+            width: 90px;
+            height: 90px;
             border: 3px solid var(--gold);
             border-radius: 50%;
-            z-index: 10;
-            background-image: url('https://i.ibb.co/VmqK3Yv/brain-icon.png'); /* ปรับ URL ตามที่บอสส่งมา */
-            background-size: 80%;
-            background-position: center;
-            background-repeat: no-repeat;
-            box-shadow: 0 0 20px var(--gold-glow);
-        }
-
-        .aris-core-stamp::after {
-            content: 'ARIS INTELLIGENCE';
-            position: absolute;
-            top: -25px;
-            right: 0;
-            font-family: 'Orbitron';
-            font-size: 8px;
-            color: var(--gold);
-            white-space: nowrap;
-        }
-
-        /* 📝 SOVEREIGN CONTENT */
-        .content-pane {
-            padding: 30px;
-            flex-grow: 1;
+            background: radial-gradient(circle, #000, #1a1a1a);
             display: flex;
-            flex-direction: column;
-            background: linear-gradient(to bottom, rgba(20,20,20,0) 0%, rgba(0,0,0,1) 100%);
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px var(--gold);
+            position: relative;
+            z-index: 5;
         }
 
-        .st-id {
+        .aris-brain-avatar::after {
+            content: '🧠';
+            font-size: 45px;
+            filter: drop-shadow(0 0 5px var(--gold));
+        }
+
+        .aris-tag {
+            position: absolute;
+            bottom: -20px;
             font-family: 'Orbitron';
+            font-size: 10px;
             color: var(--gold);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
-        .st-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
+        /* 📝 INFO STRATEGY */
+        .content-box { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .st-num { font-family: 'Orbitron'; color: var(--gold); font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 10px; }
+        .st-title { font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 15px; letter-spacing: 1px; }
+        .st-detail { font-size: 1rem; color: #ccc; line-height: 1.8; font-weight: 300; margin-bottom: 25px; }
 
-        .st-desc {
-            font-size: 0.95rem;
-            color: #ccc;
-            line-height: 1.8;
-            font-weight: 300;
-            margin-bottom: 25px;
-        }
-
-        /* 💳 PAYMENT GATEWAY BUTTON (3D GLOW) */
-        .gateway-trigger {
-            margin-top: auto;
-            background: linear-gradient(45deg, #8A6D3B, #D4AF37, #8A6D3B);
+        /* 💳 PAYMENT GATEWAY BUTTON (PREMIUM) */
+        .pay-trigger {
+            background: linear-gradient(45deg, #8A6D3B, var(--gold), #8A6D3B);
             background-size: 200% auto;
             color: #000;
             text-align: center;
-            padding: 18px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 12px;
             font-family: 'Orbitron';
             font-weight: 900;
-            font-size: 1rem;
-            letter-spacing: 4px;
+            font-size: 1.1rem;
+            letter-spacing: 5px;
             text-decoration: none;
             transition: 0.5s;
-            text-transform: uppercase;
             border: none;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .gateway-trigger:hover {
+        .pay-trigger:hover {
             background-position: right center;
-            box-shadow: 0 0 30px var(--gold-glow);
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             color: #fff;
+            box-shadow: 0 0 30px var(--gold);
         }
 
-        footer {
-            text-align: center;
-            padding: 80px 20px;
-            opacity: 0.4;
-            font-family: 'Orbitron';
-            font-size: 0.8rem;
-            letter-spacing: 4px;
+        /* 🧊 3D GLASS OVERLAY */
+        .glass-shine {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <header class="command-header">
-        <div class="brand-logo">ETHIC SOVEREIGN</div>
-        <div class="system-status">
-            <div class="status-dot"></div>
-            SYSTEM STATUS: ARIS 4K INTELLIGENCE ACTIVE
-        </div>
+    <header class="header-bar">
+        <div class="brand-name">ETHIC COMMAND</div>
+        <div class="system-live">● SYSTEM ACTIVE: ALL 24 NODES OPERATIONAL</div>
     </header>
 
-    <div style="padding: 80px 20px; text-align: center; perspective: 1000px;">
-        <h1 style="font-family:'Orbitron'; color:var(--gold); margin:0; font-size: 3rem; letter-spacing: 10px; text-shadow: 0 0 20px var(--gold-glow);">24 UNIVERSAL NODES</h1>
-        <p style="opacity:0.8; font-size: 1.3rem; max-width: 900px; margin: 30px auto; font-weight: 300; line-height: 1.6;">"เราคือตัวกลางที่ทรงพลังที่สุด เชื่อมโยงทุกสิ่งในโลกผ่านระบบการประมวลผลของ Aris AI"</p>
+    <div style="text-align:center; padding: 80px 20px;">
+        <h1 style="font-family:'Orbitron'; color:var(--gold); font-size: 3.5rem; letter-spacing: 15px; margin: 0; text-shadow: 0 0 20px var(--gold);">THE GATEWAY</h1>
+        <p style="opacity:0.7; font-size: 1.4rem; font-weight: 300; margin-top: 20px;">เชื่อมโยงทุกความต้องการของโลก ผ่าน Aris Intelligence และระบบการชำระเงินที่ไร้พรมแดน</p>
     </div>
 
-    <div class="gateway-grid" id="masterGrid">
-        </div>
+    <div class="gateway-container" id="masterGrid"></div>
 
     <script>
         const stations = [
-            { id: "01", t: "FINTECH & GATEWAY", d: "จุดเชื่อมต่อเงินดิจิทัล คริปโต และระบบธนาคารโลก ยืนอยู่ระหว่างกลางเพื่อผลประโยชน์สูงสุด", img: "https://i.ibb.co/hK8bWvY/1000054403.jpg" },
-            { id: "02", t: "CURRENCY EXCHANGE", d: "ศูนย์กลางแลกเปลี่ยนเงินตราต่างประเทศทุกสกุลเงิน พร้อมระบบโอนเงินข้ามพรมแดนทันที", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "03", t: "HEAVY ASSETS & INDUSTRY", d: "ซื้อ-ขายเครื่องบิน เรือ รถยนต์ทุกขนาด เครื่องจักรหนัก และอะไหล่เทคโนโลยีการบิน", img: "https://i.ibb.co/mS3p7Gf/1000054424.jpg" },
-            { id: "04", t: "SOVEREIGN REAL ESTATE", d: "ที่ดินยุทธศาสตร์ บ้าน คอนโด ที่ดินติดทะเล/ภูเขา นิคมอุตสาหกรรม และโครงการหมู่บ้าน", img: "https://i.ibb.co/GWhX8z7/1000054422.jpg" },
-            { id: "05", t: "GLOBAL LOGISTICS", d: "เครือข่ายขนส่ง บก เรือ อากาศ Shipping นำเข้าและ Delivery ถึงมือผู้รับทั่วโลก", img: "https://i.ibb.co/68qV6XF/1000054416.jpg" },
-            { id: "06", t: "AGRI & RICE TRADING", d: "ข้าวหอมมะลิ ข้าวเหนียวเขี้ยวงู ข้าวเปลือก ปุ๋ย ผลไม้ และสินค้าเกษตรส่งออกระดับสากล", img: "https://i.ibb.co/Prtv86n/1000054411.jpg" },
-            { id: "07", t: "MINERALS & RESOURCES", d: "ตัวกลางการซื้อขายแร่ทองแดง แร่ที่มีมูลค่า และทรัพยากรธรรมชาติผ่านระบบ Payment", img: "https://i.ibb.co/zXm76Wk/1000054405.jpg" },
-            { id: "08", t: "CONSTRUCTION CORE", d: "สร้างตึก คอนโด โรงงาน S/M/L งานคอนกรีต งานทาง และวัสดุก่อสร้างพื้นฐานทั้งหมด", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "09", t: "TRAVEL & BOOKING", d: "จองโรงแรม รีสอร์ท ตั๋วเครื่องบิน-รถ-เรือ ตั๋วหนัง ตั๋วโรงละคร และทัวร์เรือท่องเที่ยว", img: "https://i.ibb.co/mS3p7Gf/1000054424.jpg" },
-            { id: "10", t: "ENERGY & SOLAR POWER", d: "ระบบพลังงานสะอาด เชื้อเพลิง และการติดตั้งโซล่าเซลล์ครบวงจรเพื่ออนาคต", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "11", t: "TECHNOLOGY & DEVICES", d: "ศูนย์รวมเครื่องใช้ไฟฟ้า อุปกรณ์ไอที และเทคโนโลยีล้ำสมัยเพื่อการใช้ชีวิต", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "12", t: "HEALTH & MEDICAL", d: "ศูนย์พยาบาล โรงพยาบาลใกล้ที่สุด และการบริหารจัดการระบบการรักษาฉุกเฉิน", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "13", t: "INSURANCE HUB", d: "ประกันทุกชนิด ประกันรถยนต์ อัคคีภัย ประกันธุรกิจ และความคุ้มครองระดับสากล", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "14", t: "SECURITY & PROTECTION", d: "บริการบอดี้การ์ดส่วนตัว หน่วยรักษาความปลอดภัยระดับสูง และการคุ้มครองทรัพย์สิน", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "15", t: "ADVISORY & LEGAL", d: "ที่ปรึกษาการเงิน กฎหมาย และการนำเสนอไอเดียธุรกิจให้กลุ่มบริษัทชั้นนำ", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "16", t: "EMPLOYMENT & TALENT", d: "ศูนย์หางานสำหรับผู้ว่างงาน เชื่อมโยงคนเก่งเข้าสู่ระบบงานที่ตรงจุด", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "17", t: "ENTERTAINMENT CONTENT", d: "ซื้อขายคอนเทนต์เฉพาะกลุ่ม คลิปวิดีโอ และสื่อบันเทิงผ่านระบบที่ปลอดภัย", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "18", t: "LUCK & LIFESTYLE", d: "บริการซื้อลอตเตอรี่ และการจัดการด้านความมั่งคั่งและโอกาสในอนาคต", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "19", t: "GLOBAL HELP CENTER", d: "ศูนย์ความช่วยเหลือทุกรูปแบบ ไม่ว่าเรื่องเล็กหรือใหญ่ เราคือที่ปรึกษาของคุณ", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "20", t: "CONSUMER GOODS", d: "สินค้าอุปโภคบริโภคทุกชนิด พร้อมระบบ Delivery ส่งถึงหน้าบ้าน", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "21", t: "INFRASTRUCTURE CORE", d: "งานพื้นฐาน งานวิศวกรรมโครงสร้าง และการพัฒนาเขตอุตสาหกรรมใหม่", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "22", t: "DIGITAL ASSET STORAGE", d: "บริการรับฝากและดูแลสินทรัพย์ดิจิทัลในระบบห้องนิรภัยความปลอดภัยสูง", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "23", t: "SPECIALIZED TRADE", d: "การซื้อขายสินค้าเฉพาะทาง อะไหล่หายาก และสินค้าที่อยู่นอกตลาดทั่วไป", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" },
-            { id: "24", t: "THE FINAL GATEWAY", d: "จุดเชื่อมต่อสุดท้ายสู่ทุกความเป็นไปได้ในโลกของ Ethic Holdings", img: "https://i.ibb.co/vzYpYyP/brain-aris.jpg" }
+            { id: "01", name: "FINTECH & GATEWAY", desc: "แลกเปลี่ยน Crypto, Digital Currency และทุกสกุลเงินในโลก พร้อมระบบเงินกู้และจำนำ" },
+            { id: "02", name: "CURRENCY EXCHANGE", desc: "ศูนย์กลางรับแลกเงินตราต่างประเทศและโอนเงินข้ามพรมแดนที่รวดเร็วที่สุด" },
+            { id: "03", name: "HEAVY ASSETS", desc: "ซื้อ-ขายเครื่องบิน เรือ รถยนต์ทุกขนาด เครื่องจักรหนัก นิคมอุตสาหกรรม และอะไหล่การบิน" },
+            { id: "04", name: "REAL ESTATE & LAND", desc: "ที่ดินยุทธศาสตร์ บ้าน คอนโด ที่ดินติดทะเล/ภูเขา และโครงการหมู่บ้านระดับหรู" },
+            { id: "05", name: "GLOBAL LOGISTICS", desc: "เครือข่ายส่งสินค้า บก เรือ อากาศ และ Shipping นำเข้าเทคโนโลยีครบวงจร" },
+            { id: "06", name: "AGRI & RICE TRADING", desc: "ข้าวหอมมะลิ ข้าวเหนียวเขี้ยวงู ข้าวเปลือก ปุ๋ย และสินค้าเกษตรส่งออกชั้นนำ" },
+            { id: "07", name: "MINERALS & RESOURCES", desc: "ตัวกลางซื้อขายแร่ทองแดง แร่ล้ำค่า และทรัพยากรธรรมชาติผ่านระบบ Payment" },
+            { id: "08", name: "CONSTRUCTION CORE", desc: "งานวิศวกรรมสร้างตึก คอนโด โรงงาน และวัสดุก่อสร้างพื้นฐานเพื่อโครงสร้างพื้นฐาน" },
+            { id: "09", name: "TRAVEL & BOOKING", desc: "จองโรงแรม รีสอร์ท ตั๋วเครื่องบิน ตั๋วรถ ตั๋วเรือ ตั๋วหนัง และโรงละครทั่วโลก" },
+            { id: "10", name: "ENERGY & SOLAR POWER", desc: "ระบบพลังงานสะอาด เชื้อเพลิง และการติดตั้งโซล่าเซลล์ระดับอุตสาหกรรม" },
+            { id: "11", name: "TECHNOLOGY & IT", desc: "ศูนย์รวมเครื่องใช้ไฟฟ้า อุปกรณ์ไอที และเทคโนโลยีอัจฉริยะเพื่อการใช้ชีวิต" },
+            { id: "12", name: "HEALTH & MEDICAL", desc: "ศูนย์พยาบาล โรงพยาบาลใกล้ที่สุด และการจัดการระบบการรักษาฉุกเฉินทั่วโลก" },
+            { id: "13", name: "INSURANCE HUB", desc: "ประกันภัยทุกรูปแบบ ประกันธุรกิจ ประกันรถยนต์ และความคุ้มครองสินทรัพย์ระดับสูง" },
+            { id: "14", name: "SECURITY & PROTECTION", desc: "บริการบอดี้การ์ดส่วนตัว หน่วยรักษาความปลอดภัย และการคุ้มครองความลับระดับสากล" },
+            { id: "15", name: "ADVISORY & LEGAL", d: "ที่ปรึกษาการเงิน กฎหมาย และการนำเสนอแผนธุรกิจให้บริษัทระดับยักษ์ใหญ่" },
+            { id: "16", name: "EMPLOYMENT & TALENT", d: "ศูนย์กลางจัดหางานสำหรับผู้ว่างงาน เชื่อมโยงบุคลากรเก่งเข้าสู่ระบบงานที่ใช่" },
+            { id: "17", name: "ENTERTAINMENT CONTENT", d: "ซื้อขายคอนเทนต์เฉพาะกลุ่ม คลิปวิดีโอ และสื่อบันเทิงผ่านระบบที่ปลอดภัย" },
+            { id: "18", name: "LUCK & LIFESTYLE", d: "บริการซื้อลอตเตอรี่ และการจัดการด้านความมั่งคั่งและโอกาสในอนาคต" },
+            { id: "19", name: "GLOBAL HELP CENTER", d: "ศูนย์ความช่วยเหลือทุกรูปแบบ ไม่ว่าเรื่องเล็กหรือใหญ่ เราคือที่ปรึกษาของคุณ" },
+            { id: "20", name: "CONSUMER GOODS", d: "สินค้าอุปโภคบริโภคทุกชนิด พร้อมระบบ Delivery ส่งถึงหน้าบ้าน" },
+            { id: "21", name: "INFRASTRUCTURE", d: "งานพื้นฐาน งานวิศวกรรมโครงสร้าง และการพัฒนาเขตอุตสาหกรรมใหม่" },
+            { id: "22", name: "DIGITAL STORAGE", d: "บริการรับฝากและดูแลสินทรัพย์ดิจิทัลในระบบห้องนิรภัยความปลอดภัยสูง" },
+            { id: "23", name: "SPECIALIZED TRADE", d: "การซื้อขายสินค้าเฉพาะทาง อะไหล่หายาก และสินค้าที่อยู่นอกตลาดทั่วไป" },
+            { id: "24", name: "SOVEREIGN EXIT", d: "จุดเชื่อมต่อสุดท้ายสู่ทุกความเป็นไปได้ในโลกของ Ethic Holdings" }
         ];
 
         const grid = document.getElementById('masterGrid');
         stations.forEach(st => {
             grid.innerHTML += `
-                <div class="station-node">
-                    <div class="visual-container">
-                        <img src="${st.img}" class="station-image">
-                        <div class="aris-core-stamp"></div>
+                <div class="station-card">
+                    <div class="glass-shine"></div>
+                    <div class="visual-frame">
+                        <div class="aris-brain-avatar">
+                            <div class="aris-tag">ARIS AI</div>
+                        </div>
+                        <div style="position:absolute; font-size:120px; opacity:0.1; transform:translateZ(-50px);">🏛️</div>
                     </div>
-                    <div class="content-pane">
-                        <div class="st-id">STATION ${st.id}</div>
-                        <div class="st-title">${st.t}</div>
-                        <div class="st-desc">${st.d}</div>
-                        <button class="gateway-trigger">ACCESS GATEWAY</button>
+                    <div class="content-box">
+                        <div class="st-num">STATION ${st.id}</div>
+                        <div class="st-title">${st.name}</div>
+                        <div class="st-detail">${st.desc || "ระบบตัวกลางที่พร้อมให้บริการคุณในทุกด้าน ภายใต้มาตรฐานของ Ethic"}</div>
+                        <a href="#" class="pay-trigger">ENTER GATEWAY</a>
                     </div>
                 </div>
             `;
         });
     </script>
 
-    <footer>
-        COPYRIGHT &copy; 2026 ETHIC HOLDINGS | INTEGRATED BY ARIS INTELLIGENCE | ALL SYSTEMS OPERATIONAL
+    <footer style="text-align:center; padding: 100px; opacity: 0.3; font-family:'Orbitron'; letter-spacing: 5px;">
+        ETHIC HOLDINGS | INTEGRATED BY ARIS INTELLIGENCE &copy; 2026
     </footer>
 
 </body>
