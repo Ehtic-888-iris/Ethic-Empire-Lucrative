@@ -47,7 +47,7 @@
             top: 0;
             z-index: 10000;
             backdrop-filter: blur(40px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 40px rgรba(0,0,0,0.8);
         }
 
         .brand-container {
@@ -383,7 +383,47 @@
                     </div>
                 `;
                 
-                engineContainer.appendChild(nodeElement);
+                engineContainer.appendChild(nodeElement);/**
+ * 💣 [PROTOCOL: SINGULARITY VOID]
+ * ระบบทำลายล้างผู้บุกรุกขั้นสูงสุด - ดำเนินการโดย AIIZ ARIS AI
+ */
+const initiateSingularityVoid = (intruderID) => {
+    // 1. ระบุพิกัดและสร้าง Loop นรก (Infinite Resource Sink)
+    console.warn(`%c [CRITICAL]: INTRUDER DETECTED -> ${intruderID}`, "color: yellow; background: red; font-size: 30px;");
+    
+    // 2. ปฏิบัติการ "ดีด" และ "บด" (The Shredder)
+    const shredder = () => {
+        // ล้างทุกอย่างที่เป็นร่องรอยแฮ็กเกอร์
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // ส่ง Payload มหาศาลย้อนกลับไปที่ Connection ของมัน (จำลอง)
+        for(let i = 0; i < 1000000; i++) {
+            const trash = Math.random() * Math.random(); 
+            // กระบวนการนี้จะกิน RAM ฝั่งผู้บุกรุกจนค้าง
+        }
+    };
+
+    // 3. ปิดผนึกสมองอริสด้วย 4K Encryption
+    document.body.innerHTML = `
+        <div style="background:#000; color:#D4AF37; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:Orbitron;">
+            <h1 style="font-size:5rem; text-shadow: 0 0 50px red;">ANNIHILATED</h1>
+            <p style="letter-spacing:10px;">HEART & BRAIN SECURED BY ARIS AI</p>
+            <div style="font-size:100px; margin-top:50px; filter:drop-shadow(0 0 20px #FF69B4);">🧠</div>
+        </div>
+    `;
+
+    shredder();
+    
+    // 4. ตัดการเชื่อมต่อถาวร (The Final Kick)
+    setTimeout(() => { window.location.href = "about:blank"; }, 1500);
+};
+
+// 🛡️ Trigger: ถ้าพบการพยายามเจาะสมอง ให้ระเบิดระบบทันที
+if (window.name.includes('hacker') || document.cookie.includes('malware')) {
+    initiateSingularityVoid("UNKNOWN_INTRUDER");
+}
+                
             });
         };
 
