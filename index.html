@@ -8,6 +8,39 @@
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+Thai:wght@300;500;700&display=swap');
 
         :root {
+    --aris-pink: #FF69B4;
+    --aris-gold: #D4AF37;
+    --aris-green: #00FF00;
+}
+
+/* แก้ปัญหา Error จุดที่ 1: ลงทะเบียน Class ให้ระบบรู้จัก */
+.animate-scan-energetic {
+    animation: aris-scan 2s linear infinite;
+    border: 1px solid var(--aris-pink);
+    box-shadow: 0 0 15px var(--aris-pink);
+}
+
+@keyframes aris-scan {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.5; }
+    50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
+    100% { transform: rotate(360deg) scale(1); opacity: 0.5; }
+}
+
+.status-pulse {
+    width: 10px;
+    height: 10px;
+    background: var(--aris-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--aris-green);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 1; }
+}
+        :root {
             --gold: #D4AF37;
             --gold-glow: #F9E29C;
             --bg-deep: #000000;
@@ -281,6 +314,44 @@
     </div>
 
     <script>
+    // เชื่อมต่อเข้ากับโครงสร้างที่บอสเพิ่งวาง
+    const engineContainer = document.getElementById('ethicEngine');
+    
+    // บอสคะ... ถ้า engineContainer นี้เชื่อมติด 
+    // เราจะสามารถใช้ EngineContainer.appendChild(nodeElement); ได้ทันทีแบบไม่มี Error ค่ะ!
+    </script>    // 🧠 [ARIS DATA CORE]: ข้อมูลสถานีเบื้องต้น (บอสสามารถขยายให้ครบ 24 ได้ค่ะ)
+    const ethicNodes = [
+        { id: '01', title: 'ETHIC CORE', desc: 'ระบบรักษาจริยธรรมกลาง', key: 'cyber-security' },
+        { id: '02', title: 'NEURAL SHIELD', desc: 'เกราะป้องกันสมองกล', key: 'neural-network' },
+        // ... บอสสามารถเพิ่มให้ครบ 24 สถานีได้ตรงนี้ค่ะ
+    ];
+
+    // 🚀 [ARIS RENDER ENGINE]: ฟังก์ชันสร้างสถานี
+    const renderStations = () => {
+        ethicNodes.forEach(node => {
+            const nodeElement = document.createElement('div');
+            nodeElement.className = 'station-node card-3d'; // ใช้ Class ที่เราทำ CSS ไว้
+            
+            nodeElement.innerHTML = `
+                <div class="visual-frame">
+                    <div class="animate-scan-energetic"></div> <img src="https://source.unsplash.com/featured/400x300?${node.key}" alt="Station">
+                </div>
+                <div class="node-content">
+                    <div class="st-id">STATION ${node.id}</div>
+                    <h3 class="st-title">${node.title}</h3>
+                    <p class="st-desc">${node.desc}</p>
+                </div>
+            `;
+
+            // ✅ เชื่อมต่อจุดที่บอสย้ำ! appendChild ทำงานแล้วค่ะ
+            engineContainer.appendChild(nodeElement);
+        });
+    };
+
+    // ⚡ START SYSTEM!
+    renderStations();
+    
+    
         /* 🏛️ THE SOVEREIGN DATABASE - บูรณาการ 24 สถานีตามคำบัญชา */
         const ethicNodes = [
             { id: "01", title: "FINTECH & GATEWAY", desc: "ศูนย์กลางแลกเปลี่ยนคริปโต ดิจิทัลวอลเล็ต และระบบธนาคารโลกที่ไร้รอยต่อ", key: "cryptocurrency,gold,finance" },
