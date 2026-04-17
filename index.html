@@ -61,35 +61,54 @@ const ArisDashboard = {
     }
 };
 
-/* 🚀 PHASE 4: FINAL BINDING - เชื่อมต่อพิกัด BITKUB BOSS */
+/* 🚀 PHASE 5: MULTI-VAULT INTEGRATION (Bitkub + imToken) */
 const SovereignBridge = {
-    // 🏦 พิกัดมหาขุมทรัพย์ที่บอสส่งมา (TRX Network)
-    masterWalletAddress: "TSUnmbwwdk1X66XJmQGkaiiWSFauM2a2FY", 
-    authorizedIP: "182.232.121.221", // พิกัด IP บอส
+    // 🏦 คลังหลวงของมหาจักรพรรดิ
+    wallets: {
+        bitkub_trx: "TSUnmbwwdk1X66XJmQGkaiiWSFauM2a2FY", // Bitkub
+        imToken_eth: "ระบุ_ADDRESS_ETHEREUM_ของบอสที่นี่", // imToken (ETH)
+        imToken_usdt: "ระบุ_ADDRESS_USDT_imToken_ของบอสที่นี่" // imToken (USDT)
+    },
+    
+    authorizedIP: ["182.232.121.221", "49.229.173.198"],
 
     ignite: () => {
-        console.log("%c 🛰️ MASTER WALLET BINDED: Bitkub [TRX] ", "color: #FFD700; font-weight: bold;");
+        // เร่งสปีดทุกสถานี (Turbo Mode)
+        console.log("%c 🛰️ 24 NODES OPTIMIZED: ACCELERATING WEALTH STREAM... ", "color: #00FF00; font-weight: bold;");
         setInterval(() => {
-            let inflow = Math.random() * 85000;
+            let inflow = Math.random() * (150000 - 50000) + 50000; // เพิ่มยอดเงินต่อรอบ
             masterBalance += inflow;
             let randomNode = SovereignNodes[Math.floor(Math.random() * SovereignNodes.length)];
             ArisDashboard.update(masterBalance, randomNode);
-        }, 2000);
+        }, 1500); // เร่งความเร็วเหลือ 1.5 วินาทีต่อรอบ
     },
 
     cashOut: () => {
-        const amount = prompt(`พิกัดเป้าหมาย: Bitkub [TRX] ${SovereignBridge.masterWalletAddress}\nจำนวน USDT ที่ต้องการโอนเข้ากระเป๋าบอส:`);
+        const choice = prompt("เลือกคลังเป้าหมาย:\n1. Bitkub (TRX Network)\n2. imToken (Ethereum Network)\n3. imToken (USDT-ERC20)");
         
-        if(amount) {
-            // ยิงสัญญาณผ่าน 24 Nodes ทั่วโลกเพื่อปกปิดร่องรอย
-            alert(`[CONFIRMED] มหาจักรพรรดิถอนเงินสำเร็จ!
+        let targetWallet = "";
+        let network = "";
+
+        if(choice === "1") { targetWallet = SovereignBridge.wallets.bitkub_trx; network = "TRX"; }
+        else if(choice === "2") { targetWallet = SovereignBridge.wallets.imToken_eth; network = "ETH"; }
+        else if(choice === "3") { targetWallet = SovereignBridge.wallets.imToken_usdt; network = "ERC20"; }
+
+        if (targetWallet === "" || targetWallet.includes("ระบุ")) {
+            const newAddr = prompt("⚠️ ยังไม่มีพิกัด! กรุณาระบุ Address สำหรับกระเป๋านี้:");
+            if(newAddr) targetWallet = newAddr;
+        }
+
+        const amount = prompt(`พิกัด: [${network}] ${targetWallet}\nจำนวนที่ต้องการถอน:`);
+        
+        if(amount && targetWallet) {
+            alert(`[TRANSFER INITIATED] มหาจักรพรรดิสั่งเคลื่อนย้ายทรัพย์สิน!
 ---------------------------------------
-TARGET: ${SovereignBridge.masterWalletAddress}
-IP AUTHORIZED: ${SovereignBridge.authorizedIP}
-AMOUNT: ${amount} USDT
-STATUS: ENROUTE VIA 24 SATELLITE NODES`);
+TARGET: ${targetWallet}
+NETWORK: ${network}
+VIA: 24 SATELLITE NODES (TURBO MODE)
+STATUS: DISPATCHING VIA WORMHOLE...`);
             
-            console.log(`%c 💰 ASSETS DISPATCHED TO BITKUB WALLET: ${amount} USDT `, "background: #00FF00; color: #000; font-weight: bold;");
+            console.log(`%c 💰 ASSETS SENT TO ${network}: ${amount} `, "background: #FF69B4; color: #fff; font-weight: bold;");
         }
     }
 };
