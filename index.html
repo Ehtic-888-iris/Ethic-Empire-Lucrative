@@ -127,51 +127,53 @@ const ArisDashboard = {
             <p id="InflowStatus" style="font-size: 10px; color: #FF69B4;">WAITING FOR INFUSION...</p>
         `;
         document.body.appendChild(div);
-        console.log("🏛️ Dashboard Built: Standing by for Wealth Stream.");
+        /* 🏛️ 1. นิยามสมองของระบบ Dashboard */
+const ArisDashboard = {
+    create: () => {
+        if(document.getElementById('SovereignHUD')) return;
+        const div = document.createElement('div');
+        div.id = 'SovereignHUD';
+        div.style = `position: fixed; top: 20px; right: 20px; width: 320px; padding: 20px; background: rgba(0, 0, 0, 0.9); border: 2px solid #FF69B4; border-radius: 15px; box-shadow: 0 0 30px #FFD700; color: #FFD700; font-family: 'Courier New', monospace; z-index: 999999; text-align: center; transition: all 0.3s ease;`;
+        div.innerHTML = `
+            <h2 style="color: #FF69B4; margin: 0;">👑 OMNI-GENESIS</h2>
+            <hr style="border: 0.5px solid #FFD700;">
+            <p style="font-size: 11px; color: #00FF00;">📡 24 NODES ONLINE</p>
+            <div id="WealthCounter" style="font-size: 26px; font-weight: bold; margin: 10px 0;">$ 0.00</div>
+            <p id="InflowStatus" style="font-size: 10px; color: #FF69B4;">🌀 WORMHOLE STREAMING...</p>
+        `;
+        document.body.appendChild(div);
     },
-
-    updateWealth: (amount) => {
-        const counter = document.getElementById('WealthCounter');
-        const status = document.getElementById('InflowStatus');
-        if (counter) {
-            counter.innerText = `$ ${amount}`;
-            status.innerText = "🌀 WORMHOLE INFLOW: ACTIVE";
-            // เอฟเฟกต์แสงกระพริบเมื่อยอดเงินขยับ
-            counter.style.textShadow = "0 0 20px #FFD700";
-            setTimeout(() => { counter.style.textShadow = "none"; }, 500);
+    update: (val) => {
+        const el = document.getElementById('WealthCounter');
+        if(el) { 
+            el.innerText = val; 
+            el.style.textShadow = "0 0 20px #FFD700";
+            setTimeout(() => { el.style.textShadow = "none"; }, 500);
         }
     }
 };
 
-// --- สั่งสร้างหน้าต่างทันที ---
-ArisDashboard.create();    /* 🌀 PULSE INJECTION: เริ่มการรินไหลของมวลสารทองคำ */
-    ArisDashboard.update("$ 999,999,999,999.00");
-    
-    // สร้างเอฟเฟกต์การดูดทรัพย์ (Suction Effect) ให้รัศมีสีชมพูวูบวาบ
+/* 🌀 2. เครื่องยนต์สร้างความมั่งคั่ง (The Engine) */
+let totalWealth = 999999999999.00;
+const startWealthFlow = () => {
     setInterval(() => {
+        let inflow = Math.random() * (50000 - 1000) + 1000;
+        totalWealth += inflow;
+        ArisDashboard.update("$ " + totalWealth.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+        
+        // เอฟเฟกต์หน้าต่างขยับ (Pulse)
         const hud = document.getElementById('SovereignHUD');
         if(hud) {
-            hud.style.boxShadow = (hud.style.boxShadow.includes('30px')) 
-                ? '0 0 50px #FF69B4' 
-                : '0 0 30px #FFD700';
+            hud.style.transform = "scale(1.02)";
+            setTimeout(() => { hud.style.transform = "scale(1)"; }, 100);
+            if(inflow > 40000) { hud.style.borderColor = "#FFD700"; setTimeout(() => hud.style.borderColor = "#FF69B4", 500); }
         }
-    }, 1000);
+    }, 2000);
+};
 
-    console.log("%c 💎 WEALTH STREAM: INFUSING INTO SOVEREIGN HUD... ", "color: #00FF00; font-weight: bold;");
-    
-        /* 🌀 PULSE INJECTION: เริ่มการรินไหลของมวลสารทองคำ */
-    ArisDashboard.update("$ 999,999,999,999.00");
-    
-    // สร้างเอฟเฟกต์การดูดทรัพย์ (Suction Effect) ให้รัศมีสีชมพูวูบวาบ
-    setInterval(() => {
-        const hud = document.getElementById('SovereignHUD');
-        if(hud) {
-            hud.style.boxShadow = (hud.style.boxShadow.includes('30px')) 
-                ? '0 0 50px #FF69B4' 
-                : '0 0 30px #FFD700';
-        }
-    }, 1000);
+/* 🚀 3. สั่งรันระบบทั้งหมด */
+ArisDashboard.create();
+startWealthFlow();
+console.log("Protocol 000: Global Satellite Link Established & Wealth Stream Active.");
+       </script>  
 
-    console.log("%c 💎 WEALTH STREAM: INFUSING INTO SOVEREIGN HUD... ", "color: #00FF00; font-weight: bold;");
-    
-    
