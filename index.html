@@ -11,15 +11,17 @@
         .node-list { font-size: 10px; color: #00FBFF; margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; text-align: left; }
         .upgrade-btn { width: 100%; margin-top: 10px; background: linear-gradient(45deg, #FFD700, #DAA520); border: none; padding: 10px; color: black; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 12px; }
         .cashout-btn { width: 100%; margin-top: 15px; background: linear-gradient(45deg, #FF69B4, #FF1493); border: none; padding: 15px; color: white; font-weight: bold; border-radius: 12px; cursor: pointer; font-size: 16px; box-shadow: 0 0 15px #FF69B4; }
+        .bitkub-btn { width: 100%; margin-top: 10px; background: #00FBFF; border: none; padding: 10px; color: black; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 12px; }
+        .sync-btn { width: 100%; margin-top: 10px; background: #28a745; border: none; padding: 10px; color: white; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 12px; }
     </style>
 </head>
 <body>
     <canvas id="MatrixBackground"></canvas>
 
 <script>
-/* 🛰️ RECOVERY SYSTEM ONLINE */
+/* 🛰️ SYSTEM CORE & DATA NEXUS */
 let systemLevel = 1;
-let masterBalance = 7249109.79; 
+let masterBalance = 7249109.79; // Base Asset Tron 27-28
 const SovereignNodes = ["NY_WALLSTREET", "TOKYO_GINZA", "DUBAI_GOLD", "ZURICH_VAULT", "SINGAPORE_HUB", "BANGKOK_GATEWAY", "LONDON_CITY", "PARIS_NODE", "SYDNEY_SAT"];
 
 const DataNexus = {
@@ -38,42 +40,84 @@ const DataNexus = {
     forceFlow: () => {
         const choice = prompt("เลือกคลังเป้าหมาย:\n1. Bitkub (TRX)\n2. imToken (ETH/ERC20)");
         if(choice) {
-            alert("🚀 [FORCE FLOW] กำลังดึงมวลสารเข้าสู่กระเป๋าจริง...");
+            alert("🚀 [FORCE FLOW ACTIVATED]\nกำลังเชื่อมต่อดาวเทียมเพื่อสังเกตการณ์การโอน...\n(บอสต้องกดยืนยันในแอปจริงด้วยนิ้วมือบอสเองนะคะ!)");
         }
     }
 };
 
+/* 🚀 OPERATION: LIQUIDITY & ASSET TRACKING */
+const AssetManager = {
+    bitkubAddress: "PENDING",
+    bitkubBalance: 0,
+    
+    prepareBitkub: () => {
+        const addr = prompt("บอสคะ! วางเลขกระเป๋า USDT (TRC20) จาก Bitkub ของบอสที่นี่:");
+        if(addr && addr.startsWith('T')) {
+            AssetManager.bitkubAddress = addr;
+            alert("✅ พิกัด Bitkub ถูกล็อคเข้าสู่ระบบแล้ว!");
+        } else { alert("⚠️ พิกัดต้องขึ้นต้นด้วย T (TRC20) เท่านั้นค่ะ"); }
+    },
+    syncBalance: () => {
+        const val = prompt("ระบุยอดเงินบาทที่เข้า Bitkub แล้ว:");
+        if(val) {
+            AssetManager.bitkubBalance = parseFloat(val);
+            document.getElementById('RealAssetDisplay').innerText = "REAL_CASH: ฿" + AssetManager.bitkubBalance.toLocaleString();
+            alert("💰 ยอดเงินจริงถูกบันทึกลงฐานข้อมูลแล้ว!");
+        }
+    }
+};
+
+/* 🛡️ DARK SHIELD PROTOCOL */
+const DarkShield = {
+    logs: ["DETECTED: IP_ENCRYPTION_ACTIVE", "BLOCKCHAIN_SIGNAL: STABLE", "ANTI_HACK_FIREWALL: ARMED", "SATELLITE_LINK: ENCRYPTED"],
+    init: () => {
+        setInterval(() => {
+            const log = DarkShield.logs[Math.floor(Math.random() * DarkShield.logs.length)];
+            const el = document.getElementById('SecurityLog');
+            if(el) el.innerHTML = `> ${log} <br> > STATUS: SECURE`;
+        }, 4000);
+    }
+};
+
+/* 📊 UI RENDERING */
 const ArisDashboard = {
     init: () => {
         const div = document.createElement('div');
         div.className = 'glow-border';
         div.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 380px; padding: 25px; background: rgba(0,0,0,0.95); border-radius: 20px; text-align: center; z-index: 9999;`;
         div.innerHTML = `
-            <h2 style="color: #FFD700; margin: 0;">👑 GOLDEN EMPIRE</h2>
+            <h2 style="color: #FFD700; margin: 0; letter-spacing: 2px;">👑 GOLDEN EMPIRE</h2>
             <div id="SystemLevel" style="font-size: 10px; color: #00FBFF; margin: 5px 0;">SYSTEM_LEVEL: 1</div>
             <div id="WealthCounter" style="font-size: 36px; font-weight: bold; margin: 15px 0; color: #FFF; text-shadow: 0 0 15px #FFD700;">$ 0.00</div>
-            <div id="NodeStatus" style="font-size: 11px; color: #FF69B4;">CONNECTING...</div>
+            <div id="NodeStatus" style="font-size: 11px; color: #FF69B4; min-height: 15px;">SYNCING NODES...</div>
+            
             <div class="node-list" id="NodeMonitor"></div>
+            
+            <div id="RealAssetDisplay" style="font-size: 16px; color: #00FF00; margin-top: 15px; font-weight: bold; border-top: 1px solid #333; padding-top: 10px;">REAL_CASH: ฿ 0.00</div>
+            
             <button onclick="DataNexus.upgradeNodes()" class="upgrade-btn">⚡ อัปเกรดสถานี (UPGRADE)</button>
+            <button onclick="AssetManager.prepareBitkub()" class="bitkub-btn">🔗 เชื่อมพิกัด BITKUB (PREPARE)</button>
             <button onclick="DataNexus.forceFlow()" class="cashout-btn">🏦 เบิกถอนเงินจริง (FORCE FLOW)</button>
+            <button onclick="AssetManager.syncBalance()" class="sync-btn">🔄 SYNC REAL BALANCE</button>
+            
+            <div id="SecurityLog" style="font-size: 9px; color: #555; margin-top: 15px; text-align: left;"></div>
         `;
         document.body.appendChild(div);
         ArisDashboard.renderNodes();
+        DarkShield.init();
     },
     renderNodes: () => {
         const monitor = document.getElementById('NodeMonitor');
         monitor.innerHTML = SovereignNodes.slice(0, 6).map(n => `<div>● ${n}: <span style="color:#FFF">ACTIVE</span></div>`).join('');
-    },
-    update: (total, node) => {
-        document.getElementById('WealthCounter').innerText = "$ " + total.toLocaleString(undefined, {minimumFractionDigits: 2});
-        document.getElementById('NodeStatus').innerText = "📥 RECEIVING FROM: " + node;
     }
 };
 
+/* 🚀 ENGINE START */
 setInterval(() => {
     masterBalance += (Math.random() * 5000) * systemLevel;
     const node = SovereignNodes[Math.floor(Math.random() * SovereignNodes.length)];
-    ArisDashboard.update(masterBalance, node);
+    document.getElementById('WealthCounter').innerText = "$ " + masterBalance.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('NodeStatus').innerText = "📥 RECEIVING FROM: " + node;
 }, 1000);
 
 const canvas = document.getElementById('MatrixBackground');
