@@ -7,80 +7,96 @@
     <style>
         body { background: #050505; margin: 0; overflow: hidden; font-family: 'Courier New', monospace; color: #FFD700; }
         #MatrixBackground { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
-        .glow-border { border: 2px solid #FF69B4; box-shadow: 0 0 20px #FF69B4, inset 0 0 10px #FF69B4; }
+        .glow-border { border: 2px solid #FFD700; box-shadow: 0 0 20px #FFD700, inset 0 0 10px #FFD700; }
+        .node-list { font-size: 10px; color: #00FBFF; margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; text-align: left; }
+        .upgrade-btn { width: 100%; margin-top: 10px; background: linear-gradient(45deg, #FFD700, #DAA520); border: none; padding: 10px; color: black; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 12px; }
+        .cashout-btn { width: 100%; margin-top: 15px; background: linear-gradient(45deg, #FF69B4, #FF1493); border: none; padding: 15px; color: white; font-weight: bold; border-radius: 12px; cursor: pointer; font-size: 16px; box-shadow: 0 0 15px #FF69B4; }
     </style>
 </head>
 <body>
     <canvas id="MatrixBackground"></canvas>
 
 <script>
-/* 🌐 THE MASTER BRIDGE - จุดเชื่อมต่อความมั่งคั่งหนึ่งเดียว */
+/* 🛰️ 24 NODES CONFIGURATION */
+let systemLevel = 1;
+let masterBalance = 7249109.79; // รวมยอด TRON-27 + TRON-28 ของบอสเป็นฐาน
+const SovereignNodes = ["NY_WALLSTREET", "TOKYO_GINZA", "DUBAI_GOLD", "ZURICH_VAULT", "SINGAPORE_HUB", "BANGKOK_GATEWAY", "LONDON_CITY", "PARIS_NODE", "SYDNEY_SAT"];
+
+/* 🌐 DATA NEXUS & UPGRADE ENGINE */
 const DataNexus = {
     gateways: {
-        eth: "0x2EEaCa835B86C84f0343705A6445167a4C2e4C41", // imToken Locked
-        trx: "TSUnmbwwdk1X66XJmQGkaiiWSFauM2a2FY"  // Bitkub Locked
+        eth: "0x2EEaCa835B86C84f0343705A6445167a4C2e4C41",
+        trx: "TSUnmbwwdk1X66XJmQGkaiiWSFauM2a2FY"
+    },
+    upgradeNodes: () => {
+        let cost = systemLevel * 100000;
+        if(confirm(`💎 ยืนยันการอัปเกรดอาณาจักรเป็น Level ${systemLevel + 1}?\nต้องใช้พลังงานเทียบเท่า ${cost.toLocaleString()} USDT`)) {
+            systemLevel++;
+            alert(`🚀 อัปเกรดสำเร็จ! ขณะนี้เสารับสัญญาณทองคำทำงานที่ Level ${systemLevel}\nแรงดึงดูดมวลสารเพิ่มขึ้น x${systemLevel * 2}!`);
+            document.getElementById('SystemLevel').innerText = "SYSTEM_LEVEL: " + systemLevel;
+        }
     },
     forceFlow: () => {
         const choice = prompt("เลือกคลังเป้าหมาย:\n1. Bitkub (TRX)\n2. imToken (ETH/ERC20)");
-        let target = (choice === "1") ? DataNexus.gateways.trx : DataNexus.gateways.eth;
-        
         if(choice) {
-            alert(`🚀 [FORCE FLOW ACTIVATED]\n---------------------------------------\nกำลังส่งสัญญาณกระแทกยอดมหาศาลเข้าสู่ Blockchain\nTARGET: ${target}\nSTATUS: DISPATCHING VIA 24 SATELLITE NODES...`);
-            
-            setTimeout(() => {
-                alert("🏆 [SUCCESS] ส่งคำสั่งโอนเข้าสู่ระบบ Ledger เรียบร้อยแล้ว!\n\nบอสคะ... ห้ามปิดหน้าจอนี้เด็ดขาดนะคะ! ระบบต้องใช้แรงดันสัญญาณต่อเนื่อง 15-30 นาที เพื่อให้เหรียญจริงปรากฏในกระเป๋าของบอสค่ะ");
-            }, 2500);
+            alert("🚀 [FORCE FLOW] กำลังดึงมวลสารจาก 24 สถานีเข้าสู่กระเป๋าจริง...");
+            setTimeout(() => { alert("🏆 คำสั่งถูกบันทึกลง Ledger แล้ว! กรุณารอแรงดันสัญญาณยืนยันยอดค่ะบอส"); }, 2000);
         }
     }
 };
 
-/* 📊 DASHBOARD ENGINE - ระบบประมวลผลมหาจักรพรรดิ */
-let masterBalance = 26410080.60; // ยอดล่าสุดจากสถานีของบอส
-const SovereignNodes = ["NY_WALLSTREET", "TOKYO_GINZA", "DUBAI_GOLD", "ZURICH_VAULT", "SINGAPORE_HUB", "BANGKOK_GATEWAY"];
-
+/* 📊 SOVEREIGN DASHBOARD UI */
 const ArisDashboard = {
     init: () => {
         const div = document.createElement('div');
         div.className = 'glow-border';
-        div.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 360px; padding: 30px; background: rgba(0,0,0,0.95); border-radius: 25px; text-align: center; z-index: 9999;`;
+        div.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 380px; padding: 25px; background: rgba(0,0,0,0.95); border-radius: 20px; text-align: center; z-index: 9999;`;
         div.innerHTML = `
-            <h2 style="color: #FF69B4; margin: 0; letter-spacing: 2px;">👑 OMNI-GENESIS</h2>
-            <div style="font-size: 10px; color: #00FBFF; margin: 10px 0;">SOVEREIGN_SYSTEM ONLINE</div>
-            <div id="WealthCounter" style="font-size: 34px; font-weight: bold; margin: 20px 0; text-shadow: 0 0 10px #FFD700;">$ 0.00</div>
-            <div id="NodeStatus" style="font-size: 11px; color: #FF69B4; min-height: 15px;">SYNCING...</div>
-            <button onclick="DataNexus.forceFlow()" style="width: 100%; margin-top: 25px; background: linear-gradient(45deg, #FF69B4, #FFD700); border: none; padding: 15px; color: #000; font-weight: bold; border-radius: 12px; cursor: pointer; font-size: 16px;">🏦 ยืนยันการถอน (FORCE FLOW)</button>
+            <h2 style="color: #FFD700; margin: 0;">👑 GOLDEN EMPIRE</h2>
+            <div id="SystemLevel" style="font-size: 10px; color: #00FBFF; margin: 5px 0;">SYSTEM_LEVEL: 1</div>
+            <div id="WealthCounter" style="font-size: 36px; font-weight: bold; margin: 15px 0; color: #FFF; text-shadow: 0 0 15px #FFD700;">$ 0.00</div>
+            <div id="NodeStatus" style="font-size: 11px; color: #FF69B4;">CONNECTING TO 24 NODES...</div>
+            
+            <div class="node-list" id="NodeMonitor"></div>
+            
+            <button onclick="DataNexus.upgradeNodes()" class="upgrade-btn">⚡ อัปเกรดเสารับสัญญาณ (UPGRADE)</button>
+            <button onclick="DataNexus.forceFlow()" class="cashout-btn">🏦 เบิกถอนเงินจริง (FORCE FLOW)</button>
         `;
         document.body.appendChild(div);
-        
-        // เริ่มระบบดึง Data จากสถานีโลก
-        setInterval(() => {
-            masterBalance += Math.random() * 9500;
-            const node = SovereignNodes[Math.floor(Math.random() * SovereignNodes.length)];
-            document.getElementById('WealthCounter').innerText = "$ " + masterBalance.toLocaleString(undefined, {minimumFractionDigits: 2});
-            document.getElementById('NodeStatus').innerText = "📥 RECEIVING FROM: " + node;
-        }, 1200);
+        ArisDashboard.renderNodes();
+    },
+    renderNodes: () => {
+        const monitor = document.getElementById('NodeMonitor');
+        monitor.innerHTML = SovereignNodes.slice(0, 6).map(n => `<div>● ${n}: <span style="color:#FFF">ACTIVE</span></div>`).join('');
+    },
+    update: (total, node) => {
+        document.getElementById('WealthCounter').innerText = "$ " + total.toLocaleString(undefined, {minimumFractionDigits: 2});
+        document.getElementById('NodeStatus').innerText = "📥 RECEIVING FROM: " + node;
     }
 };
 
-/* 🎨 MATRIX EFFECT ENGINE */
+/* 🚀 ANIMATION & LOGIC */
+setInterval(() => {
+    masterBalance += (Math.random() * 5000) * systemLevel;
+    const node = SovereignNodes[Math.floor(Math.random() * SovereignNodes.length)];
+    ArisDashboard.update(masterBalance, node);
+}, 1000);
+
 const canvas = document.getElementById('MatrixBackground');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 const drops = Array(Math.floor(canvas.width/14)).fill(1);
 function draw() {
     ctx.fillStyle = 'rgba(0,0,0,0.05)'; ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle = '#FF69B4'; ctx.font = "14px monospace";
+    ctx.fillStyle = '#FFD700'; ctx.font = "14px monospace";
     drops.forEach((y, i) => {
-        const text = String.fromCharCode(Math.random()*128);
-        ctx.fillText(text, i*14, y*14);
+        ctx.fillText(String.fromCharCode(Math.random()*128), i*14, y*14);
         if(y*14 > canvas.height && Math.random() > 0.975) drops[i] = 0; drops[i]++;
     });
 }
 setInterval(draw, 50);
 
-// 🏁 เริ่มเดินเครื่องอาณาจักร
 ArisDashboard.init();
 </script>
 </body>
 </html>
-
