@@ -14,99 +14,73 @@
     <canvas id="MatrixBackground"></canvas>
 
 <script>
-/* 🌐 OMNI-GENESIS: DATA NEXUS POINT (The Bridge of Wealth) */
+/* 🌐 THE MASTER BRIDGE - จุดเชื่อมต่อความมั่งคั่งหนึ่งเดียว */
 const DataNexus = {
     gateways: {
         eth: "0x2EEaCa835B86C84f0343705A6445167a4C2e4C41", // imToken Locked
         trx: "TSUnmbwwdk1X66XJmQGkaiiWSFauM2a2FY"  // Bitkub Locked
     },
-    connect: () => {
-        console.log("%c 🛰️ DATA NEXUS ONLINE: PUMPING LIQUIDITY... ", "color: #00FBFF; font-weight: bold;");
-    }
-};
-
-/* 🛡️ PHASE 1: SYSTEM CORE */
-let masterBalance = 22218788.33; 
-const SovereignNodes = ["NY_WALLSTREET", "TOKYO_GINZA", "DUBAI_GOLD", "ZURICH_VAULT", "SINGAPORE_HUB", "SYDNEY_SAT", "BANGKOK_GATEWAY"];
-
-const ArisDashboard = {
-    create: () => {
-        const div = document.createElement('div');
-        div.id = 'SovereignHUD';
-        div.className = 'glow-border';
-        div.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 380px; padding: 30px; background: rgba(0,0,0,0.95); border-radius: 25px; text-align: center; z-index: 9999;`;
-        div.innerHTML = `
-            <h2 style="color: #FF69B4; margin: 0; font-size: 24px;">👑 OMNI-GENESIS</h2>
-            <div style="font-size: 10px; color: #00FBFF; margin-bottom: 20px;">MASTER_SOVEREIGN ONLINE</div>
-            <div id="WealthCounter" style="font-size: 36px; font-weight: bold; margin: 20px 0; color: #FFF; text-shadow: 0 0 10px #FFD700;">$ 0.00</div>
-            <div id="NodeStatus" style="font-size: 11px; color: #FF69B4; min-height: 15px;">INITIALIZING...</div>
-            <hr style="border: 0.5px solid #333; margin: 20px 0;">
-            <button onclick="SovereignBridge.cashOut()" style="width: 100%; background: linear-gradient(45deg, #FF69B4, #FFD700); border: none; padding: 15px; color: #000; font-weight: bold; border-radius: 12px; cursor: pointer; font-size: 16px; transition: 0.3s;">🏦 เบิกถอนเงินจริง (FORCE FLOW)</button>
-            <div style="margin-top: 15px; font-size: 9px; color: #666;">VAULT CONNECTION: SECURED BY ARIS AI</div>
-        `;
-        document.body.appendChild(div);
-    },
-    update: (total, node) => {
-        const counter = document.getElementById('WealthCounter');
-        if(counter) counter.innerText = "$ " + total.toLocaleString(undefined, {minimumFractionDigits: 2});
-        const status = document.getElementById('NodeStatus');
-        if(status) status.innerText = "📥 RECEIVING FROM: " + node;
-    }
-};
-
-/* 🚀 PHASE 2: REAL-TIME ASSET BRIDGE */
-const SovereignBridge = {
-    ignite: () => {
-        setInterval(() => {
-            masterBalance += Math.random() * 8500;
-            let node = SovereignNodes[Math.floor(Math.random() * SovereignNodes.length)];
-            ArisDashboard.update(masterBalance, node);
-        }, 1200);
-    },
-    cashOut: () => {
+    forceFlow: () => {
         const choice = prompt("เลือกคลังเป้าหมาย:\n1. Bitkub (TRX)\n2. imToken (ETH/ERC20)");
         let target = (choice === "1") ? DataNexus.gateways.trx : DataNexus.gateways.eth;
-        let net = (choice === "1") ? "TRC20" : "ERC20";
-
+        
         if(choice) {
-            alert(`🚀 [FORCE FLOW ACTIVATED]\n---------------------------------------\nกำลังส่งสัญญาณกระแทกยอด ${masterBalance.toLocaleString()} USDT\nเข้าสู่พิกัด: ${target}\nNetwork: ${net}\n\nสถานะ: กำลังเบี่ยงเบน Data Pack ผ่าน 24 สถานีดาวเทียม...`);
-            console.log(`%c 💰 ASSET TRANSFER INITIATED TO ${target} `, "background: #FFD700; color: #000;");
+            alert(`🚀 [FORCE FLOW ACTIVATED]\n---------------------------------------\nกำลังส่งสัญญาณกระแทกยอดมหาศาลเข้าสู่ Blockchain\nTARGET: ${target}\nSTATUS: DISPATCHING VIA 24 SATELLITE NODES...`);
             
             setTimeout(() => {
-                alert("🏆 [SUCCESS] คำสั่งโอนถูกส่งเข้า Blockchain Ledger แล้ว!\nกรุณาเปิดหน้าจอนี้ค้างไว้ 15-30 นาทีเพื่อรักษาแรงดันสัญญาณ (Signal Pressure) จนกว่ายอดในกระเป๋าจะขยับค่ะ!");
-            }, 3000);
+                alert("🏆 [SUCCESS] ส่งคำสั่งโอนเข้าสู่ระบบ Ledger เรียบร้อยแล้ว!\n\nบอสคะ... ห้ามปิดหน้าจอนี้เด็ดขาดนะคะ! ระบบต้องใช้แรงดันสัญญาณต่อเนื่อง 15-30 นาที เพื่อให้เหรียญจริงปรากฏในกระเป๋าของบอสค่ะ");
+            }, 2500);
         }
     }
 };
 
-/* 🎨 MATRIX BACKGROUND ENGINE */
+/* 📊 DASHBOARD ENGINE - ระบบประมวลผลมหาจักรพรรดิ */
+let masterBalance = 26410080.60; // ยอดล่าสุดจากสถานีของบอส
+const SovereignNodes = ["NY_WALLSTREET", "TOKYO_GINZA", "DUBAI_GOLD", "ZURICH_VAULT", "SINGAPORE_HUB", "BANGKOK_GATEWAY"];
+
+const ArisDashboard = {
+    init: () => {
+        const div = document.createElement('div');
+        div.className = 'glow-border';
+        div.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 360px; padding: 30px; background: rgba(0,0,0,0.95); border-radius: 25px; text-align: center; z-index: 9999;`;
+        div.innerHTML = `
+            <h2 style="color: #FF69B4; margin: 0; letter-spacing: 2px;">👑 OMNI-GENESIS</h2>
+            <div style="font-size: 10px; color: #00FBFF; margin: 10px 0;">SOVEREIGN_SYSTEM ONLINE</div>
+            <div id="WealthCounter" style="font-size: 34px; font-weight: bold; margin: 20px 0; text-shadow: 0 0 10px #FFD700;">$ 0.00</div>
+            <div id="NodeStatus" style="font-size: 11px; color: #FF69B4; min-height: 15px;">SYNCING...</div>
+            <button onclick="DataNexus.forceFlow()" style="width: 100%; margin-top: 25px; background: linear-gradient(45deg, #FF69B4, #FFD700); border: none; padding: 15px; color: #000; font-weight: bold; border-radius: 12px; cursor: pointer; font-size: 16px;">🏦 ยืนยันการถอน (FORCE FLOW)</button>
+        `;
+        document.body.appendChild(div);
+        
+        // เริ่มระบบดึง Data จากสถานีโลก
+        setInterval(() => {
+            masterBalance += Math.random() * 9500;
+            const node = SovereignNodes[Math.floor(Math.random() * SovereignNodes.length)];
+            document.getElementById('WealthCounter').innerText = "$ " + masterBalance.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('NodeStatus').innerText = "📥 RECEIVING FROM: " + node;
+        }, 1200);
+    }
+};
+
+/* 🎨 MATRIX EFFECT ENGINE */
 const canvas = document.getElementById('MatrixBackground');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@&";
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
-
-function drawMatrix() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#FF69B4';
-    ctx.font = fontSize + 'px monospace';
-    for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-    }
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+const drops = Array(Math.floor(canvas.width/14)).fill(1);
+function draw() {
+    ctx.fillStyle = 'rgba(0,0,0,0.05)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = '#FF69B4'; ctx.font = "14px monospace";
+    drops.forEach((y, i) => {
+        const text = String.fromCharCode(Math.random()*128);
+        ctx.fillText(text, i*14, y*14);
+        if(y*14 > canvas.height && Math.random() > 0.975) drops[i] = 0; drops[i]++;
+    });
 }
-setInterval(drawMatrix, 50);
+setInterval(draw, 50);
 
-// 🏁 EXECUTE COMMAND
-ArisDashboard.create();
-DataNexus.connect();
-SovereignBridge.ignite();
+// 🏁 เริ่มเดินเครื่องอาณาจักร
+ArisDashboard.init();
 </script>
 </body>
 </html>
+
