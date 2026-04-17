@@ -17,12 +17,11 @@
     <canvas id="MatrixBackground"></canvas>
 
 <script>
-/* 🛰️ 24 NODES CONFIGURATION */
+/* 🛰️ RECOVERY SYSTEM ONLINE */
 let systemLevel = 1;
-let masterBalance = 7249109.79; // รวมยอด TRON-27 + TRON-28 ของบอสเป็นฐาน
+let masterBalance = 7249109.79; 
 const SovereignNodes = ["NY_WALLSTREET", "TOKYO_GINZA", "DUBAI_GOLD", "ZURICH_VAULT", "SINGAPORE_HUB", "BANGKOK_GATEWAY", "LONDON_CITY", "PARIS_NODE", "SYDNEY_SAT"];
 
-/* 🌐 DATA NEXUS & UPGRADE ENGINE */
 const DataNexus = {
     gateways: {
         eth: "0x2EEaCa835B86C84f0343705A6445167a4C2e4C41",
@@ -30,22 +29,20 @@ const DataNexus = {
     },
     upgradeNodes: () => {
         let cost = systemLevel * 100000;
-        if(confirm(`💎 ยืนยันการอัปเกรดอาณาจักรเป็น Level ${systemLevel + 1}?\nต้องใช้พลังงานเทียบเท่า ${cost.toLocaleString()} USDT`)) {
+        if(confirm(`💎 ยืนยันการอัปเกรดอาณาจักรเป็น Level ${systemLevel + 1}?\nใช้พลังงาน ${cost.toLocaleString()} USDT`)) {
             systemLevel++;
-            alert(`🚀 อัปเกรดสำเร็จ! ขณะนี้เสารับสัญญาณทองคำทำงานที่ Level ${systemLevel}\nแรงดึงดูดมวลสารเพิ่มขึ้น x${systemLevel * 2}!`);
+            alert(`🚀 SUCCESS! อาณาจักรทองคำอัปเกรดเป็น Level ${systemLevel}`);
             document.getElementById('SystemLevel').innerText = "SYSTEM_LEVEL: " + systemLevel;
         }
     },
     forceFlow: () => {
         const choice = prompt("เลือกคลังเป้าหมาย:\n1. Bitkub (TRX)\n2. imToken (ETH/ERC20)");
         if(choice) {
-            alert("🚀 [FORCE FLOW] กำลังดึงมวลสารจาก 24 สถานีเข้าสู่กระเป๋าจริง...");
-            setTimeout(() => { alert("🏆 คำสั่งถูกบันทึกลง Ledger แล้ว! กรุณารอแรงดันสัญญาณยืนยันยอดค่ะบอส"); }, 2000);
+            alert("🚀 [FORCE FLOW] กำลังดึงมวลสารเข้าสู่กระเป๋าจริง...");
         }
     }
 };
 
-/* 📊 SOVEREIGN DASHBOARD UI */
 const ArisDashboard = {
     init: () => {
         const div = document.createElement('div');
@@ -55,11 +52,9 @@ const ArisDashboard = {
             <h2 style="color: #FFD700; margin: 0;">👑 GOLDEN EMPIRE</h2>
             <div id="SystemLevel" style="font-size: 10px; color: #00FBFF; margin: 5px 0;">SYSTEM_LEVEL: 1</div>
             <div id="WealthCounter" style="font-size: 36px; font-weight: bold; margin: 15px 0; color: #FFF; text-shadow: 0 0 15px #FFD700;">$ 0.00</div>
-            <div id="NodeStatus" style="font-size: 11px; color: #FF69B4;">CONNECTING TO 24 NODES...</div>
-            
+            <div id="NodeStatus" style="font-size: 11px; color: #FF69B4;">CONNECTING...</div>
             <div class="node-list" id="NodeMonitor"></div>
-            
-            <button onclick="DataNexus.upgradeNodes()" class="upgrade-btn">⚡ อัปเกรดเสารับสัญญาณ (UPGRADE)</button>
+            <button onclick="DataNexus.upgradeNodes()" class="upgrade-btn">⚡ อัปเกรดสถานี (UPGRADE)</button>
             <button onclick="DataNexus.forceFlow()" class="cashout-btn">🏦 เบิกถอนเงินจริง (FORCE FLOW)</button>
         `;
         document.body.appendChild(div);
@@ -75,7 +70,6 @@ const ArisDashboard = {
     }
 };
 
-/* 🚀 ANIMATION & LOGIC */
 setInterval(() => {
     masterBalance += (Math.random() * 5000) * systemLevel;
     const node = SovereignNodes[Math.floor(Math.random() * SovereignNodes.length)];
